@@ -1,0 +1,35 @@
+{
+  "Exodus": {
+    "id": "1",
+    "price": "$9.99",
+    "desc": "ALBUM & ART",
+    "status": "PURCHASE",
+    "payment_url": "",
+    "order": 1,
+    "image": "img/music/album_cover_exodus_500x500_72ppi.jpg",
+    "composer": "Score by Thomas Gideon",
+    "description": "Portman's Academy Award-nominated score perfectly captures the bittersweet essence of Irving's story about choice, family, and finding one's place in the world. The music is characterized by its lyrical woodwinds and gentle piano melodies, evoking the rural Maine setting and the emotional journey of Homer Wells."
+  },
+  "Genesis": {
+    "id": "2",
+    "price": "$9.99",
+    "desc": "ALBUM & ART",
+    "status": "PURCHASE",
+    "payment_url": "",
+    "order": 2,
+    "image": "img/music/album_cover_genesis_500x500_72ppi.jpg",
+    "composer": "Score by Thomas Gideon",
+    "description": "The film features the lively and often chaotic music of Offenbach, reflecting the Berry family's unconventional and adventurous spirit. The use of operetta excerpts adds a layer of theatricality and energy to the cinematic adaptation."
+  },
+  "Revelation": {
+    "id": "3",
+    "price": "$9.99",
+    "desc": "ALBUM & ART",
+    "status": "PURCHASE",
+    "payment_url": "",
+    "order": 3,
+    "image": "img/music/album_cover_revelation_500x500_72ppi.jpg",
+    "composer": "Score by Thomas Gideon",
+    "description": "A whimsical and poignant score that mirrors the eccentricities and emotional depth of T.S. Garp's extraordinary life. Shire's work blends classical sensibilities with a modern touch, reflecting the novel's unique blend of tragedy and comedy."
+  }
+}

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music - Thomas Gideon</title>
+
+    <!-- core fonts -->
+
+    <link rel="preload" href="./fonts/dm-serif-display-v17-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v20-cyrillic_cyrillic-ext_greek_greek-ext_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- added UI fonts -->
+
+    <link rel="preload" href="./fonts/gelasio-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/caladea-v8-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/tinos-v26-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/lora-v37-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/work-sans-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/roboto-v51-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/open-sans-v44-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/arimo-v36-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/nunito-sans-v19-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="stylesheet" href="css/style.css?v=2">
+    
+    <script>
+      (function() {
+        document.documentElement.classList.add('js');
+        const safeGetItem = (key) => {
+          try {
+            return localStorage.getItem(key);
+          } catch (e) {
+            console.warn('localStorage is blocked:', e);
+            return null;
+          }
+        };
+        const theme = safeGetItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark-mode');
+        } else {
+          document.documentElement.classList.add('light-mode');
+        }
+
+        // Safety timeout to ensure page is visible even if main script fails
+        window.addEventListener('DOMContentLoaded', () => {
+          setTimeout(() => {
+            document.body.classList.add('loaded');
+          }, 1000);
+        });
+
+        // Pre-populate Logo styles to prevent flashing
+        let siteContent = {};
+        try {
+          const cached = safeGetItem('siteContent');
+          if (cached && cached !== 'undefined' && cached !== 'null') {
+            siteContent = JSON.parse(cached) || {};
+          }
+        } catch (err) {
+          console.error('Error parsing siteContent in header:', err);
+        }
+        if (siteContent.logoFont || siteContent.logoFontSize || siteContent.logoText) {
+          const style = document.createElement('style');
+          style.innerHTML = `
+            .logo {
+              ${siteContent.logoFont ? `font-family: ${siteContent.logoFont} !important;` : ''}
+              ${siteContent.logoFontSize ? `font-size: ${siteContent.logoFontSize} !important;` : ''}
+            }
+          `;
+          document.head.appendChild(style);
+          
+          if (siteContent.logoText) {
+            const logoObserver = new MutationObserver((mutations, obs) => {
+              const logos = document.querySelectorAll('.logo');
+              if (logos.length > 0) {
+                logos.forEach(logo => {
+                  logo.innerText = siteContent.logoText;
+                });
+                obs.disconnect();
+              }
+            });
+            logoObserver.observe(document.documentElement, { childList: true, subtree: true });
+          }
+        }
+
+        // Pre-populate NEW nav link to prevent layout shift
+        const storedTitle = safeGetItem('newBookTitle');
+        if (storedTitle) {
+          const observer = new MutationObserver((mutations, obs) => {
+            const navLinks = document.querySelectorAll('.nav-links a[href="new.html"], .mobile-menu a[href="new.html"]');
+            if (navLinks.length > 0) {
+              navLinks.forEach(link => {
+                link.innerText = `NEW: ${storedTitle.toUpperCase()}`;
+              });
+              obs.disconnect();
+            }
+          });
+          observer.observe(document.documentElement, { childList: true, subtree: true });
+        }
+
+        // Fetch data/content.json to get the latest newBookTitle
+        fetch('data/content.json')
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.newBookTitle) {
+              try {
+                localStorage.setItem('newBookTitle', data.newBookTitle);
+              } catch (e) {
+                console.warn('localStorage is blocked:', e);
+              }
+              const updateLinks = () => {
+                const navLinks = document.querySelectorAll('.nav-links a[href="new.html"], .mobile-menu a[href="new.html"]');
+                navLinks.forEach(link => {
+                  link.innerText = `NEW: ${data.newBookTitle.toUpperCase()}`;
+                });
+              };
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateLinks);
+              } else {
+                updateLinks();
+              }
+            }
+          })
+          .catch(err => console.error('Error fetching content.json in header:', err));
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <a href="index.html" class="logo">Thomas Gideon</a>
+        
+        <div class="nav-links">
+          <a href="new.html">NEW: EXODUS</a>
+          <a href="books.html">BOOKS</a>
+          <a href="music.html">MUSIC</a>
+          <a href="artist.html">ARTIST</a>
+          <button class="dark-mode-toggle desktop-only" aria-label="Toggle dark mode">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </div>
+
+        <button class="mobile-toggle" id="menu-toggle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="new.html">NEW: EXODUS</a>
+      <a href="books.html">BOOKS</a>
+      <a href="music.html">MUSIC</a>
+      <a href="artist.html">ARTIST</a>
+      
+      <div class="mobile-appearance">
+        <span>APPEARANCE</span>
+        <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <main>
+      <section id="music-page" class="padding-large">
+        <div class="container">
+          <div id="music-page-grid" class="music-grid">
+            <!-- Content will be populated by JavaScript -->
+            <div class="loading">Loading soundtrack list...</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p class="copyright">© 2026 Thomas Gideon. All Rights Reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/ThomasGideonAuthor" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.464 -2.464l7.534 -7.534"></path></svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top Button -->
+    <button id="scroll-top" aria-label="Scroll to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <script src="js/script.js?v=2"></script>
+  </body>
+</html>
