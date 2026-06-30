@@ -3,33 +3,33 @@
     "id": "1",
     "price": "$9.99",
     "desc": "EPUB & AUDIO",
-    "status": "PURCHASE",
+    "status": "COMING SOON",
     "payment_url": "",
     "order": 1,
     "image": "img/books/exodus_662x1000_72ppi.jpg",
-    "subtitle": "Published 2022",
-    "synopsis": "<p>In Aspen, Colorado, in 1941, Rachel Brewster is a slalom skier at the National Downhill and Slalom Championships. Little Ray, as she is called, finishes nowhere near the podium, but she manages to get pregnant. Back home in Exeter, New Hampshire, Little Ray becomes a ski instructor.</p>\n    <p>Her son, Adam, grows up in a family that defies convention and evades questions about the past. Years later, Adam returns to Aspen, to the Hotel Jerome, where he was conceived. He is looking for ghosts; in the Hotel Jerome, he finds them.</p>"
+    "subtitle": "New",
+    "synopsis": "<p>Conner's best friend AJ and new friend quantum A.I George, help diagnose what's happening to Conner as his world begins to change.</p>\n<p>AJ's and George's realities change too as they join Conner on this  adventure.</p>"
   },
   "Genesis": {
     "id": "2",
     "price": "$9.99",
     "desc": "EPUB & AUDIO",
-    "status": "PURCHASE",
+    "status": "COMING SOON",
     "payment_url": "",
     "order": 2,
     "image": "img/books/genesis_1600x2560_72ppi.jpg",
-    "subtitle": "A novel by Thomas Gideon",
-    "synopsis": "<p>Juan Diego, a fourteen-year-old boy, and his thirteen-year-old sister, Lupe, live at a dump in Oaxaca, Mexico. Lupe is a mind reader; she knows what people are thinking, and she knows what's going to happen to them—although she can't know her own future, or Juan Diego's.</p>"
+    "subtitle": "Coming Soon",
+    "synopsis": "<p>Growing up in a military family, Conner is moved across the world to follow his fathers career, finally returning to California, a different person.</p>"
   },
   "Revelation": {
     "id": "3",
     "price": "$9.99",
     "desc": "EPUB & AUDIO",
-    "status": "PURCHASE",
+    "status": "COMING SOON",
     "payment_url": "",
     "order": 3,
     "image": "img/books/revelation_662x1000_72ppi.jpg",
-    "subtitle": "Published 2015",
-    "synopsis": "<p>Juan Diego, a fourteen-year-old boy, and his thirteen-year-old sister, Lupe, live at a dump in Oaxaca, Mexico. Lupe is a mind reader; she knows what people are thinking, and she knows what's going to happen to them—although she can't know her own future, or Juan Diego's.</p>"
+    "subtitle": "Coming Soon",
+    "synopsis": "<p>This story finds Conner investigating multiple realities, finding answers lost in time.</p>"
   }
 }

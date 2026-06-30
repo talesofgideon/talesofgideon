@@ -448,7 +448,7 @@ const populateUI = (data) => {
 
           <!-- Right Column: Book Info -->
           <div class="book-info fade-in active">
-            <h1>${bookTitle}</h1>
+            <h1 id="book-detail-title">${bookTitle}</h1>
             <h3 class="subtitle">${book.subtitle}</h3>
             <div class="separator"></div>
             
@@ -495,6 +495,8 @@ const populateUI = (data) => {
         document.title = `${resolvedTitle} - Music - Thomas Gideon`;
 
         // Match corresponding book for purchase links
+        // replace <h1 class="italic">${resolvedTitle}</h1>
+        // with    <h1 id="music-detail-title">${resolvedTitle}</h1>
         const assocBook = booksData[resolvedTitle] || (resolvedTitle === "In On Person" ? booksData["In One Person"] : null) || {};
         const actualMusicId = music.id || musicId || assocBook.id || "1";
         const cleanedMusicId = String(actualMusicId).replace(/^0+/, "") || "1";
@@ -522,7 +524,7 @@ const populateUI = (data) => {
               </div>
             </div>
             <div class="music-detail-info">
-              <h1 class="italic">${resolvedTitle}</h1>
+              <h1 id="music-detail-title">${resolvedTitle}</h1>
               <p class="composer">${music.composer}</p>
               <div class="separator"></div>
               <p class="description">${music.description}</p>
@@ -611,12 +613,29 @@ const populateUI = (data) => {
   updateElement('coming-soon-content', data.comingSoon, true);
   
   // Sidebar Widget (Artist, Index, and New Pages)
+  let sidebarTitle = "";
+  let sidebarBook = {};
   
-  /*const sidebarTitle = "Exodus";*/
-  const sidebarTitle = "";
+  if (booksData && Object.keys(booksData).length > 0) {
+    const entryByOrder = Object.entries(booksData).find(([title, b]) => Number(b.order) === 1);
+    if (entryByOrder) {
+      sidebarTitle = entryByOrder[0];
+      sidebarBook = entryByOrder[1];
+    } else {
+      const entryById = Object.entries(booksData).find(([title, b]) => String(b.id) === "1");
+      if (entryById) {
+        sidebarTitle = entryById[0];
+        sidebarBook = entryById[1];
+      } else {
+        const entries = Object.entries(booksData);
+        if (entries.length > 0) {
+          sidebarTitle = entries[0][0];
+          sidebarBook = entries[0][1];
+        }
+      }
+    }
+  }
 
-  const sidebarBook = booksData[sidebarTitle] || {};
-  
   const sidebarBookImg = document.getElementById('sidebar-book-img');
   if (sidebarBookImg) {
 
@@ -628,7 +647,7 @@ const populateUI = (data) => {
     }
 
     /*const imgAlt = data.sidebarBookAlt || sidebarBook.title || "Example Tile";*/
-    const imgAlt = data.sidebarBookAlt || sidebarBook.title || "";
+    const imgAlt = data.sidebarBookAlt || sidebarTitle || "";
 
     if (sidebarBookImg.alt !== imgAlt) {
       sidebarBookImg.alt = imgAlt;
@@ -643,10 +662,9 @@ const populateUI = (data) => {
     
     const priceStr = sidebarBook.price !== undefined ? sidebarBook.price : "$9.99";
     const descStr = sidebarBook.desc !== undefined ? sidebarBook.desc : "EPUB & AUDIO";
-    let label = `${priceStr} ${descStr}`;
+    let label = sidebarBook.status === "COMING SOON" ? "COMING SOON" : `Buy ${priceStr} ${descStr}`;
     
     if (sidebarBook.status === "COMING SOON") {
-      label = "COMING SOON";
       finalUrl = "coming.html";
       if (sidebarEbook.getAttribute('target') === '_blank') {
         sidebarEbook.removeAttribute('target');

@@ -1,6 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+
+    <!-- favicon -->
+
+    <!-- icon for light mode grey face -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsSAAALEgHS3X78AAAExElEQVRYhcWXW2gUVxzGfzM7M9nZHWNgo7JGK3uBxA2xgW2x+KQhoU+F0gcfbBsfEqbUpxb6JIWWPghaEMFe5NBCKvShtG9toFoLJuRha7O9bGJSWqki5iIFMeNmN9nZmemD7nbdWzZe6AfzcM75zv/75vz/55wZiU3ANM0o8BLQD+wHooAN+JH4W5Iky3M9P3BECDHTSkypReHtwKfAK5vw+5oQ4svHNmCa5jDwxSaEK3EBeFkIsfZIBkzTHAE+e0TxEn4HnhdC2PUG5Sbi7z4BcYBngV8aDfoaiPcBX9FijbSA7clk0kin0z9UD9QImKYpA38CsSckXomkEOKh1aiXgtefkjjAkeqOegb2PyVxgMENDbiu+0y9mbIsoygKstywbjfkSJKkV/cplY2RkRFd1/UX1tfXy32appHNZrl+/Tqe56GqKtFoFFVVKRaLD3Fu3LiB67pomkYsFkOWZRzHqZRYqTbw0C5QVbWtp6fnrXw+H3jQZmlpiXv37jE6Osrw8DChUIjJyUk0TcPv96NpGgsLC6ysrHDs2DGOHj2KYRhMTEyg6zq6ruO6bkni63Q6faHRCviuXLmyOjg4+B7wMYBlWXR2dnL8+HH27NkDwL59+4hEIpw5cwZd17lz5w6GYXD27Fm6uroASCQSdHd3c/r0adra2ipT8nP1ClQmywE4ceLEJ0BKkiSWl5fp7+8vi5dw6NAhDhw4wK1bt7h79y6HDx8ui5dw8OBBBgYGWFxcRJLKu/2vZgbK8DzvG0mSsG0bn6/uWUVHRwf5fB5VVdm2bVtdTmdnJ4VCodRcANItGVAUZdJ1Xdrb21lZqakbbNsmk8mwY8cOHMdhamqqhlMoFEilUoRCITzPA/hRCOFW8+q+3vT09GIymXzVMIzQtWvXyOfz7N27F0VRKBQKnDp1ipmZGbq6uggGg8zOzrK+vk5fXx+yLJPL5Th58iSZTIZdu3aVijCVTqe/q3nZegYewPH5fHR0dDA2NsalS5eIx+PMz89jWRaRSATbtlEUhXA4zPnz55mYmCAajZLJZMhms8TjcWy7fAnG64k0PlUg6zgOsiyTSCSQZZl0Oo3f7ycSiZTPAMdxkCSJ3t5eHMdhenqaLVu2EIvFKsUBfqsn0mwFLgDPARSLRfx+P+FwmFK7GrZtEwgECAQCjTjf1xNptgI1+XoM/APUVmozA0KIFPDHEzIw1+izrFkK4L7rnlLD5/OxvLxMNptFVdXS9gLAdV1c12Xnzp0Eg8HqFHzbSEAB8DzPJ0mSU2f8c2D0AYdcLsfQ0BC7d+9mbW0NWZbLj8/nQ1VVLl++zM2bNwkGg5Vxxpsa4P55UGNACJEyTfMq0Ou6LqurqwwMDNDd3d0oHnNzc8zOzlYauCqEaJjKkoHasv4PY8CHsiyj6zpTU1MsLS1hWRae5+F5XvnKVVWV27dvs3Xr1sr57zSJvWENAPwKIEkShmEwPj6OZVlomlYmlC6bYrFIOBymvb29VANzQoi62688FyCXy2mBQKDQiGSa5kVgqAWz1TgnhHizGUEGaCYO4Hne24C1SXEL+GgjUsvf/aZpGsBPQKIF+kUhxIutxN30j4dpmueAN4A17v8Zl9AGqMD7QogPNhv3f8O/mza0WJdXHggAAAAASUVORK5CYII=" media="(prefers-color-scheme: light)">
+
+    <!-- icon for dark mode black face -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEIUlEQVR4AaxXTUxjVRT+WgrMpKEF5adSFBaEBSuNG4IxcaEbk+kYY2IirjA4CYGQEBj+giChwEBIMIEQE9C4mOBG47SM0dGoC1EWoC4kI8PCyIhDixDShBkCpZ3vvM5r3+vra8tMX8537znnnnv4uO/ec/usOP/zvNvtHisvL79lt9vvFhQU/M8UG9Q/b2houJ6Xl/cF7WeJrOQ8BDzM+C/x+87OTl8wGHzt6Oio6uTk5Gn66qm/vbq6+s7Z2dmbFovldn5+fgP9GSUjAafT+SKzBIkbhJvIKNFo1H56evorA71EWklLoK6u7vVQKLTGDGXE40g/J31AmEo6Alfu3Nm6yf/GdHKWAx9ardaPzWLNCDzFCaNAlN2TC/+J920226upMpkRkJ1cmmrC4/hIAOFweJFzLxA6SUXgZUa8QuRanmPCK4RODAS46y/pInJrvJWczkCA57gyOShXdllZmdQMXToDAaezuEoXkUODp+EgOZ2BQKqdX1hYiLm5OWxsbGB8fDw5h2KzJGNxcRFbW1sYHh5WfMlNIBC4lezTErDJIMvsjPQqXC4Xdnd30draivr6evT29mJlZUUdVvqamhrs7e2hubkZtbW1GBoaMsQogYBUx0dqrNMSCMdc+ArAZ4QiTU1NKC4uVnS1aWxsREtLi2piZGQEDocjbouSHEOf5P+TvU60BLQD36hGUVGRqur6qqrEVqmsrNSNqYY2hr7bxD1CJ2YEZI2jErm5uSmdAX6/P+5bXl6O61rF5/NpTcP7l0EzAnc5+BuBpaUlzM7OihqH7Ie1NbmjYq6ZmRlDjLyi9fX1WECs/S/W6VszAuCdHp/Q3t4OV4ULly57UFpaivn5eX0WWhJTXV0NzxuXUVJSgoWFBXoTwiPoTlgJzZQA63cgEQYEggEs+/zY39/XunX69vY2/Dd8ODw81PnFiEQihhMgflMCHPyOyJU8YKKfCIOkI3CT0XtELkR2svx2NORKR+CI0VIT2D2x/GyWIR0BmeOXJgf40ixHJgJywP/RTvZ4PEqp7ezsRFdXF3quXkV/f79S/ycnJ1FRUaENF/0vNj8SKSUTASlGX2tndnR0KH9senoaU1NTmLh2DV6vVyHV3d2t3BfaeB6/b7V2sp6JgMT/II0KOd9yMw4ODqKvrw89PT3KSshqDAwMKDemGis9b8mPpDdDNgRk+UJqAqmMbW1tGB0dxcTEBGTZZTUEY2Nj4AeLGir998fHx3+LYoZsCEjlmTNLkNpvQV6BA1bbRaWcI82TDQGZzp/o+APZPhbAcsH+S8Rx0YsMT7YE7jPPC8SnRGaJWqbDoXsv4eAg/urMJmVLQJ3fTOU9Qoq9XFYC+W7cpU8qnbyud4FIF+2s5LwEJOknbEoIud0EcvCfoS3fj/Ixc516XDIpDwEAAP//1sVQ/QAAAAZJREFUAwAAtCJQuOwqdgAAAABJRU5ErkJggg==" media="(prefers-color-scheme: dark)">
+      
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music - Thomas Gideon</title>
@@ -171,6 +180,36 @@
           <div id="music-page-grid" class="music-grid">
             <!-- Content will be populated by JavaScript -->
             <div class="loading">Loading soundtrack list...</div>
+            
+            <!-- Music Grid fallback content -->
+              <a href="music-detail.html?id=1&amp;title=Exodus" class="music-item fade-in active">
+                <div class="music-img-wrap">
+                  <img src="img/music/album_cover_exodus_500x500_72ppi.jpg" alt="Exodus" referrerpolicy="no-referrer">
+                </div>
+                <div class="music-info">
+                  <h4 class="music-title">Exodus</h4>
+                  <p class="composer">Score by Thomas Gideon</p>
+                </div>
+              </a>
+              <a href="music-detail.html?id=2&amp;title=Genesis" class="music-item fade-in active">
+                <div class="music-img-wrap">
+                  <img src="img/music/album_cover_genesis_500x500_72ppi.jpg" alt="Genesis" referrerpolicy="no-referrer">
+                </div>
+                <div class="music-info">
+                  <h4 class="music-title">Genesis</h4>
+                  <p class="composer">Score by Thomas Gideon</p>
+                </div>
+              </a>
+              <a href="music-detail.html?id=3&amp;title=Revelation" class="music-item fade-in active">
+                <div class="music-img-wrap">
+                  <img src="img/music/album_cover_revelation_500x500_72ppi.jpg" alt="Revelation" referrerpolicy="no-referrer">
+                </div>
+                <div class="music-info">
+                  <h4 class="music-title">Revelation</h4>
+                  <p class="composer">Score by Thomas Gideon</p>
+                </div>
+              </a>
+
           </div>
         </div>
       </section>
@@ -181,8 +220,9 @@
       <div class="container">
         <p class="copyright">© 2026 Thomas Gideon. All Rights Reserved.</p>
         <div class="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+        </div>
         <div class="footer-social">
           <a href="https://www.facebook.com/ThomasGideonAuthor" target="_blank" rel="noopener" aria-label="Facebook">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>

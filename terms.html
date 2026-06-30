@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
 
@@ -12,7 +12,7 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coming Soon - Thomas Gideon</title>
+    <title>Terms of Use - Thomas Gideon</title>
 
     <!-- core fonts -->
 
@@ -73,8 +73,8 @@
           const style = document.createElement('style');
           style.innerHTML = `
             .logo {
-              ${siteContent.logoFont ? `font-family: ${siteContent.logoFont} !important;` : ''}
-              ${siteContent.logoFontSize ? `font-size: ${siteContent.logoFontSize} !important;` : ''}
+              \${siteContent.logoFont ? `font-family: \${siteContent.logoFont} !important;` : ''}
+              \${siteContent.logoFontSize ? `font-size: \${siteContent.logoFontSize} !important;` : ''}
             }
           `;
           document.head.appendChild(style);
@@ -100,7 +100,7 @@
             const navLinks = document.querySelectorAll('.nav-links a[href="new.html"], .mobile-menu a[href="new.html"]');
             if (navLinks.length > 0) {
               navLinks.forEach(link => {
-                link.innerText = `NEW: ${storedTitle.toUpperCase()}`;
+                link.innerText = `NEW: \${storedTitle.toUpperCase()}`;
               });
               obs.disconnect();
             }
@@ -121,7 +121,7 @@
               const updateLinks = () => {
                 const navLinks = document.querySelectorAll('.nav-links a[href="new.html"], .mobile-menu a[href="new.html"]');
                 navLinks.forEach(link => {
-                  link.innerText = `NEW: ${data.newBookTitle.toUpperCase()}`;
+                  link.innerText = `NEW: \${data.newBookTitle.toUpperCase()}`;
                 });
               };
               if (document.readyState === 'loading') {
@@ -134,6 +134,27 @@
           .catch(err => console.error('Error fetching content.json in header:', err));
       })();
     </script>
+    <style>
+      .blog-post-full .content h3 {
+        font-family: var(--font-sans);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-top: 32px;
+        margin-bottom: 12px;
+        color: var(--color-text);
+      }
+      .blog-post-full .content ul {
+        margin-bottom: 24px;
+        padding-left: 20px;
+      }
+      .blog-post-full .content li {
+        margin-bottom: 12px;
+        font-size: inherit;
+        line-height: inherit;
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation -->
@@ -175,64 +196,42 @@
     </div>
 
     <main>
-      <!-- Artist Section -->
-      <section id="artist">
-        <div class="container">
-          <div class="artist-grid">
-            <!-- Left Column: Sidebar -->
-            <div class="sidebar fade-in active">
-              <div class="sidebar-widget">
-                <img id="sidebar-book-img" src="img/default/placeholder-book_622x1000.jpg" alt="Queen Esther" class="sidebar-book-img" referrerPolicy="no-referrer">
-                <div class="book-purchase-links">
-                  <h4>Purchase</h4>
-                  <div class="book-purchase-grid">
-                    <a id="sidebar-ebook-link" href="https://example.com/purchase?id=1&format=ebook" class="purchase-btn" target="_blank">Buy $9.99 EPUB and Audio</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <!-- Terms of Use Detail Container -->
+      <div class="blog-detail-container">
+        <article class="blog-post-full fade-in active" style="opacity: 1; transform: translateY(0);">
+          <h1 class="serif italic" style="font-size: 36px; margin-bottom: 24px;">Terms of Use</h1>
+          <span class="date">Last Updated: June 23, 2026</span>
+          <div class="content">
+            <h3>1. Acceptability of Terms</h3>
+            <p>By entering, browsing, or placing content orders on this website, you state unreserved assent to these Terms of Use, matching all regulatory guidelines and local statutes.</p>
 
-            <!-- Middle Column: Coming Soon fallback content -->
-            <div id="coming-soon-content" class="artist-content fade-in active">
-              <h3>Coming Soon</h3>
-              <div class="separator"></div>
-              <p>The adventure of Conner Gideon continues into the world of the <i><a href="books.html">strange </a></i>. From growing up in different countries and cultures around the world, to exploring strange new <i><a href="books.html">worlds and realities</a></i>.</p>
-              <p>Along the way he discovers things about himself and others, people he thought he knew, and how we are all connected across this planet, this reality and our relationship with other realities.</p>
-            </div>
+            <h3>2. Digital Retail Goods & EPUB Standard</h3>
+            <p>Our literature assets are stored, delivered, and distributed entirely in unencrypted, standards-compliant EPUB format files. No physical, analog, or heavy paper books form any part of our commercial distribution. Buyers are assumed to hold compatible e-reader engines (such as Apple Books, Adobe Digital Editions, or alternative EPUB mobile/desktop software) capable of parsing and compiling the files.</p>
 
-            <script>
-              (function() {
-                const safeGet = (key) => {
-                  try { return localStorage.getItem(key); } catch (e) { return null; }
-                };
-                try {
-                  const cached = safeGet('siteContent');
-                  if (cached && cached !== 'undefined' && cached !== 'null') {
-                    const data = JSON.parse(cached);
-                    if (data.comingSoon) {
-                      document.getElementById('coming-soon-content').innerHTML = data.comingSoon;
-                    }
-                    if (data.sidebarBookImg) {
-                      document.getElementById('sidebar-book-img').src = data.sidebarBookImg;
-                    }
-                  }
-                } catch (e) {
-                  console.warn('localStorage is blocked or empty:', e);
-                }
-              })();
-            </script>
+            <h3>3. Strict No-Refund Policy</h3>
+            <p>Because digital materials can be reproduced instantly and are supplied immediately upon authorization, **all transactions are strictly final and non-refundable**. We encourage downloading and backup of completed files. If a download URL errors out or experiences temporary downtime, drop us an email for immediate restoration.</p>
+
+            <h3>4. Fair Use Licensing and Protection</h3>
+            <p>Upon validation of payment, Thomas Gideon grants your singular profile a non-transferable, personal license to store and inspect the EPUB books on personal reading arrays. Under this fair use structure, you agree to abstain from:</p>
+            <ul>
+              <li>Reselling, leasing, or uploading our material files to database repositories or social channels.</li>
+              <li>Re-formatting, adapting, copying paragraphs for publication, or dismantling file components without written license.</li>
+              <li>Using scrapers, crawlers, or automation scripts to map site files.</li>
+            </ul>
+
+            <h3>5. Copyrights and Intellectual Properties</h3>
+            <p>The total body of artwork, illustrations, typography layouts, narrative text compositions, scores, audio waveforms, and design elements on this domain are shielded by copyright principles and state laws under proprietary ownership of Thomas Gideon.</p>
+
+            <h3>6. Limit of Indemnification</h3>
+            <p>We supply site access and e-books on a standard "as is" and "as available" model. We decline indirect indemnity for machine issues, technical failures with third-party software, or data losses resulting from individual hardware installations.</p>
+
+            <h3>7. Right to Amend Terms</h3>
+            <p>We reserve right to update these structural terms at any historical point without individual alarms. Your continued enjoyment of Thomas Gideon's online portal counts as affirmative acceptance of edited guidelines.</p>
+
+            <a href="index.html" class="back-to-home">Back to Home</a>
           </div>
-        </div>
-      </section>
-
-      <!-- Books Carousel Section -->
-      <section id="books-carousel" class="fade-in">
-        <div class="carousel-container">
-          <div id="carousel-track" class="carousel-track">
-            <!-- Carousel items will be populated by JavaScript -->
-          </div>
-        </div>
-      </section>
+        </article>
+      </div>
     </main>
 
     <!-- Footer -->

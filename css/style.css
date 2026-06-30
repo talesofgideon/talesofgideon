@@ -150,22 +150,38 @@ family=Nunito+Sans:wght@400;500;600&display=swap'); */
 
 /* Force dark mode via class */
 html.dark-mode {
-  --color-bg: #242424;
-  --color-text: #f5f5f5;
+  /* --color-bg: #242424;   /* þ dark grey     */
+  /* --color-bg: #121212;   /* material design */
+  --color-bg: #1a1a1a;      /* deep charcoal   */
+  /* --color-text: #f5f5f5; /* crisp white     */
+  --color-text: #e0e0e0;    /* soft white      */
   --color-text-light: #e0e0e0;
-  --color-muted: #a0a0a0;
-  --color-muted-alt: #888888;
-  --color-muted-light: #666666;
-  --color-border: #3a3a3a;
-  --color-bg-alt: #2a2a2a;
-  --color-nav-bg: rgba(36, 36, 36, 0.95);
 
-/* add to html.light mode */
+  --color-muted: #a0a0a0;
+  --color-muted-admin:#a0a0a0;
+
+  --color-muted-alt: #888888;
+
+  --color-muted-light: #666666;
+  --color-muted-light-admin: #666666;
+
+  /* --color-border: #3a3a3a; /* þ */
+  --color-border: #2d2d2d;    /* #1a1a1a & #262626 border, professional */
+  /* --color-bg-alt: #2a2a2a; /* þ */
+
+  --color-bg-alt: #262626;    /* material design  */
+
+  /* --color-bg-alt: #333333; /* defined contrast */
+  /* --color-nav-bg: rgba(36, 36, 36, 0.95); þ */
+  --color-nav-bg: rgba(26, 26, 26, 0.95);
+
+  --color-accent-admin: #bbbbbb;
+  /* add to html.light mode */
   --color-accent: #ffffff;
-/* --color-accent-hover: #cccccc; */
+
+  /* --color-accent-hover: #cccccc; */
   --color-accent-hover: #ffffff;
   --color-accent-text: #000000;
-
   --color-shadow: rgba(0, 0, 0, 0.4);
 }
 
@@ -183,15 +199,32 @@ html.dark-mode .btn-sidebar, html.dark-mode .bg-gray, html.dark-mode #books-caro
 
 /* Force light mode via class */
 html.light-mode {
-  --color-bg: #ffffff;
-  --color-text: #1a1a1a;
-  --color-text-light: #333333;
-  --color-muted: #666666;
-  --color-muted-alt: #999999;
+  /* --color-bg: #ffffff;   /* þ light mode  */
+  --color-bg: #f9f9f9;
+  /* --color-text: #1a1a1a; /* þ light mode  */
+  /* --color-text: #2c3e50; /* deep slate    */
+  --color-text: #222222;    /* soft charcoal */
+  --color-text-light: #333333; 
+  --color-muted: #333366;    /* near to blue black */
+
+  /* --color-muted-admin:#666666; /* borrowed from dark mode */
+  --color-muted-admin:#a0a0a0;
+
+  /* --color-muted-alt: #999999; /* þ */
+
+  --color-muted-alt: #333366; /* near to blue black */
+
   --color-muted-light: #bbbbbb;
-  --color-border: #eeeeee;
-  --color-bg-alt: #f9f9f9;
-  --color-nav-bg: rgba(255, 255, 255, 0.95);
+  --color-muted-light-admin: #666666;
+
+  /* --color-border: #eeeeee; /* þ */
+  --color-border: #cccccc;    /* defined */
+  /* --color-bg-alt: #f9f9f9; /* þ */
+
+  --color-bg-alt: #d1d5db;          /* deep slate gray */ 
+ 
+  /* --color-nav-bg: rgba(255, 255, 255, 0.95); /* þ */
+  --color-nav-bg: rgba(249, 249, 249, 0.95);    /* alt #f9f9f9; */
 
 /* add from html.dark mode */
 /*
@@ -199,7 +232,9 @@ html.light-mode {
   --color-accent-hover: #333333;
   --color-accent-text: #ffffff;
 */
+  --color-accent-admin: #bbbbbb;
   --color-accent: #ffffff;
+
 /*  --color-accent-hover: #cccccc;*/
   --color-accent-hover: #000000;
   --color-accent-text: #000000;
@@ -313,7 +348,8 @@ a {
 
 @media (min-width: 768px) {
   .padding-large {
-    padding: 120px 0;
+    /*padding: 120px 0;*/
+      padding: 50px 0;
   }
 }
 
@@ -534,7 +570,8 @@ section {
 
 @media (min-width: 768px) {
   section {
-    padding: 120px 0;
+  /*padding: 120px 0; */
+    padding: 50px 0;
   }
 }
 
@@ -628,8 +665,9 @@ section {
 
 .btn-admin {
   display: inline-block;
+  cursor: pointer;
   padding: 16px 40px;
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-accent-admin);
   font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 700;
@@ -707,7 +745,8 @@ section {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.3em;
-  color: var(--color-muted-light);
+  /* color: var(--color-muted-light); */
+  color: var(--color-muted-alt);
   text-transform: uppercase;
   margin-bottom: 16px;
 }
@@ -1056,8 +1095,13 @@ section {
 }
 
 .sidebar-book-img {
+  overflow-anchor: none;
   width: 100%;
+  aspect-ratio: 622 / 1000;
+  object-fit: cover;
+  background-color: var(--color-bg-alt);
   height: auto;
+  /*margin-top: 14px;*/
   margin-bottom: 12px;
   box-shadow: 0 10px 30px var(--color-shadow);
   cursor: pointer;
@@ -1127,7 +1171,7 @@ footer .container {
 }
 
 .copyright {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--color-muted-alt);
   text-transform: uppercase;
@@ -1139,7 +1183,7 @@ footer .container {
 }
 
 .footer-links a {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--color-muted-alt);
   text-transform: uppercase;
@@ -1161,6 +1205,11 @@ footer .container {
 
 .footer-social a:hover {
   color: var(--color-accent);
+}
+
+html.light-mode .footer-links a:hover,
+html.light-mode .footer-social a:hover {
+  color: #000000;
 }
 
 .footer-social svg {
@@ -1266,7 +1315,7 @@ footer .container {
 
 .book-info h1 {
   font-size: 36px;
-  margin-bottom: 16px;
+  /*margin-bottom: 16px;*/
 }
 
 @media (min-width: 768px) {
@@ -1279,7 +1328,7 @@ footer .container {
   font-size: 14px;
   font-weight: 500;
   color: var(--color-muted);
-  margin-bottom: 24px;
+  /*margin-bottom: 24px;*/
   letter-spacing: 0.05em;
 }
 
@@ -1577,7 +1626,8 @@ html.dark-mode .pp-button-wrap a:hover {
 
 /* Music Page */
 #music-page {
-  padding: 120px 0 80px;
+  /*padding: 120px 0 80px;*/
+  padding: 50px 0 80px;
 }
 
 .section-header {
@@ -1600,7 +1650,7 @@ html.dark-mode .pp-button-wrap a:hover {
   font-size: 18px;
   color: var(--color-muted);
   font-weight: 300;
-  max-width: 600px;
+  /*max-width: 600px;*/
   margin: 0 auto;
 }
 
@@ -1653,12 +1703,19 @@ html.dark-mode .pp-button-wrap a:hover {
 }
 
 .composer {
+  /*
   font-size: 12px;
   letter-spacing: 0.2em;
   color: var(--color-muted-alt);
   text-transform: uppercase;
   margin-bottom: 16px;
   font-weight: 600;
+  */
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-muted);
+  /*margin-bottom: 24px;*/
+  letter-spacing: 0.05em;
 }
 
 .music-info .description {
@@ -1706,7 +1763,7 @@ html.dark-mode .pp-button-wrap a:hover {
 .music-detail-info h1 {
   font-family: var(--font-serif-alt);
   font-size: 32px;
-  margin-bottom: 8px;
+  /*margin-bottom: 8px;*/
 }
 
 @media (min-width: 768px) {
@@ -1717,7 +1774,7 @@ html.dark-mode .pp-button-wrap a:hover {
 
 .music-detail-info .composer {
   font-size: 14px;
-  margin-bottom: 24px;
+  /*margin-bottom: 24px;*/
 }
 
 .music-detail-info .description {
@@ -1732,7 +1789,8 @@ html.dark-mode .pp-button-wrap a:hover {
   height: 1px;
   background: var(--color-border);
   width: 100%;
-  margin: 24px 0;
+  /*margin: 24px 0;*/
+  margin: 14px 0;
 }
 
 #new-book-title {
@@ -1740,9 +1798,19 @@ html.dark-mode .pp-button-wrap a:hover {
 }
 
 @media (min-width: 768px) {
+
   #new-book-title {
     font-size: 48px;
+    line-height: normal;
   }
+  #book-detail-title{
+    line-height: normal;
+  }
+
+  #music-detail-title{
+    line-height: normal;
+  }
+
 }
 
 #artist-bio-content,

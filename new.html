@@ -1,9 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+
+    <!-- favicon -->
+   
+    <!-- icon for light mode fire face -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAD7ElEQVR4AbRXWUhUYRT+psVJaqykDTWSsoIWWh4sgoogiF4KeiwKEoKIogXbE03cRfJBk0CjHsKXIlADKwSRJDNNo5QmKUyIXHDJhULU6Tsz997unXvnzrhyvv+c//znnP/z/P+9V+dgEj8eYC1xiSghmokhYpAY8zgcbs/ChdW0m4htoZYNiQALriCeseg34h6RQMgmi6hdxFx4PBswMrKf9nZCyB2nDipBCXDjU6zSRRwjJiNPmFtJLLBLsiXA5NNMfkxMVQ4xsY515lNbSkACTLrDjIfEdEWO6kOgIpYEuPlWJtwlZkq2sGauVTETAQaK7zmDRVPNmCSy9k7/alabnGTQOmI2xPRkWBGIn42dlZoHFa0pKwKrtdWZNsLDnf4lDQR4Rg4GyIuEyiy/zS6Tp9/k0TlGR00lDASqgbm6cM1sdzpRX1gId0sL3mVmwlSFkd/DwlBXUoK2tjbUpaSgjz6TjI+/9fcZCBwAxhiQRWgyvGoVPnd2Iv7cOcRv2oRdN26gprYW+t/0a2ws3D092J2QgPi4OOxKTobEDGhVNOO9ZimGgYD4HMB96jrCK/0nTuDwkiVeWx327dmD9jNn1CnGU1NxOCJCm7MGJGZIF6MstilaUyYCyspTRaPf5TKdy2IuTsTEcPSJKyrKZ+jGSNouXQynP4lGwiCBCNSoUTFuN36pE0XXUzvLyzn6pLOiAoM+UxulhV1lZdqcRhU7M0FtEEsCDJSz8rYrsrQUPwoKIC/zXqY2E/N5H7Y0NNDyyfb8fHxkzCdO5fJJchjbv7GxkR5N/miWzrAkoKzLhfSauy9cQCQvY9+RI1i+bBl2FBV5/eowj8ZexrjWrEHv0aOIXroUO4uL6TVInGGmTOwIjCgxXhXb1YX1bHt0r/TB6zINsR0dWM+2Rw0MmNbokOZRGcWOwEtj6LRnlVYV7AhUWCVM0dfDvDeESQIS4EWUi/zFlDE1Ryvr/bVKDUhACbZkraxNRv1/Zv2yghEo8YsH+CSAr1pcuQIkJgLXrgG3bgF8/yMnB1i50pRCxwvCUmwJsG1yDC2GzIsXAdksLw/I5V9Z2dlAejq8pK5eBfi9MMQDLawT8ChtCSiFHinap+T55pcRSUnAzZvA9eu+Tkg3bt/mdka+TGKbOAaQUAg0GXL5ZsT580BaGpDFD6e0XbohyMgAurv14XL5LB8/NSgoAbavisGviamI9k0JlByUgJJ4mdr/e0OXrUh8gW0EF0MiwC7IwUYzvpUIRV4xZzEhebbxIRGQCiw2TGym/YAQkRfLEA0Vo7Q9RDLj5F8ymsElZAJqKRY/SziIcCJCByftOUSqGis6GP4BAAD//wG1VdsAAAAGSURBVAMAFp/zQQsVX5gAAAAASUVORK5CYII=" media="(prefers-color-scheme: light)">
+
+    <!-- icon for dark mode fire face -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAD7ElEQVR4AbRXWUhUYRT+psVJaqykDTWSsoIWWh4sgoogiF4KeiwKEoKIogXbE03cRfJBk0CjHsKXIlADKwSRJDNNo5QmKUyIXHDJhULU6Tsz997unXvnzrhyvv+c//znnP/z/P+9V+dgEj8eYC1xiSghmokhYpAY8zgcbs/ChdW0m4htoZYNiQALriCeseg34h6RQMgmi6hdxFx4PBswMrKf9nZCyB2nDipBCXDjU6zSRRwjJiNPmFtJLLBLsiXA5NNMfkxMVQ4xsY515lNbSkACTLrDjIfEdEWO6kOgIpYEuPlWJtwlZkq2sGauVTETAQaK7zmDRVPNmCSy9k7/alabnGTQOmI2xPRkWBGIn42dlZoHFa0pKwKrtdWZNsLDnf4lDQR4Rg4GyIuEyiy/zS6Tp9/k0TlGR00lDASqgbm6cM1sdzpRX1gId0sL3mVmwlSFkd/DwlBXUoK2tjbUpaSgjz6TjI+/9fcZCBwAxhiQRWgyvGoVPnd2Iv7cOcRv2oRdN26gprYW+t/0a2ws3D092J2QgPi4OOxKTobEDGhVNOO9ZimGgYD4HMB96jrCK/0nTuDwkiVeWx327dmD9jNn1CnGU1NxOCJCm7MGJGZIF6MstilaUyYCyspTRaPf5TKdy2IuTsTEcPSJKyrKZ+jGSNouXQynP4lGwiCBCNSoUTFuN36pE0XXUzvLyzn6pLOiAoM+UxulhV1lZdqcRhU7M0FtEEsCDJSz8rYrsrQUPwoKIC/zXqY2E/N5H7Y0NNDyyfb8fHxkzCdO5fJJchjbv7GxkR5N/miWzrAkoKzLhfSauy9cQCQvY9+RI1i+bBl2FBV5/eowj8ZexrjWrEHv0aOIXroUO4uL6TVInGGmTOwIjCgxXhXb1YX1bHt0r/TB6zINsR0dWM+2Rw0MmNbokOZRGcWOwEtj6LRnlVYV7AhUWCVM0dfDvDeESQIS4EWUi/zFlDE1Ryvr/bVKDUhACbZkraxNRv1/Zv2yghEo8YsH+CSAr1pcuQIkJgLXrgG3bgF8/yMnB1i50pRCxwvCUmwJsG1yDC2GzIsXAdksLw/I5V9Z2dlAejq8pK5eBfi9MMQDLawT8ChtCSiFHinap+T55pcRSUnAzZvA9eu+Tkg3bt/mdka+TGKbOAaQUAg0GXL5ZsT580BaGpDFD6e0XbohyMgAurv14XL5LB8/NSgoAbavisGviamI9k0JlByUgJJ4mdr/e0OXrUh8gW0EF0MiwC7IwUYzvpUIRV4xZzEhebbxIRGQCiw2TGym/YAQkRfLEA0Vo7Q9RDLj5F8ymsElZAJqKRY/SziIcCJCByftOUSqGis6GP4BAAD//wG1VdsAAAAGSURBVAMAFp/zQQsVX5gAAAAASUVORK5CYII=" media="(prefers-color-scheme: dark)">
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Queen Esther - Thomas Gideon</title>
+    <title>New Book - Thomas Gideon</title>
 
     <!-- core fonts -->
 
@@ -166,7 +175,7 @@
     </div>
 
     <main>
-      <!-- Queen Esther Section -->
+      <!-- New Book Section -->
       <section id="queen-esther">
         <div class="container">
           <div class="book-detail-grid">
@@ -184,17 +193,46 @@
 
             <!-- Right Column: Book Info -->
             <div class="book-info fade-in active">
-              <h1 id="new-book-title">New Title</h1>
-              <h3 id="new-book-subtitle" class="subtitle">
-              <!-- Book Subtitle admin -->
-              </h3>
+              <h1 id="new-book-title">Exodus</h1>
+              <h3 id="new-book-subtitle" class="subtitle">Forthcoming 11/4 with S&S and Knopf Canada</h3>
               
               <div class="separator"></div>
               
-              <!-- Middle Column: Biography Content -->
+              <!-- Middle Column: New Book fallback content -->
               <div id="new-book-synopsis" class="synopsis">
-              <!-- Book Synopsis (HTML allowed) admin -->
+                <p><i>Exodus</i> is a science fiction novel that follows Conner Gideon, son of an American Airforce officer, who, probably because of his fathers work, becomes interested at an early age in unidentified flying objects (UFO's) and unexplainable incidents.</P>
+                <p>His journey, unlike his father’s follows a path that would lead him to reporting strange incidences across America including UFO's, interviewing hundreds of witnesses and asking sometime the unanswerable question.</p>
+                <p>With help from his computer genius friend AJ he uses technology to try and answers this question, which ultimately leads to Conner questioning his own reality.</p>
+                <p>If you were Conner Gideon, what path would you take? How would you manage when your whole world and perception of reality is altered, <i>forever</i>.</p>
               </div>
+
+              <script>
+                (function() {
+                  const safeGet = (key) => {
+                    try { return localStorage.getItem(key); } catch (e) { return null; }
+                  };
+                  try {
+                    const cached = safeGet('siteContent');
+                    if (cached && cached !== 'undefined' && cached !== 'null') {
+                      const data = JSON.parse(cached);
+                      if (data.newBookTitle) {
+                        document.getElementById('new-book-title').innerText = data.newBookTitle;
+                      }
+                      if (data.newBookSubtitle) {
+                        document.getElementById('new-book-subtitle').innerText = data.newBookSubtitle;
+                      }
+                      if (data.newBookSynopsis) {
+                        document.getElementById('new-book-synopsis').innerHTML = data.newBookSynopsis;
+                      }
+                      if (data.sidebarBookImg) {
+                        document.getElementById('sidebar-book-img').src = data.sidebarBookImg;
+                      }
+                    }
+                  } catch (e) {
+                    console.warn('localStorage is blocked or empty:', e);
+                  }
+                })();
+              </script>
             </div>
           </div>
         </div>
@@ -208,14 +246,15 @@
           </div>
         </div>
       </section>
+    </main>
 
     <!-- Footer -->
     <footer>
       <div class="container">
         <p class="copyright">© 2026 Thomas Gideon. All Rights Reserved.</p>
         <div class="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
         </div>
         <div class="footer-social">
           <a href="https://www.facebook.com/JohnIrvingAuthor" target="_blank" rel="noopener" aria-label="Facebook">
