@@ -1,0 +1,39 @@
+{
+  "logoText": "Thomas Gideon",
+  "logoFont": "'DM Serif Display', serif",
+  "logoFontSize": "33px",
+  "heroQuote": "“What would you do, when your world, destiny, and perception of reality are altered forever?”",
+  "heroBg": "img/default/epub_cover_exodus_noconner_1200x1270_72ppi.jpg",
+  "artistBio": "<h3>About the Artist</h3>\n<div class=\"separator\"></div>\n<p>I can't exactly remember when the strange dreams started.\nI remember reading somewhere to record these dreams, instead of simply shaking them off. <a href=\"new.html\"><i>Exodus</i></a>, is the first novel exploring these dreams, its part of a <a href=\"books.html\"><i>trilogy of stories</i></a> and <a href=\"music.html\"><i>music</i></a>. </p>\n<p>It begins while Conner is working as a reporter of the strange, investigating strange incidents across America. Along his journey he meets a stranger who changes his life forever. He no longer reports on the strange, he becomes <i>strange</i>.</p>\n<p>Like when someone has a tune in their head and passes it on to you, I'm passing my dreams on. I hope you enjoy this debut novel.</p>",
+  "comingSoon": "<h3>Coming Soon</h3>\n<div class=\"separator\"></div>\n<p>The adventure of Conner Gideon continues into the world of the <a href=\"books.html\"><i>strange</i> </a>. From growing up in different countries and cultures around the world, to exploring strange new worlds and realities.</p><p>Along the way he discovers things about himself and others, people he thought he knew, and how we are all connected across this planet, this reality and our relationship with other realities .</p> \n<p>Check for the <a href=\"./#homepage-blog\"><i> Latest Updates</i></a> from time to time or follow <a href=\"https://instagram.com/talesofgideon\" target=\"_blank\" rel=\"noopener noreferrer\"><i>talesofgideon</i></a> on Instagram as I will announce when the EPUB  is released for purchase. Thank you for your support</p> ",
+  "sidebarBookImg": "img/default/exodus_662x1000_72ppi.jpg",
+  "sidebarBookAlt": "Exodus",
+  "newBookTitle": "Exodus",
+  "newBookSubtitle": "New",
+  "newBookSynopsis": "<p><i>Exodus</i> is a science fiction novel that follows Conner Gideon, son of an American Airforce officer, who, probably because of his fathers work, becomes interested at an early age in unidentified flying objects (UFO's) and unexplainable incidents.</P>\n<p>His journey, unlike his father’s follows a path that would lead him to reporting strange incidences across America including UFO's, interviewing hundreds of witnesses and asking sometime the unanswerable question.</p>\n<p>With help from his computer genius friend AJ he uses technology to try and answers this question, which ultimately leads to Conner questioning his own reality.</p>\n<p>If you were Conner Gideon, what would you do, when your world, destiny, and perception of reality are altered, <i>forever</i>.</p>\n",
+  "effects": {
+    "snowAmount": 0,
+    "snowSpeed": 1,
+    "hailAmount": 0,
+    "hailSpeed": 5,
+    "rainAmount": 100,
+    "rainSpeed": 10,
+    "sandAmount": 0,
+    "sandSpeed": 20,
+    "starsAmount": 0,
+    "starsSpeed": 0.05,
+    "shootingStars": 0
+  },
+  "microBlog": [
+    {
+      "date": "2025-11-04",
+      "text": "Exodus is finally out! Thank you to everyone who has supported this journey.",
+      "fullContent": ""
+    },
+    {
+      "date": "2025-10-15",
+      "text": "Just finished a wonderful interview with The Unexplained about the themes within Exodus.",
+      "fullContent": ""
+    }
+  ]
+}

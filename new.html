@@ -181,29 +181,31 @@
           <div class="book-detail-grid">
             <!-- Left Column: Book Cover -->
             <div class="fade-in active">
+              <!-- populated by JavaScript -->
               <img id="sidebar-book-img" src="img/default/placeholder-book_622x1000.jpg" alt="New Title" class="sidebar-book-img" referrerPolicy="no-referrer">
-              
               <div class="book-purchase-links">
                 <h4>Purchase</h4>
                 <div class="book-purchase-grid">
-                  <a id="sidebar-ebook-link" href="https://example.com/purchase?id=1&format=ebook" class="purchase-btn" target="_blank">Buy $9.99 EPUB and Audio</a>
+                  <!-- populated by JavaScript -->
+                  <a id="sidebar-ebook-link" href="coming.html" class="purchase-btn">COMING SOON</a>
+                  <!-- Buy $9.99 EPUB and Audio -->
                 </div>
               </div>
             </div>
-
-            <!-- Right Column: Book Info -->
+            <!-- Right Column: book info -->
             <div class="book-info fade-in active">
+            <!-- populated by JavaScript -->  
               <h1 id="new-book-title">Exodus</h1>
-              <h3 id="new-book-subtitle" class="subtitle">Forthcoming 11/4 with S&S and Knopf Canada</h3>
-              
+              <h3 id="new-book-subtitle" class="subtitle">New</h3>
               <div class="separator"></div>
-              
-              <!-- Middle Column: New Book fallback content -->
+              <!-- Middle Column: new book fallback content -->
               <div id="new-book-synopsis" class="synopsis">
-                <p><i>Exodus</i> is a science fiction novel that follows Conner Gideon, son of an American Airforce officer, who, probably because of his fathers work, becomes interested at an early age in unidentified flying objects (UFO's) and unexplainable incidents.</P>
+              <!-- populated by JavaScript -->
+                <div id="new-book-synopsis" class="synopsis"><p><i>Exodus</i> is a science fiction novel that follows Conner Gideon, son of an American Airforce officer, who, probably because of his fathers work, becomes interested at an early age in unidentified flying objects (UFO's) and unexplainable incidents.</p>
                 <p>His journey, unlike his father’s follows a path that would lead him to reporting strange incidences across America including UFO's, interviewing hundreds of witnesses and asking sometime the unanswerable question.</p>
                 <p>With help from his computer genius friend AJ he uses technology to try and answers this question, which ultimately leads to Conner questioning his own reality.</p>
-                <p>If you were Conner Gideon, what path would you take? How would you manage when your whole world and perception of reality is altered, <i>forever</i>.</p>
+                <p>If you were Conner Gideon, what would you do, when your world, destiny, and perception of reality are altered, <i>forever</i>.</p>
+                </div>
               </div>
 
               <script>
@@ -242,12 +244,26 @@
       <section id="books-carousel" class="fade-in">
         <div class="carousel-container">
           <div id="carousel-track" class="carousel-track">
-          <!-- Carousel items will be populated by JavaScript -->
+          <!-- carousel items will be populated by JavaScript -->
+            <div class="carousel-item">
+              <a href="book-detail.html?id=1&amp;title=Exodus">
+                <img src="img/books/exodus_662x1000_72ppi.jpg" alt="Exodus" referrerpolicy="no-referrer">
+              </a>
+            </div>
+            <div class="carousel-item">
+              <a href="book-detail.html?id=2&amp;title=Genesis">
+                <img src="img/books/genesis_1600x2560_72ppi.jpg" alt="Genesis" referrerpolicy="no-referrer">
+              </a>
+            </div>
+            <div class="carousel-item">
+              <a href="book-detail.html?id=3&amp;title=Revelation">
+                <img src="img/books/revelation_662x1000_72ppi.jpg" alt="Revelation" referrerpolicy="no-referrer">
+              </a>
+            </div>
           </div>
         </div>
       </section>
     </main>
-
     <!-- Footer -->
     <footer>
       <div class="container">

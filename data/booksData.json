@@ -1,0 +1,35 @@
+{
+  "Exodus": {
+    "id": "1",
+    "price": "$9.99",
+    "desc": "EPUB & AUDIO",
+    "status": "COMING SOON",
+    "payment_url": "",
+    "order": 1,
+    "image": "img/books/exodus_662x1000_72ppi.jpg",
+    "subtitle": "New",
+    "synopsis": "<p>Conner's best friend AJ and new friend quantum A.I George, help diagnose what's happening to Conner as his world begins to change.</p>\n<p>AJ's and George's realities change too as they join Conner on this  adventure.</p>"
+  },
+  "Genesis": {
+    "id": "2",
+    "price": "$9.99",
+    "desc": "EPUB & AUDIO",
+    "status": "COMING SOON",
+    "payment_url": "",
+    "order": 2,
+    "image": "img/books/genesis_1600x2560_72ppi.jpg",
+    "subtitle": "Coming Soon",
+    "synopsis": "<p>Growing up in a military family, Conner is moved across the world to follow his fathers career, finally returning to California, a different person.</p>"
+  },
+  "Revelation": {
+    "id": "3",
+    "price": "$9.99",
+    "desc": "EPUB & AUDIO",
+    "status": "COMING SOON",
+    "payment_url": "",
+    "order": 3,
+    "image": "img/books/revelation_662x1000_72ppi.jpg",
+    "subtitle": "Coming Soon",
+    "synopsis": "<p>This story finds Conner investigating multiple realities, finding answers lost in time.</p>"
+  }
+}
