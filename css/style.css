@@ -494,7 +494,6 @@ section {
 
 @media (min-width: 768px) {
   section {
-  /*padding: 120px 0; */
     padding: 50px 0;
   }
 }
@@ -1209,9 +1208,7 @@ html.light-mode .footer-social a:hover {
   /* border: 1px solid var(--color-border); */
   border: 1px solid #2a2a2a;
   font-family: var(--font-ui);
-  /* font-size: 10px; */
   font-size: 12px;
-  /* font-weight: 700;*/
   font-weight: 500;
   letter-spacing: 0.1em;
   transition: all 0.3s ease;
@@ -1383,9 +1380,7 @@ html.dark-mode #scroll-top:hover {
 }
 
 .micro-blog-text {
-  /*font-size: 18px;*/
   font-size: 20px;
-  /*line-height: 1.6;*/
   line-height: 1.8;
   color: var(--color-text-light);
   font-family: var(--font-serif-alt);
@@ -1408,13 +1403,19 @@ html.dark-mode #scroll-top:hover {
 
 /* blog detail page styles */
 .blog-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   max-width: 800px;
-  margin: 0 auto;
-  padding: 80px 20px;
+  margin: 20px auto 12px;
+}
+
+#blog-post-content {
+  padding: 5px 13px 80px 13px;
 }
 
 .blog-post-full {
-  margin-top: 40px;
+  margin-top: 2px;
 }
 
 .blog-post-full .date {
@@ -1422,14 +1423,14 @@ html.dark-mode #scroll-top:hover {
   font-family: var(--font-ui);
   font-size: 12px;
   letter-spacing: 0.2em;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
   display: block;
   text-transform: uppercase;
 }
 
 .blog-post-full .content {
   font-family: var(--font-serif-alt);
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.7;
   color: var(--color-text);
 }
@@ -1702,7 +1703,6 @@ html.dark-mode .pp-button-wrap a:hover {
   height: 1px;
   background: var(--color-border);
   width: 100%;
-  /*margin: 24px 0;*/
   margin: 14px 0;
 }
 
@@ -1711,7 +1711,6 @@ html.dark-mode .pp-button-wrap a:hover {
 }
 
 @media (min-width: 768px) {
-
   #new-book-title {
     font-size: 48px;
     line-height: normal;
@@ -1723,7 +1722,6 @@ html.dark-mode .pp-button-wrap a:hover {
   #music-detail-title{
     line-height: normal;
   }
-
 }
 
 #artist-bio-content,
@@ -1746,7 +1744,6 @@ img by changing translateY(70px); the text is adjusted */
   opacity: 1;
   transform: translateY(0);
 }
-
 
 .no-transition * {
   transition: none !important;
@@ -1801,4 +1798,42 @@ html.light-mode .dark-mode-toggle .moon-icon {
   nav .dark-mode-toggle {
     display: none;
   }
+}
+
+.content-container {
+  justify-content: center;
+  align-items: center;
+  margin: 5px auto 12px;
+  padding: 0px 24px;
+}
+
+/* Audio Container & Dark Mode Sync for Blog */
+.audio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 12px;
+  padding: 16px 24px;
+  max-width: 770px;
+  width: 95%;
+  border-radius: 12px;
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 12px var(--color-shadow);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.audio-container audio {
+  width: 100%;
+  max-width: 600px;
+  outline: none;
+  border-radius: 8px;
+}
+
+html.light-mode .audio-container audio {
+  color-scheme: light;
+}
+
+html.dark-mode .audio-container audio {
+  color-scheme: dark;
 }

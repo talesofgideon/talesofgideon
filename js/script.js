@@ -550,9 +550,10 @@ const populateUI = (data) => {
   if (blogPostContent && data.microBlog) {
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('id');
+    const index = (postId !== null && data.microBlog[postId]) ? postId : 0;
 
-    if (postId !== null && data.microBlog[postId]) {
-      const post = data.microBlog[postId];
+    if (data.microBlog[index]) {
+      const post = data.microBlog[index];
       document.title = `Blog - ${post.date} - Thomas Gideon`;
 
       const newHTML = `
@@ -566,6 +567,8 @@ const populateUI = (data) => {
       if (blogPostContent.innerHTML !== newHTML) {
         blogPostContent.innerHTML = newHTML;
       }
+
+      setupBlogAudio(post);
     } else {
       updateElement('blog-post-content', '<p>Blog post not found. <a href="index.html">Return to home</a>.</p>', true);
     }
@@ -824,6 +827,33 @@ const populateUI = (data) => {
   }
 };
 
+// Blog Audio Player Handler
+const setupBlogAudio = (post) => {
+  const audioContainer = document.querySelector('.audio-container');
+  if (!audioContainer) return;
+
+  const audioPlayer = audioContainer.querySelector('audio');
+  const audioSource = audioPlayer ? audioPlayer.querySelector('source') : null;
+
+  const isAudioOn = post && (post.audioEnabled === 'on' || post.audioEnabled === true) && post.audioUrl;
+
+  if (isAudioOn && audioPlayer && audioSource) {
+    /*audioContainer.style.display = 'flex';*/
+    audioContainer.style.visibility = 'visible';
+
+    if (audioSource.getAttribute('src') !== post.audioUrl) {
+      audioSource.setAttribute('src', post.audioUrl);
+      audioPlayer.load();
+    }
+  } else {
+    /*audioContainer.style.display = 'none';*/
+    audioContainer.style.visibility = 'hidden';
+    if (audioPlayer) {
+      audioPlayer.pause();
+    }
+  }
+};
+
 // Load site content from static JSON files (for GitHub Pages/Static Hosting)
 const loadSiteContent = async () => {
   // Add no-transition class to body to prevent flickering during initial load
@@ -841,6 +871,16 @@ const loadSiteContent = async () => {
   }
   
   if (localData && Object.keys(localData).length > 0) {
+    if (localData.booksData) {
+      Object.values(localData.booksData).forEach(b => {
+        if (!b.payment_url && b.status === "PURCHASE") b.status = "COMING SOON";
+      });
+    }
+    if (localData.musicData) {
+      Object.values(localData.musicData).forEach(m => {
+        if (!m.payment_url && m.status === "PURCHASE") m.status = "COMING SOON";
+      });
+    }
     console.log('Loading content from localStorage...');
     populateUI(localData);
   } else {
@@ -906,7 +946,12 @@ const loadSiteContent = async () => {
       const mergedBooks = { ...defaultBooksData, ...baseBooks };
       if (localBooks) {
         Object.entries(localBooks).forEach(([title, book]) => {
-          mergedBooks[title] = { ...(mergedBooks[title] || {}), ...book };
+          const sStatus = baseBooks[title] && baseBooks[title].status;
+          mergedBooks[title] = { 
+            ...(mergedBooks[title] || {}), 
+            ...book,
+            status: (sStatus === "COMING SOON" || !book.payment_url) ? (sStatus || "COMING SOON") : book.status
+          };
         });
       }
 
@@ -914,7 +959,12 @@ const loadSiteContent = async () => {
       const mergedMusic = { ...defaultMusicData, ...baseMusic };
       if (localMusic) {
         Object.entries(localMusic).forEach(([title, music]) => {
-          mergedMusic[title] = { ...(mergedMusic[title] || {}), ...music };
+          const sStatus = baseMusic[title] && baseMusic[title].status;
+          mergedMusic[title] = { 
+            ...(mergedMusic[title] || {}), 
+            ...music,
+            status: (sStatus === "COMING SOON" || !music.payment_url) ? (sStatus || "COMING SOON") : music.status
+          };
         });
       }
 
@@ -926,6 +976,7 @@ const loadSiteContent = async () => {
         musicData: mergedMusic
       };
 
+      safeStorage.setItem('siteContent', JSON.stringify(mergedData));
       console.log('Site content parsed and merged with local edits');
       populateUI(mergedData);
     }

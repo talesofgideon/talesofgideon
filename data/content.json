@@ -10,7 +10,7 @@
   "sidebarBookAlt": "Exodus",
   "newBookTitle": "Exodus",
   "newBookSubtitle": "New",
-  "newBookSynopsis": "<p><i>Exodus</i> is a science fiction novel that follows Conner Gideon, son of an American Airforce officer, who, probably because of his fathers work, becomes interested at an early age in unidentified flying objects (UFO's) and unexplainable incidents.</P>\n<p>His journey, unlike his father’s follows a path that would lead him to reporting strange incidences across America including UFO's, interviewing hundreds of witnesses and asking sometime the unanswerable question.</p>\n<p>With help from his computer genius friend AJ he uses technology to try and answers this question, which ultimately leads to Conner questioning his own reality.</p>\n<p>If you were Conner Gideon, what would you do, when your world, destiny, and perception of reality are altered, <i>forever</i>.</p>\n",
+  "newBookSynopsis": "<p><i>Exodus</i> is a science fiction novel that follows Conner Gideon, son of an American Airforce officer, who, probably because of his fathers work, becomes facinated at an early age in unidentified flying objects (UFO's) and unexplainable incidents.</p>\n<p>His journey, unlike his father’s follows a path that would lead him to reporting strange incidences across America including UFO's, interviewing hundreds of witnesses and asking himself the unanswerable question.</p>\n<p>With help from his computer genius friend AJ, he tries to answer this question, which ultimately leads to Conner questioning his own reality.</p>\n<p>If you were Conner Gideon, how would you feel, if your perception of reality was altered, <i>forever</i>?</p>\n",
   "effects": {
     "snowAmount": 0,
     "snowSpeed": 1,
@@ -27,13 +27,10 @@
   "microBlog": [
     {
       "date": "2025-11-04",
-      "text": "Exodus is finally out! Thank you to everyone who has supported this journey.",
-      "fullContent": ""
-    },
-    {
-      "date": "2025-10-15",
-      "text": "Just finished a wonderful interview with The Unexplained about the themes within Exodus.",
-      "fullContent": ""
+      "text": "Exodus is nearing release! I've included a short sample, with audio, hope you enjoy it.",
+      "fullContent": "<p>Sometimes I think how did I get here? The fearless, investigative journalist Conner Gideon, well more investigator back then. Examining scientific mysteries at school and later college probably creating a few of them along the way. “It’s that Gideon boy again”, was a phrase I heard more than once.</p>\n<p>Humble beginnings led my inquisitive mind to the mysteries of science, the world and the universe. Why do so many great men of science with incredible minds form so many different, sometimes polar opposite, opinions? Could they separate accepted myth from fact? How did their stories, their truth, evolve? Somewhere between the threads of these many stories lies the truth, or at least a version of it.</p>\n",
+      "audioEnabled": "on",
+      "audioUrl": "audio/exodus-001.mp3"
     }
   ]
 }

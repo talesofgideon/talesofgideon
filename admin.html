@@ -1028,7 +1028,20 @@
           </div>
           <div class="form-group">
             <label>Full Blog Content (Optional - if provided, a "...more" link will appear)</label>
-            <textarea id="modal-post-full" style="height: 200px;" placeholder="Enter full blog post content here. HTML allowed."></textarea>
+            <textarea id="modal-post-full" style="height: 160px;" placeholder="Enter full blog post content here. HTML allowed."></textarea>
+          </div>
+          <hr style="border: 0; border-top: 1px solid var(--color-border); margin: 20px 0;">
+          <h4 style="margin-bottom: 12px; font-weight: 600;">Blog Audio Player Settings</h4>
+          <div class="form-group">
+            <label>Audio Player Option</label>
+            <select id="modal-post-audio-enabled">
+              <option value="off" selected>Off</option>
+              <option value="on">On</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Audio File URL</label>
+            <input type="text" id="modal-post-audio-url" placeholder="e.g. audio/audio.mp3" value="audio/audio.mp3">
           </div>
         `;
         document.getElementById('edit-modal').style.display = 'block';
@@ -1051,7 +1064,20 @@
           </div>
           <div class="form-group">
             <label>Full Blog Content (Optional - if provided, a "...more" link will appear)</label>
-            <textarea id="modal-post-full" style="height: 200px;" placeholder="Enter full blog post content here. HTML allowed.">${post.fullContent || ''}</textarea>
+            <textarea id="modal-post-full" style="height: 160px;" placeholder="Enter full blog post content here. HTML allowed.">${post.fullContent || ''}</textarea>
+          </div>
+          <hr style="border: 0; border-top: 1px solid var(--color-border); margin: 20px 0;">
+          <h4 style="margin-bottom: 12px; font-weight: 600;">Blog Audio Player Settings</h4>
+          <div class="form-group">
+            <label>Audio Player Option</label>
+            <select id="modal-post-audio-enabled">
+              <option value="off" ${(!post.audioEnabled || post.audioEnabled === 'off' || post.audioEnabled === false) ? 'selected' : ''}>Off</option>
+              <option value="on" ${(post.audioEnabled === 'on' || post.audioEnabled === true) ? 'selected' : ''}>On</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Audio File URL</label>
+            <input type="text" id="modal-post-audio-url" placeholder="e.g. audio/audio.mp3" value="${post.audioUrl || 'audio/audio.mp3'}">
           </div>
         `;
         document.getElementById('edit-modal').style.display = 'block';
@@ -1069,11 +1095,13 @@
           const date = document.getElementById('modal-post-date').value;
           const text = document.getElementById('modal-post-text').value.trim();
           const fullContent = document.getElementById('modal-post-full').value.trim();
+          const audioEnabled = document.getElementById('modal-post-audio-enabled').value;
+          const audioUrl = document.getElementById('modal-post-audio-url').value.trim();
           if (!date || !text) {
             alert('Date and text are required');
             return;
           }
-          const post = { date, text, fullContent };
+          const post = { date, text, fullContent, audioEnabled, audioUrl };
           if (editingIndex >= 0) {
             currentMicroBlog[editingIndex] = post;
           } else {
