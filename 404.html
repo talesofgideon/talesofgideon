@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex">
+
+    <!-- favicon -->
+
+	  <!-- icon for light mode cool face -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAE+klEQVR4AbRXW0xcVRRdd4anFYRAgVZSHkWNlc5QY4LFX7V+laSfEo2paWKaNsSGvm2opG9swge1MYGoiUl/tDUFE0UbEwuNScF2xkCkaFC0LQOiYLVFy3hd684MM3OZV5He7HX2vvusfe5mn9fgwD093krA0whcfRfwDBGzxC3iLnBl2Om8fBnwfkusTXXYFBPwFPEjHwHmDxy4DTBeAfA4kUk8SKQBzkf9/qynyKkmvEyigf6kkkICnpc5io/YRCQQk33/EiExP2DSnwKjWSFPLJ0kAc+rDHqfWKxsAGa+BvrT4w2QIAHvGwzqIP6nGG4g/Zt4gzhid3i5iMw3Y/ctyst14WmNFRkjAZM+8xzJ1GyXTpq4Jp60DxfjI96XSFpN3A950T5ojARQayct3bv5rH2sGAnMrbKTuK/p0pbPoc4gtOWookS+EEeLXu9RBL1kq4mELYFLJBQ8HSZoEH1wGV3fE73Ez4QSUaj6hRDnGvu+Im4QDxEGoX6qgMwEVLjVKOE3nOV7UUSEBr6NzMyLOHXKicHBahw9ept8nrhQH+lgzphFRsaX6OzMwMhIDQ4enCHnEqGKiEPTEqPPUhFNZK8TeOsvwNEc7negpGQC4+M12Lr1BaxZsw579tSjry+fFB75UGVmUV7uxeRkLTZv3oCqKjeamzeRU0DOVUIJUlliKHPLCjWRCfgDzqy3qXl6qcuHhoY05OWtoyssdXXPY8sWHbu/0jmBlpbVyM110Q5LXd1z5GgafqPTICT+EbWR0Fci34O2/0NAXXeQkzMb9EWr0lKVlwWDgZUr86I7rTcHSktVKcUb8lwHagZkREJfiXwP2su4kuZoL8fwsEr4D+1IuYGurmk6VhCZ6O7mzUwrWq7j/Hn9wcvpVrVwATAsAxFPnAQe01wxOgdnzphob+9hiFa21uc410Mv+vv18XT6S9DWlknOx7R1aVLhF5b/IgYG9PEMOQjjDpsFEicBi8c1oZgybN+ezsX4BTZuPIfCwh6cPl1KQhXB3yLQrlhLTjbKynpQX38W+fkX0NGh4+SRIIcKpgJkRCFRAn8GmJrnCvh861n2CkxNradbcztDHQqXXYGxsVqWvRLT08+wT5w/qEMcaEvA/sz32jv4/hlBEUULSdXgToX03aCfypIQRzzZqoo41uKzGIDBHydY8Ii9wBl0dAf1UqhJIKc31kAJEnDzLMB3sYIW4RsCKlSeBaEJErC4tqxV0r/ZoRJrKuyQXztNPNLmxeyaN21GsgQ6o/l+7oRiHrWV2LFjFZqayrBrVxn27Svn+V+BEyeqUFycxRDNP9W8OD6ZN21GkgSsaRgMxOgMmENjYwE/VoSTJ1egtbUEx4+X4PBhJVWEnTsLeV/ohNQhFohiy3hX3KlMkgDDgfdgPQZbJ/f377wZp3DgwAT27vVh9+5xVuKmhf37fbwxNUU6oEgPSFNAxW5TSeBKODSNJ+NNbNt2DYcOjeLYsR9Z9p9YjTELR46MYmJCa43/p1hBxhDgjrn9rG42KSTg5hlufk4uRdOgEusazua7HQ/QpyHFowmTd4p0fIgdvzfc8zpg6FhD6o/4ZnsyfooJ1HAhOR4GVFKk8Bi8vVz8MaC4xPQUE9Ag1bwbXE8AxjsIPJrsWzRD0J3N2pv8ReXiv2TsSUHuIYHQaK7XuLC4JdxcAO5c2iFwcbg5Xk1LiCmdDP8BAAD//9hawXUAAAAGSURBVAMAB3xHUKINStUAAAAASUVORK5CYII=" media="(prefers-color-scheme: light)">
+
+    <!-- icon for dark mode fire face -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAD7ElEQVR4AbRXWUhUYRT+psVJaqykDTWSsoIWWh4sgoogiF4KeiwKEoKIogXbE03cRfJBk0CjHsKXIlADKwSRJDNNo5QmKUyIXHDJhULU6Tsz997unXvnzrhyvv+c//znnP/z/P+9V+dgEj8eYC1xiSghmokhYpAY8zgcbs/ChdW0m4htoZYNiQALriCeseg34h6RQMgmi6hdxFx4PBswMrKf9nZCyB2nDipBCXDjU6zSRRwjJiNPmFtJLLBLsiXA5NNMfkxMVQ4xsY515lNbSkACTLrDjIfEdEWO6kOgIpYEuPlWJtwlZkq2sGauVTETAQaK7zmDRVPNmCSy9k7/alabnGTQOmI2xPRkWBGIn42dlZoHFa0pKwKrtdWZNsLDnf4lDQR4Rg4GyIuEyiy/zS6Tp9/k0TlGR00lDASqgbm6cM1sdzpRX1gId0sL3mVmwlSFkd/DwlBXUoK2tjbUpaSgjz6TjI+/9fcZCBwAxhiQRWgyvGoVPnd2Iv7cOcRv2oRdN26gprYW+t/0a2ws3D092J2QgPi4OOxKTobEDGhVNOO9ZimGgYD4HMB96jrCK/0nTuDwkiVeWx327dmD9jNn1CnGU1NxOCJCm7MGJGZIF6MstilaUyYCyspTRaPf5TKdy2IuTsTEcPSJKyrKZ+jGSNouXQynP4lGwiCBCNSoUTFuN36pE0XXUzvLyzn6pLOiAoM+UxulhV1lZdqcRhU7M0FtEEsCDJSz8rYrsrQUPwoKIC/zXqY2E/N5H7Y0NNDyyfb8fHxkzCdO5fJJchjbv7GxkR5N/miWzrAkoKzLhfSauy9cQCQvY9+RI1i+bBl2FBV5/eowj8ZexrjWrEHv0aOIXroUO4uL6TVInGGmTOwIjCgxXhXb1YX1bHt0r/TB6zINsR0dWM+2Rw0MmNbokOZRGcWOwEtj6LRnlVYV7AhUWCVM0dfDvDeESQIS4EWUi/zFlDE1Ryvr/bVKDUhACbZkraxNRv1/Zv2yghEo8YsH+CSAr1pcuQIkJgLXrgG3bgF8/yMnB1i50pRCxwvCUmwJsG1yDC2GzIsXAdksLw/I5V9Z2dlAejq8pK5eBfi9MMQDLawT8ChtCSiFHinap+T55pcRSUnAzZvA9eu+Tkg3bt/mdka+TGKbOAaQUAg0GXL5ZsT580BaGpDFD6e0XbohyMgAurv14XL5LB8/NSgoAbavisGviamI9k0JlByUgJJ4mdr/e0OXrUh8gW0EF0MiwC7IwUYzvpUIRV4xZzEhebbxIRGQCiw2TGym/YAQkRfLEA0Vo7Q9RDLj5F8ymsElZAJqKRY/SziIcCJCByftOUSqGis6GP4BAAD//wG1VdsAAAAGSURBVAMAFp/zQQsVX5gAAAAASUVORK5CYII=" media="(prefers-color-scheme: dark)">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found - Thomas Gideon</title>
+
+    <!-- core fonts -->
+    <link rel="preload" href="./fonts/dm-serif-display-v17-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v20-cyrillic_cyrillic-ext_greek_greek-ext_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- added UI fonts -->
+    <link rel="preload" href="./fonts/gelasio-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/caladea-v8-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/tinos-v26-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/lora-v37-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/work-sans-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/roboto-v51-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/open-sans-v44-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/arimo-v36-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/nunito-sans-v19-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="stylesheet" href="../css/style.css?v=2">
+
+    <script>
+      (function() {
+        document.documentElement.classList.add('js');
+        const safeGetItem = (key) => {
+          try {
+            return localStorage.getItem(key);
+          } catch (e) {
+            console.warn('localStorage is blocked:', e);
+            return null;
+          }
+        };
+        const theme = safeGetItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark-mode');
+        } else {
+          document.documentElement.classList.add('light-mode');
+        }
+
+        // Safety timeout to ensure page is visible even if main script fails
+        window.addEventListener('DOMContentLoaded', () => {
+          setTimeout(() => {
+            document.body.classList.add('loaded');
+          }, 1000);
+        });
+
+        // Pre-populate Logo styles to prevent flashing
+        let siteContent = {};
+        try {
+          const cached = safeGetItem('siteContent');
+          if (cached && cached !== 'undefined' && cached !== 'null') {
+            siteContent = JSON.parse(cached) || {};
+          }
+        } catch (err) {
+          console.error('Error parsing siteContent in header:', err);
+        }
+        if (siteContent.logoFont || siteContent.logoFontSize || siteContent.logoText) {
+          const style = document.createElement('style');
+          style.innerHTML = `
+            .logo {
+              ${siteContent.logoFont ? `font-family: ${siteContent.logoFont} !important;` : ''}
+              ${siteContent.logoFontSize ? `font-size: ${siteContent.logoFontSize} !important;` : ''}
+            }
+          `;
+          document.head.appendChild(style);
+          
+          if (siteContent.logoText) {
+            const logoObserver = new MutationObserver((mutations, obs) => {
+              const logos = document.querySelectorAll('.logo');
+              if (logos.length > 0) {
+                logos.forEach(logo => {
+                  logo.innerText = siteContent.logoText;
+                });
+                obs.disconnect();
+              }
+            });
+            logoObserver.observe(document.documentElement, { childList: true, subtree: true });
+          }
+        }
+
+        // Pre-populate NEW nav link to prevent layout shift
+        const storedTitle = safeGetItem('newBookTitle');
+        if (storedTitle) {
+          const observer = new MutationObserver((mutations, obs) => {
+            const navLinks = document.querySelectorAll('.nav-links a[href="new.html"], .mobile-menu a[href="new.html"]');
+            if (navLinks.length > 0) {
+              navLinks.forEach(link => {
+                link.innerText = `NEW: ${storedTitle.toUpperCase()}`;
+              });
+              obs.disconnect();
+            }
+          });
+          observer.observe(document.documentElement, { childList: true, subtree: true });
+        }
+
+        // Fetch data/content.json to get the latest newBookTitle
+        fetch('../data/content.json')
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.newBookTitle) {
+              try {
+                localStorage.setItem('newBookTitle', data.newBookTitle);
+              } catch (e) {
+                console.warn('localStorage is blocked:', e);
+              }
+              const updateLinks = () => {
+                const navLinks = document.querySelectorAll('.nav-links a[href="new.html"], .mobile-menu a[href="new.html"]');
+                navLinks.forEach(link => {
+                  link.innerText = `NEW: ${data.newBookTitle.toUpperCase()}`;
+                });
+              };
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateLinks);
+              } else {
+                updateLinks();
+              }
+            }
+          })
+          .catch(err => console.error('Error fetching content.json in header:', err));
+      })();
+    </script>
+
+    <style>
+      .hero-404 {
+        position: relative;
+        min-height: calc(100vh - 64px);
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-bg);
+        overflow: hidden;
+        text-align: center;
+      }
+      @media (min-width: 768px) {
+        .hero-404 {
+          min-height: calc(100vh - 80px);
+        }
+      }
+      .hero-bg-404 {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        background-image: url('../img/default/404.jpg');
+        opacity: 0.85;
+        z-index: 0;
+        filter: brightness(0.85);
+        transition: opacity 0.3s ease, filter 0.3s ease;
+      }
+      html.dark-mode .hero-bg-404 {
+        /*opacity: 0.5;*/
+        opacity: 0.6;
+        /*filter: brightness(0.5) contrast(1.1);*/
+        filter: brightness(0.6) contrast(1.1);
+      }
+      .hero-quote-404 {
+        font-size: clamp(20px, 4vw, 28px);
+        font-style: italic;
+        line-height: 1.4;
+        margin-bottom: 16px;
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        font-family: var(--font-serif-alt);
+        font-weight: 400;
+        letter-spacing: -0.01em;
+      }
+      .hero-desc-404 {
+        font-size: clamp(14px, 3vw, 18px);
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+        margin-bottom: 24px;
+        font-family: var(--font-sans);
+        font-weight: 300;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 800px;
+        padding: 40px 24px;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(4px);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 20px;
+      }
+      .hero-title {
+        font-size: clamp(64px, 12vw, 120px);
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #ffffff;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        font-family: var(--font-serif-alt);
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <a href="../index.html" class="logo">Thomas Gideon</a>
+        
+        <div class="nav-links">
+          <a href="../new.html">NEW: EXODUS</a>
+          <a href="../books.html">BOOKS</a>
+          <a href="../music.html">MUSIC</a>
+          <a href="../artist.html">ARTIST</a>
+          <button class="dark-mode-toggle desktop-only" aria-label="Toggle dark mode">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </div>
+
+        <button class="mobile-toggle" id="menu-toggle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="../new.html">NEW: EXODUS</a>
+      <a href="../books.html">BOOKS</a>
+      <a href="../music.html">MUSIC</a>
+      <a href="../artist.html">ARTIST</a>
+      
+      <div class="mobile-appearance">
+        <span>APPEARANCE</span>
+        <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <main>
+      <!-- Hero 404 Section with weather effect canvas -->
+      <section class="hero-404">
+        <div class="hero-bg-404"></div>
+        <canvas id="hero-effects-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+        <div class="hero-content fade-in">
+          <h1 class="hero-title">404</h1>
+          <h2 class="hero-quote-404">The reality you are seeking is an illusion!</h2>
+          <p class="hero-desc-404">You have ventured beyond our mapped timelines.</p>
+          <div style="margin-top: 32px;">
+            <a href="../index.html" class="btn">To Reality</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p class="copyright">© 2026 Thomas Gideon. All Rights Reserved.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.tiktok.com/@talesofgideon" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/talesofgideon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://x.com/talesofgideon" target="_blank" rel="noopener noreferrer" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.464 -2.464l7.534 -7.534"></path></svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top Button -->
+    <button id="scroll-top" aria-label="Scroll to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <script src="../js/script.js?v=2"></script>
+  </body>
+</html>

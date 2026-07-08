@@ -26,9 +26,16 @@
   },
   "microBlog": [
     {
-      "date": "2025-11-04",
-      "text": "Exodus is nearing release! I've included a short sample, with audio, hope you enjoy it.",
-      "fullContent": "<p>Sometimes I think how did I get here? The fearless, investigative journalist Conner Gideon, well more investigator back then. Examining scientific mysteries at school and later college probably creating a few of them along the way. “It’s that Gideon boy again”, was a phrase I heard more than once.</p>\n<p>Humble beginnings led my inquisitive mind to the mysteries of science, the world and the universe. Why do so many great men of science with incredible minds form so many different, sometimes polar opposite, opinions? Could they separate accepted myth from fact? How did their stories, their truth, evolve? Somewhere between the threads of these many stories lies the truth, or at least a version of it.</p>\n",
+      "date": "2026-07-08",
+      "text": "Exodus is nearing release! Here is the second sample of Chapter One, one of many, with audio, hope you enjoy it.",
+      "fullContent": "",
+      "audioEnabled": "off",
+      "audioUrl": "audio/audio.mp3"
+    },
+    {
+      "date": "2026-07-07",
+      "text": "Exodus is nearing release! Here is the first sample of Chapter One, one of many, with audio, hope you enjoy it.",
+      "fullContent": "<p>Sometimes I think how did I get here? The fearless, investigative journalist Conner Gideon, well more investigator back then. Examining scientific mysteries at school and later college probably creating a few of them along the way. “It’s that Gideon boy again”, was a phrase I heard more than once.</p>\n<p>Humble beginnings led my inquisitive mind to the mysteries of science, the world and the universe. Why do so many great men of science with incredible minds form so many different, sometimes polar opposite, opinions? Could they separate accepted myth from fact? How did their stories, their truth, evolve? Somewhere between the threads of these many stories lies the truth, or at least a version of it.</p>",
       "audioEnabled": "on",
       "audioUrl": "audio/exodus-001.mp3"
     }
