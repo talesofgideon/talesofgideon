@@ -34,7 +34,9 @@
 
     <!-- preload audio -->
 
-    <link rel="preload" href="./audio/exodus-sample-01.mp3" as="audio" type="audio/mpeg" crossorigin>
+    <!-- <link rel="preload" href="./audio/exodus-001.mp3" as="audio" type="audio/mpeg" crossorigin> -->
+    
+    <link rel="prefetch" href="./audio/exodus-001.mp3">
 
     <!-- preload core fonts -->
 
@@ -157,7 +159,7 @@
           .catch(err => console.error('Error fetching content.json in header:', err));
       })();
     </script>
-<link rel="stylesheet" href="/index.css">
+
 </head>
 
   <body>
@@ -301,6 +303,5 @@
 
     <script src="js/script.js?v=2"></script>
 
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
