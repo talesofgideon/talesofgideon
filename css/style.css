@@ -631,7 +631,7 @@ section {
 @media (min-width: 768px) {
   /* desktop image */
   .hero-bg {
-  	background-image: url('../img/default/hero1_2200x1237_72ppi.jpg') !important;
+  	background-image: url('../img/default/hero1_2200x1237_72ppi.webp') !important;
   }
   .hero h2 {
     font-size: 30px;

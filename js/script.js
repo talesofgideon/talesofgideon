@@ -197,7 +197,7 @@ const defaultBooksData = {
     "status": "COMING SOON",
     "payment_url": "",
     "order": 1,
-    "image": "img/books/exodus_662x1000_72ppi.jpg",
+    "image": "img/books/exodus_662x1000_72ppi.webp",
     "subtitle": "New",
     "synopsis": "<p>Conner's best friend AJ and new friend quantum A.I George, help diagnose what's happening to Conner as his world begins to change.</p>\n<p>AJ's and George's realities change too as they join Conner on this adventure.</p>"
   },
@@ -208,7 +208,7 @@ const defaultBooksData = {
     "status": "COMING SOON",
     "payment_url": "",
     "order": 2,
-    "image": "img/books/genesis_1600x2560_72ppi.jpg",
+    "image": "img/books/genesis_1600x2560_72ppi.webp",
     "subtitle": "Coming Soon",
     "synopsis": "<p>Growing up in a military family, Conner is moved across the world to follow his fathers career, finally returning to California, a different person.</p>"
   },
@@ -219,7 +219,7 @@ const defaultBooksData = {
     "status": "COMING SOON",
     "payment_url": "",
     "order": 3,
-    "image": "img/books/revelation_662x1000_72ppi.jpg",
+    "image": "img/books/revelation_662x1000_72ppi.webp",
     "subtitle": "Coming Soon",
     "synopsis": "<p>This story finds Conner investigating multiple realities, finding answers lost in time.</p>"
   }
@@ -233,7 +233,7 @@ const defaultMusicData = {
     "status": "COMING SOON",
     "payment_url": "",
     "order": 1,
-    "image": "img/music/album_cover_exodus_500x500_72ppi.jpg",
+    "image": "img/music/album_cover_exodus_500x500_72ppi.webp",
     "composer": "Score by Thomas Gideon",
     "description": "Captures the bittersweet essence of Exodus, a story of change rather than choice, family, and finding one's place in the world. The music is characterized by its gentle melodies, evoking the emotional journey of Conner Gideon."
   },
@@ -244,7 +244,7 @@ const defaultMusicData = {
     "status": "COMING SOON",
     "payment_url": "",
     "order": 2,
-    "image": "img/music/album_cover_genesis_500x500_72ppi.jpg",
+    "image": "img/music/album_cover_genesis_500x500_72ppi.webp",
     "composer": "Score by Thomas Gideon",
     "description": "Documenting a story of growing up, independence, freedom of thought, characterized by different sometimes convergent melodies, and themes."
   },
@@ -255,7 +255,7 @@ const defaultMusicData = {
     "status": "COMING SOON",
     "payment_url": "",
     "order": 3,
-    "image": "img/music/album_cover_revelation_500x500_72ppi.jpg",
+    "image": "img/music/album_cover_revelation_500x500_72ppi.webp",
     "composer": "Score by Thomas Gideon",
     "description": "Exploring the emotional depth of Conner Gideons extraordinary life. Classical sensibilities with a modern influence, reflecting the novel's eventual conclusion."
   }
@@ -267,10 +267,10 @@ const defaultContent = {
   "logoFont": "'DM Serif Display', serif",
   "logoFontSize": "33px",
   "heroQuote": "“ ... ”",
-  "heroBg": "img/default/queen-esther-hero.jpg",
+  "heroBg": "img/default/queen-esther-hero.webp",
   "artistBio": "<h3>About the Artist</h3>\n<div class=\"separator\"></div>\n<p>THOMAS GIDEON ... </p>",
   "comingSoon": "<h3>About the Artist</h3>\n<div class=\"separator\"></div>\n<p>THOMAS GIDEON ... </p>",
-  "sidebarBookImg": "img/default/queen-esther-cover.jpg",
+  "sidebarBookImg": "img/default/queen-esther-cover.webp",
   "sidebarBookAlt": "Exodus",
   "newBookTitle": "Exodus",
   "newBookSubtitle": "New",
@@ -394,7 +394,7 @@ const populateUI = (data) => {
       if (bookTitle) {
         const book = booksData[bookTitle] || {
           subtitle: "A novel by Thomas Gideon",
-          image: `img/books/placeholder-book_622x1000.jpg`,
+          image: `img/books/placeholder-book_622x1000.webp`,
           synopsis: `<p>This is a placeholder synopsis for <i>${bookTitle}</i>. Thomas Gideon's novels are known for their intricate plots, memorable characters, and exploration of complex human relationships.</p>`
         };
 
@@ -487,7 +487,7 @@ const populateUI = (data) => {
       if (resolvedTitle) {
         const music = musicData[resolvedTitle] || {
           composer: "Original Soundtrack",
-          image: `img/music/placeholder-music_500x500_72ppi.jpg`,
+          image: `img/music/placeholder-music_500x500_72ppi.webp`,
           description: `This is a placeholder description for the soundtrack of <i>${resolvedTitle}</i>. Thomas Gideon's works have inspired many beautiful and evocative musical scores.`
         };
 
@@ -644,7 +644,7 @@ const populateUI = (data) => {
   const sidebarBookImg = document.getElementById('sidebar-book-img');
   if (sidebarBookImg) {
 
-    /*const imgUrl = data.sidebarBookImg || sidebarBook.image || "img/default/placeholder.jpg";*/
+    /*const imgUrl = data.sidebarBookImg || sidebarBook.image || "img/default/placeholder.webp";*/
     const imgUrl = data.sidebarBookImg || sidebarBook.image || "";
 
     if (sidebarBookImg.src !== imgUrl) {

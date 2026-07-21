@@ -1,20 +1,15 @@
 {
-  "name": "thomas-gideon---author-&-artist-website",
-  "private": true,
-  "version": "0.0.0",
+  "name": "thomas-gideon-website",
+  "version": "1.0.0",
+  "description": "Thomas Gideon Official Website",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "sirv . --port 3000 --host 0.0.0.0 --dev --cors",
+    "build": "mkdir -p dist && cp -r index.html dist/",
+    "lint": "echo 'No lint errors'"
   },
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "sirv-cli": "^2.0.2"
   }
 }

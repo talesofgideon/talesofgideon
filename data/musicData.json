@@ -6,7 +6,7 @@
     "status": "COMING SOON",
     "payment_url": "",
     "order": 1,
-    "image": "img/music/album_cover_exodus_500x500_72ppi.jpg",
+    "image": "img/music/album_cover_exodus_500x500_72ppi.webp",
     "composer": "Score by Thomas Gideon",
     "description": "Captures the bittersweet essence of Exodus, a story of change rather than choice, family, and finding one's place in the world. The music is characterized by its gentle melodies, evoking the emotional journey of Conner Gideon."
   },
@@ -17,7 +17,7 @@
     "status": "COMING SOON",
     "payment_url": "",
     "order": 2,
-    "image": "img/music/album_cover_genesis_500x500_72ppi.jpg",
+    "image": "img/music/album_cover_genesis_500x500_72ppi.webp",
     "composer": "Score by Thomas Gideon",
     "description": "Documenting a story of  growing up, independence, freedom of thought, characterized by different sometimes convergent melodies, and themes."
   },
@@ -28,7 +28,7 @@
     "status": "COMING SOON",
     "payment_url": "",
     "order": 3,
-    "image": "img/music/album_cover_revelation_500x500_72ppi.jpg",
+    "image": "img/music/album_cover_revelation_500x500_72ppi.webp",
     "composer": "Score by Thomas Gideon",
     "description": "Exploring the emotional depth of Conner Gideons extraordinary life. Classical sensibilities with a modern influence, reflecting the novel's eventual conclusion."
   }

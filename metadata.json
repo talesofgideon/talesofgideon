@@ -1,0 +1,8 @@
+{
+  "name": "Thomas Gideon Website",
+  "description": "Official author and artist website for Thomas Gideon featuring books, music, blog, and content management admin dashboard",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
