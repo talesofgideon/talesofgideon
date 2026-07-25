@@ -1,0 +1,50 @@
+{
+  "Exodus": {
+    "id": "1",
+    "status": "BUY THE ALBUM",
+    "order": 1,
+    "image": "img/music/exodus-600x1000.jpg",
+    "composer": "Score by Thomas Gideon",
+    "synopsis": "<p>Captures the bittersweet essence of Exodus, a story of change rather than choice, family, and finding one's place in the world. The music is characterized by its gentle melodies, evoking the emotional journey of Conner Gideon.</p>",
+    "variants": {
+      "album": {
+        "paddle_price_id": "pri_exodus_music_123",
+        "price_amount": 4.99,
+        "currency": "USD",
+        "label": "Digital Album"
+      }
+    }
+  },
+  "Genesis": {
+    "id": "2",
+    "status": "BUY THE ALBUM",
+    "order": 2,
+    "image": "img/music/genesis-600x1000.jpg",
+    "composer": "Score by Thomas Gideon",
+    "synopsis": "<p>Documenting a story of  growing up, independence, freedom of thought, characterized by different sometimes convergent melodies, and themes.</p>",
+    "variants": {
+      "album": {
+        "paddle_price_id": "pri_genesis_music_123",
+        "price_amount": 4.99,
+        "currency": "USD",
+        "label": "Digital Album"
+      }
+    }
+  },
+  "Revelation": {
+    "id": "3",
+    "status": "BUY THE ALBUM",
+    "order": 3,
+    "image": "img/music/revelation-600x1000.jpg",
+    "composer": "Score by Thomas Gideon",
+    "synopsis": "<p>Exploring the emotional depth of Conner Gideons extraordinary life. Classical sensibilities with a modern influence, reflecting the novel's eventual conclusion.</p>",
+    "variants": {
+      "album": {
+        "paddle_price_id": "pri_revelation_music_123",
+        "price_amount": 4.99,
+        "currency": "USD",
+        "label": "Digital Album"
+      }
+    }
+  }
+}
