@@ -1,0 +1,8 @@
+{
+  "name": "Thomas Gideon",
+  "description": "Website for author and artist Thomas Gideon",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

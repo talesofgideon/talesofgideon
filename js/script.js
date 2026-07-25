@@ -192,72 +192,135 @@ document.querySelectorAll('.fade-in').forEach(el => {
 const defaultBooksData = {
   "Exodus": {
     "id": "1",
-    "price": "$9.99",
-    "desc": "EPUB & AUDIO",
-    "status": "COMING SOON",
-    "payment_url": "",
+    "status": "BUY THE BOOK",
     "order": 1,
-    "image": "img/books/exodus_662x1000_72ppi.webp",
-    "subtitle": "New",
-    "synopsis": "<p>Conner's best friend AJ and new friend quantum A.I George, help diagnose what's happening to Conner as his world begins to change.</p>\n<p>AJ's and George's realities change too as they join Conner on this adventure.</p>"
+    "image": "img/books/exodus-600x1000.jpg",
+    "synopsis": "<p>Conner's best friend AJ and new friend quantum A.I George, help diagnose what's happening to Conner as his world begins to change.</p>\n<p>AJ's and George's realities change too as they join Conner on this adventure.</p>",
+    "variants": {
+      "bundle": {
+        "paddle_price_id": "pri_exodus_bundle_123",
+        "price_amount": 7.99,
+        "currency": "USD",
+        "label": "EPUB & Audiobook Bundle"
+      },
+      "epub": {
+        "paddle_price_id": "pri_exodus_epub_456",
+        "price_amount": 2.99,
+        "currency": "USD",
+        "label": "EPUB eBook Only"
+      },
+      "audio": {
+        "paddle_price_id": "pri_exodus_audio_789",
+        "price_amount": 4.99,
+        "currency": "USD",
+        "label": "Audiobook Only"
+      }
+    }
   },
   "Genesis": {
     "id": "2",
-    "price": "$9.99",
-    "desc": "EPUB & AUDIO",
-    "status": "COMING SOON",
-    "payment_url": "",
+    "status": "BUY THE BOOK",
     "order": 2,
-    "image": "img/books/genesis_1600x2560_72ppi.webp",
-    "subtitle": "Coming Soon",
-    "synopsis": "<p>Growing up in a military family, Conner is moved across the world to follow his fathers career, finally returning to California, a different person.</p>"
+    "image": "img/books/genesis-600x1000.jpg",
+    "synopsis": "<p>Growing up in a military family, Conner is moved across the world to follow his fathers career, finally returning to California, a different person.</p>",
+    "variants": {
+      "bundle": {
+        "paddle_price_id": "pri_genesis_bundle_123",
+        "price_amount": 11.99,
+        "currency": "USD",
+        "label": "EPUB & Audiobook Bundle"
+      },
+      "epub": {
+        "paddle_price_id": "pri_genesis_epub_456",
+        "price_amount": 10.99,
+        "currency": "USD",
+        "label": "EPUB eBook Only"
+      },
+      "audio": {
+        "paddle_price_id": "pri_genesis_audio_789",
+        "price_amount": 9.99,
+        "currency": "USD",
+        "label": "Audiobook Only"
+      }
+    }
   },
   "Revelation": {
     "id": "3",
-    "price": "$9.99",
-    "desc": "EPUB & AUDIO",
-    "status": "COMING SOON",
-    "payment_url": "",
+    "status": "BUY THE BOOK",
     "order": 3,
-    "image": "img/books/revelation_662x1000_72ppi.webp",
-    "subtitle": "Coming Soon",
-    "synopsis": "<p>This story finds Conner investigating multiple realities, finding answers lost in time.</p>"
+    "image": "img/books/revelation-600x1000.jpg",
+    "synopsis": "<p>This story finds Conner investigating multiple realities, finding answers lost in time.</p>",
+    "variants": {
+      "bundle": {
+        "paddle_price_id": "pri_revelation_bundle_123",
+        "price_amount": 8.99,
+        "currency": "USD",
+        "label": "EPUB & Audiobook Bundle"
+      },
+      "epub": {
+        "paddle_price_id": "pri_revelation_epub_456",
+        "price_amount": 7.99,
+        "currency": "USD",
+        "label": "EPUB eBook Only"
+      },
+      "audio": {
+        "paddle_price_id": "pri_revelation_audio_789",
+        "price_amount": 6.99,
+        "currency": "USD",
+        "label": "Audiobook Only"
+      }
+    }
   }
 };
 
 const defaultMusicData = {
   "Exodus": {
     "id": "1",
-    "price": "$9.99",
-    "desc": "ALBUM & ART",
-    "status": "COMING SOON",
-    "payment_url": "",
+    "status": "BUY THE ALBUM",
     "order": 1,
-    "image": "img/music/album_cover_exodus_500x500_72ppi.webp",
+    "image": "img/music/album-cover-exodus-500x500.jpg",
     "composer": "Score by Thomas Gideon",
-    "description": "Captures the bittersweet essence of Exodus, a story of change rather than choice, family, and finding one's place in the world. The music is characterized by its gentle melodies, evoking the emotional journey of Conner Gideon."
+    "synopsis": "<p>Captures the bittersweet essence of Exodus, a story of change rather than choice, family, and finding one's place in the world. The music is characterized by its gentle melodies, evoking the emotional journey of Conner Gideon.</p>",
+    "variants": {
+      "album": {
+        "paddle_price_id": "pri_exodus_music_123",
+        "price_amount": 9.99,
+        "currency": "USD",
+        "label": "Digital Album"
+      }
+    }
   },
   "Genesis": {
     "id": "2",
-    "price": "$9.99",
-    "desc": "ALBUM & ART",
-    "status": "COMING SOON",
-    "payment_url": "",
+    "status": "BUY THE ALBUM",
     "order": 2,
-    "image": "img/music/album_cover_genesis_500x500_72ppi.webp",
+    "image": "img/music/album-cover-genesis-500x500.jpg",
     "composer": "Score by Thomas Gideon",
-    "description": "Documenting a story of growing up, independence, freedom of thought, characterized by different sometimes convergent melodies, and themes."
+    "synopsis": "<p>Documenting a story of  growing up, independence, freedom of thought, characterized by different sometimes convergent melodies, and themes.</p>",
+    "variants": {
+      "album": {
+        "paddle_price_id": "pri_genesis_music_123",
+        "price_amount": 9.99,
+        "currency": "USD",
+        "label": "Digital Album"
+      }
+    }
   },
   "Revelation": {
     "id": "3",
-    "price": "$9.99",
-    "desc": "ALBUM & ART",
-    "status": "COMING SOON",
-    "payment_url": "",
+    "status": "BUY THE ALBUM",
     "order": 3,
-    "image": "img/music/album_cover_revelation_500x500_72ppi.webp",
+    "image": "img/music/album-cover-revelation-500x500.jpg",
     "composer": "Score by Thomas Gideon",
-    "description": "Exploring the emotional depth of Conner Gideons extraordinary life. Classical sensibilities with a modern influence, reflecting the novel's eventual conclusion."
+    "synopsis": "<p>Exploring the emotional depth of Conner Gideons extraordinary life. Classical sensibilities with a modern influence, reflecting the novel's eventual conclusion.</p>",
+    "variants": {
+      "album": {
+        "paddle_price_id": "pri_revelation_music_123",
+        "price_amount": 9.99,
+        "currency": "USD",
+        "label": "Digital Album"
+      }
+    }
   }
 };
 
@@ -267,10 +330,10 @@ const defaultContent = {
   "logoFont": "'DM Serif Display', serif",
   "logoFontSize": "33px",
   "heroQuote": "“ ... ”",
-  "heroBg": "img/default/queen-esther-hero.webp",
+  "heroBg": "img/default/queen-esther-hero.jpg",
   "artistBio": "<h3>About the Artist</h3>\n<div class=\"separator\"></div>\n<p>THOMAS GIDEON ... </p>",
   "comingSoon": "<h3>About the Artist</h3>\n<div class=\"separator\"></div>\n<p>THOMAS GIDEON ... </p>",
-  "sidebarBookImg": "img/default/queen-esther-cover.webp",
+  "sidebarBookImg": "img/default/queen-esther-cover.jpg",
   "sidebarBookAlt": "Exodus",
   "newBookTitle": "Exodus",
   "newBookSubtitle": "New",
@@ -316,6 +379,17 @@ const updateElement = (id, content, isHTML = false) => {
     else el.innerText = content;
   }
 };
+
+
+//function toTitleCase(str) {
+//  return str.replace(
+//    /\w\S*/g,
+//    text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+//  );
+//}
+// const example = 'john smith';
+// console.log(`"${example}" becomes "${toTitleCase(example)}"`);
+
 
 // Update "NEW" nav link based on h1 on new.html and persist it
 const updateNewNavLink = () => {
@@ -394,7 +468,7 @@ const populateUI = (data) => {
       if (bookTitle) {
         const book = booksData[bookTitle] || {
           subtitle: "A novel by Thomas Gideon",
-          image: `img/books/placeholder-book_622x1000.webp`,
+          image: `img/books/placeholder-book-600x1000.jpg`,
           synopsis: `<p>This is a placeholder synopsis for <i>${bookTitle}</i>. Thomas Gideon's novels are known for their intricate plots, memorable characters, and exploration of complex human relationships.</p>`
         };
 
@@ -422,12 +496,10 @@ const populateUI = (data) => {
         let buttonHref = "coming.html";
         let purchaseTarget = "";
 
-        if (book.status === "PURCHASE") {
-          const priceStr = book.price !== undefined ? book.price : "$9.99";
-          const descStr = book.desc !== undefined ? book.desc : "EPUB & AUDIO";
-          labelText = `Buy ${priceStr} ${descStr}`;
-          buttonHref = book.payment_url || ebookUrl;
-          purchaseTarget = 'target="_blank"';
+        if (book.status === "BUY THE BOOK" || book.status === "PURCHASE") {
+          labelText = "BUY THE BOOK";
+          buttonHref = `buybook.html?book=${encodeURIComponent(bookTitle)}`;
+          purchaseTarget = "";
         }
 
         document.title = `${bookTitle} - Thomas Gideon`;
@@ -438,7 +510,7 @@ const populateUI = (data) => {
             <img src="${book.image}" alt="${bookTitle}" class="detail-book-img" referrerPolicy="no-referrer">
             
             <div class="book-purchase-links">
-              <h4>Purchase</h4>
+              <!-- <h4>Purchase</h4> -->
               <div class="book-purchase-grid">
                 <a href="${buttonHref}" class="purchase-btn" ${purchaseTarget}>${labelText}</a>
               </div>
@@ -448,12 +520,9 @@ const populateUI = (data) => {
           <!-- Right Column: Book Info -->
           <div class="book-info fade-in active">
             <h1 id="book-detail-title">${bookTitle}</h1>
-            <h3 class="subtitle">${book.subtitle}</h3>
+            <!-- <h3 class="subtitle">${book.subtitle}</h3> -->
             <div class="separator"></div>
-            
-            <div class="synopsis">
-              ${book.synopsis}
-            </div>
+            <div class="synopsis">${book.synopsis}</div>
           </div>
         `;
         if (bookDetailContent.innerHTML !== newHTML) {
@@ -465,6 +534,111 @@ const populateUI = (data) => {
     } catch (err) {
       console.error("Error populating book detail page:", err);
       bookDetailContent.innerHTML = `<p style="color: red; padding: 20px;">Error loading book details: ${err.message}</p>`;
+    }
+  }
+
+  // Handle Buy Book Page (if on that page)
+  const buyBookTitle = document.getElementById('buy-book-title');
+  if (buyBookTitle) {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const bookTitle = urlParams.get('book') || 'Exodus';
+      
+      const book = booksData[bookTitle] || booksData['Exodus'] || Object.values(booksData)[0];
+      if (book) {
+        window.currentBook = book;
+        window.currentBook.title = bookTitle;
+
+        let titleHTML = bookTitle;
+
+        //console.log(`"${bookTitle}" becomes "${toTitleCase(bookTitle)}"`);
+
+        if (book.subtitle) {
+          //titleHTML = `${bookTitle}<span class="subtitle-label" style="font-size:14px; font-weight:normal; margin-left:10px; opacity:0.7;">${book.subtitle}</span>`;
+          //titleHTML = `${toTitleCase(bookTitle)}<span class="subtitle-label" style="font-size:14px; font-weight:normal; margin-left:10px; opacity:0.7;">${book.subtitle}</span>`;
+          titleHTML = `${bookTitle}<span class="subtitle-label">SELECT VERSION</span>`;
+        }
+
+        if (buyBookTitle.innerHTML !== titleHTML) {
+          buyBookTitle.innerHTML = titleHTML;
+        }
+
+        const buyBookImg = document.getElementById('buy-book-img');
+        if (buyBookImg) {
+          if (buyBookImg.src !== book.image) {
+            buyBookImg.src = book.image;
+          }
+          if (buyBookImg.alt !== bookTitle) {
+            buyBookImg.alt = bookTitle;
+          }
+        }
+
+        // const buyBookSynopsis = document.getElementById('buy-book-synopsis');
+        // if (buyBookSynopsis && buyBookSynopsis.innerHTML !== (book.synopsis || '')) {
+        //  buyBookSynopsis.innerHTML = book.synopsis || '';
+        // }
+
+        // Render prices
+        const variants = book.variants || {};
+        const priceEpub = document.getElementById('price-epub');
+        if (priceEpub) {
+          const epubHTML = `$${variants.epub?.price_amount?.toFixed(2) || '9.99'} <span>USD</span>`;
+          if (priceEpub.innerHTML !== epubHTML) priceEpub.innerHTML = epubHTML;
+        }
+        const priceAudio = document.getElementById('price-audio');
+        if (priceAudio) {
+          const audioHTML = `$${variants.audio?.price_amount?.toFixed(2) || '9.99'} <span>USD</span>`;
+          if (priceAudio.innerHTML !== audioHTML) priceAudio.innerHTML = audioHTML;
+        }
+        const priceBundle = document.getElementById('price-bundle');
+        if (priceBundle) {
+          const bundleHTML = `$${variants.bundle?.price_amount?.toFixed(2) || '14.99'} <span>USD</span>`;
+          if (priceBundle.innerHTML !== bundleHTML) priceBundle.innerHTML = bundleHTML;
+        }
+      }
+    } catch (err) {
+      console.error("Error populating buy book page:", err);
+    }
+  }
+
+  // Handle Buy Music Page (if on that page)
+  const buyMusicTitle = document.getElementById('buy-music-title');
+  if (buyMusicTitle) {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const albumTitle = urlParams.get('album') || 'Exodus';
+      
+      const album = musicData[albumTitle] || musicData['Exodus'] || Object.values(musicData)[0];
+      if (album) {
+        window.currentAlbum = album;
+        window.currentAlbum.title = albumTitle;
+
+        let titleHTML = `${albumTitle}<span class="subtitle-label">MUSIC VERSION</span>`;
+
+        if (buyMusicTitle.innerHTML !== titleHTML) {
+          buyMusicTitle.innerHTML = titleHTML;
+        }
+
+        const buyMusicImg = document.getElementById('buy-music-img');
+        if (buyMusicImg) {
+          if (buyMusicImg.src !== album.image) {
+            buyMusicImg.src = album.image;
+          }
+          if (buyMusicImg.alt !== albumTitle) {
+            buyMusicImg.alt = albumTitle;
+          }
+        }
+
+        // Render prices
+        const variants = album.variants || {};
+        const priceAlbum = document.getElementById('price-album');
+        if (priceAlbum) {
+          const albumHTML = `$${variants.album?.price_amount !== undefined ? Number(variants.album.price_amount).toFixed(2) : '9.99'} <span>USD</span>`;
+          if (priceAlbum.innerHTML !== albumHTML) priceAlbum.innerHTML = albumHTML;
+        }
+      }
+    } catch (err) {
+      console.error("Error populating buy music page:", err);
     }
   }
 
@@ -487,31 +661,23 @@ const populateUI = (data) => {
       if (resolvedTitle) {
         const music = musicData[resolvedTitle] || {
           composer: "Original Soundtrack",
-          image: `img/music/placeholder-music_500x500_72ppi.webp`,
-          description: `This is a placeholder description for the soundtrack of <i>${resolvedTitle}</i>. Thomas Gideon's works have inspired many beautiful and evocative musical scores.`
+          image: `img/music/placeholder-music-500x500.jpg`,
+          synopsis: `This is a placeholder description for the soundtrack of <i>${resolvedTitle}</i>. Thomas Gideon's works have inspired many beautiful and evocative musical scores.`
         };
 
         document.title = `${resolvedTitle} - Music - Thomas Gideon`;
-
-        // Match corresponding book for purchase links
-        // replace <h1 class="italic">${resolvedTitle}</h1>
-        // with    <h1 id="music-detail-title">${resolvedTitle}</h1>
-        const assocBook = booksData[resolvedTitle] || (resolvedTitle === "In On Person" ? booksData["In One Person"] : null) || {};
-        const actualMusicId = music.id || musicId || assocBook.id || "1";
-        const cleanedMusicId = String(actualMusicId).replace(/^0+/, "") || "1";
-        const audioUrl = music.audioLink || assocBook.audioLink || `https://example.com/purchase?id=${cleanedMusicId}&format=music`;
 
         let labelText = "COMING SOON";
         let buttonHref = "coming.html";
         let purchaseTarget = "";
 
-        if (music.status === "PURCHASE") {
-          const priceStr = music.price !== undefined ? music.price : "$9.99";
-          const descStr = music.desc !== undefined ? music.desc : "ALBUM & ART";
-          labelText = `Buy ${priceStr} ${descStr}`;
-          buttonHref = music.payment_url || audioUrl;
-          purchaseTarget = 'target="_blank"';
+        if (music.status === "BUY THE ALBUM" || music.status === "PURCHASE") {
+          labelText = "BUY THE ALBUM";
+          buttonHref = `buymusic.html?album=${encodeURIComponent(resolvedTitle)}`;
+          purchaseTarget = "";
         }
+
+        const musicDesc = music.synopsis || music.description || `This is a placeholder description for the soundtrack of <i>${resolvedTitle}</i>. Thomas Gideon's works have inspired many beautiful and evocative musical scores.`;
 
         const newHTML = `
           <div class="music-detail-wrap fade-in active">
@@ -519,18 +685,28 @@ const populateUI = (data) => {
               <img src="${music.image}" alt="${resolvedTitle}" referrerPolicy="no-referrer">
               
               <div class="music-purchase-links">
-                <h4>Purchase</h4>
+                <!-- <h4>Purchase</h4> -->
                 <div class="music-purchase-grid">
                   <a href="${buttonHref}" class="purchase-btn" ${purchaseTarget}>${labelText}</a>
                 </div>
               </div>
             </div>
+
             <div class="music-detail-info">
-              <h1 id="music-detail-title">${resolvedTitle}</h1>
-              <p class="composer">${music.composer}</p>
+
+              <!-- <h1 id="music-detail-title">${resolvedTitle}</h1> -->
+              <!-- <p class="composer">${music.composer || ''}</p> -->
+              <!-- <div class="separator"></div> -->
+              <!-- <p class="description">${musicDesc}</p> -->
+
+              <h1 id="music-detail-title">${resolvedTitle}<span class="composer">${(music.composer).toUpperCase() || ''}
+                </span>
+              </h1>
               <div class="separator"></div>
-              <p class="description">${music.description}</p>
+              <p class="description">${musicDesc}</p>
+
             </div>
+
           </div>
         `;
         if (musicDetailContent.innerHTML !== newHTML) {
@@ -644,7 +820,7 @@ const populateUI = (data) => {
   const sidebarBookImg = document.getElementById('sidebar-book-img');
   if (sidebarBookImg) {
 
-    /*const imgUrl = data.sidebarBookImg || sidebarBook.image || "img/default/placeholder.webp";*/
+    /*const imgUrl = data.sidebarBookImg || sidebarBook.image || "img/default/placeholder.jpg";*/
     const imgUrl = data.sidebarBookImg || sidebarBook.image || "";
 
     if (sidebarBookImg.src !== imgUrl) {
@@ -666,13 +842,15 @@ const populateUI = (data) => {
     let finalUrl = "coming.html";
     let label = "COMING SOON";
     
-    if (sidebarBook.status === "PURCHASE") {
-      const priceStr = sidebarBook.price !== undefined ? sidebarBook.price : "$9.99";
-      const descStr = sidebarBook.desc !== undefined ? sidebarBook.desc : "EPUB & AUDIO";
-      label = `Buy ${priceStr} ${descStr}`;
-      finalUrl = sidebarBook.payment_url || data.sidebarEbookLink || sidebarBook.ebookLink || `https://example.com/purchase?id=${bookId}&format=ebook`;
-      if (!sidebarEbook.getAttribute('target')) {
-        sidebarEbook.setAttribute('target', '_blank');
+    if (sidebarBook.status === "BUY THE BOOK" || sidebarBook.status === "PURCHASE") {
+      label = "BUY THE BOOK";
+
+      finalUrl = `buybook.html?book=${encodeURIComponent(sidebarTitle)}`;
+      // finalUrl = `buy.html?book=${encodeURIComponent((sidebarTitle).toLowerCase())}`;
+      // console.log(`"${finalURL}"`);
+
+      if (sidebarEbook.getAttribute('target') === '_blank') {
+        sidebarEbook.removeAttribute('target');
       }
     } else {
       if (sidebarEbook.getAttribute('target') === '_blank') {
@@ -873,12 +1051,12 @@ const loadSiteContent = async () => {
   if (localData && Object.keys(localData).length > 0) {
     if (localData.booksData) {
       Object.values(localData.booksData).forEach(b => {
-        if (!b.payment_url && b.status === "PURCHASE") b.status = "COMING SOON";
+        if (b.status === "PURCHASE") b.status = "BUY THE BOOK";
       });
     }
     if (localData.musicData) {
       Object.values(localData.musicData).forEach(m => {
-        if (!m.payment_url && m.status === "PURCHASE") m.status = "COMING SOON";
+        if (m.status === "PURCHASE") m.status = "BUY THE ALBUM";
       });
     }
     console.log('Loading content from localStorage...');
@@ -947,10 +1125,12 @@ const loadSiteContent = async () => {
       if (localBooks) {
         Object.entries(localBooks).forEach(([title, book]) => {
           const sStatus = baseBooks[title] && baseBooks[title].status;
+          let bookStatus = book.status;
+          if (bookStatus === "PURCHASE") bookStatus = "BUY THE BOOK";
           mergedBooks[title] = { 
             ...(mergedBooks[title] || {}), 
             ...book,
-            status: (sStatus === "COMING SOON" || !book.payment_url) ? (sStatus || "COMING SOON") : book.status
+            status: sStatus === "COMING SOON" ? "COMING SOON" : bookStatus
           };
         });
       }
@@ -960,10 +1140,12 @@ const loadSiteContent = async () => {
       if (localMusic) {
         Object.entries(localMusic).forEach(([title, music]) => {
           const sStatus = baseMusic[title] && baseMusic[title].status;
+          let mStatus = music.status;
+          if (mStatus === "PURCHASE") mStatus = "BUY THE ALBUM";
           mergedMusic[title] = { 
             ...(mergedMusic[title] || {}), 
             ...music,
-            status: (sStatus === "COMING SOON" || !music.payment_url) ? (sStatus || "COMING SOON") : music.status
+            status: sStatus === "COMING SOON" ? "COMING SOON" : mStatus
           };
         });
       }

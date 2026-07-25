@@ -1,0 +1,13 @@
+{
+  "name": "thomas-gideon-website",
+  "version": "1.0.0",
+  "description": "Website for author and artist Thomas Gideon",
+  "scripts": {
+    "dev": "vite --port 3000 --host 0.0.0.0 --strictPort",
+    "build": "vite build",
+    "start": "vite preview --port 3000 --host 0.0.0.0 --strictPort"
+  },
+  "devDependencies": {
+    "vite": "^4.5.0"
+  }
+}

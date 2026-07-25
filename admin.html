@@ -821,6 +821,19 @@
         editingKey = key;
         const data = type === 'book' ? currentBooksData[key] : currentMusicData[key];
         
+        let variants = {};
+        if (type === 'book') {
+          variants = data.variants || {
+            bundle: { paddle_price_id: '', price_amount: 14.99, currency: 'USD', label: 'EPUB & Audiobook Bundle' },
+            epub: { paddle_price_id: '', price_amount: 9.99, currency: 'USD', label: 'EPUB eBook Only' },
+            audio: { paddle_price_id: '', price_amount: 9.99, currency: 'USD', label: 'Audiobook Only' }
+          };
+        } else {
+          variants = data.variants || {
+            album: { paddle_price_id: '', price_amount: 9.99, currency: 'USD', label: 'Digital Album' }
+          };
+        }
+        
         document.getElementById('modal-title').innerText = `Edit ${type === 'book' ? 'Book' : 'Music'}: ${key}`;
         const fields = document.getElementById('modal-fields');
         fields.innerHTML = `
@@ -838,31 +851,54 @@
           </div>
           ${type === 'book' ? `
             <div class="form-group">
-              <label>Price</label>
-              <input type="text" id="modal-item-price" value="${data.price !== undefined ? data.price : (data.Price !== undefined ? data.Price : '')}">
-            </div>
-            <div class="form-group">
-              <label>Desc</label>
-              <input type="text" id="modal-item-desc" value="${data.desc !== undefined ? data.desc : (data.Desc !== undefined ? data.Desc : '')}">
-            </div>
-            <div class="form-group">
               <label>Status</label>
               <select id="modal-item-status">
-                <option value="PURCHASE" ${data.status === 'PURCHASE' ? 'selected' : ''}>PURCHASE</option>
+                <option value="BUY THE BOOK" ${data.status === 'BUY THE BOOK' ? 'selected' : ''}>BUY THE BOOK</option>
                 <option value="COMING SOON" ${data.status === 'COMING SOON' ? 'selected' : ''}>COMING SOON</option>
               </select>
             </div>
-            <div class="form-group">
-              <label>Payment URL</label>
-              <input type="text" id="modal-item-payment-url" value="${data.payment_url !== undefined ? data.payment_url : ''}">
+            <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
+              <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle E-Book (EPUB) Variant</h4>
+              <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                  <label>Price Amount ($)</label>
+                  <input type="number" step="0.01" id="modal-item-variant-epub-price" value="${variants.epub?.price_amount !== undefined ? variants.epub.price_amount : '9.99'}">
+                </div>
+                <div style="flex: 2;">
+                  <label>Paddle Price ID</label>
+                  <input type="text" id="modal-item-variant-epub-id" value="${variants.epub?.paddle_price_id || ''}">
+                </div>
+              </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
+              <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Audiobook Variant</h4>
+              <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                  <label>Price Amount ($)</label>
+                  <input type="number" step="0.01" id="modal-item-variant-audio-price" value="${variants.audio?.price_amount !== undefined ? variants.audio.price_amount : '9.99'}">
+                </div>
+                <div style="flex: 2;">
+                  <label>Paddle Price ID</label>
+                  <input type="text" id="modal-item-variant-audio-id" value="${variants.audio?.paddle_price_id || ''}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
+              <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Bundle (EPUB & Audio) Variant</h4>
+              <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                  <label>Price Amount ($)</label>
+                  <input type="number" step="0.01" id="modal-item-variant-bundle-price" value="${variants.bundle?.price_amount !== undefined ? variants.bundle.price_amount : '14.99'}">
+                </div>
+                <div style="flex: 2;">
+                  <label>Paddle Price ID</label>
+                  <input type="text" id="modal-item-variant-bundle-id" value="${variants.bundle?.paddle_price_id || ''}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
               <label>Display Order (Number)</label>
               <input type="number" id="modal-item-order" value="${data.order || 0}">
-            </div>
-            <div class="form-group">
-              <label>Subtitle</label>
-              <input type="text" id="modal-item-subtitle" value="${data.subtitle || ''}">
             </div>
             <div class="form-group">
               <label>Synopsis (HTML)</label>
@@ -870,25 +906,26 @@
             </div>
           ` : `
             <div class="form-group">
-              <label>Price</label>
-              <input type="text" id="modal-item-price" value="${data.price !== undefined ? data.price : (data.Price !== undefined ? data.Price : '')}">
-            </div>
-            <div class="form-group">
-              <label>Desc</label>
-              <input type="text" id="modal-item-desc" value="${data.desc !== undefined ? data.desc : (data.Desc !== undefined ? data.Desc : '')}">
-            </div>
-            <div class="form-group">
               <label>Status</label>
               <select id="modal-item-status">
-                <option value="PURCHASE" ${data.status === 'PURCHASE' ? 'selected' : ''}>PURCHASE</option>
+                <option value="BUY THE ALBUM" ${data.status === 'BUY THE ALBUM' ? 'selected' : ''}>BUY THE ALBUM</option>
                 <option value="COMING SOON" ${data.status === 'COMING SOON' ? 'selected' : ''}>COMING SOON</option>
               </select>
             </div>
-            <div class="form-group">
-              <label>Payment URL</label>
-              <input type="text" id="modal-item-payment-url" value="${data.payment_url !== undefined ? data.payment_url : ''}">
+            <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
+              <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Digital Album Variant</h4>
+              <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                  <label>Price Amount ($)</label>
+                  <input type="number" step="0.01" id="modal-item-variant-album-price" value="${variants.album?.price_amount !== undefined ? variants.album.price_amount : '9.99'}">
+                </div>
+                <div style="flex: 2;">
+                  <label>Paddle Price ID</label>
+                  <input type="text" id="modal-item-variant-album-id" value="${variants.album?.paddle_price_id || ''}">
+                </div>
+              </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
               <label>Display Order (Number)</label>
               <input type="number" id="modal-item-order" value="${data.order || 0}">
             </div>
@@ -897,8 +934,8 @@
               <input type="text" id="modal-item-composer" value="${data.composer || ''}">
             </div>
             <div class="form-group">
-              <label>Description (HTML)</label>
-              <textarea id="modal-item-description">${data.description || ''}</textarea>
+              <label>Synopsis (HTML)</label>
+              <textarea id="modal-item-synopsis">${data.synopsis || data.description || ''}</textarea>
             </div>
           `}
         `;
@@ -917,38 +954,61 @@
           </div>
           <div class="form-group">
             <label>Image URL</label>
-            <input type="text" id="modal-item-image" value="/img/books/placeholder.webp">
+            <input type="text" id="modal-item-image" value="/img/books/placeholder-book-600x1000.jpg">
           </div>
           <div class="form-group">
             <label>ID</label>
             <input type="text" id="modal-item-product-id" value="0">
           </div>
           <div class="form-group">
-            <label>Price</label>
-            <input type="text" id="modal-item-price" value="">
-          </div>
-          <div class="form-group">
-            <label>Desc</label>
-            <input type="text" id="modal-item-desc" value="">
-          </div>
-          <div class="form-group">
             <label>Status</label>
             <select id="modal-item-status">
-              <option value="PURCHASE" selected>PURCHASE</option>
+              <option value="BUY THE BOOK" selected>BUY THE BOOK</option>
               <option value="COMING SOON">COMING SOON</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Payment URL</label>
-            <input type="text" id="modal-item-payment-url" value="">
+          <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
+            <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle E-Book (EPUB) Variant</h4>
+            <div style="display: flex; gap: 10px;">
+              <div style="flex: 1;">
+                <label>Price Amount ($)</label>
+                <input type="number" step="0.01" id="modal-item-variant-epub-price" value="9.99">
+              </div>
+              <div style="flex: 2;">
+                <label>Paddle Price ID</label>
+                <input type="text" id="modal-item-variant-epub-id" value="">
+              </div>
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
+            <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Audiobook Variant</h4>
+            <div style="display: flex; gap: 10px;">
+              <div style="flex: 1;">
+                <label>Price Amount ($)</label>
+                <input type="number" step="0.01" id="modal-item-variant-audio-price" value="9.99">
+              </div>
+              <div style="flex: 2;">
+                <label>Paddle Price ID</label>
+                <input type="text" id="modal-item-variant-audio-id" value="">
+              </div>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
+            <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Bundle (EPUB & Audio) Variant</h4>
+            <div style="display: flex; gap: 10px;">
+              <div style="flex: 1;">
+                <label>Price Amount ($)</label>
+                <input type="number" step="0.01" id="modal-item-variant-bundle-price" value="14.99">
+              </div>
+              <div style="flex: 2;">
+                <label>Paddle Price ID</label>
+                <input type="text" id="modal-item-variant-bundle-id" value="">
+              </div>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
             <label>Display Order (Number)</label>
             <input type="number" id="modal-item-order" value="0">
-          </div>
-          <div class="form-group">
-            <label>Subtitle</label>
-            <input type="text" id="modal-item-subtitle" value="A novel by Thomas Gideon">
           </div>
           <div class="form-group">
             <label>Synopsis (HTML)</label>
@@ -970,32 +1030,33 @@
           </div>
           <div class="form-group">
             <label>Image URL</label>
-            <input type="text" id="modal-item-image" value="/img/music/placeholder.webp">
+            <input type="text" id="modal-item-image" value="img/music/placeholder-music-500x500.jpg">
           </div>
           <div class="form-group">
             <label>ID</label>
             <input type="text" id="modal-item-product-id" value="0">
           </div>
           <div class="form-group">
-            <label>Price</label>
-            <input type="text" id="modal-item-price" value="">
-          </div>
-          <div class="form-group">
-            <label>Desc</label>
-            <input type="text" id="modal-item-desc" value="">
-          </div>
-          <div class="form-group">
             <label>Status</label>
             <select id="modal-item-status">
-              <option value="PURCHASE" selected>PURCHASE</option>
+              <option value="BUY THE ALBUM" selected>BUY THE ALBUM</option>
               <option value="COMING SOON">COMING SOON</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Payment URL</label>
-            <input type="text" id="modal-item-payment-url" value="">
+          <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
+            <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Digital Album Variant</h4>
+            <div style="display: flex; gap: 10px;">
+              <div style="flex: 1;">
+                <label>Price Amount ($)</label>
+                <input type="number" step="0.01" id="modal-item-variant-album-price" value="9.99">
+              </div>
+              <div style="flex: 2;">
+                <label>Paddle Price ID</label>
+                <input type="text" id="modal-item-variant-album-id" value="">
+              </div>
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
             <label>Display Order (Number)</label>
             <input type="number" id="modal-item-order" value="0">
           </div>
@@ -1004,8 +1065,8 @@
             <input type="text" id="modal-item-composer" value="">
           </div>
           <div class="form-group">
-            <label>Description (HTML)</label>
-            <textarea id="modal-item-description"></textarea>
+            <label>Synopsis (HTML)</label>
+            <textarea id="modal-item-synopsis"></textarea>
           </div>
         `;
         document.getElementById('edit-modal').style.display = 'block';
@@ -1120,30 +1181,55 @@
 
         let data;
         if (editingType === 'book') {
+          const variants = {
+            bundle: {
+              paddle_price_id: document.getElementById('modal-item-variant-bundle-id').value.trim(),
+              price_amount: parseFloat(document.getElementById('modal-item-variant-bundle-price').value) || 14.99,
+              currency: 'USD',
+              label: 'EPUB & Audiobook Bundle'
+            },
+            epub: {
+              paddle_price_id: document.getElementById('modal-item-variant-epub-id').value.trim(),
+              price_amount: parseFloat(document.getElementById('modal-item-variant-epub-price').value) || 9.99,
+              currency: 'USD',
+              label: 'EPUB eBook Only'
+            },
+            audio: {
+              paddle_price_id: document.getElementById('modal-item-variant-audio-id').value.trim(),
+              price_amount: parseFloat(document.getElementById('modal-item-variant-audio-price').value) || 9.99,
+              currency: 'USD',
+              label: 'Audiobook Only'
+            }
+          };
+
           data = {
             id: document.getElementById('modal-item-product-id').value,
-            price: document.getElementById('modal-item-price').value,
-            desc: document.getElementById('modal-item-desc').value,
             status: document.getElementById('modal-item-status').value,
-            payment_url: document.getElementById('modal-item-payment-url').value,
             order: parseInt(document.getElementById('modal-item-order').value) || 0,
             image: document.getElementById('modal-item-image').value,
-            subtitle: document.getElementById('modal-item-subtitle').value,
-            synopsis: document.getElementById('modal-item-synopsis').value
+            synopsis: document.getElementById('modal-item-synopsis').value,
+            variants: variants
           };
           if (editingKey && editingKey !== title) delete currentBooksData[editingKey];
           currentBooksData[title] = data;
         } else {
+          const variants = {
+            album: {
+              paddle_price_id: document.getElementById('modal-item-variant-album-id').value.trim(),
+              price_amount: parseFloat(document.getElementById('modal-item-variant-album-price').value) || 9.99,
+              currency: 'USD',
+              label: 'Digital Album'
+            }
+          };
+
           data = {
             id: document.getElementById('modal-item-product-id').value,
-            price: document.getElementById('modal-item-price').value,
-            desc: document.getElementById('modal-item-desc').value,
             status: document.getElementById('modal-item-status').value,
-            payment_url: document.getElementById('modal-item-payment-url').value,
             order: parseInt(document.getElementById('modal-item-order').value) || 0,
             image: document.getElementById('modal-item-image').value,
             composer: document.getElementById('modal-item-composer').value,
-            description: document.getElementById('modal-item-description').value
+            synopsis: document.getElementById('modal-item-synopsis').value,
+            variants: variants
           };
           if (editingKey && editingKey !== title) delete currentMusicData[editingKey];
           currentMusicData[title] = data;
