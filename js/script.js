@@ -900,7 +900,8 @@ const populateUI = (data) => {
             <div class="book-img-wrap">
               <img src="${book.image}" alt="${title}" referrerPolicy="no-referrer">
             </div>
-            <h4 class="book-title">${title}</h4>
+            <!-- <h4 class="book-title">${title} The Book</h4> -->
+            <h4 class="book-title">${title.toUpperCase()} THE BOOK</h4>
           </a>
         `;
       }).join('');
@@ -985,8 +986,9 @@ const populateUI = (data) => {
               <img src="${music.image}" alt="${title}" referrerPolicy="no-referrer">
             </div>
             <div class="music-info">
-              <h4 class="music-title">${title}</h4>
-              <p class="composer">${music.composer || ''}</p>
+              <!-- <h4 class="music-title">${title} The Album</h4> -->
+              <h4 class="music-title">${title.toUpperCase()} THE ALBUM</h4>
+              <!-- <p class="composer">${music.composer || ''}</p> -->
             </div>
           </a>
         `;
