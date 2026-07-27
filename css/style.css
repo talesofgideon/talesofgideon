@@ -1578,12 +1578,17 @@ html.dark-mode .pp-button-wrap a:hover {
   .books-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 48px;
   }
 }
 
 @media (min-width: 1024px) {
   .music-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 64px;
+  }
+   .books-grid {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 64px;
   }

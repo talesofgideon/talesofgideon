@@ -45,15 +45,30 @@
     <link rel="preload" href="./fonts/dm-serif-display-v17-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- work-sans-regular - latin -->
-	<link rel="preload" href="./fonts/work-sans-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+	  <link rel="preload" href="./fonts/work-sans-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 
-	<!-- gelasio-regular - latin -->
-	<link rel="preload" href="./fonts/gelasio-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+	  <!-- gelasio-regular - latin -->
+	  <link rel="preload" href="./fonts/gelasio-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 
-	<!-- source-serif-4-regular -->
-	<link rel="preload" href="./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
-
+	  <!-- source-serif-4-regular -->
+	  <link rel="preload" href="./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- load the stylesheet that will reference the LCP image. -->
     <link rel="stylesheet" href="css/style.css?v=2">
+
+    <!-- preload LCP image high fetchpriority starts loading with stylesheet. -->
+  
+    <!-- preload mobile image for small viewports -->
+    <link rel="preload" fetchpriority="high" as="image" 
+      href="img/default/exodus-noconner-0-650x850.jpg" 
+      type="image/jpeg" 
+      media="(max-width: 767px)">
+
+    <!-- preload desktop image for large viewports -->
+    <link rel="preload" fetchpriority="high" as="image" 
+      href="img/default/hero1-1920x1080.jpg" 
+      type="image/jpeg" 
+      media="(min-width: 768px)">
 
     <script>
       (function() {
@@ -176,7 +191,7 @@
           </button>
         </div>
 
-        <button class="mobile-toggle" id="menu-toggle">
+        <button class="mobile-toggle" id="menu-toggle" aria-label="Open main menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
@@ -249,17 +264,17 @@
             <!-- Carousel items fallback content -->
             <div class="carousel-item">
               <a href="book-detail.html?id=1&amp;title=Exodus">
-              <img src="img/books/exodus-600x1000.jpg" alt="Exodus" referrerpolicy="no-referrer">
+              <img fetchpriority="low" src="img/books/exodus-600x1000.jpg" alt="Exodus" referrerpolicy="no-referrer">
               </a>
             </div>
             <div class="carousel-item">
               <a href="book-detail.html?id=2&amp;title=Genesis">
-              <img src="img/books/genesis-600x1000.jpg" alt="Genesis" referrerpolicy="no-referrer">
+              <img fetchpriority="low" src="img/books/genesis-600x1000.jpg" alt="Genesis" referrerpolicy="no-referrer">
               </a>
             </div>
             <div class="carousel-item">
               <a href="book-detail.html?id=3&amp;title=Revelation">
-              <img src="img/books/revelation-600x1000.jpg" alt="Revelation" referrerpolicy="no-referrer">
+              <img fetchpriority="low" src="img/books/revelation-600x1000.jpg" alt="Revelation" referrerpolicy="no-referrer">
               </a>
             </div>
 
@@ -302,7 +317,7 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
-    <script src="js/script.js?v=2"></script>
+    <script src="js/script.js?v=2" defer></script>
 
 </body>
 </html>
