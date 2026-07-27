@@ -199,7 +199,7 @@ const defaultBooksData = {
     "variants": {
       "bundle": {
         "paddle_price_id": "pri_exodus_bundle_123",
-        "price_amount": 7.99,
+        "price_amount": 6.99,
         "currency": "USD",
         "label": "EPUB & Audiobook Bundle"
       },
@@ -211,7 +211,7 @@ const defaultBooksData = {
       },
       "audio": {
         "paddle_price_id": "pri_exodus_audio_789",
-        "price_amount": 4.99,
+        "price_amount": 7.99,
         "currency": "USD",
         "label": "Audiobook Only"
       }
@@ -226,19 +226,19 @@ const defaultBooksData = {
     "variants": {
       "bundle": {
         "paddle_price_id": "pri_genesis_bundle_123",
-        "price_amount": 11.99,
+        "price_amount": 6.99,
         "currency": "USD",
         "label": "EPUB & Audiobook Bundle"
       },
       "epub": {
         "paddle_price_id": "pri_genesis_epub_456",
-        "price_amount": 10.99,
+        "price_amount": 2.99,
         "currency": "USD",
         "label": "EPUB eBook Only"
       },
       "audio": {
         "paddle_price_id": "pri_genesis_audio_789",
-        "price_amount": 9.99,
+        "price_amount": 7.99,
         "currency": "USD",
         "label": "Audiobook Only"
       }
@@ -253,19 +253,19 @@ const defaultBooksData = {
     "variants": {
       "bundle": {
         "paddle_price_id": "pri_revelation_bundle_123",
-        "price_amount": 8.99,
+        "price_amount": 6.99,
         "currency": "USD",
         "label": "EPUB & Audiobook Bundle"
       },
       "epub": {
         "paddle_price_id": "pri_revelation_epub_456",
-        "price_amount": 7.99,
+        "price_amount": 2.99,
         "currency": "USD",
         "label": "EPUB eBook Only"
       },
       "audio": {
         "paddle_price_id": "pri_revelation_audio_789",
-        "price_amount": 6.99,
+        "price_amount": 7.99,
         "currency": "USD",
         "label": "Audiobook Only"
       }
@@ -284,7 +284,7 @@ const defaultMusicData = {
     "variants": {
       "album": {
         "paddle_price_id": "pri_exodus_music_123",
-        "price_amount": 9.99,
+        "price_amount": 4.99,
         "currency": "USD",
         "label": "Digital Album"
       }
@@ -300,7 +300,7 @@ const defaultMusicData = {
     "variants": {
       "album": {
         "paddle_price_id": "pri_genesis_music_123",
-        "price_amount": 9.99,
+        "price_amount": 4.99,
         "currency": "USD",
         "label": "Digital Album"
       }
@@ -316,7 +316,7 @@ const defaultMusicData = {
     "variants": {
       "album": {
         "paddle_price_id": "pri_revelation_music_123",
-        "price_amount": 9.99,
+        "price_amount": 4.99,
         "currency": "USD",
         "label": "Digital Album"
       }
@@ -379,17 +379,6 @@ const updateElement = (id, content, isHTML = false) => {
     else el.innerText = content;
   }
 };
-
-
-//function toTitleCase(str) {
-//  return str.replace(
-//    /\w\S*/g,
-//    text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
-//  );
-//}
-// const example = 'john smith';
-// console.log(`"${example}" becomes "${toTitleCase(example)}"`);
-
 
 // Update "NEW" nav link based on h1 on new.html and persist it
 const updateNewNavLink = () => {
@@ -554,13 +543,11 @@ const populateUI = (data) => {
         //console.log(`"${bookTitle}" becomes "${toTitleCase(bookTitle)}"`);
 
         if (book.subtitle) {
-          //titleHTML = `${bookTitle}<span class="subtitle-label" style="font-size:14px; font-weight:normal; margin-left:10px; opacity:0.7;">${book.subtitle}</span>`;
-          //titleHTML = `${toTitleCase(bookTitle)}<span class="subtitle-label" style="font-size:14px; font-weight:normal; margin-left:10px; opacity:0.7;">${book.subtitle}</span>`;
-          titleHTML = `${bookTitle}<span class="subtitle-label">SELECT VERSION</span>`;
+            titleHTML = `${bookTitle}<span class="subtitle-label">SELECT VERSION</span>`;
         }
 
         if (buyBookTitle.innerHTML !== titleHTML) {
-          buyBookTitle.innerHTML = titleHTML;
+            buyBookTitle.innerHTML = titleHTML;
         }
 
         const buyBookImg = document.getElementById('buy-book-img');
@@ -572,11 +559,6 @@ const populateUI = (data) => {
             buyBookImg.alt = bookTitle;
           }
         }
-
-        // const buyBookSynopsis = document.getElementById('buy-book-synopsis');
-        // if (buyBookSynopsis && buyBookSynopsis.innerHTML !== (book.synopsis || '')) {
-        //  buyBookSynopsis.innerHTML = book.synopsis || '';
-        // }
 
         // Render prices
         const variants = book.variants || {};
@@ -682,31 +664,20 @@ const populateUI = (data) => {
         const newHTML = `
           <div class="music-detail-wrap fade-in active">
             <div class="music-detail-img">
-              <img src="${music.image}" alt="${resolvedTitle}" referrerPolicy="no-referrer">
-              
+              <img src="${music.image}" alt="${resolvedTitle}" referrerPolicy="no-referrer">  
               <div class="music-purchase-links">
-                <!-- <h4>Purchase</h4> -->
                 <div class="music-purchase-grid">
                   <a href="${buttonHref}" class="purchase-btn" ${purchaseTarget}>${labelText}</a>
                 </div>
               </div>
             </div>
-
             <div class="music-detail-info">
-
-              <!-- <h1 id="music-detail-title">${resolvedTitle}</h1> -->
-              <!-- <p class="composer">${music.composer || ''}</p> -->
-              <!-- <div class="separator"></div> -->
-              <!-- <p class="description">${musicDesc}</p> -->
-
               <h1 id="music-detail-title">${resolvedTitle}<span class="composer">${(music.composer).toUpperCase() || ''}
                 </span>
               </h1>
               <div class="separator"></div>
               <p class="description">${musicDesc}</p>
-
             </div>
-
           </div>
         `;
         if (musicDetailContent.innerHTML !== newHTML) {
@@ -846,7 +817,6 @@ const populateUI = (data) => {
       label = "BUY THE BOOK";
 
       finalUrl = `buybook.html?book=${encodeURIComponent(sidebarTitle)}`;
-      // finalUrl = `buy.html?book=${encodeURIComponent((sidebarTitle).toLowerCase())}`;
       // console.log(`"${finalURL}"`);
 
       if (sidebarEbook.getAttribute('target') === '_blank') {
@@ -986,9 +956,7 @@ const populateUI = (data) => {
               <img src="${music.image}" alt="${title}" referrerPolicy="no-referrer">
             </div>
             <div class="music-info">
-              <!-- <h4 class="music-title">${title} The Album</h4> -->
               <h4 class="music-title">${title.toUpperCase()} THE ALBUM</h4>
-              <!-- <p class="composer">${music.composer || ''}</p> -->
             </div>
           </a>
         `;
@@ -1018,7 +986,6 @@ const setupBlogAudio = (post) => {
   const isAudioOn = post && (post.audioEnabled === 'on' || post.audioEnabled === true) && post.audioUrl;
 
   if (isAudioOn && audioPlayer && audioSource) {
-    /*audioContainer.style.display = 'flex';*/
     audioContainer.style.visibility = 'visible';
 
     if (audioSource.getAttribute('src') !== post.audioUrl) {
@@ -1026,7 +993,6 @@ const setupBlogAudio = (post) => {
       audioPlayer.load();
     }
   } else {
-    /*audioContainer.style.display = 'none';*/
     audioContainer.style.visibility = 'hidden';
     if (audioPlayer) {
       audioPlayer.pause();

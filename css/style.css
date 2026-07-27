@@ -272,8 +272,6 @@ a {
 
 @media (min-width: 768px) {
   .padding-large {
-    /*padding: 120px 0;*/
-    /*padding: 50px 0;*/
     padding: 30px 0;
   }
 }
@@ -356,7 +354,6 @@ nav .container {
 }
 
 .nav-links a:hover {
-  /*color: var(--color-accent);*/
   color: var(--color-accent-hover);
 }
 
@@ -536,7 +533,6 @@ section {
   color: var(--color-accent);
   /* border: 1px solid var(--color-accent-text);*/
   /* add a black button end */
-
   font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 700;
@@ -600,7 +596,6 @@ section {
   /* note: for mobile */
   padding: 0 24px;
   /* add to adjust postion of content */
-  /* padding-top: 114px; */
   padding-top: 68px;
 
 }
@@ -1699,24 +1694,11 @@ html.dark-mode .pp-button-wrap a:hover {
 }
 
 .composer {
-  /*
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: var(--color-muted-alt);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  font-weight: 600;
-  */
   font-family: var(--font-ui);
   font-size: 11px;
   font-weight: normal;
   letter-spacing: 0.2em;
   margin-left: 12px;
-
-  /*font-size: 14px;
-  font-weight: 500;
-  color: var(--color-muted);
-  letter-spacing: 0.05em;*/
 }
 
 .music-info .description {
