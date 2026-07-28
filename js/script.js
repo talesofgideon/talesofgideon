@@ -538,13 +538,13 @@ const populateUI = (data) => {
         window.currentBook = book;
         window.currentBook.title = bookTitle;
 
-        let titleHTML = bookTitle;
+        //let titleHTML = bookTitle;
+
+        let titleHTML = `${bookTitle}<span class="subtitle-label">SELECT VERSION</span>`;
 
         //console.log(`"${bookTitle}" becomes "${toTitleCase(bookTitle)}"`);
 
-        if (book.subtitle) {
-            titleHTML = `${bookTitle}<span class="subtitle-label">SELECT VERSION</span>`;
-        }
+        //if (book.subtitle) {titleHTML = `${bookTitle}<span class="subtitle-label">SELECT VERSION</span>`;}
 
         if (buyBookTitle.innerHTML !== titleHTML) {
             buyBookTitle.innerHTML = titleHTML;

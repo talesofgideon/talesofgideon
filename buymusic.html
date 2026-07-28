@@ -3,6 +3,9 @@
   <head>
     <meta name="robots" content="noindex">
 
+    <!-- Paddle v3 Billing SDK move to head-->
+    <script src="https://cdn.paddle.com/paddle/v3/paddle.js" defer></script>
+
     <!-- favicon -->
 
     <!-- icon for light mode grey face -->
@@ -100,8 +103,8 @@
       })();
     </script>
 
-    <!-- Paddle v3 Billing SDK -->
-    <script src="https://cdn.paddle.com/paddle/v3/paddle.js"></script>
+    <!-- Paddle v3 Billing SDK move to head-->
+    <!-- <script src="https://cdn.paddle.com/paddle/v3/paddle.js" defer></script> -->
 
     <style>
       .buy-grid {
@@ -252,10 +255,10 @@
         <div class="container">
           <div class="book-detail-grid">
 
-            <!-- Left Column: Sidebar with cover -->
+            <!-- Left Column: Sidebar fallback populated by JavaScript -->
             <div class="sidebar fade-in active">
               <div class="sidebar-widget">
-                <img id="buy-music-img" src="img/music/placeholder-music-600x1000.jpg" alt="Album Cover" class="sidebar-book-img" referrerPolicy="no-referrer">
+                <img id="buy-music-img" src="img/music/exodus-600x1000.jpg" alt="Exodus" class="sidebar-book-img" referrerpolicy="no-referrer">
               </div>
             </div>
 
@@ -288,14 +291,32 @@
         </div>
       </section>
 
-      <!-- Music Carousel Section -->
-      <section id="music-carousel" class="fade-in">
+      <!-- Music Carousel Section fallback populated by JavaScript -->
+      <section id="music-carousel" class="fade-in active">
         <div class="carousel-container">
           <div id="music-carousel-track" class="carousel-track">
-            <!-- Carousel items will be populated by JavaScript -->
+
+            <div class="carousel-item">
+              <a href="music-detail.html?id=1&amp;title=Exodus">
+                <img src="img/music/exodus-600x1000.jpg" alt="Exodus" referrerpolicy="no-referrer">
+              </a>
+            </div>
+      
+            <div class="carousel-item">
+              <a href="music-detail.html?id=2&amp;title=Genesis">
+                <img src="img/music/genesis-600x1000.jpg" alt="Genesis" referrerpolicy="no-referrer">
+              </a>
+            </div>
+      
+            <div class="carousel-item">
+              <a href="music-detail.html?id=3&amp;title=Revelation">
+                <img src="img/music/revelation-600x1000.jpg" alt="Revelation" referrerpolicy="no-referrer">
+              </a>
+            </div>
           </div>
         </div>
       </section>
+
     </main>
 
     <!-- Footer -->

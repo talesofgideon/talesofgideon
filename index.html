@@ -45,13 +45,13 @@
     <link rel="preload" href="./fonts/dm-serif-display-v17-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- work-sans-regular - latin -->
-	  <link rel="preload" href="./fonts/work-sans-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="./fonts/work-sans-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 
-	  <!-- gelasio-regular - latin -->
-	  <link rel="preload" href="./fonts/gelasio-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+	<!-- gelasio-regular - latin -->
+	<link rel="preload" href="./fonts/gelasio-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 
-	  <!-- source-serif-4-regular -->
-	  <link rel="preload" href="./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
+	<!-- source-serif-4-regular -->
+	<link rel="preload" href="./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- load the stylesheet that will reference the LCP image. -->
     <link rel="stylesheet" href="css/style.css?v=2">
@@ -216,7 +216,9 @@
     <main>
       <!-- Hero Section -->
       <section id="new-book" class="hero">
-        <div id="hero-bg" class="hero-bg"></div>
+        <!-- <div id="hero-bg" class="hero-bg"></div> -->
+       	<!-- populated by JavaScript -->
+		<div id="hero-bg" class="hero-bg" style="background-image: url(&quot;img/default/exodus-noconner-0-650x850.jpg&quot;);"></div>
         <canvas id="hero-effects-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
         <div class="hero-content fade-in">
           <h1 id="new-book-title" class="hero-title"></h1>
@@ -242,7 +244,7 @@
             <div class="sidebar">
               <div class="sidebar-widget">
 				
-				        <img id="sidebar-book-img" src="img/default/placeholder-book-600x1000.jpg" alt="Place holder" class="sidebar-book-img" referrerPolicy="no-referrer">
+				<img id="sidebar-book-img" src="img/default/placeholder-book-600x1000.jpg" alt="Place holder" class="sidebar-book-img" referrerPolicy="no-referrer">
 
                 <div class="book-purchase-links">
                   <!-- <h4>Purchase</h4> -->
