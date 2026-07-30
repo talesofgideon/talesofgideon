@@ -471,19 +471,12 @@
                 }
               } else {
                   // Fallback simulation box drops here only if Paddle engine physically fails to boot
-                  alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '6.99'}\nPaddle Price ID: ${priceId}`);
+                  alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '9.99'}\nPaddle Price ID: ${priceId}`);
               } 
             }
-                // window.addEventListener('DOMContentLoaded', () => {setupPaddle();});
-                // Safer alternative to inline onload
-                window.addEventListener('DOMContentLoaded', () => {
-                if (typeof Paddle !== 'undefined') {
-                    setupPaddle();
-                } else {
-                    console.error("Paddle.js failed to download from CDN.");
-                }
-            });
-
+      window.addEventListener('DOMContentLoaded', () => {
+      setupPaddle();
+    });
     </script>
      
     <script src="js/script.js?v=2"></script>
