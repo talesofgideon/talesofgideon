@@ -431,8 +431,8 @@
         try {
           if (typeof Paddle !== 'undefined') {
             Paddle.Initialize({ 
-              //token: 'sandbox-token-placeholder', // Sandbox token fallback
-              token: 'test_1d784d1c936afe3c1a562f8566a',
+              //clientToken: 'sandbox-token-placeholder', // sandbox token fallback
+              clientToken: 'test_1d784d1c936afe3c1a562f8566a',
               environment: 'sandbox' 
             });
             paddleInitialized = true;
@@ -466,7 +466,7 @@
                 }
               } else {
                   // Fallback simulation box drops here only if Paddle engine physically fails to boot
-                  alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '9.99'}\nPaddle Price ID: ${priceId}`);
+                  alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '7.99'}\nPaddle Price ID: ${priceId}`);
               } 
             }
       window.addEventListener('DOMContentLoaded', () => {
