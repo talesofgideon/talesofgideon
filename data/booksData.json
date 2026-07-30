@@ -7,19 +7,19 @@
     "synopsis": "<p>Conner's best friend AJ and new friend quantum A.I George, help diagnose what's happening to Conner as his world begins to change.</p>\n<p>AJ's and George's realities change too as they join Conner on this  adventure.</p>",
     "variants": {
       "bundle": {
-        "paddle_price_id": "pri_exodus_bundle_123",
+        "paddle_price_id": "pri_01kysjrw52j4zn0jyq54dshzxa",
         "price_amount": 6.99,
         "currency": "USD",
         "label": "EPUB & Audiobook Bundle"
       },
       "epub": {
-        "paddle_price_id": "pri_exodus_epub_456",
+        "paddle_price_id": "pri_01kysjc24brk9zthcbvhb0r7t3",
         "price_amount": 2.99,
         "currency": "USD",
         "label": "EPUB eBook Only"
       },
       "audio": {
-        "paddle_price_id": "pri_exodus_audio_789",
+        "paddle_price_id": "pri_01kysjrw52j4zn0jyq54dshzxa",
         "price_amount": 7.99,
         "currency": "USD",
         "label": "Audiobook Only"
