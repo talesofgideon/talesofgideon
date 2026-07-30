@@ -4,11 +4,9 @@
     <meta name="robots" content="noindex">
 
     <!-- Paddle v2 Billing SDK move to head-->
-       
-    <!-- 1. Let the browser download the file, then instantly execute our setup function when it's ready -->
 
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js" data-cfasync="false" 
-  crossorigin="anonymous" onload="setupPaddle()"></script>
+  crossorigin="anonymous"></script>
 
     <!-- favicon -->
 
@@ -427,56 +425,56 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
-<script>
-  let paddleInitialized = false;
-
-  // 2. This runs the exact millisecond the file finishes loading
-  function setupPaddle() {
-    try {
-      if (typeof Paddle !== 'undefined') {
-        // Force the library into staging mode immediately
-        Paddle.Environment.set('sandbox'); 
-        
-        // Pass your real sandbox key using the verified 'token' property
-        Paddle.Initialize({ 
-          token: 'test_1d784d1c936afe3c1a562f8566a' 
-        });
-        
-        paddleInitialized = true;
-        console.log('Paddle v3 safely initialized in sandbox mode.');
+    <script>
+      // Initialize Paddle SDK if client token exists (uses sandbox by default)
+      let paddleInitialized = false;
+      
+      function setupPaddle() {
+        try {
+          if (typeof Paddle !== 'undefined') {
+            Paddle.Initialize({ 
+              //token: 'sandbox-token-placeholder', // Sandbox token fallback
+              token: 'test_1d784d1c936afe3c1a562f8566a',
+              environment: 'sandbox' 
+            });
+            paddleInitialized = true;
+            console.log('Paddle v2 initialized in sandbox mode.');
+          }
+        } catch (e) {
+          console.warn('Paddle initialization warning (expected in local/offline):', e);
+        }
       }
-    } catch (e) {
-      console.warn('Paddle initialization crash log:', e);
-    }
-  }
 
-  // 3. Your button handler remains perfectly unchanged
-  function triggerCheckout(variantType) {
-    const book = window.currentBook;
-    if (!book) return;
-    const variants = book.variants || {};
-    const selectedVariant = variants[variantType] || {};
-    const priceId = selectedVariant.paddle_price_id;
+      function triggerCheckout(variantType) {
+            const book = window.currentBook;
+            if (!book) return;
+            const variants = book.variants || {};
+            const selectedVariant = variants[variantType] || {};
+            const priceId = selectedVariant.paddle_price_id;
 
-    if (!priceId) {
-      alert(`The Paddle Price ID for ${selectedVariant.label || variantType} has not been configured in the Books Manager.`);
-      return;
-    }
-
-    if (paddleInitialized && typeof Paddle !== 'undefined') {
-      try {
-        Paddle.Checkout.open({
-          items: [{ priceId: priceId, quantity: 1 }]
-        });
-      } catch (e) {
-        console.error('Paddle Checkout error:', e);
-        alert(`Paddle Checkout failed to load: ${e.message}`);
-      }
-    } else {
-      alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPaddle Price ID: ${priceId}`);
-    }
-  }
-</script>
+              if (!priceId) {
+                  alert(`The Paddle Price ID for ${selectedVariant.label || variantType} has not been configured in the Books Manager (Admin panel) yet.`);
+              return;
+              }
+              // CLEANED UP: Stripped out the restrictive layout string match check
+              if (paddleInitialized && typeof Paddle !== 'undefined') {
+                try {
+                  Paddle.Checkout.open({
+                    items: [{ priceId: priceId, quantity: 1 }]
+                  });
+                } catch (e) {
+                    console.error('Paddle Checkout error:', e);
+                    alert(`Paddle Checkout failed to load: ${e.message}`);
+                }
+              } else {
+                  // Fallback simulation box drops here only if Paddle engine physically fails to boot
+                  alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '9.99'}\nPaddle Price ID: ${priceId}`);
+              } 
+            }
+      window.addEventListener('DOMContentLoaded', () => {
+      setupPaddle();
+    });
+    </script>
      
     <script src="js/script.js?v=2"></script>
   </body>
