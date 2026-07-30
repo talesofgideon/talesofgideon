@@ -331,7 +331,7 @@
                   </div>
                   <div>
                     <div class="variant-price" id="price-audio">$9.99 <span>USD</span></div>
-                    <button class="variant-btn" id="btn-audio" onclick="triggerCheckout('audio')">BUY AUDIOBOOK</button>
+                    <button type="button" class="variant-btn" id="btn-audio" onclick="triggerCheckout('audio')">BUY AUDIOBOOK</button>
                   </div>
                 </div>
 
@@ -342,7 +342,7 @@
                   <div class="variant-desc">Get the complete package: read the EPUB eBook and listen to the full Audiobook.</div>
                   <div>
                     <div class="variant-price" id="price-bundle">$14.99 <span>USD</span></div>
-                    <button class="variant-btn" id="btn-bundle" onclick="triggerCheckout('bundle')">BUY BUNDLE</button>
+                    <button type="button" class="variant-btn" id="btn-bundle" onclick="triggerCheckout('bundle')">BUY BUNDLE</button>
                   </div>
                 </div>
 
@@ -353,7 +353,7 @@
                   </div>
                   <div>
                     <div class="variant-price" id="price-epub">$9.99 <span>USD</span></div>
-                    <button class="variant-btn" id="btn-epub" onclick="triggerCheckout('epub')">BUY EBOOK</button>
+                    <button type="button" class="variant-btn" id="btn-epub" onclick="triggerCheckout('epub')">BUY EBOOK</button>
                   </div>
                 </div>
 
@@ -426,11 +426,12 @@
     <script>
       // Initialize Paddle SDK if client token exists (uses sandbox by default)
       let paddleInitialized = false;
+      
       function setupPaddle() {
         try {
           if (typeof Paddle !== 'undefined') {
             Paddle.Initialize({ 
-              // token: 'sandbox-token-placeholder', // Sandbox token fallback
+              //token: 'sandbox-token-placeholder', // Sandbox token fallback
               token: 'test_1d784d1c936afe3c1a562f8566a',
               environment: 'sandbox' 
             });
@@ -443,35 +444,34 @@
       }
 
       function triggerCheckout(variantType) {
-        const book = window.currentBook;
-        if (!book) return;
-        const variants = book.variants || {};
-        const selectedVariant = variants[variantType] || {};
-        const priceId = selectedVariant.paddle_price_id;
+            const book = window.currentBook;
+            if (!book) return;
+            const variants = book.variants || {};
+            const selectedVariant = variants[variantType] || {};
+            const priceId = selectedVariant.paddle_price_id;
 
-        if (!priceId) {
-          alert(`The Paddle Price ID for ${selectedVariant.label || variantType} has not been configured in the Books Manager (Admin panel) yet.`);
-          return;
-        }
-
-        if (paddleInitialized && typeof Paddle !== 'undefined') {
-          try {
-            Paddle.Checkout.open({
-              items: [{ priceId: priceId, quantity: 1 }]
-            });
-          } catch (e) {
-            console.error('Paddle Checkout error:', e);
-            alert(`Paddle Checkout failed to load: ${e.message}`);
-          }
-        } else {
-          // Fallback info modal if not initialized (or if sandbox client credentials are not live)
-          alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '9.99'}\nPaddle Price ID: ${priceId}\n\nTo make this fully live, provide your Paddle client token in script.js or data/content.json.`);
-        }
-      }
-
+              if (!priceId) {
+                  alert(`The Paddle Price ID for ${selectedVariant.label || variantType} has not been configured in the Books Manager (Admin panel) yet.`);
+              return;
+              }
+              // CLEANED UP: Stripped out the restrictive layout string match check
+              if (paddleInitialized && typeof Paddle !== 'undefined') {
+                try {
+                  Paddle.Checkout.open({
+                    items: [{ priceId: priceId, quantity: 1 }]
+                  });
+                } catch (e) {
+                    console.error('Paddle Checkout error:', e);
+                    alert(`Paddle Checkout failed to load: ${e.message}`);
+                }
+              } else {
+                  // Fallback simulation box drops here only if Paddle engine physically fails to boot
+                  alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '9.99'}\nPaddle Price ID: ${priceId}`);
+              } 
+            }
       window.addEventListener('DOMContentLoaded', () => {
-        setupPaddle();
-      });
+      setupPaddle();
+    });
     </script>
     <script src="js/script.js?v=2"></script>
   </body>
