@@ -10,19 +10,22 @@
         "paddle_price_id": "pri_01kysk9y52wf0m29jhhnh3j2ak",
         "price_amount": 6.99,
         "currency": "USD",
-        "label": "Exodus Digital Edition & Audiobook Bundle"
+        "label": "Exodus Digital Edition & Audiobook Bundle",
+        "r2_file_path": "bundle/thomasgideon-exodus-bundle.zip"
       },
       "epub": {
         "paddle_price_id": "pri_01kysjc24brk9zthcbvhb0r7t3",
         "price_amount": 2.99,
         "currency": "USD",
-        "label": "Exodus Digital Edition"
+        "label": "Exodus Digital Edition",
+        "r2_file_path": "ebook/thomasgideon-exodus.epub"
       },
       "audio": {
         "paddle_price_id": "pri_01kysjrw52j4zn0jyq54dshzxa",
         "price_amount": 7.99,
         "currency": "USD",
-        "label": "Exodus Audiobook"
+        "label": "Exodus Audiobook",
+        "r2_file_path": "audio/thomasgideon-exodus-audiobook.mp3"
       }
     }
   },
@@ -37,19 +40,22 @@
         "paddle_price_id": "pri_01kysr83hqzw0ec1qeh7hx9q95",
         "price_amount": 6.99,
         "currency": "USD",
-        "label": "Genesis Digital Edition & Audiobook Bundle"
+        "label": "Genesis Digital Edition & Audiobook Bundle",
+        "r2_file_path": "bundle/thomasgideon-genesis-bundle.zip"
       },
       "epub": {
         "paddle_price_id": "pri_01kysras5kqrb66j1zvhd6cqrz",
         "price_amount": 2.99,
         "currency": "USD",
-        "label": "Genesis Digital Edition"
+        "label": "Genesis Digital Edition",
+        "r2_file_path": "ebook/thomasgideon-genesis.epub"
       },
       "audio": {
         "paddle_price_id": "pri_01kysr59aamt8dxmp9w9yrq7n9",
         "price_amount": 7.99,
         "currency": "USD",
-        "label": "Genesis Audiobook"
+        "label": "Genesis Audiobook",
+        "r2_file_path": "audio/thomasgideon-genesis-audiobook.mp3"
       }
     }
   },
@@ -64,19 +70,22 @@
         "paddle_price_id": "pri_01kyss0vaazr5z5k7p0e4axpp1",
         "price_amount": 6.99,
         "currency": "USD",
-        "label": "Revelation Digital Edition & Audiobook Bundle"
+        "label": "Revelation Digital Edition & Audiobook Bundle",
+        "r2_file_path": "bundle/thomasgideon-revelation-bundle.zip"
       },
       "epub": {
         "paddle_price_id": "pri_01kyss3sthsrvay2a5jtme55vm",
         "price_amount": 2.99,
         "currency": "USD",
-        "label": "Revelation Digital Edition"
+        "label": "Revelation Digital Edition",
+        "r2_file_path": "ebook/thomasgideon-revelation.epub"
       },
       "audio": {
         "paddle_price_id": "pri_01kyss72j1wwy3jg8ngkg4sc62",
         "price_amount": 7.99,
         "currency": "USD",
-        "label": "Revelation Audiobook"
+        "label": "Revelation Audiobook",
+        "r2_file_path": "audio/thomasgideon-revelation-audiobook.mp3"
       }
     }
   }

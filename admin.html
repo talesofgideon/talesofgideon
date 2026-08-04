@@ -28,19 +28,51 @@
     <title>Admin Panel - Thomas Gideon</title>
 
     <!-- preload fonts -->
-
+    
     <!-- dm-serif-display-regular - latin_latin-ext -->
     <link rel="preload" href="./fonts/dm-serif-display-v17-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
-
     <!-- work-sans-regular - latin -->
     <link rel="preload" href="./fonts/work-sans-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-
     <!-- gelasio-regular - latin -->
     <link rel="preload" href="./fonts/gelasio-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-
     <!-- source-serif-4-regular -->
     <link rel="preload" href="./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
 
+    <style>
+      /* dm-serif-display-regular - latin_latin-ext */
+      @font-face {
+        font-family: 'DM Serif Display';
+        src: url('./fonts/dm-serif-display-v17-latin_latin-ext-regular.woff2') format('woff2');
+        font-display: swap;
+        font-style: normal;
+        font-weight: 400;
+      }
+      /* work-sans-regular - latin */
+      @font-face {
+        font-family: 'Work Sans';
+        src: url('./fonts/work-sans-v24-latin-regular.woff2') format('woff2');
+        font-display: swap;
+        font-style: normal;
+        font-weight: 400;
+      }
+      /* gelasio-regular - latin */
+      @font-face {
+        font-family: 'Gelasio';
+        src: url('./fonts/gelasio-v14-latin-regular.woff2') format('woff2');
+        font-display: swap;
+        font-style: normal;
+        font-weight: 400;
+      }
+      /* source-serif-4-regular */
+      @font-face {
+        font-family: 'Source Serif 4';
+        src: url('./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2') format('woff2');
+        font-display: swap;
+        font-style: normal;
+        font-weight: 400;
+      }
+    </style>
+    
     <link rel="stylesheet" href="css/style.css">
 
     <script>
@@ -820,13 +852,13 @@
         let variants = {};
         if (type === 'book') {
           variants = data.variants || {
-            bundle: { paddle_price_id: '', price_amount: 14.99, currency: 'USD', label: 'EPUB & Audiobook Bundle' },
-            epub: { paddle_price_id: '', price_amount: 9.99, currency: 'USD', label: 'EPUB eBook Only' },
-            audio: { paddle_price_id: '', price_amount: 9.99, currency: 'USD', label: 'Audiobook Only' }
+            bundle: { paddle_price_id: '', price_amount: 6.99, currency: 'USD', label: `${key} Digital Edition & Audiobook Bundle`, r2_file_path: '' },
+            epub: { paddle_price_id: '', price_amount: 2.99, currency: 'USD', label: `${key} Digital Edition`, r2_file_path: '' },
+            audio: { paddle_price_id: '', price_amount: 7.99, currency: 'USD', label: `${key} Audiobook`, r2_file_path: '' }
           };
         } else {
           variants = data.variants || {
-            album: { paddle_price_id: '', price_amount: 9.99, currency: 'USD', label: 'Digital Album' }
+            album: { paddle_price_id: '', price_amount: 4.99, currency: 'USD', label: 'Digital Album', r2_file_path: '' }
           };
         }
         
@@ -854,41 +886,71 @@
               </select>
             </div>
             <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
-              <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle E-Book (EPUB) Variant</h4>
-              <div style="display: flex; gap: 10px;">
+              <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Bundle (EPUB & Audio) Variant</h4>
+              <div style="display: flex; gap: 10px; margin-bottom: 8px;">
                 <div style="flex: 1;">
                   <label>Price Amount ($)</label>
-                  <input type="number" step="0.01" id="modal-item-variant-epub-price" value="${variants.epub?.price_amount !== undefined ? variants.epub.price_amount : '9.99'}">
+                  <input type="number" step="0.01" id="modal-item-variant-bundle-price" value="${variants.bundle?.price_amount !== undefined ? variants.bundle.price_amount : '6.99'}">
+                </div>
+                <div style="flex: 2;">
+                  <label>Paddle Price ID</label>
+                  <input type="text" id="modal-item-variant-bundle-id" value="${variants.bundle?.paddle_price_id || ''}">
+                </div>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                  <label>Variant Label</label>
+                  <input type="text" id="modal-item-variant-bundle-label" value="${variants.bundle?.label || key + ' Digital Edition & Audiobook Bundle'}">
+                </div>
+                <div style="flex: 1;">
+                  <label>R2 File Path (Delivery Optimization)</label>
+                  <input type="text" id="modal-item-variant-bundle-r2" value="${variants.bundle?.r2_file_path || ''}" placeholder="e.g. bundle/thomasgideon-exodus-bundle.zip">
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
+              <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle E-Book (EPUB) Variant</h4>
+              <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+                <div style="flex: 1;">
+                  <label>Price Amount ($)</label>
+                  <input type="number" step="0.01" id="modal-item-variant-epub-price" value="${variants.epub?.price_amount !== undefined ? variants.epub.price_amount : '2.99'}">
                 </div>
                 <div style="flex: 2;">
                   <label>Paddle Price ID</label>
                   <input type="text" id="modal-item-variant-epub-id" value="${variants.epub?.paddle_price_id || ''}">
                 </div>
               </div>
+              <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                  <label>Variant Label</label>
+                  <input type="text" id="modal-item-variant-epub-label" value="${variants.epub?.label || key + ' Digital Edition'}">
+                </div>
+                <div style="flex: 1;">
+                  <label>R2 File Path (Delivery Optimization)</label>
+                  <input type="text" id="modal-item-variant-epub-r2" value="${variants.epub?.r2_file_path || ''}" placeholder="e.g. ebook/thomasgideon-exodus.epub">
+                </div>
+              </div>
             </div>
             <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
               <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Audiobook Variant</h4>
-              <div style="display: flex; gap: 10px;">
+              <div style="display: flex; gap: 10px; margin-bottom: 8px;">
                 <div style="flex: 1;">
                   <label>Price Amount ($)</label>
-                  <input type="number" step="0.01" id="modal-item-variant-audio-price" value="${variants.audio?.price_amount !== undefined ? variants.audio.price_amount : '9.99'}">
+                  <input type="number" step="0.01" id="modal-item-variant-audio-price" value="${variants.audio?.price_amount !== undefined ? variants.audio.price_amount : '7.99'}">
                 </div>
                 <div style="flex: 2;">
                   <label>Paddle Price ID</label>
                   <input type="text" id="modal-item-variant-audio-id" value="${variants.audio?.paddle_price_id || ''}">
                 </div>
               </div>
-            </div>
-            <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
-              <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Bundle (EPUB & Audio) Variant</h4>
               <div style="display: flex; gap: 10px;">
                 <div style="flex: 1;">
-                  <label>Price Amount ($)</label>
-                  <input type="number" step="0.01" id="modal-item-variant-bundle-price" value="${variants.bundle?.price_amount !== undefined ? variants.bundle.price_amount : '14.99'}">
+                  <label>Variant Label</label>
+                  <input type="text" id="modal-item-variant-audio-label" value="${variants.audio?.label || key + ' Audiobook'}">
                 </div>
-                <div style="flex: 2;">
-                  <label>Paddle Price ID</label>
-                  <input type="text" id="modal-item-variant-bundle-id" value="${variants.bundle?.paddle_price_id || ''}">
+                <div style="flex: 1;">
+                  <label>R2 File Path (Delivery Optimization)</label>
+                  <input type="text" id="modal-item-variant-audio-r2" value="${variants.audio?.r2_file_path || ''}" placeholder="e.g. audio/thomasgideon-exodus-audiobook.mp3">
                 </div>
               </div>
             </div>
@@ -910,14 +972,24 @@
             </div>
             <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
               <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Digital Album Variant</h4>
-              <div style="display: flex; gap: 10px;">
+              <div style="display: flex; gap: 10px; margin-bottom: 8px;">
                 <div style="flex: 1;">
                   <label>Price Amount ($)</label>
-                  <input type="number" step="0.01" id="modal-item-variant-album-price" value="${variants.album?.price_amount !== undefined ? variants.album.price_amount : '9.99'}">
+                  <input type="number" step="0.01" id="modal-item-variant-album-price" value="${variants.album?.price_amount !== undefined ? variants.album.price_amount : '4.99'}">
                 </div>
                 <div style="flex: 2;">
                   <label>Paddle Price ID</label>
                   <input type="text" id="modal-item-variant-album-id" value="${variants.album?.paddle_price_id || ''}">
+                </div>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                  <label>Variant Label</label>
+                  <input type="text" id="modal-item-variant-album-label" value="${variants.album?.label || 'Digital Album'}">
+                </div>
+                <div style="flex: 1;">
+                  <label>R2 File Path (Delivery Optimization)</label>
+                  <input type="text" id="modal-item-variant-album-r2" value="${variants.album?.r2_file_path || ''}" placeholder="e.g. music/thomasgideon-exodus-album.zip">
                 </div>
               </div>
             </div>
@@ -950,7 +1022,7 @@
           </div>
           <div class="form-group">
             <label>Image URL</label>
-            <input type="text" id="modal-item-image" value="/img/books/placeholder-book-600x1000.jpg">
+            <input type="text" id="modal-item-image" value="img/books/placeholder-book-600x1000.jpg">
           </div>
           <div class="form-group">
             <label>ID</label>
@@ -964,41 +1036,71 @@
             </select>
           </div>
           <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
-            <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle E-Book (EPUB) Variant</h4>
-            <div style="display: flex; gap: 10px;">
+            <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Bundle (EPUB & Audio) Variant</h4>
+            <div style="display: flex; gap: 10px; margin-bottom: 8px;">
               <div style="flex: 1;">
                 <label>Price Amount ($)</label>
-                <input type="number" step="0.01" id="modal-item-variant-epub-price" value="9.99">
+                <input type="number" step="0.01" id="modal-item-variant-bundle-price" value="6.99">
+              </div>
+              <div style="flex: 2;">
+                <label>Paddle Price ID</label>
+                <input type="text" id="modal-item-variant-bundle-id" value="">
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <div style="flex: 1;">
+                <label>Variant Label</label>
+                <input type="text" id="modal-item-variant-bundle-label" value="" placeholder="e.g. Exodus Digital Edition & Audiobook Bundle">
+              </div>
+              <div style="flex: 1;">
+                <label>R2 File Path (Delivery Optimization)</label>
+                <input type="text" id="modal-item-variant-bundle-r2" value="" placeholder="e.g. bundle/thomasgideon-exodus-bundle.zip">
+              </div>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
+            <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle E-Book (EPUB) Variant</h4>
+            <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+              <div style="flex: 1;">
+                <label>Price Amount ($)</label>
+                <input type="number" step="0.01" id="modal-item-variant-epub-price" value="2.99">
               </div>
               <div style="flex: 2;">
                 <label>Paddle Price ID</label>
                 <input type="text" id="modal-item-variant-epub-id" value="">
               </div>
             </div>
+            <div style="display: flex; gap: 10px;">
+              <div style="flex: 1;">
+                <label>Variant Label</label>
+                <input type="text" id="modal-item-variant-epub-label" value="" placeholder="e.g. Exodus Digital Edition">
+              </div>
+              <div style="flex: 1;">
+                <label>R2 File Path (Delivery Optimization)</label>
+                <input type="text" id="modal-item-variant-epub-r2" value="" placeholder="e.g. ebook/thomasgideon-exodus.epub">
+              </div>
+            </div>
           </div>
           <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
             <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Audiobook Variant</h4>
-            <div style="display: flex; gap: 10px;">
+            <div style="display: flex; gap: 10px; margin-bottom: 8px;">
               <div style="flex: 1;">
                 <label>Price Amount ($)</label>
-                <input type="number" step="0.01" id="modal-item-variant-audio-price" value="9.99">
+                <input type="number" step="0.01" id="modal-item-variant-audio-price" value="7.99">
               </div>
               <div style="flex: 2;">
                 <label>Paddle Price ID</label>
                 <input type="text" id="modal-item-variant-audio-id" value="">
               </div>
             </div>
-          </div>
-          <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
-            <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Bundle (EPUB & Audio) Variant</h4>
             <div style="display: flex; gap: 10px;">
               <div style="flex: 1;">
-                <label>Price Amount ($)</label>
-                <input type="number" step="0.01" id="modal-item-variant-bundle-price" value="14.99">
+                <label>Variant Label</label>
+                <input type="text" id="modal-item-variant-audio-label" value="" placeholder="e.g. Exodus Audiobook">
               </div>
-              <div style="flex: 2;">
-                <label>Paddle Price ID</label>
-                <input type="text" id="modal-item-variant-bundle-id" value="">
+              <div style="flex: 1;">
+                <label>R2 File Path (Delivery Optimization)</label>
+                <input type="text" id="modal-item-variant-audio-r2" value="" placeholder="e.g. audio/thomasgideon-exodus-audiobook.mp3">
               </div>
             </div>
           </div>
@@ -1041,14 +1143,24 @@
           </div>
           <div class="form-group" style="margin-top: 15px; border-top: 1px solid var(--color-border); padding-top: 15px;">
             <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--color-accent-admin);">Paddle Digital Album Variant</h4>
-            <div style="display: flex; gap: 10px;">
+            <div style="display: flex; gap: 10px; margin-bottom: 8px;">
               <div style="flex: 1;">
                 <label>Price Amount ($)</label>
-                <input type="number" step="0.01" id="modal-item-variant-album-price" value="9.99">
+                <input type="number" step="0.01" id="modal-item-variant-album-price" value="4.99">
               </div>
               <div style="flex: 2;">
                 <label>Paddle Price ID</label>
                 <input type="text" id="modal-item-variant-album-id" value="">
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <div style="flex: 1;">
+                <label>Variant Label</label>
+                <input type="text" id="modal-item-variant-album-label" value="Digital Album" placeholder="e.g. Digital Album">
+              </div>
+              <div style="flex: 1;">
+                <label>R2 File Path (Delivery Optimization)</label>
+                <input type="text" id="modal-item-variant-album-r2" value="" placeholder="e.g. music/thomasgideon-exodus-album.zip">
               </div>
             </div>
           </div>
@@ -1177,25 +1289,42 @@
 
         let data;
         if (editingType === 'book') {
+          const bundleR2 = document.getElementById('modal-item-variant-bundle-r2')?.value.trim() || '';
+          const epubR2 = document.getElementById('modal-item-variant-epub-r2')?.value.trim() || '';
+          const audioR2 = document.getElementById('modal-item-variant-audio-r2')?.value.trim() || '';
+
+          const bundleLabel = document.getElementById('modal-item-variant-bundle-label')?.value.trim() || `${title} Digital Edition & Audiobook Bundle`;
+          const epubLabel = document.getElementById('modal-item-variant-epub-label')?.value.trim() || `${title} Digital Edition`;
+          const audioLabel = document.getElementById('modal-item-variant-audio-label')?.value.trim() || `${title} Audiobook`;
+
+          const bundleVar = {
+            paddle_price_id: document.getElementById('modal-item-variant-bundle-id').value.trim(),
+            price_amount: parseFloat(document.getElementById('modal-item-variant-bundle-price').value) || 6.99,
+            currency: 'USD',
+            label: bundleLabel
+          };
+          if (bundleR2) bundleVar.r2_file_path = bundleR2;
+
+          const epubVar = {
+            paddle_price_id: document.getElementById('modal-item-variant-epub-id').value.trim(),
+            price_amount: parseFloat(document.getElementById('modal-item-variant-epub-price').value) || 2.99,
+            currency: 'USD',
+            label: epubLabel
+          };
+          if (epubR2) epubVar.r2_file_path = epubR2;
+
+          const audioVar = {
+            paddle_price_id: document.getElementById('modal-item-variant-audio-id').value.trim(),
+            price_amount: parseFloat(document.getElementById('modal-item-variant-audio-price').value) || 7.99,
+            currency: 'USD',
+            label: audioLabel
+          };
+          if (audioR2) audioVar.r2_file_path = audioR2;
+
           const variants = {
-            bundle: {
-              paddle_price_id: document.getElementById('modal-item-variant-bundle-id').value.trim(),
-              price_amount: parseFloat(document.getElementById('modal-item-variant-bundle-price').value) || 14.99,
-              currency: 'USD',
-              label: 'EPUB & Audiobook Bundle'
-            },
-            epub: {
-              paddle_price_id: document.getElementById('modal-item-variant-epub-id').value.trim(),
-              price_amount: parseFloat(document.getElementById('modal-item-variant-epub-price').value) || 9.99,
-              currency: 'USD',
-              label: 'EPUB eBook Only'
-            },
-            audio: {
-              paddle_price_id: document.getElementById('modal-item-variant-audio-id').value.trim(),
-              price_amount: parseFloat(document.getElementById('modal-item-variant-audio-price').value) || 9.99,
-              currency: 'USD',
-              label: 'Audiobook Only'
-            }
+            bundle: bundleVar,
+            epub: epubVar,
+            audio: audioVar
           };
 
           data = {
@@ -1209,13 +1338,19 @@
           if (editingKey && editingKey !== title) delete currentBooksData[editingKey];
           currentBooksData[title] = data;
         } else {
+          const albumR2 = document.getElementById('modal-item-variant-album-r2')?.value.trim() || '';
+          const albumLabel = document.getElementById('modal-item-variant-album-label')?.value.trim() || 'Digital Album';
+
+          const albumVar = {
+            paddle_price_id: document.getElementById('modal-item-variant-album-id').value.trim(),
+            price_amount: parseFloat(document.getElementById('modal-item-variant-album-price').value) || 4.99,
+            currency: 'USD',
+            label: albumLabel
+          };
+          if (albumR2) albumVar.r2_file_path = albumR2;
+
           const variants = {
-            album: {
-              paddle_price_id: document.getElementById('modal-item-variant-album-id').value.trim(),
-              price_amount: parseFloat(document.getElementById('modal-item-variant-album-price').value) || 9.99,
-              currency: 'USD',
-              label: 'Digital Album'
-            }
+            album: albumVar
           };
 
           data = {

@@ -11,7 +11,8 @@
         "paddle_price_id": "pri_exodus_music_123",
         "price_amount": 4.99,
         "currency": "USD",
-        "label": "Digital Album"
+        "label": "Digital Album",
+        "r2_file_path": "music/thomasgideon-exodus-album.zip"
       }
     }
   },
@@ -27,7 +28,8 @@
         "paddle_price_id": "pri_genesis_music_123",
         "price_amount": 4.99,
         "currency": "USD",
-        "label": "Digital Album"
+        "label": "Digital Album",
+        "r2_file_path": "music/thomasgideon-genesis-album.zip"
       }
     }
   },
@@ -43,7 +45,8 @@
         "paddle_price_id": "pri_revelation_music_123",
         "price_amount": 4.99,
         "currency": "USD",
-        "label": "Digital Album"
+        "label": "Digital Album",
+        "r2_file_path": "music/thomasgideon-revelation-album.zip"
       }
     }
   }

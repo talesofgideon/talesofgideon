@@ -5,8 +5,6 @@
 
     <!-- Paddle v2 Billing SDK move to head-->
 
-    <!-- <script src="https://cdn.paddle.com/paddle/v2/paddle.js" data-cfasync="false" crossorigin="anonymous"></script> -->
-
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 
     <!-- favicon -->
@@ -22,18 +20,50 @@
     <title>Buy Book - Thomas Gideon</title>
 
     <!-- preload fonts -->
-
+    
     <!-- dm-serif-display-regular - latin_latin-ext -->
     <link rel="preload" href="./fonts/dm-serif-display-v17-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
-
     <!-- work-sans-regular - latin -->
     <link rel="preload" href="./fonts/work-sans-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-
     <!-- gelasio-regular - latin -->
     <link rel="preload" href="./fonts/gelasio-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-
     <!-- source-serif-4-regular -->
     <link rel="preload" href="./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+      /* dm-serif-display-regular - latin_latin-ext */
+      @font-face {
+        font-family: 'DM Serif Display';
+        src: url('./fonts/dm-serif-display-v17-latin_latin-ext-regular.woff2') format('woff2');
+        font-display: swap;
+        font-style: normal;
+        font-weight: 400;
+      }
+      /* work-sans-regular - latin */
+      @font-face {
+        font-family: 'Work Sans';
+        src: url('./fonts/work-sans-v24-latin-regular.woff2') format('woff2');
+        font-display: swap;
+        font-style: normal;
+        font-weight: 400;
+      }
+      /* gelasio-regular - latin */
+      @font-face {
+        font-family: 'Gelasio';
+        src: url('./fonts/gelasio-v14-latin-regular.woff2') format('woff2');
+        font-display: swap;
+        font-style: normal;
+        font-weight: 400;
+      }
+      /* source-serif-4-regular */
+      @font-face {
+        font-family: 'Source Serif 4';
+        src: url('./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2') format('woff2');
+        font-display: swap;
+        font-style: normal;
+        font-weight: 400;
+      }
+    </style>
 
     <link rel="stylesheet" href="css/style.css?v=2">
     
@@ -459,30 +489,39 @@
                   alert(`The Paddle Price ID for ${selectedVariant.label || variantType} has not been configured in the Books Manager (Admin panel) yet.`);
               return;
               }
-              // CLEANED UP: Stripped out the restrictive layout string match check
+
+      // ZERO-MAINTENANCE ADDITION: Grab the file path from your variant object
+      // Fallback string helps flag items missing configurations during your tests
+
+            const filePath = selectedVariant.r2_file_path || `ebook/missing-path-for-${variantType}.epub`;
+
               if (paddleInitialized && typeof Paddle !== 'undefined') {
                 try {
                   Paddle.Checkout.open({
-                    items: [{ priceId: priceId, quantity: 1 }]
-                  });
-                } catch (e) {
-                    console.error('Paddle Checkout error:', e);
-                    alert(`Paddle Checkout failed to load: ${e.message}`);
-                }
-              } else {
-                  // Fallback simulation box drops here only if Paddle engine physically fails to boot
-                  alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '6.99'}\nPaddle Price ID: ${priceId}`);
-              } 
-            }
-                // window.addEventListener('DOMContentLoaded', () => {setupPaddle();});
-                // Safer alternative to inline onload
-                window.addEventListener('DOMContentLoaded', () => {
-                if (typeof Paddle !== 'undefined') {
+                    items: [{ priceId: priceId, quantity: 1 }],
+                    // This injects the path directly into the Paddle transaction payload
+                    customData: {
+                    r2_file_path: filePath
+                    }
+                });
+              } catch (e) {
+                console.error('Paddle Checkout error:', e);
+                alert(`Paddle Checkout failed to load: ${e.message}`);
+              }
+            } else {
+              // Updated fallback message so you can verify paths during local simulation tests
+              alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '6.99'}\nPaddle Price ID: ${priceId}\nTarget R2 Path: ${filePath}`);
+            } 
+          }
+            // window.addEventListener('DOMContentLoaded', () => {setupPaddle();});
+            // Safer alternative to inline onload
+            window.addEventListener('DOMContentLoaded', () => {
+              if (typeof Paddle !== 'undefined') {
                     setupPaddle();
-                } else {
+              } else {
                     console.error("Paddle.js failed to download from CDN.");
-                }
-            });
+              }
+          });
 
     </script>
      

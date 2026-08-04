@@ -198,22 +198,25 @@ const defaultBooksData = {
     "synopsis": "<p>Conner's best friend AJ and new friend quantum A.I George, help diagnose what's happening to Conner as his world begins to change.</p>\n<p>AJ's and George's realities change too as they join Conner on this adventure.</p>",
     "variants": {
       "bundle": {
-        "paddle_price_id": "pri_exodus_bundle_123",
+        "paddle_price_id": "pri_01kysk9y52wf0m29jhhnh3j2ak",
         "price_amount": 6.99,
         "currency": "USD",
-        "label": "EPUB & Audiobook Bundle"
+        "label": "Exodus Digital Edition & Audiobook Bundle",
+        "r2_file_path": "bundle/thomasgideon-exodus-bundle.zip"
       },
       "epub": {
-        "paddle_price_id": "pri_exodus_epub_456",
+        "paddle_price_id": "pri_01kysjc24brk9zthcbvhb0r7t3",
         "price_amount": 2.99,
         "currency": "USD",
-        "label": "EPUB eBook Only"
+        "label": "Exodus Digital Edition",
+        "r2_file_path": "ebook/thomasgideon-exodus.epub"
       },
       "audio": {
-        "paddle_price_id": "pri_exodus_audio_789",
+        "paddle_price_id": "pri_01kysjrw52j4zn0jyq54dshzxa",
         "price_amount": 7.99,
         "currency": "USD",
-        "label": "Audiobook Only"
+        "label": "Exodus Audiobook",
+        "r2_file_path": "audio/thomasgideon-exodus-audiobook.mp3"
       }
     }
   },
@@ -225,22 +228,25 @@ const defaultBooksData = {
     "synopsis": "<p>Growing up in a military family, Conner is moved across the world to follow his fathers career, finally returning to California, a different person.</p>",
     "variants": {
       "bundle": {
-        "paddle_price_id": "pri_genesis_bundle_123",
+        "paddle_price_id": "pri_01kysr83hqzw0ec1qeh7hx9q95",
         "price_amount": 6.99,
         "currency": "USD",
-        "label": "EPUB & Audiobook Bundle"
+        "label": "Genesis Digital Edition & Audiobook Bundle",
+        "r2_file_path": "bundle/thomasgideon-genesis-bundle.zip"
       },
       "epub": {
-        "paddle_price_id": "pri_genesis_epub_456",
+        "paddle_price_id": "pri_01kysras5kqrb66j1zvhd6cqrz",
         "price_amount": 2.99,
         "currency": "USD",
-        "label": "EPUB eBook Only"
+        "label": "Genesis Digital Edition",
+        "r2_file_path": "ebook/thomasgideon-genesis.epub"
       },
       "audio": {
-        "paddle_price_id": "pri_genesis_audio_789",
+        "paddle_price_id": "pri_01kysr59aamt8dxmp9w9yrq7n9",
         "price_amount": 7.99,
         "currency": "USD",
-        "label": "Audiobook Only"
+        "label": "Genesis Audiobook",
+        "r2_file_path": "audio/thomasgideon-genesis-audiobook.mp3"
       }
     }
   },
@@ -252,22 +258,25 @@ const defaultBooksData = {
     "synopsis": "<p>This story finds Conner investigating multiple realities, finding answers lost in time.</p>",
     "variants": {
       "bundle": {
-        "paddle_price_id": "pri_revelation_bundle_123",
+        "paddle_price_id": "pri_01kyss0vaazr5z5k7p0e4axpp1",
         "price_amount": 6.99,
         "currency": "USD",
-        "label": "EPUB & Audiobook Bundle"
+        "label": "Revelation Digital Edition & Audiobook Bundle",
+        "r2_file_path": "bundle/thomasgideon-revelation-bundle.zip"
       },
       "epub": {
-        "paddle_price_id": "pri_revelation_epub_456",
+        "paddle_price_id": "pri_01kyss3sthsrvay2a5jtme55vm",
         "price_amount": 2.99,
         "currency": "USD",
-        "label": "EPUB eBook Only"
+        "label": "Revelation Digital Edition",
+        "r2_file_path": "ebook/thomasgideon-revelation.epub"
       },
       "audio": {
-        "paddle_price_id": "pri_revelation_audio_789",
+        "paddle_price_id": "pri_01kyss72j1wwy3jg8ngkg4sc62",
         "price_amount": 7.99,
         "currency": "USD",
-        "label": "Audiobook Only"
+        "label": "Revelation Audiobook",
+        "r2_file_path": "audio/thomasgideon-revelation-audiobook.mp3"
       }
     }
   }
@@ -286,7 +295,8 @@ const defaultMusicData = {
         "paddle_price_id": "pri_exodus_music_123",
         "price_amount": 4.99,
         "currency": "USD",
-        "label": "Digital Album"
+        "label": "Digital Album",
+        "r2_file_path": "music/thomasgideon-exodus-album.zip"
       }
     }
   },
@@ -302,7 +312,8 @@ const defaultMusicData = {
         "paddle_price_id": "pri_genesis_music_123",
         "price_amount": 4.99,
         "currency": "USD",
-        "label": "Digital Album"
+        "label": "Digital Album",
+        "r2_file_path": "music/thomasgideon-genesis-album.zip"
       }
     }
   },
@@ -318,7 +329,8 @@ const defaultMusicData = {
         "paddle_price_id": "pri_revelation_music_123",
         "price_amount": 4.99,
         "currency": "USD",
-        "label": "Digital Album"
+        "label": "Digital Album",
+        "r2_file_path": "music/thomasgideon-revelation-album.zip"
       }
     }
   }
