@@ -512,12 +512,14 @@
             Paddle.Checkout.open({
               items: [{ priceId: priceId, quantity: 1 }],
               // Injects the path directly into the Paddle transaction payload
+              // THE FIX: Inject the email directly into customData metadata!
               customData: {
-                r2_file_path: filePath
-              },
-              // FORCES Paddle to link the email to the transaction object instantly
-              customer: {
-                email: cleanEmail
+                r2_file_path: filePath,
+                customer_delivery_email: cleanEmail // <-- Add this line!
+               //},
+               // FORCES Paddle to link the email to the transaction object instantly
+               // customer: {
+               // email: cleanEmail
               }
             });
           } catch (e) {
