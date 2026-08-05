@@ -479,67 +479,49 @@
       }
 
       function triggerCheckout(variantType) {
-        const book = window.currentBook;
-        if (!book) return;
-        const variants = book.variants || {};
-        const selectedVariant = variants[variantType] || {};
-        const priceId = selectedVariant.paddle_price_id;
+            const book = window.currentBook;
+            if (!book) return;
+            const variants = book.variants || {};
+            const selectedVariant = variants[variantType] || {};
+            const priceId = selectedVariant.paddle_price_id;
 
-        if (!priceId) {
-          alert(`The Paddle Price ID for ${selectedVariant.label || variantType} has not been configured in the Books Manager (Admin panel) yet.`);
-          return;
-        }
-
-        // ZERO-MAINTENANCE ADDITION: Grab the file path from your variant object
-        const filePath = selectedVariant.r2_file_path || `ebook/missing-path-for-${variantType}.epub`;
-
-        // 1. PROMPT FOR EMAIL: Capture the customer email address upfront
-        // Replace this prompt with document.getElementById('your-field-id').value if you build a custom input field on checkout.html later!
-        const customerEmailInput = prompt("Please enter your email address to receive your secure download links:", "");
-
-        // Cancel checkout if they close the prompt or leave it blank
-        if (customerEmailInput === null) return; 
-
-        if (!customerEmailInput.trim() || !customerEmailInput.includes("@")) {
-          alert("A valid email address is required to complete your purchase and deliver your digital files.");
-          return;
-        }
-
-        const cleanEmail = customerEmailInput.trim();
-
-        if (paddleInitialized && typeof Paddle !== 'undefined') {
-          try {
-            Paddle.Checkout.open({
-              items: [{ priceId: priceId, quantity: 1 }],
-              // Injects the path directly into the Paddle transaction payload
-              customData: {
-                r2_file_path: filePath
-              },
-              // FORCES Paddle to link the email to the transaction object instantly
-              customer: {
-                email: cleanEmail
+              if (!priceId) {
+                  alert(`The Paddle Price ID for ${selectedVariant.label || variantType} has not been configured in the Books Manager (Admin panel) yet.`);
+              return;
               }
-            });
-          } catch (e) {
-            console.error('Paddle Checkout error:', e);
-            alert(`Paddle Checkout failed to load: ${e.message}`);
+
+      // ZERO-MAINTENANCE ADDITION: Grab the file path from your variant object
+      // Fallback string helps flag items missing configurations during your tests
+
+            const filePath = selectedVariant.r2_file_path || `ebook/missing-path-for-${variantType}.epub`;
+
+              if (paddleInitialized && typeof Paddle !== 'undefined') {
+                try {
+                  Paddle.Checkout.open({
+                    items: [{ priceId: priceId, quantity: 1 }],
+                    // This injects the path directly into the Paddle transaction payload
+                    customData: {
+                    r2_file_path: filePath
+                    }
+                });
+              } catch (e) {
+                console.error('Paddle Checkout error:', e);
+                alert(`Paddle Checkout failed to load: ${e.message}`);
+              }
+            } else {
+              // Updated fallback message so you can verify paths during local simulation tests
+              alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '6.99'}\nPaddle Price ID: ${priceId}\nTarget R2 Path: ${filePath}`);
+            } 
           }
-        } else {
-          // Updated fallback message including the dynamic email capture for simulation tests
-          alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '6.99'}\nPaddle Price ID: ${priceId}\nTarget R2 Path: ${filePath}\nCustomer Email: ${cleanEmail}`);
-        } 
-      }
-
-      // window.addEventListener('DOMContentLoaded', () => {setupPaddle();});
-      // Safer alternative to inline onload
-
-        window.addEventListener('DOMContentLoaded', () => {
-          if (typeof Paddle !== 'undefined') {
+            // window.addEventListener('DOMContentLoaded', () => {setupPaddle();});
+            // Safer alternative to inline onload
+            window.addEventListener('DOMContentLoaded', () => {
+              if (typeof Paddle !== 'undefined') {
                     setupPaddle();
-          } else {
-                    console.error("Paddle.js failed to download from CDN.");  
-          }
-      });
+              } else {
+                    console.error("Paddle.js failed to download from CDN.");
+              }
+          });
 
     </script>
      
