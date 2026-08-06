@@ -457,58 +457,80 @@
     </button>
 
     <script>
-
       // Initialize Paddle SDK if client token exists (uses sandbox by default)
-     
-let paddleInitialized = false;
-
-function setupPaddle() {
-  try {
-    if (typeof Paddle !== 'undefined') {
-      Paddle.Environment.set('sandbox'); 
-      Paddle.Initialize({ 
-        token: 'test_1d784d1c936afe3c1a562f8566a',
-      });
-      paddleInitialized = true;
-      console.log('Paddle v2 initialized in sandbox mode.');
-    }
-  } catch (e) {
-    console.warn('Paddle initialization warning:', e);
-  }
-}
-
-function triggerCheckout(variantType) {
-  const book = window.currentBook;
-  if (!book) return;
-  const variants = book.variants || {};
-  const selectedVariant = variants[variantType] || {};
-  const priceId = selectedVariant.paddle_price_id;
-
-  if (!priceId) {
-    alert(`The Paddle Price ID for ${selectedVariant.label || variantType} has not been configured.`);
-    return;
-  }
-
-  const filePath = selectedVariant.r2_file_path || `ebook/missing-path-for-${variantType}.epub`;
-
-  if (paddleInitialized && typeof Paddle !== 'undefined') {
-    try {
-      Paddle.Checkout.open({
-        items: [{ priceId: priceId, quantity: 1 }],
-        // Store your cloud storage download path directly inside the checkout metadata
-        customData: {
-          r2_file_path: filePath
+      let paddleInitialized = false;
+      
+      function setupPaddle() {
+        try {
+          if (typeof Paddle !== 'undefined') {
+            
+            Paddle.Environment.set('sandbox'); 
+            
+            Paddle.Initialize({ 
+              token: 'test_1d784d1c936afe3c1a562f8566a',
+               
+            });
+            paddleInitialized = true;
+            console.log('Paddle v2 initialized in sandbox mode.');
+          }
+        } catch (e) {
+          console.warn('Paddle initialization warning (expected in local/offline):', e);
         }
-      });
-    } catch (e) {
-      console.error('Paddle Checkout error:', e);
-      alert(`Paddle Checkout failed to load: ${e.message}`);
-    }
-  } else {
-    // Local simulation details
-    alert(`[Paddle Sandbox Simulation]\n\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPaddle Price ID: ${priceId}\nTarget R2 Path: ${filePath}`);
-  } 
-}
+      }
+
+      function triggerCheckout(variantType) {
+        const book = window.currentBook;
+        if (!book) return;
+        const variants = book.variants || {};
+        const selectedVariant = variants[variantType] || {};
+        const priceId = selectedVariant.paddle_price_id;
+
+        if (!priceId) {
+          alert(`The Paddle Price ID for ${selectedVariant.label || variantType} has not been configured in the Books Manager (Admin panel) yet.`);
+          return;
+        }
+
+        // ZERO-MAINTENANCE ADDITION: Grab the file path from your variant object
+        const filePath = selectedVariant.r2_file_path || `ebook/missing-path-for-${variantType}.epub`;
+
+        // 1. PROMPT FOR EMAIL: Capture the customer email address upfront
+        // Replace this prompt with document.getElementById('your-field-id').value if you build a custom input field on checkout.html later!
+        const customerEmailInput = prompt("Please enter your email address to receive your secure download links:", "");
+
+        // Cancel checkout if they close the prompt or leave it blank
+        if (customerEmailInput === null) return; 
+
+        if (!customerEmailInput.trim() || !customerEmailInput.includes("@")) {
+          alert("A valid email address is required to complete your purchase and deliver your digital files.");
+          return;
+        }
+
+        const cleanEmail = customerEmailInput.trim();
+
+        if (paddleInitialized && typeof Paddle !== 'undefined') {
+          try {
+            Paddle.Checkout.open({
+              items: [{ priceId: priceId, quantity: 1 }],
+              // Injects the path directly into the Paddle transaction payload
+              // THE FIX: Inject the email directly into customData metadata!
+              customData: {
+                r2_file_path: filePath,
+                customer_delivery_email: cleanEmail // <-- Add this line!
+               //},
+               // FORCES Paddle to link the email to the transaction object instantly
+               // customer: {
+               // email: cleanEmail
+              }
+            });
+          } catch (e) {
+            console.error('Paddle Checkout error:', e);
+            alert(`Paddle Checkout failed to load: ${e.message}`);
+          }
+        } else {
+          // Updated fallback message including the dynamic email capture for simulation tests
+          alert(`[Paddle Sandbox Simulation]\n\nProcessing checkout for:\nBook: ${book.title || 'Selected Book'}\nFormat: ${selectedVariant.label || variantType}\nPrice: $${selectedVariant.price_amount || '6.99'}\nPaddle Price ID: ${priceId}\nTarget R2 Path: ${filePath}\nCustomer Email: ${cleanEmail}`);
+        } 
+      }
 
       // window.addEventListener('DOMContentLoaded', () => {setupPaddle();});
       // Safer alternative to inline onload
