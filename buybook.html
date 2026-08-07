@@ -495,7 +495,6 @@ function triggerCheckout(variantType) {
     try {
       Paddle.Checkout.open({
         items: [{ priceId: priceId, quantity: 1 }],
-        // Store your cloud storage download path directly inside the checkout metadata
         customData: {
           r2_file_path: filePath
         }
@@ -521,7 +520,8 @@ function triggerCheckout(variantType) {
           }
       });
 
-  </script>     
+  </script>
+
     <script src="js/script.js?v=2"></script>
   </body>
 </html>
