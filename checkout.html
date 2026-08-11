@@ -424,13 +424,12 @@
     <script>
       let paddleInitialized = false;
 
-
       function setupPaddle() {
         try {
           if (typeof Paddle !== 'undefined') {
             Paddle.Environment.set('sandbox');
             Paddle.Initialize({
-              token: 'test_1d784d1c936afe3c1a562f8566a',
+              token: 'test_1d784d1c936afe3c1a562f8566a'
             });
             paddleInitialized = true;
             console.log('Paddle v2 initialized for inline native checkout in sandbox mode.');
@@ -586,6 +585,13 @@
           container.style.display = 'block';
         }
 
+
+        //items: [{ priceId: priceId, quantity: 1 }],
+        // customData: {
+        // r2_file_path: filePath,
+        // customer_delivery_email: cleanEmail
+
+
         if (paddleInitialized && typeof Paddle !== 'undefined') {
           try {
             Paddle.Checkout.open({
@@ -597,7 +603,7 @@
               items: [{ priceId: priceId, quantity: 1 }],
               customData: {
                 r2_file_path: filePath,
-                customer_email: capturedEmail
+                customer_delivery_email: cleanEmail
               },
               customer: {
                 email: cleanEmail
