@@ -31,6 +31,7 @@
   --color-muted-alt: #999999;
   --color-muted-light: #bbbbbb;
   --color-border: #eeeeee;
+  /* --color-border: rgba(238, 238, 238, .5); */
   --color-bg-alt: #f9f9f9;
   --color-nav-bg: rgba(255, 255, 255, 0.95);
   --color-accent: #000000;
@@ -61,8 +62,17 @@ html.dark-mode {
   --color-shadow: rgba(0, 0, 0, 0.4);
 }
 
+/* When your website flips to dark mode, invert the iframe colors */
+html.dark-mode .paddle-checkout-container iframe,
+html.dark-mode #paddle-checkout-container iframe {
+  /* 1. Invert flips black text to white, but also makes transparent/white backgrounds dark */
+  filter: invert(1) hue-rotate(180deg);
+  /* 2. Optional: Mix-blend-mode can help it sit naturally if you experience contrast issues */
+  mix-blend-mode: screen; 
+}
+
 html.dark-mode img {
-  filter: brightness(0.8) contrast(1.1);
+  /*filter: brightness(0.8) contrast(1.1);*/
 }
 
 html.dark-mode .hero-bg {
@@ -802,7 +812,6 @@ section {
 }
 
 .book-img-wrap {
-  aspect-ratio: 2/3;
   /*margin-bottom: 16px;*/
   overflow: hidden;
   box-shadow: 0 10px 20px var(--color-shadow);
@@ -813,6 +822,7 @@ section {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  aspect-ratio: 2/3;
 }
 
 .book-card:hover img {
@@ -968,6 +978,24 @@ section {
   background-color: var(--color-bg-alt);
   height: auto;
   /*margin-bottom: 12px;*/
+  box-shadow: 
+  0 -10px 20px -5px var(--color-shadow, rgba(0, 0, 0, 0.3)), /* Top shadow */
+  -10px 0 20px -5px var(--color-shadow, rgba(0, 0, 0, 0.3)), /* Left shadow */
+  10px 0 20px -5px var(--color-shadow, rgba(0, 0, 0, 0.3));  /* Right shadow */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar-music-img {
+  border-radius: 1%;
+  overflow-anchor: none;
+  width: 100%;
+  /*aspect-ratio: 622 / 1000;*/
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  background-color: var(--color-bg-alt);
+  height: auto;
+  /*margin-bottom: 12px;*/
   box-shadow: 0 10px 30px var(--color-shadow);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1116,7 +1144,7 @@ html.light-mode .footer-social a:hover {
   width: 100%;
   aspect-ratio: 2/3;
   object-fit: cover;
-  box-shadow: 0 20px 40px var(--color-shadow);
+  box-shadow: 0px -6px 10px -4px rgba(0, 0, 0, 0.3);
   /*margin-bottom: 12px;*/
 }
 
@@ -1159,25 +1187,20 @@ html.light-mode .footer-social a:hover {
 }
 
 .purchase-btn {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 12px;
   border-radius: 4px;
-
-  /* add background-color */
-  background-color: #000000;
-  /* add color */
-  color: #ffffff;
-  /* border: 1px solid var(--color-border); */
-  border: 1px solid #2a2a2a;
-  /* + to match read more btn  */
-  /* border: 1px solid #ffffff;*/
-
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: 1px solid var(--color-border);
   font-family: var(--font-ui);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.2em;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
@@ -1647,8 +1670,11 @@ html.dark-mode .pp-button-wrap a:hover {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
-  box-shadow: 0 20px 40px var(--color-shadow);
   /*margin-bottom: 12px;*/
+  box-shadow: 
+  0 -10px 20px -5px var(--color-shadow, rgba(0, 0, 0, 0.3)), /* Top shadow */
+  -10px 0 20px -5px var(--color-shadow, rgba(0, 0, 0, 0.3)), /* Left shadow */
+  10px 0 20px -5px var(--color-shadow, rgba(0, 0, 0, 0.3));  /* Right shadow */
 }
 
 .book-info h1 {
@@ -1676,6 +1702,7 @@ html.dark-mode .pp-button-wrap a:hover {
   /*margin-bottom: 24px;*/
 }
 
+/*
 .music-detail-info .description {
   font-family: var(--font-serif-alt);
   font-size: 20px;
@@ -1683,6 +1710,7 @@ html.dark-mode .pp-button-wrap a:hover {
   color: var(--color-text-light);
   font-weight: 300;
 }
+*/
 
 .separator {
   height: 1px;
@@ -1706,12 +1734,7 @@ html.dark-mode .pp-button-wrap a:hover {
     line-height: normal;
   }
 
-  #buy-book-title {
-    font-size: 48px;
-    line-height: normal;
-    margin-bottom: 13px;
-  }
-  #buy-music-title {
+  #checkout-title {
     font-size: 48px;
     line-height: normal;
     margin-bottom: 13px;

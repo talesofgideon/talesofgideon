@@ -1,0 +1,105 @@
+
+#---------------------------------------#
+
+# localhost default config
+
+#---------------------------------------#
+
+# Apache Rewrite Rules
+#<IfModule mod_rewrite.c>
+# Options +FollowSymLinks
+# RewriteEngine On
+# RewriteBase /
+
+# Remove .php-extension from url
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME}\.php -f
+# RewriteRule ^([^\.]+)/$ $1.php
+
+# Remove .html-extension from url
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME}\.html -f
+# RewriteRule ^([^\.]+)/$ $1.html
+
+# Add trailing slash to url
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/|#(.*))$
+# RewriteRule ^(.*)$ $1/ [R=301,L]
+
+# End of Apache Rewrite Rules
+#</IfModule>
+
+# Error Documents
+# ErrorDocument 404 /74/404.html
+
+#---------------------------------------#
+
+# localhost .html removal by webserver
+
+#---------------------------------------#
+
+# Apache Rewrite Rules for Shared Hosting
+#<IfModule mod_rewrite.c>
+#Options +FollowSymLinks -MultiViews
+#RewriteEngine On
+#RewriteBase /
+
+# 1. Remove index.html or index.php from the URL
+#RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.(html|php)\ HTTP/ [NC]
+#RewriteRule ^(.*)index\.(html|php)$ /$1 [R=301,L]
+
+# 2. Redirect direct requests for other extension files to extensionless
+#RewriteCond %{THE_REQUEST} \s/+(.+)\.(php|html) [NC]
+#RewriteRule ^ %1 [R=301,L]
+
+# 3. Internally serve the PHP file if it exists
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME}\.php -f
+#RewriteRule ^(.*)$ $1.php [L]
+
+# 4. Internally serve the HTML file if it exists
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME}\.html -f
+#RewriteRule ^(.*)$ $1.html [L]
+
+#</IfModule>
+
+# Error Documents
+#ErrorDocument 404 /404.html
+
+#---------------------------------------#
+
+# gitHub pages simulation for XAMPP
+# (internal link do not mention .html )
+
+#---------------------------------------#
+
+<IfModule mod_rewrite.c>
+ Options +FollowSymLinks -MultiViews
+ RewriteEngine On
+ RewriteBase / 
+
+ # 1. If someone types 'index', remove it to show the bare folder/domain 
+
+ RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.html\ HTTP/ [NC]
+ RewriteRule ^(.*)index\.html$ /$1 [R=301,L] 
+
+ # 2. If a user accidentally types '.html' in the browser, strip it
+
+ RewriteCond %{THE_REQUEST} \s/+(.+)\.html [NC]
+ RewriteRule ^ %1 [R=301,L] 
+
+ # 3. Internally look for the .html file if the URL has no extension
+
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteCond %{REQUEST_FILENAME} !-d
+ RewriteCond %{REQUEST_FILENAME}.html -f 
+ RewriteRule ^(.*)$ $1.html [L]
+
+ </IfModule>
+
+ ErrorDocument 404 /404.html
+
+#---------------------------------------#

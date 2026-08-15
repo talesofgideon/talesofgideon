@@ -499,7 +499,7 @@ const populateUI = (data) => {
 
         if (book.status === "BUY THE BOOK" || book.status === "PURCHASE") {
           labelText = "BUY THE BOOK";
-          buttonHref = `buybook.html?book=${encodeURIComponent(bookTitle)}`;
+          buttonHref = `checkout.html?book=${encodeURIComponent(bookTitle)}`;
           purchaseTarget = "";
         }
 
@@ -667,7 +667,7 @@ const populateUI = (data) => {
 
         if (music.status === "BUY THE ALBUM" || music.status === "PURCHASE") {
           labelText = "BUY THE ALBUM";
-          buttonHref = `buymusic.html?album=${encodeURIComponent(resolvedTitle)}`;
+          buttonHref = `checkout.html?album=${encodeURIComponent(resolvedTitle)}`;
           purchaseTarget = "";
         }
 
@@ -688,7 +688,7 @@ const populateUI = (data) => {
                 </span>
               </h1>
               <div class="separator"></div>
-              <p class="description">${musicDesc}</p>
+              <div class="synopsis">${musicDesc}</div>
             </div>
           </div>
         `;
@@ -828,8 +828,7 @@ const populateUI = (data) => {
     if (sidebarBook.status === "BUY THE BOOK" || sidebarBook.status === "PURCHASE") {
       label = "BUY THE BOOK";
 
-      finalUrl = `buybook.html?book=${encodeURIComponent(sidebarTitle)}`;
-      // console.log(`"${finalURL}"`);
+      finalUrl = `checkout.html?book=${encodeURIComponent(sidebarTitle)}`;
 
       if (sidebarEbook.getAttribute('target') === '_blank') {
         sidebarEbook.removeAttribute('target');
@@ -1184,8 +1183,8 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Handle sidebar-book-img clicks to transition/navigate to new.html
-  document.querySelectorAll('.sidebar-book-img').forEach(img => {
+/* Handle sidebar-book-img clicks to transition/navigate to new.html */
+  document.querySelectorAll('.sidebar-book-img', '.sidebar-music-img').forEach(img => {
     img.addEventListener('click', (e) => {
       const path = window.location.pathname;
       if (path.endsWith('/new.html') || path.endsWith('/new')) {
@@ -1194,7 +1193,8 @@ window.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       document.body.classList.add('fade-out');
       setTimeout(() => {
-        window.location.href = 'new.html';
+        //window.location.href = 'new.html';
+        history.back();
       }, 300);
     });
   });
