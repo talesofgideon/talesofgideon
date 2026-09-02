@@ -135,22 +135,24 @@
         background: var(--color-bg);
         border: 1px solid var(--color-border);
         border-radius: 8px;
-        text-align:center;
+        text-align: center;
         padding: 1rem;
         position: relative;
-
-        /*padding: 30px 30px 30px 30px;*/
-        /* top right bottom left */
-
         margin-top: 20px;
+        /*max-width: 643px;*/
+        width: 100%;
+        box-sizing: border-box;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .checkout-inner {
         max-width: 643px; /* Can be in percentage also. */
+        width: 100%;
+        /*max-width: 100%;*/
         height: auto;
         margin: 0 auto;
         position: relative;
+        box-sizing: border-box;
       }
 
       .payment-section {
@@ -159,10 +161,15 @@
         color: var(--color-text-light);
         font-weight: 300;
         font-family: var(--font-serif-alt);
+        /*max-width: 643px;*/
+        width: 100%;
+        box-sizing: border-box;
       }
 
       #checkout-email-form {
         text-align: center;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       html.dark-mode .checkout-box {
@@ -170,20 +177,16 @@
       }
 
       .checkout-summary-row {
-        display: flex;
+        display: inline-flex;
         justify-content: space-between;
         align-items: baseline;
-        margin-left: 1%;
-        margin-right: 1%;
         padding-bottom: 16px;
         margin-bottom: 20px;
         border-bottom: 1px solid var(--color-border);
+        width: 96.6%;
+        box-sizing: border-box;
       }
       .summary-product-name {
-        /* font-family: var(--font-heading);
-        letter-spacing: 0.2em;
-        margin-left: 12px;
-        font-weight: 600; */
         text-align: left;
         letter-spacing: 0.04em;
         font-family: var(--font-ui);
@@ -213,14 +216,14 @@
         color: var(--color-muted);
         margin-left: 4px;
       }
-
       .checkout-variant-selector {
-        margin-left: 1.5%;
-        margin-right: 1.5%;
-        display: flex;
+        /*display: flex;*/
+        display: inline-flex;
         gap: 10px;
         margin-bottom: 20px;
         flex-wrap: wrap;
+        width: 96.6%;
+        box-sizing: border-box;
       }
       .checkout-variant-tab {
         padding: 8px 16px;
@@ -252,6 +255,12 @@
         background: var(--color-bg-alt);
         border: 1px solid var(--color-border);
         border-radius: 6px;
+        /*width: 100%;*/
+        display:inline-block;
+        width: 97.5%;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
       }
       html.dark-mode .checkout-variant-details {
         background: var(--color-bg);
@@ -275,22 +284,16 @@
       }
 
       .checkout-variant-composer {
-        /*display: inline-block;*/
         font-family: var(--font-ui);
         font-size: 11px;
         color: var(--color-muted);
         font-weight: 700;
         letter-spacing: 0.1em;
-        color: var(--color-muted);     
       }
 
       .checkout-synopsis {
         font-family: var(--font-body);
         color: var(--color-text-light);
-        /*font-family: var(--font-serif-alt);
-        font-weight: 300;
-        color: var(--color-text);
-        font-size: 14px;*/
         font-size: 20px;
         font-weight: 200;
         line-height: 1.8;
@@ -308,6 +311,8 @@
 
       .checkout-field-group {
         margin-bottom: 20px;
+        width: 100%;
+        box-sizing: border-box;
       }
       .checkout-field-label {
         display: block;
@@ -322,7 +327,8 @@
         color: var(--color-text);
       }
       .checkout-email-input {
-        width: 97%;
+        width: 96.6%;
+        /*max-width: 100%;*/
         padding: 14px 16px;
         border: 1px solid var(--color-border);
         box-shadow: 0 0 0 1px var(--color-text);
@@ -330,9 +336,10 @@
         background: var(--color-bg);
         color: var(--color-text);
         font-family: var(--font-ui);
-        font-size: 14px;
+        font-size: 16px;
         outline: none;
         box-sizing: border-box;
+        -webkit-appearance: none;
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
       }
 
@@ -345,7 +352,8 @@
       }
 
       .checkout-btn {
-        width: 97%;
+        width: 96.6%;
+        /*max-width: 100%;*/
         display: inline-block;
         text-align: center;
         background: var(--color-text);
@@ -359,6 +367,7 @@
         letter-spacing: 0.2em;
         text-transform: uppercase;
         cursor: pointer;
+        box-sizing: border-box;
         transition: opacity 0.2s ease;
       }
       .checkout-btn:hover {
@@ -372,8 +381,55 @@
       .paddle-checkout-container {
         margin-top: 24px;
         width: 100%;
+        max-width: 100%;
         min-height: 380px;
-        /* is this min height correct */
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 767px) {
+        .payment-section {
+          font-size: 20px;
+          line-height: 1.8;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .checkout-box {
+          padding: 16px 14px;
+        }
+        .checkout-variant-selector {
+          width: 95%;
+
+        }
+        .checkout-email-input {
+          width: 95%;
+        }
+        .checkout-btn {
+          width: 95%;
+        }
+        .checkout-summary-row {
+          flex-direction: row;
+          gap: 8px;
+        }
+        .summary-product-name {
+          font-size: 16px;
+        }
+        .summary-price {
+          font-size: 22px;
+        }
+        .checkout-variant-tab {
+          padding: 8px 12px;
+          font-size: 11px;
+        }
+        .checkout-variant-details {
+          padding: 14px;
+          width: 96.6%;
+          display: inline-block;
+        }
+        .checkout-synopsis {
+          font-size: 20px;
+          line-height: 1.6;
+        }
       }
 
     </style>
@@ -448,7 +504,8 @@
                 <div class="checkout-summary-row">
                   <div>
                     <div class="summary-product-name" id="checkout-product-name">Exodus</div>
-                    <div class="summary-variant-label" id="checkout-variant-label">Digital Edition & Audiobook Bundle</div>
+                    <!-- <div class="summary-variant-label" id="checkout-variant-label">Digital Edition & Audiobook Bundle</div> -->
+                    <div class="summary-variant-label" id="checkout-variant-label">Digital Edition & Audiobook</div>
                   </div>
                   <div class="summary-price" id="checkout-price">$6.99 <span>USD</span></div>
                 </div>
@@ -462,7 +519,7 @@
                 <form id="checkout-email-form" onsubmit="handleNativeCheckout(event)">
                   <div class="checkout-field-group">
                     <label for="checkout-email" class="checkout-field-label">Delivery Email Address</label>
-                    <input type="email" id="checkout-email" class="checkout-email-input" placeholder="ENTER YOUR EMAIL ADDRESS" required autocomplete="email" autofocus>
+                    <input type="email" id="checkout-email" class="checkout-email-input" placeholder="ENTER YOUR EMAIL ADDRESS" required autocomplete="email">
                   </div>
 
                   <button type="submit" id="checkout-submit-btn" class="checkout-btn">CONTINUE TO PAYMENT</button>
@@ -750,7 +807,7 @@
           selectorEl.style.display = 'none';
           return;
         }
-        selectorEl.style.display = 'flex';
+        //selectorEl.style.display = 'flex'; (replace with inline-flex)
 
         keys.forEach(key => {
           const v = variants[key];
@@ -767,7 +824,9 @@
 
             // Re-show variant details and clear previous Paddle frame/simulation
             const detailsEl = document.getElementById('checkout-variant-details');
-            if (detailsEl) detailsEl.style.display = 'block';
+            //if (detailsEl) detailsEl.style.display = 'block';
+            if (detailsEl) detailsEl.style.display = 'inline-block';
+
 
             const container = document.getElementById('paddle-checkout-container');
             if (container) {
@@ -790,7 +849,9 @@
       function cleanSummaryVariantLabel(rawLabel, itemTitle) {
         if (!rawLabel) return 'Digital Edition & Audiobook Bundle';
         if (rawLabel.includes('Digital Edition & Audiobook Bundle')) {
-          return 'Digital Edition & Audiobook Bundle';
+          //return 'Digital Edition & Audiobook Bundle';
+            return 'Digital Edition & Audiobook';
+
         }
         if (rawLabel.includes('Audiobook')) {
           return 'Audiobook Edition';
@@ -916,7 +977,7 @@
               child.remove();
             }
           });
-          container.style.display = 'block';
+          //container.style.display = 'block';
         }
 
         if (paddleInitialized && typeof Paddle !== 'undefined') {
@@ -927,7 +988,7 @@
                 frameTarget: 'paddle-checkout-container',
                 theme: 'light',
                 frameInitialHeight: '450',
-                frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;'
+                frameStyle: 'width: 100%; min-width: 280px; max-width: 100%; background-color: transparent; border: none;'
               },
               items: [{ priceId: priceId, quantity: 1 }],
               customData: {
