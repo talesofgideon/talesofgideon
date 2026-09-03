@@ -538,7 +538,7 @@
                 <form id="checkout-email-form" onsubmit="handleNativeCheckout(event)">
                   <div class="checkout-field-group">
                     <label for="checkout-email" class="checkout-field-label">Delivery Email Address</label>
-                    <input type="email" id="checkout-email" class="checkout-email-input" placeholder="ENTER YOUR EMAIL ADDRESS" required autocomplete="email" autofocus>
+                    <input type="email" id="checkout-email" class="checkout-email-input" placeholder="ENTER YOUR EMAIL ADDRESS" required autocomplete="email">
                   </div>
 
                   <button type="submit" id="checkout-submit-btn" class="checkout-btn">CONTINUE TO PAYMENT</button>
@@ -679,6 +679,9 @@
         const genericTitle = urlParams.get('title') || urlParams.get('item');
         const requestedVariant = urlParams.get('variant') || urlParams.get('format');
         const emailParam = urlParams.get('email');
+        const emailField = document.getElementById('checkout-email');
+        // Check if the device is mobile (detecting touch capabilities)
+        const isMobile = window.matchMedia("(pointer: coarse)").matches;
 
         let booksData = {};
         let musicData = {};
@@ -782,6 +785,11 @@
         if (emailParam) {
           const emailInput = document.getElementById('checkout-email');
           if (emailInput) emailInput.value = emailParam;
+        }
+
+        if (emailField && !isMobile) {
+          // Desktop: Focus smoothly without forcing an abrupt scroll layout shift
+          emailField.focus({ preventScroll: true });
         }
 
         renderVariantSelection(variants, activeVariantKey, itemData);
