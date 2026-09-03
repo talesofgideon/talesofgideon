@@ -649,7 +649,13 @@
           if (typeof Paddle !== 'undefined') {
             Paddle.Environment.set('sandbox');
             Paddle.Initialize({
-              token: 'test_1d784d1c936afe3c1a562f8566a'
+              token: 'test_1d784d1c936afe3c1a562f8566a',
+              eventCallback: function(data) {
+                // Check if the transaction was successfully completed
+                if (data.name === 'checkout.completed') {
+                    document.getElementById('checkout-submit-btn').innerText = 'PAYMENT COMPLETE';
+                }
+              }
             });
             paddleInitialized = true;
             console.log('Paddle v2 initialized for inline native checkout in sandbox mode.');

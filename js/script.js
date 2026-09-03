@@ -216,7 +216,7 @@ const defaultBooksData = {
         "price_amount": 7.99,
         "currency": "USD",
         "label": "Exodus Audiobook",
-        "r2_file_path": "audio/thomasgideon-exodus-audiobook.mp3"
+        "r2_file_path": "audio/thomasgideon-exodus-audiobook.zip"
       }
     }
   },
@@ -246,7 +246,7 @@ const defaultBooksData = {
         "price_amount": 7.99,
         "currency": "USD",
         "label": "Genesis Audiobook",
-        "r2_file_path": "audio/thomasgideon-genesis-audiobook.mp3"
+        "r2_file_path": "audio/thomasgideon-genesis-audiobook.zip"
       }
     }
   },
@@ -276,7 +276,7 @@ const defaultBooksData = {
         "price_amount": 7.99,
         "currency": "USD",
         "label": "Revelation Audiobook",
-        "r2_file_path": "audio/thomasgideon-revelation-audiobook.mp3"
+        "r2_file_path": "audio/thomasgideon-revelation-audiobook.zip"
       }
     }
   }
