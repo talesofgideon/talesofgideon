@@ -134,8 +134,17 @@ body {
   font-family: var(--font-serif);
   line-height: 1.8;
   font-size: 18px;
-  -webkit-font-smoothing: antialiased;
   padding-top: 64px;
+  /* Change 'antialiased' to 'subpixel-antialiased' */
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+/* Safari-only text stroke tweak */
+@supports (-webkit-hyphens:none) {
+  body {
+    -webkit-text-stroke: 0.1px currentcolor;
+  }
 }
 
 @media (min-width: 768px) {
@@ -462,6 +471,18 @@ section {
   color: var(--color-accent-text);
   /* add border */
   border: 1px solid var(--color-accent);
+}
+
+.btn-soundtrack:hover {
+  background-color: transparent !important;
+  color: #10b981 !important;
+  outline: 2px solid #10b981;
+  outline-offset: -2px;
+  }
+
+.btn-home:hover {
+  background-color: var(--color-bg-alt, #f9fafb) !important;
+  border-color: var(--color-text, #111827) !important;
 }
 
 @media (min-width: 768px) {
@@ -814,7 +835,7 @@ section {
 .book-img-wrap {
   /*margin-bottom: 16px;*/
   overflow: hidden;
-  box-shadow: 0 10px 20px var(--color-shadow);
+  /*box-shadow: 0 10px 20px var(--color-shadow);*/
 }
 
 .book-img-wrap img {
@@ -1197,8 +1218,8 @@ html.light-mode .footer-social a:hover {
   color: var(--color-bg);
   border: 1px solid var(--color-border);
   font-family: var(--font-ui);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 900;
   letter-spacing: 0.2em;
   cursor: pointer;
   transition: all 0.3s ease;
