@@ -58,7 +58,8 @@ html.dark-mode {
   --color-accent-admin: #bbbbbb;
   --color-accent: #ffffff;
   --color-accent-hover: #ffffff;
-  --color-accent-text: #000000;
+  /*--color-accent-text: #000000;*/
+  --color-accent-text: #ffffff;
   --color-shadow: rgba(0, 0, 0, 0.4);
 }
 
@@ -478,12 +479,27 @@ section {
   color: #10b981 !important;
   outline: 2px solid #10b981;
   outline-offset: -2px;
-  }
+}
 
 .btn-home:hover {
   background-color: var(--color-bg-alt, #f9fafb) !important;
   border-color: var(--color-text, #111827) !important;
 }
+
+.btn-blog:hover {
+  background-color: transparent !important;
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  /*outline: 1px solid var(--color-accent-border);*/
+  border-color: var(--color-accent-border);
+}
+
+.btn-blog-home:hover {
+  background-color: var(--color-bg-alt, #f9fafb) !important;
+  /*outline: 1px solid var(--color-accent-border);*/
+  border-color: var(--color-text, #111827) !important;
+}
+
 
 @media (min-width: 768px) {
   .hero {
@@ -1213,7 +1229,7 @@ html.light-mode .footer-social a:hover {
   align-items: center;
   justify-content: center;
   padding: 12px;
-  border-radius: 4px;
+  border-radius: 6px;
   background: var(--color-text);
   color: var(--color-bg);
   border: 1px solid var(--color-border);
@@ -1230,6 +1246,12 @@ html.light-mode .footer-social a:hover {
   color: var(--color-accent-text);
 /* border-color: var(--color-accent); */
   border-color: var(--color-accent-border);
+}
+
+.book-info, .music-detail-info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .book-info h1 {
@@ -1850,7 +1872,7 @@ html.light-mode .dark-mode-toggle .moon-icon {
 }
 
 /* Audio Container & Dark Mode Sync for Blog */
-.audio-container {
+.audio-container, .audio-detail {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1858,24 +1880,25 @@ html.light-mode .dark-mode-toggle .moon-icon {
   padding: 16px 24px;
   max-width: 770px;
   width: 95%;
-  border-radius: 12px;
+  border-radius: 8px;
   background-color: var(--color-bg-alt);
   border: 1px solid var(--color-border);
   box-shadow: 0 4px 12px var(--color-shadow);
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.audio-container audio {
+.audio-container audio, .audio-detail audio {
   width: 100%;
   max-width: 600px;
   outline: none;
   border-radius: 8px;
+  overflow: hidden; /* Fix for Safari border-radius */
 }
 
-html.light-mode .audio-container audio {
+html.light-mode .audio-container audio, .audio-detail audio {
   color-scheme: light;
 }
 
-html.dark-mode .audio-container audio {
+html.dark-mode .audio-container audio, .audio-detail audio {
   color-scheme: dark;
 }

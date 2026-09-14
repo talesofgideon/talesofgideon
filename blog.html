@@ -77,6 +77,69 @@
         font-style: normal;
         font-weight: 400;
       }
+
+      .btn-blog-div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        line-height: 1.8;
+        width: 100%;
+      }
+
+      .btn-blog {
+        display: inline-block;
+        flex: 1 1 200px;
+        max-width: 258px;
+        box-sizing: border-box;
+        text-align: center;
+        align-items: center;
+        padding: 12px;
+        border-radius: 6px;
+        background-color: var(--color-text);
+        color: var(--color-bg);
+        /*border: 1px solid #059669;*/
+        border: 1px solid var(--color-border);
+        font-family: var(--font-ui);
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        cursor: pointer;
+        /*text-decoration: none;*/
+        /*transition: opacity 0.2s;*/
+        transition: all 0.3s ease;
+      }
+
+      .btn-blog-home {
+        display: inline-block;
+        flex: 1 1 200px;
+        max-width: 258px;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: transparent;
+        color: var(--color-text, #111827);
+        font-family: var(--font-ui);
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        /*text-decoration: none;*/
+        /*padding: 12px 16px;*/
+        padding: 12px;
+        border-radius: 6px;
+        /* #e5e7eb */
+        border: 1px solid var(--color-border);
+        transition: background-color 0.2s;
+      }
+
+      /* Tablet & Mobile styles: Stacks 100% wide one under the other */
+      @media (max-width: 767px) { /* Targets iPad Pro, iPad Air, and smaller */
+        .btn-blog, 
+        .btn-blog-home {
+        flex: 1 1 100%;
+        max-width: 100%; /* Overrides the 258px desktop restriction */
+        }
+      }
+
     </style>
 
     <link rel="stylesheet" href="css/style.css?v=2">
@@ -237,6 +300,9 @@
           <!--
           Exodus is finally out! Thank you to everyone who has supported this journey.
           Just finished a wonderful interview with The Unexplained about the themes within Exodus.
+          -->
+          <!--
+          <div class="btn-blog-div"><a href="checkout.html?book=Exodus" class="btn-blog">BUY THE BOOK</a><a href="/" class="btn-blog-home">RETURN TO HOMEPAGE</a></div>
           -->
         </div>
       </div>

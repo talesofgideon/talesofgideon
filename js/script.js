@@ -524,6 +524,13 @@ const populateUI = (data) => {
             <!-- <h3 class="subtitle">${book.subtitle}</h3> -->
             <div class="separator"></div>
             <div class="synopsis">${book.synopsis}</div>
+
+            <div class="audio-detail" style="visibility: visible; width:100%; margin:0px auto 0px; margin-top: auto;">
+              <audio controls="" controlslist="nodownload">
+                <source src="audio/book/${bookTitle}-001.mp3" type="audio/mpeg">
+              </audio>
+            </div>
+
           </div>
         `;
         if (bookDetailContent.innerHTML !== newHTML) {
@@ -689,7 +696,14 @@ const populateUI = (data) => {
               </h1>
               <div class="separator"></div>
               <div class="synopsis">${musicDesc}</div>
-            </div>
+              <!-- </div> -->
+
+              <div class="audio-detail" style="visibility: visible; width:100%; margin:0px auto 0px; margin-top: auto;">
+                <audio controls="" controlslist="nodownload">
+                  <source src="audio/music/${resolvedTitle}-001.mp3" type="audio/mpeg">
+                </audio>
+              </div>
+
           </div>
         `;
         if (musicDetailContent.innerHTML !== newHTML) {
