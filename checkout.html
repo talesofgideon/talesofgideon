@@ -75,6 +75,16 @@
         font-style: normal;
         font-weight: 400;
       }
+
+      /* Tablet & Mobile styles: Stacks 100% wide one under the other */
+      @media (max-width: 1080px) { /* Targets iPad Pro, iPad Air, and smaller */
+        .btn-soundtrack, 
+        .btn-home {
+          flex: 1 1 100% !important;
+          max-width: 100% !important; /* Overrides the inline max-width */
+        }
+      }
+
     </style>
 
     <link rel="stylesheet" href="css/style.css?v=2">
@@ -763,7 +773,7 @@
         console.log(variantLabel);
 
         let productType = "book";
-        let productLabel = "LISTEN TO THE BOOK";
+        let productLabel = "HEAR THE BOOK";
 
         // Splits by space, removes the first item, and joins it back together
             variantLabel = variantLabel.substring(variantLabel.indexOf(' ') + 1);
@@ -773,7 +783,7 @@
             console.log("Processing a digital book, audiobook, or bundle...");
         //(1) /music-detail?id=1&title=Exodus (its a book listen to music)
             productType  = "music";
-            productLabel = "LISTEN TO THE SOUNDTRACK";
+            productLabel = "HEAR THE SOUNDTRACK";
         // audiobook
             variantLabel = variantLabel.replace("Audiobook","Audiobook Only");
         // digital edition & audiobook bundle
@@ -810,7 +820,7 @@
             </div>
 
             <!-- Order Details Summary -->
-            <div style="border-top: 1px solid var(--color-border, #e5e7eb); border-bottom: 1px solid var(--color-border, #e5e7eb); padding: 6px; margin-bottom: 10px;">
+            <div style="border-top: 1px solid var(--color-border, #e5e7eb); border-bottom: 1px solid var(--color-border, #e5e7eb); padding: 6px 12px; margin-bottom: 10px;">
               <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 12px;">
                 <span style="font-family: var(--font-ui);font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">PRODUCT:</span>
                 <strong style="font-family: var(--font-ui); font-weight: 500; color: var(--color-text, #111827);text-transform: uppercase;">${productTitle}</strong>
@@ -826,22 +836,27 @@
             </div>
 
             <!-- Next Steps Instruction Box -->
-            <div style="background: var(--color-bg, #ffffff); border: 1px solid var(--color-border, #e5e7eb); padding: 14px; border-radius: 10px; text-align: center; margin-bottom: 15px;">
-              <p style="margin: 0; font-family: var(--font-serif-alt); font-size: 16px; font-weight: 500; color: var(--color-muted); line-height: 1.8;">
+        
+            <div style="display: flex; justify-content: center; max-width: 97.6%; background: var(--color-bg, #ffffff); border: 1px solid var(--color-border, #e5e7eb); border-radius: 12px; text-align: center; margin: 0 auto 15px auto;">
+
+              <p style="max-width: 95%; margin: 10px; font-family: var(--font-serif-alt); font-size: 16px; font-weight: 500; color: var(--color-muted); line-height: 1.8;">
+
                 Thank you for your support, a secure download link has been dispatched to <span style="color:var(--color-text)">${fallbackEmail}</span> please check your inbox (and spam folder) within the next few minutes. Please continue browsing, or listen to the ${productTitle} ${productType} exploring this tale.
               </p>
             </div>
+
             <!-- Next Steps Buttons, navigate [ home ] and [productTitle soundtrack] -->
-            <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%;">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; width: 100%; max-width: 97%; margin: 0 auto;">
+  
               <!-- Soundtrack Button (Primary Action) -->
-              <a href="/${productType}-detail?id=${productID}&title=${productTitle}" class="btn-soundtrack" style="display: inline-block; flex: 1 1 200px; max-width: 280px; box-sizing: border-box; background-color: #059669; color: #ffffff; font-family: var(--font-ui, sans-serif); font-size: 14px; font-weight: 600; text-decoration: none; padding: 12px 16px; border-radius: 6px; text-align: center; border: 1px solid #059669; transition: opacity 0.2s;">
+              <a <a href="/${productType}-detail?id=${productID}&title=${productTitle}" class="btn-soundtrack" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; background-color: #059669; color: #ffffff; font-family: var(--font-ui, sans-serif); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-decoration: none; padding: 12px; border-radius: 6px; text-align: center; border: 1px solid #059669; transition: opacity 0.2s;">
                 ${productLabel}
               </a>
               
               <!-- Home Button (Secondary Action) -->
-              <a href="/" class="btn-home" style="display: inline-block; flex: 1 1 200px; max-width: 280px; box-sizing: border-box; background-color: transparent; color: var(--color-text, #111827); font-family: var(--font-ui, sans-serif); font-size: 14px; font-weight: 600; text-decoration: none; padding: 12px 16px; border-radius: 6px; text-align: center; border: 1px solid var(--color-border, #e5e7eb); transition: background-color 0.2s;">
+              <a href="/" class="btn-home" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; background-color: transparent; color: var(--color-text, #111827); font-family: var(--font-ui, sans-serif); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-decoration: none; padding: 12px; border-radius: 6px; text-align: center; border: 1px solid var(--color-border, #e5e7eb); transition: background-color 0.2s;">
                 RETURN TO HOMEPAGE
-              </a>
+              </a>  
             </div>
           </div>
         `;
