@@ -527,10 +527,9 @@ const populateUI = (data) => {
 
             <div class="audio-detail" style="visibility: visible; width:100%; margin:0px auto 0px; margin-top: auto;">
               <audio controls="" controlslist="nodownload">
-                <source src="audio/book/${bookTitle}-001.mp3" type="audio/mpeg">
+                <source src="audio/book/${bookTitle}-book-00.mp3" type="audio/mpeg">
               </audio>
             </div>
-
           </div>
         `;
         if (bookDetailContent.innerHTML !== newHTML) {
@@ -700,10 +699,9 @@ const populateUI = (data) => {
 
               <div class="audio-detail" style="visibility: visible; width:100%; margin:0px auto 0px; margin-top: auto;">
                 <audio controls="" controlslist="nodownload">
-                  <source src="audio/music/${resolvedTitle}-001.mp3" type="audio/mpeg">
+                  <source src="audio/music/${resolvedTitle}-music-00.mp3" type="audio/mpeg">
                 </audio>
               </div>
-
           </div>
         `;
         if (musicDetailContent.innerHTML !== newHTML) {
