@@ -413,6 +413,119 @@ const updateNewNavLink = () => {
   }
 };
 
+// Global Audio Cache & In-flight Request Tracker
+const audioBlobCache = new Map();
+const pendingAudioFetches = new Map();
+
+/**
+ * Global function to silently preload audio files in the background.
+ * Fetches the audio file as an in-memory Blob and binds it via an Object URL,
+ * providing smooth, instantaneous playback without streaming stalls or stutter.
+ * Falls back gracefully to standard direct URL streaming if fetch or blob creation fails.
+ * 
+ * @param {string} audioUrl - Path or URL of the audio file (e.g. "audio/music/Exodus-music-00.mp3")
+ * @param {HTMLAudioElement|string} [targetAudio] - Optional audio element or selector
+ * @param {HTMLSourceElement|string} [targetSource] - Optional source element or selector
+ * @returns {Promise<string>} Resolves to the blob URL or fallback audio URL
+ */
+const preloadAudio = async (audioUrl, targetAudio = null, targetSource = null) => {
+  if (!audioUrl || typeof audioUrl !== 'string') {
+    return null;
+  }
+
+  const resolveEl = (el, fallbackSelector) => {
+    if (el instanceof Element) return el;
+    if (typeof el === 'string') return document.querySelector(el);
+    return fallbackSelector ? document.querySelector(fallbackSelector) : null;
+  };
+
+  const getElements = () => {
+    const player = resolveEl(targetAudio, '.audio-detail audio, .audio-container audio, audio');
+    let source = resolveEl(targetSource, null);
+    if (player && !source) {
+      source = player.querySelector('source');
+    }
+    return { player, source };
+  };
+
+  const applyAudioSource = (urlToApply) => {
+    const { player, source } = getElements();
+    if (!player) return;
+
+    // Do not interrupt active playback if user already clicked play
+    if (!player.paused && player.currentTime > 0) {
+      return;
+    }
+
+    const currentSrc = player.src || (source ? source.src || source.getAttribute('src') : '');
+    if (currentSrc === urlToApply) return;
+
+    if (source) {
+      source.setAttribute('src', urlToApply);
+      source.src = urlToApply;
+    }
+    player.src = urlToApply;
+    player.load();
+  };
+
+  // If already cached in memory, apply immediately and return
+  if (audioBlobCache.has(audioUrl)) {
+    const cachedBlobUrl = audioBlobCache.get(audioUrl);
+    applyAudioSource(cachedBlobUrl);
+    return cachedBlobUrl;
+  }
+
+  // If already fetching, await existing promise
+  if (pendingAudioFetches.has(audioUrl)) {
+    try {
+      const blobUrl = await pendingAudioFetches.get(audioUrl);
+      applyAudioSource(blobUrl);
+      return blobUrl;
+    } catch (e) {
+      applyAudioSource(audioUrl);
+      return audioUrl;
+    }
+  }
+
+  // Initiate background fetch
+  const fetchPromise = (async () => {
+    try {
+      let res = await fetch(audioUrl);
+
+      // Fallback for case sensitivity if uppercase filename fails on Linux server
+      if (!res.ok && audioUrl.toLowerCase() !== audioUrl) {
+        const lowerRes = await fetch(audioUrl.toLowerCase());
+        if (lowerRes.ok) {
+          res = lowerRes;
+        }
+      }
+
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      audioBlobCache.set(audioUrl, blobUrl);
+      return blobUrl;
+    } catch (err) {
+      console.warn(`Silent audio preload failed for "${audioUrl}", falling back to standard streaming:`, err.message || err);
+      return audioUrl;
+    } finally {
+      pendingAudioFetches.delete(audioUrl);
+    }
+  })();
+
+  pendingAudioFetches.set(audioUrl, fetchPromise);
+
+  const finalUrl = await fetchPromise;
+  applyAudioSource(finalUrl);
+  return finalUrl;
+};
+
+// Expose globally on window
+window.preloadAudio = preloadAudio;
+
 // Populate UI with data
 const populateUI = (data) => {
   console.log('populateUI called with:', data ? Object.keys(data) : null);
@@ -535,6 +648,11 @@ const populateUI = (data) => {
         if (bookDetailContent.innerHTML !== newHTML) {
           bookDetailContent.innerHTML = newHTML;
         }
+
+        const bookAudioUrl = `audio/book/${bookTitle}-book-00.mp3`;
+        const bookAudioPlayer = bookDetailContent.querySelector('.audio-detail audio');
+        const bookAudioSource = bookAudioPlayer ? bookAudioPlayer.querySelector('source') : null;
+        preloadAudio(bookAudioUrl, bookAudioPlayer, bookAudioSource);
       } else {
         updateElement('book-detail-content', '<p>Book not found. <a href="books.html">Return to library</a>.</p>', true);
       }
@@ -707,6 +825,11 @@ const populateUI = (data) => {
         if (musicDetailContent.innerHTML !== newHTML) {
           musicDetailContent.innerHTML = newHTML;
         }
+
+        const musicAudioUrl = `audio/music/${resolvedTitle}-music-00.mp3`;
+        const musicAudioPlayer = musicDetailContent.querySelector('.audio-detail audio');
+        const musicAudioSource = musicAudioPlayer ? musicAudioPlayer.querySelector('source') : null;
+        preloadAudio(musicAudioUrl, musicAudioPlayer, musicAudioSource);
       } else {
         updateElement('music-detail-content', '<p>Music details not found. <a href="music.html">Return to music page</a>.</p>', true);
       }
@@ -1010,11 +1133,7 @@ const setupBlogAudio = (post) => {
 
   if (isAudioOn && audioPlayer && audioSource) {
     audioContainer.style.visibility = 'visible';
-
-    if (audioSource.getAttribute('src') !== post.audioUrl) {
-      audioSource.setAttribute('src', post.audioUrl);
-      audioPlayer.load();
-    }
+    preloadAudio(post.audioUrl, audioPlayer, audioSource);
   } else {
     audioContainer.style.visibility = 'hidden';
     if (audioPlayer) {
