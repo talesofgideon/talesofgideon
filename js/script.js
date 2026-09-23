@@ -640,16 +640,17 @@ const populateUI = (data) => {
 
             <div class="audio-detail" style="visibility: visible; width:100%; margin:0px auto 0px; margin-top: auto;">
               <audio controls="" controlslist="nodownload">
-                <source src="audio/book/${bookTitle}-book-00.mp3" type="audio/mpeg">
+                <source src="audio/book/${bookTitle.toLowerCase()}-book-00.mp3" type="audio/mpeg">
               </audio>
             </div>
           </div>
         `;
+
         if (bookDetailContent.innerHTML !== newHTML) {
           bookDetailContent.innerHTML = newHTML;
         }
 
-        const bookAudioUrl = `audio/book/${bookTitle}-book-00.mp3`;
+        const bookAudioUrl = `audio/book/${bookTitle.toLowerCase()}-book-00.mp3`;
         const bookAudioPlayer = bookDetailContent.querySelector('.audio-detail audio');
         const bookAudioSource = bookAudioPlayer ? bookAudioPlayer.querySelector('source') : null;
         preloadAudio(bookAudioUrl, bookAudioPlayer, bookAudioSource);
@@ -817,7 +818,7 @@ const populateUI = (data) => {
 
               <div class="audio-detail" style="visibility: visible; width:100%; margin:0px auto 0px; margin-top: auto;">
                 <audio controls="" controlslist="nodownload">
-                  <source src="audio/music/${resolvedTitle}-music-00.mp3" type="audio/mpeg">
+                  <source src="audio/music/${resolvedTitle.toLowerCase()}-music-00.mp3" type="audio/mpeg">
                 </audio>
               </div>
           </div>
@@ -826,7 +827,7 @@ const populateUI = (data) => {
           musicDetailContent.innerHTML = newHTML;
         }
 
-        const musicAudioUrl = `audio/music/${resolvedTitle}-music-00.mp3`;
+        const musicAudioUrl = `audio/music/${resolvedTitle.toLowerCase()}-music-00.mp3`;
         const musicAudioPlayer = musicDetailContent.querySelector('.audio-detail audio');
         const musicAudioSource = musicAudioPlayer ? musicAudioPlayer.querySelector('source') : null;
         preloadAudio(musicAudioUrl, musicAudioPlayer, musicAudioSource);

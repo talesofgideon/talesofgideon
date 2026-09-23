@@ -160,12 +160,20 @@
 
     <style>
 
+      #checkout-title{ display: block; }
+      .separator { display: block; }
+      .book-detail-grid { gap: 40px; }
+
       .checkout-box {
-        background: var(--color-bg);
+        /*background: var(--color-bg);*/
+        background: var(--color-bg-alt);
         border: 1px solid var(--color-border);
-        border-radius: 8px;
+        border-radius: 4px;
         text-align: center;
-        padding: 1rem;
+        padding-top: 0.6rem;
+        /*padding-bottom: 1rem;*/
+        padding-right: 1rem;
+        padding-left: 1rem;
         position: relative;
         margin-top: 20px;
         /*max-width: 643px;*/
@@ -179,7 +187,7 @@
         width: 100%;
         /*max-width: 100%;*/
         /*height: auto;*/
-        min-height: 611px;
+        /*min-height: 611px;*/
         margin: 0 auto;
         position: relative;
         box-sizing: border-box;
@@ -208,12 +216,11 @@
       }
 
       .checkout-summary-row {
-        display: inline-flex;
+        display: flex;
         justify-content: space-between;
         align-items: baseline;
-        padding-bottom: 16px;
-        /*margin-bottom: 20px;*/
-        /*border-bottom: 1px solid var(--color-border);*/
+        padding-bottom: 8px;
+        margin: 0 auto;
         width: 96.6%;
         box-sizing: border-box;
       }
@@ -249,48 +256,62 @@
         margin-left: 4px;
       }
       .checkout-variant-selector {
-        /*display: flex;*/
-        display: inline-flex;
+        display: flex !important;
+        flex-direction: row;
         gap: 10px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
+        margin: 0 auto 10px auto;
+        flex-wrap: nowrap;
         width: 96.6%;
         box-sizing: border-box;
       }
       .checkout-variant-tab {
-        padding: 8px 16px;
-        border: 1px solid var(--color-border);
+        flex: 1 1 0;
+        min-width: 0;
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 12px 10px;
+        border: 2px solid var(--color-var-border);
         border-radius: 4px;
         background: transparent;
         color: var(--color-text);
         font-family: var(--font-ui);
-        font-size: 13px;
+        font-size: 12.5px;
         font-weight: 600;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
         cursor: pointer;
-        transition: all 0.2s ease;
+        min-height: 46px;
+        box-sizing: border-box;
+        /*transition: all 0.2s ease;*/
       }
       .checkout-variant-tab:hover {
         border-color: var(--color-text);
+        /*color: var(--color-text) !important;*/
+        outline: 2px solid var(--color-text);
+        outline-offset: -2px;
       }
       .checkout-variant-tab.active {
         background: var(--color-text);
         color: var(--color-bg);
         border-color: var(--color-text);
+        outline-offset: -2px;
       }
 
       .checkout-variant-details {
         text-align: left;
-        /*margin-bottom: 24px;*/
-        margin-bottom: 4px;
-        padding: 18px 20px;
-        background: var(--color-bg-alt);
+        margin: 0 auto 0px auto;
+        padding: 8px 15px;
+        background: var(--color-bg);
         border: 1px solid var(--color-border);
-        border-radius: 6px;
-        /*width: 100%;*/
-        display:inline-block;
-        width: 96.6%;
+        border-radius: 4px;
+        display: block;
+        width: 97.6%;
         box-sizing: border-box;
         overflow-wrap: break-word;
         word-wrap: break-word;
@@ -301,20 +322,24 @@
       .checkout-variant-badge {
         display: inline-block;
         font-family: var(--font-ui);
-        font-size: 13px;
-        font-weight: 500;
-        letter-spacing: 0.1em;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--color-muted);
         border: 1px solid var(--color-border);
-        padding: 3px 8px;
+        padding: 4px 8px;
         border-radius: 4px;
-        margin-bottom: 10px;
+        margin-top: 3px;
+        margin-bottom: 0px;
         background: var(--color-bg);
       }
+
+      /*
       html.dark-mode .checkout-variant-badge {
         background: var(--color-bg-alt);
       }
+      */
 
       .checkout-variant-composer {
         font-family: var(--font-ui);
@@ -333,7 +358,10 @@
       }
 
       .checkout-synopsis p {
+        font-family: var(--font-body);
+        font-size: 16px;
         margin: 6px 0;
+        
       }
       .checkout-synopsis p:first-child {
         margin-top: 0;
@@ -343,7 +371,8 @@
       }
 
       .checkout-field-group {
-        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
         width: 100%;
         box-sizing: border-box;
       }
@@ -355,13 +384,14 @@
         font-weight: 600;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        margin-left: 1.5%;
+        margin-left: 1.7%;
         margin-bottom: 8px;
         color: var(--color-text);
       }
       .checkout-email-input {
         width: 96.6%;
-        /*max-width: 100%;*/
+        margin: 0 auto;
+        display: block;
         padding: 14px 16px;
         border: 1px solid var(--color-border);
         box-shadow: 0 0 0 1px var(--color-text);
@@ -386,10 +416,11 @@
 
       .checkout-btn {
         width: 96.6%;
-        /*max-width: 100%;*/
-        display: inline-block;
+        margin: 0 auto;
+        display: block;
         text-align: center;
-        background: var(--color-text);
+        /*background: var(--color-text);*/
+        background: var(--color-checkout-btn);
         color: var(--color-bg);
         border: none;
         border-radius: 4px;
@@ -404,7 +435,9 @@
         transition: opacity 0.2s ease;
       }
       .checkout-btn:hover {
-        opacity: 0.85;
+        /*opacity: 0.85;*/
+        background: var(--color-checkout-btn-hover);
+        color: var(--color-bg);
       }
 
       .under-seperator {
@@ -417,6 +450,754 @@
         max-width: 100%;
         min-height: 300px;
         box-sizing: border-box;
+      }
+
+      /* Stack variant buttons vertically on mobile/tablet screens */
+      /* @media (max-width: 1090px) {
+        .checkout-variant-selector {
+          flex-direction: column !important;
+          width: 96.6% !important;
+          margin: 0 auto 20px auto !important;
+          gap: 8px !important;
+        }
+      }
+      */
+
+      /* Stack variant buttons vertically on mobile/tablet screens */
+      @media (max-width: 768px) {
+
+        html, body {
+          scroll-snap-type: y proximity;
+          scroll-behavior: smooth;  /* Ensures any programmatic shifts are completely smooth */
+        }
+
+      /* 2. Turn your checkout box into the "bump in the road" */
+        .checkout-box {
+          scroll-snap-align: start; /* Magnetises the top of the box to the top of the screen */
+          scroll-snap-stop: normal; /* Allows them to quickly flick past if they are looking for the footer */
+        }
+
+      /* 3. Account for your <nav> bar height! 
+            Without this, the browser will snap the box to the very top edge of the screen, 
+            hiding the top of your checkout form underneath a sticky/fixed navigation bar.
+            Adjust the '60px' to match the actual height of your mobile <nav>. */
+        html {
+          scroll-padding-top: 80px; 
+        }
+
+      /* ==========================================================================
+         Preparing for Payment Mode
+         ========================================================================== */
+
+        #checkout-title{ display: none; }
+        .separator { display: none; }
+        .book-detail-grid { gap: 0px; }
+
+        .checkout-variant-selector {
+          flex-direction: column !important;
+          width: 96.6% !important;
+          margin: 0 auto 15px auto !important;
+          gap: 8px !important;
+        }
+        .checkout-variant-tab {
+          width: 100% !important;
+          flex: none !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          text-align: center !important;
+          padding: 12px 14px !important;
+          font-size: 13px !important;
+          min-height: 44px !important;
+          box-sizing: border-box !important;
+        }
+        .checkout-variant-details {
+          width: 96.6% !important;
+          /*margin: 0 auto 4px auto !important;*/
+        }
+      }
+
+      /* ==========================================================================
+         Focused Payment Mode (MacPaw Style Scroll-Free Checkout)
+         ========================================================================== */
+
+      html.payment-mode,
+      body.payment-mode {
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        overscroll-behavior: none !important;
+      }
+
+      body.payment-mode nav,
+      body.payment-mode .mobile-menu,
+      body.payment-mode footer,
+      body.payment-mode #books-carousel,
+      body.payment-mode #music-carousel,
+      body.payment-mode #scroll-top,
+      body.payment-mode #checkout-section {
+        display: none !important;
+      }
+
+      .payment-overlay-screen {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--color-bg);
+        z-index: 100000;
+        box-sizing: border-box;
+      }
+
+      body.payment-mode .payment-overlay-screen {
+        display: flex;
+      }
+
+      .payment-overlay-inner {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        box-sizing: border-box;
+      }
+
+      /* Desktop Split-Screen Layout (MacPaw Store) */
+      @media (min-width: 861px) {
+        .payment-overlay-inner {
+          flex-direction: row;
+          max-width: 1240px;
+        }
+
+        /* Left column: Expanded order summary with picture, details, and price */
+        .payment-summary-col {
+          display: flex !important;
+          flex-direction: column;
+          width: 44%;
+          max-width: 500px;
+          height: 100%;
+          background: var(--color-bg-alt);
+          border-right: 1px solid var(--color-border);
+          padding: 36px 40px 36px 40px;
+          box-sizing: border-box;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        /* Right column: Customer details menu + Paddle payment */
+        .payment-checkout-col {
+          flex: 1 1 0;
+          min-width: 0;
+          height: 100%;
+          padding: 36px 48px 36px 48px;
+          box-sizing: border-box;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .mobile-only {
+          display: none !important;
+        }
+      }
+
+      /* Mobile & Tablet Layout (<= 860px) */
+      @media (max-width: 860px) {
+        .payment-overlay-screen {
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .payment-overlay-inner {
+          flex-direction: column;
+          max-width: 580px;
+          height: auto;
+          min-height: 100%;
+          padding: 16px 16px 40px 16px;
+        }
+
+        .payment-summary-col {
+          display: none !important;
+        }
+
+        .payment-checkout-col {
+          width: 100%;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .mobile-only {
+          display: block;
+        }
+
+        header.payment-bar-top.mobile-only {
+          display: flex !important;
+        }
+      }
+
+      /* Desktop Left-Column Styling */
+      .payment-col-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .payment-brand-tag {
+        font-family: var(--font-ui);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-text);
+      }
+
+      .payment-product-box {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        margin-bottom: 22px;
+      }
+
+      .payment-product-cover-wrap {
+        flex-shrink: 0;
+        width: 105px;
+        max-width: 105px;
+      }
+
+      .payment-desktop-cover {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid var(--color-border);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        background: var(--color-bg);
+      }
+
+      .payment-product-details {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .payment-variant-badge {
+        display: inline-block;
+        font-family: var(--font-ui);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-muted);
+        border: 1px solid var(--color-border);
+        padding: 3px 8px;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        background: var(--color-bg);
+      }
+
+      .payment-item-title {
+        font-family: var(--font-heading);
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--color-text);
+        margin: 0 0 4px 0;
+        line-height: 1.2;
+      }
+
+      .payment-item-format {
+        font-family: var(--font-ui);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--color-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 6px;
+      }
+
+      .payment-item-desc {
+        font-family: var(--font-body);
+        font-size: 13px;
+        line-height: 1.55;
+        color: var(--color-text-light);
+        margin: 0;
+      }
+
+      .payment-item-desc p {
+        margin: 2px 0;
+      }
+
+      .payment-recipient-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+        margin-bottom: 18px;
+        box-sizing: border-box;
+      }
+
+      .recipient-icon {
+        display: inline-flex;
+        color: var(--color-muted);
+        flex-shrink: 0;
+      }
+
+      .recipient-meta {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+
+      .recipient-label {
+        font-family: var(--font-ui);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-muted);
+      }
+
+      .recipient-email {
+        font-family: var(--font-ui);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--color-text);
+        word-break: break-all;
+      }
+
+      .payment-breakdown-card {
+        padding: 16px 18px;
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+
+      .breakdown-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--font-ui);
+        font-size: 13.5px;
+        color: var(--color-muted);
+        margin-bottom: 8px;
+      }
+
+      .breakdown-muted {
+        font-size: 12.5px;
+      }
+
+      .breakdown-divider {
+        height: 1px;
+        background: var(--color-border);
+        margin: 10px 0;
+      }
+
+      .breakdown-total {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 0;
+      }
+
+      .breakdown-total .total-val {
+        font-family: var(--font-heading);
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--color-text);
+      }
+
+      .payment-trust-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 14px;
+        border-top: 1px solid var(--color-border);
+        margin-top: auto;
+      }
+
+      .trust-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-ui);
+        font-size: 12px;
+        color: var(--color-muted);
+      }
+      .trust-item svg {
+        flex-shrink: 0;
+      }
+
+      /*
+      .payment-steps-nav {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        background: var(--color-bg-alt);
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+        margin-bottom: 18px;
+        box-sizing: border-box;
+      }
+      */
+
+      .step-nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-family: var(--font-ui);
+        text-align: left;
+        box-sizing: border-box;
+      }
+
+      .step-nav-btn.step-link {
+        cursor: pointer;
+        color: var(--color-text);
+        transition: all 0.2s ease;
+      }
+      .step-nav-btn.step-link:hover {
+        background: var(--color-border);
+      }
+
+      .step-nav-btn.step-active {
+        color: var(--color-text);
+        font-weight: 700;
+        cursor: default;
+      }
+
+      .step-nav-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        font-size: 11px;
+        font-weight: 700;
+        background: var(--color-text);
+        color: var(--color-bg);
+      }
+
+      .step-nav-text {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .step-nav-sub {
+        font-size: 12px;
+        color: var(--color-muted);
+        font-weight: 400;
+        margin-left: 2px;
+        max-width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .step-nav-arrow {
+        color: var(--color-muted);
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* Mobile Top Bar */
+      .payment-bar-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 4px 14px 4px;
+        border-bottom: 1px solid var(--color-border);
+        margin-bottom: 14px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .payment-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: transparent;
+        border: 1px solid var(--color-border);
+        border-radius: 4px;
+        padding: 7px 12px;
+        font-family: var(--font-ui);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-text);
+        cursor: pointer;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+      }
+      .payment-back-btn:hover {
+        background: var(--color-bg-alt);
+        border-color: var(--color-text);
+      }
+
+      .payment-bar-brand {
+        font-family: var(--font-ui);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-text);
+      }
+
+      .payment-bar-price {
+        font-family: var(--font-heading);
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--color-text);
+        text-align: right;
+      }
+      .payment-bar-price span {
+        font-family: var(--font-ui);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--color-muted);
+        margin-left: 2px;
+      }
+
+      /* Order Summary Accordion Box */
+      .payment-order-summary-box {
+        width: 100%;
+        margin-bottom: 16px;
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+        background: var(--color-bg-alt);
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+      html.dark-mode .payment-order-summary-box {
+        background: var(--color-bg-alt);
+      }
+
+      .order-summary-toggle {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 14px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-ui);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--color-text);
+        box-sizing: border-box;
+        text-align: left;
+      }
+      .order-summary-toggle:hover {
+        opacity: 0.85;
+      }
+
+      .summary-toggle-left {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        letter-spacing: 0.04em;
+      }
+
+      .summary-toggle-chevron {
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .summary-toggle-chevron.open {
+        transform: rotate(180deg);
+      }
+
+      .summary-toggle-amount {
+        font-family: var(--font-ui);
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+        color: var(--color-text);
+      }
+
+      .order-summary-dropdown {
+        display: none;
+        padding: 14px;
+        border-top: 1px solid var(--color-border);
+        background: var(--color-bg);
+        box-sizing: border-box;
+      }
+      html.dark-mode .order-summary-dropdown {
+        background: var(--color-bg);
+      }
+      .order-summary-dropdown.open {
+        display: block;
+        animation: summaryFadeDown 0.2s ease;
+      }
+      @keyframes summaryFadeDown {
+        from { opacity: 0; transform: translateY(-4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .order-summary-product-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .order-summary-thumb {
+        width: 44px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 3px;
+        border: 1px solid var(--color-border);
+        flex-shrink: 0;
+      }
+
+      .order-summary-info {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .order-summary-title {
+        font-family: var(--font-ui);
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--color-text);
+        margin-bottom: 2px;
+      }
+
+      .order-summary-format {
+        font-family: var(--font-ui);
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--color-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 4px;
+      }
+
+      .order-summary-email {
+        font-family: var(--font-ui);
+        font-size: 12px;
+        color: var(--color-muted);
+        overflow-wrap: break-word;
+        word-break: break-all;
+      }
+      .order-summary-email .email-val {
+        color: var(--color-text);
+        font-weight: 600;
+      }
+
+      .order-summary-item-price {
+        font-family: var(--font-ui);
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--color-text);
+        flex-shrink: 0;
+      }
+
+      .order-summary-divider {
+        height: 1px;
+        background: var(--color-border);
+        margin: 12px 0 10px 0;
+      }
+
+      .order-summary-line {
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--font-ui);
+        font-size: 13px;
+        color: var(--color-muted);
+        margin-bottom: 6px;
+      }
+
+      .order-summary-total-line {
+        font-size: 14px;
+        color: var(--color-text);
+        margin-top: 6px;
+        padding-top: 6px;
+        border-top: 1px dashed var(--color-border);
+      }
+      .order-summary-total-line strong {
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      /* Paddle Container in Payment Overlay */
+      .payment-overlay-screen .paddle-checkout-container {
+        width: 100%;
+        min-height: 420px;
+        box-sizing: border-box;
+      }
+
+      /* Paddle Compliance & Legal Notice */
+      .payment-compliance-notice {
+        font-family: var(--font-ui, system-ui, -apple-system, sans-serif);
+        font-size: 11px;
+        color: rgb(67, 67, 80);
+        text-align: center;
+        margin: 0px auto 0px auto;
+        line-height: 1.5;
+        width: 97%;
+        max-width: 560px;
+        box-sizing: border-box;
+      }
+      html.dark-mode .payment-compliance-notice {
+        color: rgb(156, 163, 175);
+      }
+      .payment-compliance-notice p {
+        margin: 4px 0;
+      }
+      .payment-compliance-notice a {
+        color: #4f46e5;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        white-space: nowrap;
+        transition: opacity 0.2s ease;
+      }
+      html.dark-mode .payment-compliance-notice a {
+        color: #818cf8;
+      }
+      .payment-compliance-notice a:hover {
+        opacity: 0.8;
+      }
+      .payment-compliance-row {
+        display: inline-block;
+      }
+
+      .payment-security-notice {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 8px;
+        margin-bottom: 12px;
+        font-family: var(--font-ui);
+        font-size: 11.5px;
+        font-weight: 500;
+        color: var(--color-muted);
+        letter-spacing: 0.03em;
+        text-align: center;
       }
 
       @media (max-width: 767px) {
@@ -451,7 +1232,7 @@
           font-size: 22px;
         }
         .checkout-variant-tab {
-          padding: 8px 12px;
+          padding: 12px 14px;
           font-size: 13px;
         }
         .checkout-variant-details {
@@ -543,19 +1324,21 @@
               <h1 id="checkout-title">Exodus<span class="subtitle-label">CHECKOUT</span></h1>
 
               <div class="separator"></div>
-
+              <!--
               <div class="payment-section">
                 By clicking CONTINUE, you agree to the <a href="terms.html" target="_blank" rel="noopener noreferrer" class="under-seperator">Terms</a> of Use, the <a href="terms.html#norefund" target="_blank" rel="noopener noreferrer" class="under-seperator">Refund</a> Policy and have read the <a href="privacy.html" target="_blank" rel="noopener noreferrer" class="under-seperator">Privacy</a> policy. The full price displayed is the price you pay, there are no hidden fees. Upon successful payment, you will instantly receive a download link via the email provided.
               </div>
-
+              -->
               <div class="checkout-box">
                 <div class="checkout-inner">
                 <!-- Summary Row -->
                 <div class="checkout-summary-row">
-                  <div>
+                  <div class="checkout-summary-title" style="display: flex; gap: 10px;">
                     <div class="summary-product-name" id="checkout-product-name">Exodus</div>
+                      <div class="checkout-variant-badge" id="checkout-variant-badge">Digital Bundle</div>
+
                     <!-- <div class="summary-variant-label" id="checkout-variant-label">EPUB & Audiobook Bundle</div> -->
-                    <div class="summary-variant-label" id="checkout-variant-label">Digital Bundle</div>
+                    <!-- <div class="summary-variant-label" id="checkout-variant-label">Digital Bundle</div>-->
                   </div>
                   <div class="summary-price" id="checkout-price">$6.99 <span>USD</span></div>
                 </div>
@@ -565,29 +1348,24 @@
                   <!-- Dynamically populated buttons -->
                 </div>
 
+                <!-- Selected Variant Details & Synopsis (Displayed BEFORE payment) -->
+                <div id="checkout-variant-details" class="checkout-variant-details">
+                  <!-- <div class="checkout-variant-badge" id="checkout-variant-badge">Digital Bundle</div> -->
+                  <!-- <span style="font-family: var(--font-ui); font-size: 13px; color: var(--color-muted); margin-bottom: 8px; margin-left: 10px;" id="composer-variant-badge"></span> -->
+                  <div class="checkout-synopsis" id="checkout-synopsis">
+                  <!-- Dynamic synopsis injected here -->
+                  </div>
+                </div>
+
                 <!-- Native Email Entry Form -->
                 <form id="checkout-email-form" onsubmit="handleNativeCheckout(event)">
                   <div class="checkout-field-group">
-                    <label for="checkout-email" class="checkout-field-label">Delivery Email Address</label>
-                    <input type="email" id="checkout-email" class="checkout-email-input" placeholder="ENTER YOUR EMAIL ADDRESS" required autocomplete="email">
+                  <!-- <label for="checkout-email" class="checkout-field-label">Delivery Email Address</label> -->
+                    <input type="email" id="checkout-email" class="checkout-email-input" placeholder="ENTER YOUR DELIVERY EMAIL ADDRESS" required autocomplete="email">
                   </div>
 
                   <button type="submit" id="checkout-submit-btn" class="checkout-btn">CONTINUE TO PAYMENT</button>
                 </form>
-
-                <!-- Paddle Inline Container -->
-                <div id="paddle-checkout-container" class="paddle-checkout-container">
-                  <!-- Selected Variant Details & Synopsis (Displayed BEFORE payment) -->
-                  <div id="checkout-variant-details" class="checkout-variant-details">
-                    <!-- <div class="checkout-variant-badge" id="checkout-variant-badge">Digital Edition & Audiobook Bundle</div><span style="font-family: var(--font-ui); font-size: 13px; color: var(--color-muted); margin-bottom: 8px; margin-left: 10px;" id="composer-variant-badge"></span>
-                    <div class="checkout-synopsis" id="checkout-synopsis">
-                    Dynamic synopsis injected here -->
-                    <div class="checkout-variant-badge" id="checkout-variant-badge">Digital Bundle</div><span style="font-family: var(--font-ui); font-size: 13px; color: var(--color-muted); margin-bottom: 8px; margin-left: 10px;" id="composer-variant-badge"></span>
-                    <div class="checkout-synopsis" id="checkout-synopsis">
-                    <!-- Dynamic synopsis injected here -->
-                    </div>
-                  </div>
-                </div>
               </div>
               </div>
             </div>
@@ -645,6 +1423,163 @@
       </section>
 
     </main>
+
+    <!-- Dedicated Focused Payment Screen (MacPaw Style Scroll-Free Checkout) -->
+    <div id="payment-overlay-screen" class="payment-overlay-screen" style="display: none;">
+      <div class="payment-overlay-inner">
+
+        <!-- DESKTOP LEFT COLUMN: Expanded Order Summary (MacPaw Style) -->
+        <aside class="payment-summary-col" id="payment-summary-col">
+          <!-- Top header with Back / Edit Order and Brand -->
+          <div class="payment-col-header">
+            <button type="button" class="payment-back-btn" onclick="exitPaymentMode()" aria-label="Edit order details">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              <span>EDIT ORDER</span>
+            </button>
+            <span class="payment-brand-tag">THOMAS GIDEON</span>
+          </div>
+
+          <!-- Product Details with Artwork Picture, Title, Format, Excerpt -->
+          <div class="payment-product-box">
+            <div class="payment-product-cover-wrap">
+              <img id="payment-desktop-thumb" src="img/books/exodus-600x1000.jpg" alt="Item Cover" class="payment-desktop-cover">
+            </div>
+            <div class="payment-product-details">
+              <span class="payment-variant-badge" id="payment-desktop-badge">DIGITAL EDITION</span>
+              <h2 class="payment-item-title" id="payment-desktop-title">Exodus</h2>
+              <div class="payment-item-format" id="payment-desktop-format">EPUB & Audiobook</div>
+              <div class="payment-item-desc" id="payment-desktop-desc">
+                <p>Complete high-fidelity digital package delivered immediately to your inbox upon purchase.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recipient Delivery Email Info -->
+          <div class="payment-recipient-card">
+            <div class="recipient-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="recipient-meta">
+              <span class="recipient-label">Delivering digital files to</span>
+              <span class="recipient-email" id="payment-desktop-email">email@example.com</span>
+            </div>
+          </div>
+
+          <!-- Price Details filling the left-hand side -->
+          <div class="payment-breakdown-card">
+            <div class="breakdown-row">
+              <span>Subtotal</span>
+              <span id="payment-desktop-subtotal">$6.99 USD</span>
+            </div>
+            <div class="breakdown-row breakdown-muted">
+              <span>Estimated Taxes / VAT</span>
+              <span>Included</span>
+            </div>
+            <div class="breakdown-divider"></div>
+            <div class="breakdown-row breakdown-total">
+              <span class="total-label">Total due today</span>
+              <span class="total-val" id="payment-desktop-total">$6.99 USD</span>
+            </div>
+          </div>
+
+          <!-- Trust & Security Reassurance -->
+          <div class="payment-trust-card">
+            <div class="trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>Guaranteed 256-bit SSL encrypted checkout</span>
+            </div>
+            <div class="trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Instant direct digital downloads delivered to email</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- RIGHT HAND COLUMN: Customer details menu + Paddle payment options -->
+        <main class="payment-checkout-col" id="payment-checkout-col">
+
+          <!-- MOBILE ONLY: Top Bar (Back / Edit + Brand + Price) -->
+          <header class="payment-bar-top mobile-only">
+            <button type="button" id="payment-back-btn" class="payment-back-btn" onclick="exitPaymentMode()" aria-label="Edit order details">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              <span>EDIT</span>
+            </button>
+
+            <div class="payment-bar-brand">
+              <span class="payment-bar-logo">THOMAS GIDEON</span>
+            </div>
+
+            <div class="payment-bar-price" id="payment-bar-price">
+              $6.99 <span>USD</span>
+            </div>
+          </header>
+
+          <!-- MOBILE ONLY: Collapsible Dropdown 'Order Summary' Accordion -->
+          <div class="payment-order-summary-box mobile-only">
+            <button type="button" class="order-summary-toggle" id="order-summary-toggle" onclick="toggleOrderSummary()" aria-expanded="false" aria-controls="order-summary-dropdown">
+              <div class="summary-toggle-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span id="order-summary-toggle-text">Show order summary</span>
+                <svg class="summary-toggle-chevron" id="summary-toggle-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+              <span class="summary-toggle-amount" id="order-summary-toggle-price">$6.99 USD</span>
+            </button>
+
+            <!-- Collapsible Dropdown Content -->
+            <div class="order-summary-dropdown" id="order-summary-dropdown">
+              <div class="order-summary-content">
+                <div class="order-summary-product-row">
+                  <img id="order-summary-thumb" src="img/books/exodus-600x1000.jpg" alt="Item Thumbnail" class="order-summary-thumb">
+                  <div class="order-summary-info">
+                    <div class="order-summary-title" id="order-summary-title">Exodus</div>
+                    <div class="order-summary-format" id="order-summary-format">EPUB & Audiobook</div>
+                    <div class="order-summary-email">
+                      <span class="email-label">Delivery to:</span> <span id="order-summary-email" class="email-val">email@example.com</span>
+                    </div>
+                  </div>
+                  <div class="order-summary-item-price" id="order-summary-item-price">$6.99 USD</div>
+                </div>
+
+                <div class="order-summary-divider"></div>
+
+                <div class="order-summary-line">
+                  <span>Subtotal</span>
+                  <span id="order-summary-subtotal">$6.99 USD</span>
+                </div>
+                <div class="order-summary-line order-summary-total-line">
+                  <span>Total due today</span>
+                  <strong id="order-summary-total">$6.99 USD</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paddle v2 Inline Checkout Container -->
+          <div id="paddle-checkout-container" class="paddle-checkout-container">
+            <!-- Paddle iframe or fallback sandbox renders here -->
+          </div>
+
+          <!-- Compliance & Legal Notice (Placed directly below Paddle checkout frame / merchant disclosure) -->
+          <div class="payment-compliance-notice" id="payment-compliance-notice">
+            <p>
+              By clicking CONTINUE, you agree to our 
+              <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms</a> of Use, 
+              <a href="terms.html#norefund" target="_blank" rel="noopener noreferrer">Refund</a> Policy 
+              and have read the <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy</a> Policy. The full price displayed is the price you pay; there are no hidden fees.
+              E-commerce services provided by <a href="https://paddle.com" target="_blank" rel="noopener">Paddle</a> (Merchant of Record). 
+              <!-- <span class="payment-compliance-row">E-commerce services provided by <a href="https://paddle.com" target="_blank" rel="noopener">Paddle</a> (Merchant of Record).</span> -->
+            </p>
+          </div>
+
+          <!-- Secure Transaction Footer Notice -->
+          <div class="payment-security-notice" id="payment-security-notice">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>Guaranteed Safe & Secure Checkout via Paddle</span>
+          </div>
+
+        </main>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -714,27 +1649,28 @@
       function handleCheckoutSuccess(data) {
         const submitBtn = document.getElementById('checkout-submit-btn');
         if (submitBtn) submitBtn.innerText = 'PAYMENT COMPLETE';
-        console.log("Transaction Complete !", data.data);
-        // Transaction complete, clear used control and input element cluter 
+        console.log("Transaction Complete !", data && data.data);
+
+        // Hide back/edit button since payment has completed
+        const backBtn = document.getElementById('payment-back-btn');
+        if (backBtn) backBtn.style.display = 'none';
 
         // 1. Hide the variant container to visually reclaim the space
-          const variantDiv = document.getElementById('checkout-variant-selector');
-          if (variantDiv) {
-              variantDiv.style.display = 'none';
-              // Find all buttons inside this container and disable them
-              variantDiv.querySelectorAll('button').forEach(button => {
-              button.disabled = true;
-              });
-          }
+        const variantDiv = document.getElementById('checkout-variant-selector');
+        if (variantDiv) {
+          variantDiv.style.display = 'none';
+          // Find all buttons inside this container and disable them
+          variantDiv.querySelectorAll('button').forEach(button => {
+            button.disabled = true;
+          });
+        }
 
         // 2. Hide the email form container to visually reclaim the space
-          const emailForm = document.getElementById('checkout-email-form');
-          if (emailForm) {
-              emailForm.style.display = 'none';
-              // document.getElementById('checkout-email').disabled = true;
-              // Optional chaining (?.) safely disables the input only if it exists
-              document.getElementById('checkout-email')?.setAttribute('disabled', 'true');
-          }
+        const emailForm = document.getElementById('checkout-email-form');
+        if (emailForm) {
+          emailForm.style.display = 'none';
+          document.getElementById('checkout-email')?.setAttribute('disabled', 'true');
+        }
 
         // 3. Give Mobile Safari 3 seconds to play the success animation inside the iframe
         setTimeout(() => {
@@ -789,7 +1725,7 @@
         // digital edition & audiobook bundle
             variantLabel = variantLabel.replace("Digital Edition & Audiobook Only","EPUB & Audiobook");
         // digital edition
-            variantLabel = variantLabel.replace("Digital Edition","EPUB Only");
+            variantLabel = variantLabel.replace("Digital Edition","EPUB ebook Only");
         }
         // 2. Check for Digital Album (Case-Insensitive)
         // } else if (/Digital Album/i.test(varientLabel)) {
@@ -803,16 +1739,18 @@
         // 3. Completely overwrite the HTML to clear memory and display a clean dashboard card
         //<div style="border: 2px solid #10b981; padding: 28px; border-radius: 12px; margin-top: 15px; background: var(--color-bg-alt, #f9fafb); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); width:96.6%; display: inline-block;">
 
+        // text-shadow: 0.5px 0 0 currentColor; 
+
         container.innerHTML = `
-          <div style="border: 2px solid #10b981; padding: 18px 14px; border-radius: 10px; background: var(--color-bg-alt, #f9fafb); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); width:96.6%; display: inline-block; margin-bottom: 12px;">
+          <div style="border: 2px solid var(--color-payment-border); padding: 18px 14px; border-radius: 6px; background: var(--color-bg-alt, #f9fafb); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); display: inline-block; margin-bottom: 12px;">
 
             <!-- Success Icon Head -->
             <div style="text-align: center; margin-bottom: 18px;">
               <div style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: solid; color: #059669; border-radius: 50%; font-size: 24px; font-weight: bold;">
                 ✓
               </div>
-              <h3 style="font-family: var(--font-ui); font-size: 18px; margin: 12px 0 4px 0; color: var(--color-text, #111827);">
-                Payment Successful!
+              <h3 style="font-family: var(--font-ui); font-size: 18px; margin: 12px 0 4px 0; color: var(--color-text, #111827); letter-spacing: 0.1em;">
+                PAYMENT SUCCESSFUL!
               </h3>
               <p style="font-size: 16px; margin: 0; color: var(--color-text);">
                 Your order has been verified and processed.
@@ -822,22 +1760,22 @@
             <!-- Order Details Summary -->
             <div style="border-top: 1px solid var(--color-border, #e5e7eb); border-bottom: 1px solid var(--color-border, #e5e7eb); padding: 6px 12px; margin-bottom: 10px;">
               <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 12px;">
-                <span style="font-family: var(--font-ui);font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">PRODUCT:</span>
-                <strong style="font-family: var(--font-ui); font-weight: 500; color: var(--color-text, #111827);text-transform: uppercase;">${productTitle}</strong>
+                <span style="font-family: var(--font-ui); font-size:14px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">PRODUCT:</span>
+                <strong style="font-family: var(--font-ui); font-size:14px; font-weight: 500; color: var(--color-text, #111827);text-transform: uppercase; text-shadow: 0.3px 0.3px 0.3px currentColor">${productTitle}</strong>
               </div>
               <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 12px;">
-                <span style="font-family: var(--font-ui);font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">FORMAT:</span>
-                <span style="font-family: var(--font-ui); font-weight: 500; text-transform: uppercase;">${variantLabel}</span>
+                <span style="font-family: var(--font-ui); font-size:14px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">FORMAT:</span>
+                <span style="font-family: var(--font-ui); font-size:14px; font-weight: 500; text-transform: uppercase; text-shadow: 0.3px 0.3px 0.3px currentColor">${variantLabel}</span>
               </div>
               <div style="display: flex; justify-content: space-between; font-size: 13px;">
                 <span style="font-family: var(--font-ui);font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">AMOUNT PAID:</span>
-                <strong style="font-family: var(--font-ui); font-weight: 500; color: var(--color-text); text-transform: uppercase; letter-spacing:0.04rem">$${price} USD</strong>
+                <strong style="font-family: var(--font-ui); font-size:14px; font-weight: 500; color: var(--color-text); text-transform: uppercase; letter-spacing:0.04rem; text-shadow: 0.3px 0.3px 0.3px currentColor">$${price} USD</strong>
               </div>
             </div>
 
             <!-- Next Steps Instruction Box -->
         
-            <div style="display: flex; justify-content: center; max-width: 97.6%; background: var(--color-bg, #ffffff); border: 1px solid var(--color-border, #e5e7eb); border-radius: 12px; text-align: center; margin: 0 auto 15px auto;">
+            <div style="display: flex; justify-content: center; max-width: 97.6%; background: var(--color-bg, #ffffff); border: 1px solid var(--color-border, #e5e7eb); border-radius: 6px; text-align: center; margin: 0 auto 15px auto;">
 
               <p style="max-width: 95%; margin: 10px; font-family: var(--font-serif-alt); font-size: 16px; font-weight: 500; color: var(--color-muted); line-height: 1.8;">
 
@@ -849,13 +1787,14 @@
             <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; width: 100%; max-width: 97%; margin: 0 auto;">
   
               <!-- Soundtrack Button (Primary Action) -->
-              <a <a href="/${productType}-detail?id=${productID}&title=${productTitle}" class="btn-soundtrack" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; background-color: #059669; color: #ffffff; font-family: var(--font-ui, sans-serif); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-decoration: none; padding: 12px; border-radius: 6px; text-align: center; border: 1px solid #059669; transition: opacity 0.2s;">
+              <!-- background-color: #059669; border: 1px solid #059669 -->
+              <a <a href="/${productType}-detail?id=${productID}&title=${productTitle}" class="btn-soundtrack" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; background-color: var(--color-text); color: var(--color-trans-btn); font-family: var(--font-ui, sans-serif); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-decoration: none; padding: 12px; border-radius: 5px; text-align: center; border: 1px solid var(--font-ui); transition: opacity 0.2s;">
                 ${productLabel}
               </a>
               
               <!-- Home Button (Secondary Action) -->
-              <a href="/" class="btn-home" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; background-color: transparent; color: var(--color-text, #111827); font-family: var(--font-ui, sans-serif); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-decoration: none; padding: 12px; border-radius: 6px; text-align: center; border: 1px solid var(--color-border, #e5e7eb); transition: background-color 0.2s;">
-                RETURN TO HOMEPAGE
+              <a href="/" class="btn-home" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; background-color: transparent; color: var(--color-text, #111827); font-family: var(--font-ui); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-decoration: none; padding: 12px; border-radius: 5px; text-align: center; border: 1px solid var(--color-border); transition: background-color 0.2s;">
+                RETURN TO HOME
               </a>  
             </div>
           </div>
@@ -1017,13 +1956,13 @@
       function getVariantButtonLabel(rawLabel) {
         if (!rawLabel) return '';
         if (rawLabel.includes('Digital Edition & Audiobook Bundle')) {
-          return 'EPUB & Audio Bundle';
+          return 'EPUB & Audiobook';
         }
         if (rawLabel.includes('Audiobook')) {
           return 'Audiobook Only';
         }
         if (rawLabel.includes('Digital Edition')) {
-          return 'Epub Ebook Only';
+          return 'Epub ebook Only';
         }
         return rawLabel;
       }
@@ -1031,9 +1970,9 @@
       function getVariantPriority(key, v) {
         if (!v) return 99;
         const label = getVariantButtonLabel(v.label || key);
-        if (label === 'EPUB & Audio Bundle') return 1;
+        if (label === 'EPUB & Audiobook') return 1;
         if (label === 'Audiobook Only') return 2;
-        if (label === 'Epub Ebook Only') return 3;
+        if (label === 'Epub Only') return 3;
         return 4;
       }
 
@@ -1069,17 +2008,11 @@
 
             // Re-show variant details and clear previous Paddle frame/simulation
             const detailsEl = document.getElementById('checkout-variant-details');
-            //if (detailsEl) detailsEl.style.display = 'block';
             if (detailsEl) detailsEl.style.display = 'inline-block';
-
 
             const container = document.getElementById('paddle-checkout-container');
             if (container) {
-              Array.from(container.children).forEach(child => {
-                if (child.id !== 'checkout-variant-details') {
-                  child.remove();
-                }
-              });
+              container.innerHTML = '';
             }
             const submitBtn = document.getElementById('checkout-submit-btn');
             if (submitBtn) {
@@ -1169,30 +2102,30 @@
 
         if (badgeEl) badgeEl.innerText = cleanLabel;
 
-        if (badgeEl.innerText === "DIGITAL BUNDLE") {
-            badgeEl.innerText = "EPUB & AUDIO BUNDLE"
-        }
-
+        //if (badgeEl.innerText === "DIGITAL BUNDLE") {
+        //    badgeEl.innerText = "EPUB & AUDIO BUNDLE"
+        //}
+      
         const synopsisEl = document.getElementById('checkout-synopsis');
         if (synopsisEl) {
           let html = '';
 
           if (itemData && itemData.synopsis && itemData.composer) {
-              html += itemData.synopsis;
-              html = removeTags(html);               // remove <p> tags
-              html = trimToSecondToLastPeriod(html); // remove second sentence
-              html = "\"" + html + "\"";             // add quotes to include book checkout message!
+              //html += itemData.synopsis;
+              //html = removeTags(html);               // remove <p> tags
+              //html = trimToSecondToLastPeriod(html); // remove second sentence
+              //html = "\"" + html + "\"";             // add quotes to include book checkout message!
               html = html + `<p>` + " Listen to the music, discover the score accompanying the digital editions of the eBook and audioBook. Enter your delivery email address, to " + ` <a href="#checkout-email" class="under-seperator" onclick="event.preventDefault(); const el = document.getElementById('checkout-email'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();">continue to payment</a>.</p>`;
           }
 
           if (itemData && itemData.synopsis && itemData.composer === undefined) {
           // if (itemData && itemData.synopsis && !itemData.composer) {
-              html += itemData.synopsis;
-              html = removeTags(html);               // remove <p> tags
-              html = trimToSecondToLastPeriod(html); // remove second sentence
-              html = trimToAfterSecondComma(html);   // remove second comma
-              html = "\"" + html + "\"";             // add quotes to include book checkout message!
-              html = html + `<p>` + " Discover the tale, read the eBook or listen to the authors narrated audioBook or simply enjoy the flexibility of owning both, for reading or listening pleasure while travelling. Enter your delivery email address, to " + ` <a href="#checkout-email" class="under-seperator" onclick="event.preventDefault(); const el = document.getElementById('checkout-email'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();">continue to payment</a>.</p>`;
+              //html += itemData.synopsis;
+              //html = removeTags(html);               // remove <p> tags
+              //html = trimToSecondToLastPeriod(html); // remove second sentence
+              //html = trimToAfterSecondComma(html);   // remove second comma
+              //html = "\"" + html + "\"";             // add quotes to include book checkout message!
+              html = html + `<p>` + " Discover the tale, read the eBook, listen to the authors narrated audioBook or simply enjoy the flexibility of owning both, for reading or listening pleasure while travelling. Enter your delivery email address, to " + ` <a href="#checkout-email" class="under-seperator" onclick="event.preventDefault(); const el = document.getElementById('checkout-email'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();">continue to payment</a>.</p>`;
           }
 
           if (cleanLabel === "Digital Album") {
@@ -1204,22 +2137,168 @@
         }
       }
 
+      function enterPaymentMode(cleanEmail) {
+        window.previousScrollY = window.scrollY || window.pageYOffset || 0;
+
+        document.documentElement.classList.add('payment-mode');
+        document.body.classList.add('payment-mode');
+
+        const overlay = document.getElementById('payment-overlay-screen');
+        if (overlay) {
+          overlay.style.display = 'flex';
+          overlay.scrollTop = 0;
+        }
+
+        // Pull active checkout item & variant details
+        const item = window.currentCheckoutItem || {};
+        const variantKey = window.currentCheckoutVariant;
+        const variants = item.variants || {};
+        const selectedVariant = variants[variantKey] || {};
+        const price = selectedVariant.price_amount !== undefined ? Number(selectedVariant.price_amount).toFixed(2) : '6.99';
+        const formattedPrice = `$${price} USD`;
+        const rawLabel = selectedVariant.label || variantKey || 'Digital Bundle';
+        const variantLabel = getVariantButtonLabel(rawLabel);
+
+        // 1. Populate Desktop Left Column: Expanded Order Summary (MacPaw Style)
+        const desktopThumb = document.getElementById('payment-desktop-thumb');
+        if (desktopThumb && item.image) {
+          desktopThumb.src = item.image;
+          desktopThumb.alt = item.title || 'Product Cover';
+        }
+
+        const desktopTitle = document.getElementById('payment-desktop-title');
+        if (desktopTitle) desktopTitle.innerText = item.title || 'Selected Item';
+
+        const desktopFormat = document.getElementById('payment-desktop-format');
+        if (desktopFormat) desktopFormat.innerText = variantLabel;
+
+        const desktopBadge = document.getElementById('payment-desktop-badge');
+        if (desktopBadge) {
+          desktopBadge.innerText = (item.image && item.image.includes('music')) ? 'DIGITAL ALBUM' : 'DIGITAL EDITION';
+        }
+
+        const desktopDesc = document.getElementById('payment-desktop-desc');
+        if (desktopDesc) {
+          if (item.tagline) {
+            desktopDesc.innerHTML = `<p>${item.tagline}</p>`;
+          } else {
+            desktopDesc.innerHTML = `<p>Complete digital package delivered instantly to your inbox upon purchase.</p>`;
+          }
+        }
+
+        const desktopEmail = document.getElementById('payment-desktop-email');
+        if (desktopEmail) desktopEmail.innerText = cleanEmail;
+
+        const stepEmailPreview = document.getElementById('step-nav-email-preview');
+        if (stepEmailPreview) stepEmailPreview.innerText = `(${cleanEmail})`;
+
+        const desktopSubtotal = document.getElementById('payment-desktop-subtotal');
+        if (desktopSubtotal) desktopSubtotal.innerText = formattedPrice;
+
+        const desktopTotal = document.getElementById('payment-desktop-total');
+        if (desktopTotal) desktopTotal.innerText = formattedPrice;
+
+        // 2. Populate Mobile Top Bar & Collapsible Summary
+        const barPrice = document.getElementById('payment-bar-price');
+        if (barPrice) barPrice.innerHTML = `$${price} <span>USD</span>`;
+
+        const togglePrice = document.getElementById('order-summary-toggle-price');
+        if (togglePrice) togglePrice.innerText = formattedPrice;
+
+        const summaryTitle = document.getElementById('order-summary-title');
+        if (summaryTitle) summaryTitle.innerText = item.title || 'Selected Item';
+
+        const summaryFormat = document.getElementById('order-summary-format');
+        if (summaryFormat) summaryFormat.innerText = variantLabel;
+
+        const summaryEmail = document.getElementById('order-summary-email');
+        if (summaryEmail) summaryEmail.innerText = cleanEmail;
+
+        const summaryItemPrice = document.getElementById('order-summary-item-price');
+        if (summaryItemPrice) summaryItemPrice.innerText = formattedPrice;
+
+        const summarySubtotal = document.getElementById('order-summary-subtotal');
+        if (summarySubtotal) summarySubtotal.innerText = formattedPrice;
+
+        const summaryTotal = document.getElementById('order-summary-total');
+        if (summaryTotal) summaryTotal.innerText = formattedPrice;
+
+        const summaryThumb = document.getElementById('order-summary-thumb');
+        if (summaryThumb && item.image) {
+          summaryThumb.src = item.image;
+          summaryThumb.alt = item.title || 'Product Image';
+        }
+
+        // Reset mobile dropdown state to collapsed
+        const dropdown = document.getElementById('order-summary-dropdown');
+        const chevron = document.getElementById('summary-toggle-chevron');
+        const toggleBtn = document.getElementById('order-summary-toggle');
+        const toggleText = document.getElementById('order-summary-toggle-text');
+        if (dropdown) dropdown.classList.remove('open');
+        if (chevron) chevron.classList.remove('open');
+        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+        if (toggleText) toggleText.innerText = 'Show order summary';
+
+        document.querySelectorAll('.payment-back-btn').forEach(btn => {
+          btn.style.display = 'inline-flex';
+        });
+      }
+
+      function exitPaymentMode() {
+        if (typeof Paddle !== 'undefined') {
+          try {
+            Paddle.Checkout.close();
+          } catch (e) {
+            console.warn('Error closing Paddle on exit:', e);
+          }
+        }
+        document.documentElement.classList.remove('payment-mode');
+        document.body.classList.remove('payment-mode');
+
+        const overlay = document.getElementById('payment-overlay-screen');
+        if (overlay) overlay.style.display = 'none';
+
+        // Re-enable browser scroll and restore position
+        window.scrollTo(0, window.previousScrollY || 0);
+
+        const submitBtn = document.getElementById('checkout-submit-btn');
+        if (submitBtn) {
+          submitBtn.innerText = 'CONTINUE TO PAYMENT';
+          submitBtn.style.opacity = '1';
+        }
+      }
+
+      function toggleOrderSummary() {
+        const dropdown = document.getElementById('order-summary-dropdown');
+        const chevron = document.getElementById('summary-toggle-chevron');
+        const toggleBtn = document.getElementById('order-summary-toggle');
+        const toggleText = document.getElementById('order-summary-toggle-text');
+        if (!dropdown) return;
+
+        const isOpen = dropdown.classList.contains('open');
+        if (isOpen) {
+          dropdown.classList.remove('open');
+          if (chevron) chevron.classList.remove('open');
+          if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+          if (toggleText) toggleText.innerText = 'Show order summary';
+        } else {
+          dropdown.classList.add('open');
+          if (chevron) chevron.classList.add('open');
+          if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
+          if (toggleText) toggleText.innerText = 'Hide order summary';
+        }
+      }
+
       function handleNativeCheckout(e) {
         if (e) e.preventDefault();
         const emailInput = document.getElementById('checkout-email');
         if (!emailInput) return;
 
-        // const cleanEmail = emailInput.value.trim();
-        // if (!cleanEmail || !cleanEmail.includes('@')) {
-        //     alert('A valid email address is required to complete your purchase and deliver your digital files.');
-        //  return;
-        // }
-
         // Crucial iOS Fix: Trim spaces AND force lowercase to prevent Paddle validation crashes
         const cleanEmail = emailInput.value.trim().toLowerCase();
         if (!cleanEmail || !cleanEmail.includes('@')) {
-            alert('A valid email address is required to complete your purchase and deliver your digital files.');
-            return;
+          alert('A valid email address is required to complete your purchase and deliver your digital files.');
+          return;
         }
 
         const item = window.currentCheckoutItem;
@@ -1236,19 +2315,12 @@
           return;
         }
 
-        // Hide variant details box so payment fields take over the container space
-        const detailsEl = document.getElementById('checkout-variant-details');
-        if (detailsEl) {
-          detailsEl.style.display = 'none';
-        }
+        // Enter MacPaw-style scroll-free payment mode
+        enterPaymentMode(cleanEmail);
 
         const container = document.getElementById('paddle-checkout-container');
         if (container) {
-          Array.from(container.children).forEach(child => {
-            if (child.id !== 'checkout-variant-details') {
-              child.remove();
-            }
-          });
+          container.innerHTML = '';
         }
 
         if (paddleInitialized && typeof Paddle !== 'undefined') {
@@ -1278,10 +2350,10 @@
 
               const submitBtn = document.getElementById('checkout-submit-btn');
               if (submitBtn) {
-                submitBtn.innerText = 'PAYMENT READY BELOW';
+                submitBtn.innerText = 'PAYMENT READY';
                 submitBtn.style.opacity = '0.7';
               }
-            }, 50);
+            }, 60);
 
           } catch (err) {
             console.error('Paddle Inline Checkout error:', err);
@@ -1291,7 +2363,7 @@
           // Local / sandbox simulation rendering natively inside container
           if (container) {
             container.innerHTML = `
-              <div style="border: 1px solid var(--color-border); padding: 24px; border-radius: 8px; margin-top: 15px; background: var(--color-bg-alt);">
+              <div style="border: 1px solid var(--color-border); padding: 24px; border-radius: 8px; margin-top: 8px; background: var(--color-bg-alt);">
                 <div style="font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; color: var(--color-text);">
                   [Paddle Sandbox Simulation - Inline Frame]
                 </div>
@@ -1300,9 +2372,12 @@
                 <p style="margin: 6px 0; font-size: 14px;"><strong>Price:</strong> $${selectedVariant.price_amount !== undefined ? Number(selectedVariant.price_amount).toFixed(2) : '6.99'} USD</p>
                 <p style="margin: 6px 0; font-size: 14px;"><strong>Price ID:</strong> <code>${priceId}</code></p>
                 <p style="margin: 6px 0; font-size: 14px;"><strong>R2 Path:</strong> <code>${filePath}</code></p>
-                <p style="margin: 6px 0; font-size: 14px;"><strong>Email:</strong> <code>${cleanEmail}</code></p>
-                <div style="margin-top: 18px; padding: 14px; background: var(--color-bg); border-radius: 4px; border: 1px solid var(--color-border); text-align: center; font-weight: 600; font-family: var(--font-ui); letter-spacing: 0.15em; text-transform: uppercase;">
-                  Paddle Credit Card Input Ready
+                <p style="margin: 6px 0; font-size: 14px;"><strong>Delivery Email:</strong> <code>${cleanEmail}</code></p>
+                <div style="margin-top: 18px; padding: 14px; background: var(--color-bg); border-radius: 5px; border: 1px solid var(--color-border); text-align: center; font-weight: 600; font-family: var(--font-ui); letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;" onclick="handleCheckoutSuccess({ data: { simulated: true } })"
+                  Simulate Successful Payment
+                </div>
+                <div style="margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--color-border); font-family: var(--font-ui, sans-serif); font-size: 11px; color: #6b7280; text-align: center; line-height: 1.4;">
+                  Sold by Paddle 30 Old Bailey, London, EC4M 7AU, UK. Provided by TalesofGideon. Support Terms Privacy
                 </div>
               </div>
             `;
