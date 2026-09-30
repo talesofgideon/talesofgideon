@@ -633,6 +633,7 @@ const populateUI = (data) => {
 
           <!-- Right Column: Book Info -->
           <div class="book-info fade-in active">
+
             <h1 id="book-detail-title">${bookTitle}</h1>
             <!-- <h3 class="subtitle">${book.subtitle}</h3> -->
             <div class="separator"></div>
