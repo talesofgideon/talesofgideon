@@ -93,14 +93,11 @@
           }
         };
         const theme = safeGetItem('theme');
-
-        /* || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {*/
-        if (theme === 'dark') {
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark-mode');
-        } else if (theme === 'light') {
+        } else {
           document.documentElement.classList.add('light-mode');
         }
-        /* If no stored preference, no class is added: CSS @media (prefers-color-scheme: dark) automatically detects OS preference!*/
 
         // Safety timeout to ensure page is visible even if main script fails
         window.addEventListener('DOMContentLoaded', () => {

@@ -101,14 +101,11 @@
           }
         };
         const theme = safeGetItem('theme');
-
-        /* || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {*/
-        if (theme === 'dark') {
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark-mode');
-        } else if (theme === 'light') {
+        } else {
           document.documentElement.classList.add('light-mode');
         }
-        /* If no stored preference, no class is added: CSS @media (prefers-color-scheme: dark) automatically detects OS preference!*/
 
         // Pre-populate Logo styles to prevent flashing
         let siteContent = {};
@@ -163,24 +160,23 @@
 
     <style>
 
-/*====================================================
-  1. BASE STYLE : applies globally to all viewports
-  ====================================================*/
-
       #checkout-title{ display: block; }
       .separator { display: block; }
       .book-detail-grid { gap: 40px; }
 
       .checkout-box {
+        /*background: var(--color-bg);*/
         background: var(--color-bg-alt);
         border: 1px solid var(--color-border);
         border-radius: 4px;
         text-align: center;
         padding-top: 0.6rem;
+        /*padding-bottom: 1rem;*/
         padding-right: 1rem;
         padding-left: 1rem;
         position: relative;
         margin-top: 20px;
+        /*max-width: 643px;*/
         width: 100%;
         box-sizing: border-box;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -230,10 +226,10 @@
       }
       .summary-product-name {
         text-align: left;
-        letter-spacing: 0.01em;
+        letter-spacing: 0.04em;
         font-family: var(--font-ui);
         text-transform: uppercase;
-        font-weight: 600;
+        font-weight: normal;
         font-size: 18px;
         color: var(--color-text);
       }
@@ -294,7 +290,12 @@
         box-sizing: border-box;
         /*transition: all 0.2s ease;*/
       }
-      
+      .checkout-variant-tab:hover {
+        border-color: var(--color-text);
+        /*color: var(--color-text) !important;*/
+        outline: 2px solid var(--color-text);
+        outline-offset: -2px;
+      }
       .checkout-variant-tab.active {
         background: var(--color-text);
         color: var(--color-bg);
@@ -326,7 +327,7 @@
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--color-muted);
-        border: 1px solid var(--color-text);
+        border: 1px solid var(--color-border);
         padding: 4px 8px;
         border-radius: 4px;
         margin-top: 3px;
@@ -335,7 +336,9 @@
       }
 
       /*
-      html.dark-mode .checkout-variant-badge {background: var(--color-bg-alt);}
+      html.dark-mode .checkout-variant-badge {
+        background: var(--color-bg-alt);
+      }
       */
 
       .checkout-variant-composer {
@@ -431,7 +434,12 @@
         box-sizing: border-box;
         transition: opacity 0.2s ease;
       }
-      
+      .checkout-btn:hover {
+        /*opacity: 0.85;*/
+        background: var(--color-checkout-btn-hover);
+        color: var(--color-bg);
+      }
+
       .under-seperator {
         border-bottom: solid 1px;
       }
@@ -444,10 +452,74 @@
         box-sizing: border-box;
       }
 
-      
-/*===================================================
-  FOCUS PAYMENT MODE (Scroll-Free Checkout)
-  ===================================================*/
+      /* Stack variant buttons vertically on mobile/tablet screens */
+      /* @media (max-width: 1090px) {
+        .checkout-variant-selector {
+          flex-direction: column !important;
+          width: 96.6% !important;
+          margin: 0 auto 20px auto !important;
+          gap: 8px !important;
+        }
+      }
+      */
+
+      /* Stack variant buttons vertically on mobile/tablet screens */
+      @media (max-width: 768px) {
+
+        html, body {
+          scroll-snap-type: y proximity;
+          scroll-behavior: smooth;  /* Ensures any programmatic shifts are completely smooth */
+        }
+
+      /* 2. Turn your checkout box into the "bump in the road" */
+        .checkout-box {
+          scroll-snap-align: start; /* Magnetises the top of the box to the top of the screen */
+          scroll-snap-stop: normal; /* Allows them to quickly flick past if they are looking for the footer */
+        }
+
+      /* 3. Account for your <nav> bar height! 
+            Without this, the browser will snap the box to the very top edge of the screen, 
+            hiding the top of your checkout form underneath a sticky/fixed navigation bar.
+            Adjust the '60px' to match the actual height of your mobile <nav>. */
+        html {
+          scroll-padding-top: 80px; 
+        }
+
+      /* ==========================================================================
+         Preparing for Payment Mode
+         ========================================================================== */
+
+        #checkout-title{ display: none; }
+        .separator { display: none; }
+        .book-detail-grid { gap: 0px; }
+
+        .checkout-variant-selector {
+          flex-direction: column !important;
+          width: 96.6% !important;
+          margin: 0 auto 15px auto !important;
+          gap: 8px !important;
+        }
+        .checkout-variant-tab {
+          width: 100% !important;
+          flex: none !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          text-align: center !important;
+          padding: 12px 14px !important;
+          font-size: 13px !important;
+          min-height: 44px !important;
+          box-sizing: border-box !important;
+        }
+        .checkout-variant-details {
+          width: 96.6% !important;
+          /*margin: 0 auto 4px auto !important;*/
+        }
+      }
+
+      /* ==========================================================================
+         Focused Payment Mode (MacPaw Style Scroll-Free Checkout)
+         ========================================================================== */
 
       html.payment-mode,
       body.payment-mode {
@@ -496,6 +568,81 @@
         margin: 0 auto;
         display: flex;
         box-sizing: border-box;
+      }
+
+      /* Desktop Split-Screen Layout (MacPaw Store) */
+      @media (min-width: 861px) {
+        .payment-overlay-inner {
+          flex-direction: row;
+          max-width: 1240px;
+        }
+
+        /* Left column: Expanded order summary with picture, details, and price */
+        .payment-summary-col {
+          display: flex !important;
+          flex-direction: column;
+          width: 44%;
+          max-width: 500px;
+          height: 100%;
+          background: var(--color-bg-alt);
+          border-right: 1px solid var(--color-border);
+          padding: 36px 40px 36px 40px;
+          box-sizing: border-box;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        /* Right column: Customer details menu + Paddle payment */
+        .payment-checkout-col {
+          flex: 1 1 0;
+          min-width: 0;
+          height: 100%;
+          padding: 36px 48px 36px 48px;
+          box-sizing: border-box;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .mobile-only {
+          display: none !important;
+        }
+      }
+
+      /* Mobile & Tablet Layout (<= 860px) */
+      @media (max-width: 860px) {
+        .payment-overlay-screen {
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .payment-overlay-inner {
+          flex-direction: column;
+          max-width: 580px;
+          height: auto;
+          min-height: 100%;
+          padding: 16px 16px 40px 16px;
+        }
+
+        .payment-summary-col {
+          display: none !important;
+        }
+
+        .payment-checkout-col {
+          width: 100%;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .mobile-only {
+          display: block;
+        }
+
+        header.payment-bar-top.mobile-only {
+          display: flex !important;
+        }
       }
 
       /* Desktop Left-Column Styling */
@@ -729,7 +876,10 @@
         color: var(--color-text);
         transition: all 0.2s ease;
       }
-      
+      .step-nav-btn.step-link:hover {
+        background: var(--color-border);
+      }
+
       .step-nav-btn.step-active {
         color: var(--color-text);
         font-weight: 700;
@@ -789,21 +939,24 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        /*border: 1px solid var(--color-border);*/
-        border: 2px solid var(--color-var-border);
-        border-radius: 4px;
         background: transparent;
-        color: var(--color-text);
+        border: 1px solid var(--color-border);
+        border-radius: 4px;
         padding: 7px 12px;
         font-family: var(--font-ui);
         font-size: 12px;
         font-weight: 700;
         letter-spacing: 0.1em;
         text-transform: uppercase;
+        color: var(--color-text);
         cursor: pointer;
         transition: background-color 0.2s ease, border-color 0.2s ease;
       }
-      
+      .payment-back-btn:hover {
+        background: var(--color-bg-alt);
+        border-color: var(--color-text);
+      }
+
       .payment-bar-brand {
         font-family: var(--font-ui);
         font-size: 13px;
@@ -858,7 +1011,10 @@
         box-sizing: border-box;
         text-align: left;
       }
-      
+      .order-summary-toggle:hover {
+        opacity: 0.85;
+      }
+
       .summary-toggle-left {
         display: inline-flex;
         align-items: center;
@@ -1022,7 +1178,9 @@
       html.dark-mode .payment-compliance-notice a {
         color: #818cf8;
       }
-      
+      .payment-compliance-notice a:hover {
+        opacity: 0.8;
+      }
       .payment-compliance-row {
         display: inline-block;
       }
@@ -1041,398 +1199,65 @@
         letter-spacing: 0.03em;
         text-align: center;
       }
-    
+
+      @media (max-width: 767px) {
+        .payment-section {
+          font-size: 20px;
+          line-height: 1.8;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .checkout-box {
+          padding: 16px 14px;
+        }
+        .checkout-variant-selector {
+          width: 95%;
+
+        }
+        .checkout-email-input {
+          width: 95%;
+        }
+        .checkout-btn {
+          width: 95%;
+        }
+        .checkout-summary-row {
+          flex-direction: row;
+          gap: 8px;
+        }
+        .summary-product-name {
+          font-size: 16px;
+        }
+        .summary-price {
+          font-size: 22px;
+        }
+        .checkout-variant-tab {
+          padding: 12px 14px;
+          font-size: 13px;
+        }
+        .checkout-variant-details {
+          padding: 14px;
+          width: 96.6%;
+          display: inline-block;
+        }
+        .checkout-synopsis {
+          font-size: 20px;
+          line-height: 1.6;
+        }
+      }
+
       /* Zero-flash initial state: keep checkout details hidden until active item is rendered */
       .checkout-initializing #checkout-section .sidebar,
-      .checkout-initializing #checkout-section .checkout-content,
+      .checkout-initializing #checkout-section .artist-content,
       .checkout-initializing #books-carousel,
       .checkout-initializing #music-carousel {
         opacity: 0;
         visibility: hidden;
       }
       #checkout-section .sidebar,
-      #checkout-section .checkout-content {
+      #checkout-section .artist-content {
         transition: opacity 0.2s ease;
       }
-
-/*====================================================
-  2. DESKTOP HOVER : applies to all desktop viewports
-  ====================================================*/
-
-    @media (hover: hover) {
-
-      .step-nav-btn.step-link:hover {
-        background: var(--color-border);
-      }
-
-      .payment-back-btn:hover {
-        background: var(--color-bg-alt);
-        border-color: var(--color-text);
-      }
-
-      .order-summary-toggle:hover {
-        opacity: 0.85;
-      }
-
-      .payment-compliance-notice a:hover {
-        opacity: 0.8;
-      }
-      
-      .checkout-variant-tab:hover {
-        border-color: var(--color-text);
-        outline: 2px solid var(--color-text);
-        outline-offset: -2px;
-      }
-      .checkout-btn:hover {
-        background: var(--color-checkout-btn-hover);
-        color: var(--color-bg);
-      }
-
-    }
-
-/*====================================================
-  3. UNIVERSAL ACTIVE : physical press all viewports
-  ====================================================*/
-
-      .checkout-variant-tab:active,
-      .step-nav-btn:active,
-      .payment-back-btn:active,
-      .checkout-btn:active,
-      .btn-soundtrack:active,
-      .btn-home:active {
-        transform: scale(0.95) !important; /* Instant physical shrink */
-        opacity: 0.75 !important;
-        /* An ultra-fast transition here makes the press feel highly responsive */
-        transition: transform 0.02s linear !important;
-      } 
-
-/*=====================================================
-  4. LAYOUT MEDIA QUERIES (Place Everything Else Here)
-  =====================================================*/
-
-    /* Mobile Layout Baseline (< 480px) */
-    html, body {
-      scroll-snap-type: y proximity;
-      scroll-behavior: smooth;
-    }
-
-    .success-box {
-      scroll-snap-align: start;
-      scroll-snap-stop: normal;
-      scroll-margin-top: 10px;
-    }
-
-    .sidebar-book-img {
-      margin-top: 0px;
-    }
-
-    .checkout-box {
-      padding: 8px 14px 0px 14px;
-      margin-top: 6px;
-      scroll-snap-align: start;
-      scroll-snap-stop: normal;
-      scroll-margin-top: 67px;
-    }
-
-    #checkout-email-form {
-      margin-bottom: 18px;
-    }
-
-    .checkout-summary-row {
-      flex-direction: row;
-      gap: 8px;
-    }
-
-    .summary-product-name {
-      font-size: 16px;
-    }
-
-    .summary-price {
-      font-size: 22px;
-    }
-
-    .checkout-variant-selector {
-      flex-direction: column !important;
-      width: 95% !important;
-      margin: 0 auto 15px auto !important;
-      gap: 8px !important;
-    }
-
-    .checkout-variant-tab {
-      width: 100% !important;
-      flex: none !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      text-align: center !important;
-      padding: 12px 14px !important;
-      font-size: 13px !important;
-      min-height: 44px !important;
-      box-sizing: border-box !important;
-    }
-
-    .checkout-variant-details {
-      padding: 14px;
-      width: 96.6% !important;
-      display: inline-block;
-    }
-
-    .checkout-variant-badge {
-      padding: 5px 4px 0px 5px;
-      margin-top: 2px;
-      background: var(--color-bg);
-      color: var(--color-text-default);
-    }
-
-    .checkout-synopsis {
-      font-size: 20px;
-      line-height: 1.6;
-    }
-
-    .checkout-email-input {
-      width: 95%;
-      border-color: var(--color-text);
-      box-shadow: 0 0 0 1px var(--color-text);
-      transition: border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-    }
-
-    .checkout-email-input:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px var(--color-text);
-    }
-
-    .checkout-btn {
-      width: 95%;
-    }
-
-    #checkout-title { display: none; }
-    .separator { display: none; }
-    .book-detail-grid { gap: 0px; }
-
-    /* Mobile & Tablet Payment Mode Overlay (< 860px) */
-    .payment-overlay-screen {
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .payment-overlay-inner {
-      flex-direction: column;
-      max-width: 580px;
-      height: auto;
-      min-height: 100%;
-      padding: 16px 16px 40px 16px;
-    }
-
-    .payment-summary-col {
-      display: none !important;
-    }
-
-    .payment-checkout-col {
-      width: 100%;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .mobile-only {
-      display: block;
-    }
-
-    header.payment-bar-top.mobile-only {
-      display: flex !important;
-    }
-
-    /* --------------------------------------------------
-       Large Phones & Phablets (>= 480px)
-       -------------------------------------------------- */
-    @media (min-width: 480px) {
-      .checkout-box {
-        /*padding-top: 0.6rem;*/
-        padding-top: 0.7rem;
-        padding-right: 1rem;
-        padding-left: 1rem;
-        margin-top: 20px;
-      }
-
-      #checkout-email-form {
-        margin-bottom: 24px;
-      }
-
-      .checkout-variant-selector {
-        width: 96.6% !important;
-      }
-
-      .checkout-email-input {
-        width: 96.6%;
-      }
-
-      .checkout-btn {
-        width: 96.6%;
-      }
-
-      .checkout-summary-row {
-        gap: 0px;
-      }
-
-      .summary-product-name {
-        font-size: 18px;
-      }
-
-      .summary-price {
-        font-size: 26px;
-      }
-
-      .checkout-variant-tab {
-        padding: 12px 14px !important;
-        font-size: 13px !important;
-      }
-
-      .checkout-variant-details {
-        padding: 14px;
-        width: 96.6% !important;
-        display: inline-block;
-      }
-
-      .checkout-synopsis {
-        font-size: 20px;
-        line-height: 1.8;
-      }
-    }
-
-    /* --------------------------------------------------
-       Tablets & Desktops (>= 768px)
-       -------------------------------------------------- */
-    @media (min-width: 768px) {
-      html, body {
-        scroll-snap-type: none;
-      }
-
-      .success-box {
-        scroll-snap-align: none;
-        scroll-margin-top: 0;
-      }
-
-      .checkout-box {
-        scroll-snap-align: none;
-        scroll-margin-top: 0;
-      }
-
-      .sidebar-book-img {
-        margin-top: 7px;
-        margin-bottom: 0px;
-      }
-
-      .checkout-variant-badge {
-        padding: 4px 8px;
-        margin-top: 3px;
-        color: var(--color-muted);
-      }
-
-      .checkout-email-input {
-        box-shadow: 0 0 0 1px var(--color-text);
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .checkout-email-input:focus {
-        border-color: var(--color-text);
-        box-shadow: 0 0 0 1px var(--color-text);
-      }
-
-      #checkout-title { display: block; }
-      .separator { display: block; }
-      .book-detail-grid { gap: 40px; }
-
-      .checkout-variant-selector {
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        width: 96.6% !important;
-        margin: 0 auto 10px auto !important;
-        gap: 10px !important;
-      }
-
-      .checkout-variant-tab {
-        flex: 1 1 0 !important;
-        min-width: 0 !important;
-        width: 100% !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        padding: 12px 10px !important;
-        font-size: 12.5px !important;
-        min-height: 46px !important;
-      }
-
-      .checkout-variant-details {
-        padding: 8px 15px !important;
-        width: 97.6% !important;
-        display: block !important;
-      }
-
-      .checkout-synopsis {
-        font-size: 16px;
-        line-height: 1.8;
-      }
-    }
-
-    /* --------------------------------------------------
-       Desktop Split-Screen Layout (>= 860px)
-       -------------------------------------------------- */
-    @media (min-width: 860px) {
-      .payment-overlay-screen {
-        overflow-y: hidden;
-      }
-
-      .payment-overlay-inner {
-        flex-direction: row;
-        max-width: 1240px;
-        height: 100%;
-        min-height: auto;
-        padding: 0;
-      }
-
-      /* Left column: Expanded order summary with picture, details, and price */
-      .payment-summary-col {
-        display: flex !important;
-        flex-direction: column;
-        width: 44%;
-        max-width: 500px;
-        height: 100%;
-        background: var(--color-bg-alt);
-        border-right: 1px solid var(--color-border);
-        padding: 36px 40px 36px 40px;
-        box-sizing: border-box;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      /* Right column: Customer details menu + Paddle payment */
-      .payment-checkout-col {
-        flex: 1 1 0;
-        min-width: 0;
-        height: 100%;
-        padding: 36px 48px 36px 48px;
-        box-sizing: border-box;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .mobile-only {
-        display: none !important;
-      }
-
-      header.payment-bar-top.mobile-only {
-        display: none !important;
-      }
-    }
-
-/*=====================================================*/
-
     </style>
     <script>
       (function() {
@@ -1495,7 +1320,7 @@
             </div>
 
             <!-- Right Column: Checkout Form & Embedded Paddle -->
-            <div class="checkout-content fade-in active">
+            <div class="artist-content fade-in active">
               <h1 id="checkout-title">Exodus<span class="subtitle-label">CHECKOUT</span></h1>
 
               <div class="separator"></div>
@@ -1536,7 +1361,7 @@
                 <form id="checkout-email-form" onsubmit="handleNativeCheckout(event)">
                   <div class="checkout-field-group">
                   <!-- <label for="checkout-email" class="checkout-field-label">Delivery Email Address</label> -->
-                    <input type="email" id="checkout-email" class="checkout-email-input" placeholder="ENTER DELIVERY EMAIL ADDRESS" required autocomplete="email" autofocus>
+                    <input type="email" id="checkout-email" class="checkout-email-input" placeholder="ENTER YOUR DELIVERY EMAIL ADDRESS" required autocomplete="email">
                   </div>
 
                   <button type="submit" id="checkout-submit-btn" class="checkout-btn">CONTINUE TO PAYMENT</button>
@@ -1903,21 +1728,24 @@
             variantLabel = variantLabel.replace("Digital Edition","EPUB ebook Only");
         }
         // 2. Check for Digital Album (Case-Insensitive)
-
-        /*
-        } else if (/Digital Album/i.test(varientLabel)) {console.log("Processing a digital music album...");/book-detail?id=1&title=Exodus  (its music read book)
-        }*/
+        // } else if (/Digital Album/i.test(varientLabel)) {
+        //   console.log("Processing a digital music album...");
+        //(2) /book-detail?id=1&title=Exodus  (its music read book)
+        //}
         
         console.log(variantLabel);
         console.log(productID);
   
         // 3. Completely overwrite the HTML to clear memory and display a clean dashboard card
-        
+        //<div style="border: 2px solid #10b981; padding: 28px; border-radius: 12px; margin-top: 15px; background: var(--color-bg-alt, #f9fafb); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); width:96.6%; display: inline-block;">
+
+        // text-shadow: 0.5px 0 0 currentColor; 
+
         container.innerHTML = `
-          <div class="success-box" style="border: 2px solid var(--color-payment-border); padding: 18px 14px; border-radius: 6px; background: var(--color-bg-alt, #f9fafb); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); display: inline-block; margin-bottom: 12px;">
+          <div style="border: 2px solid var(--color-payment-border); padding: 18px 14px; border-radius: 6px; background: var(--color-bg-alt, #f9fafb); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); display: inline-block; margin-bottom: 12px;">
 
             <!-- Success Icon Head -->
-            <div style="text-align: center; margin-bottom: 10px;">
+            <div style="text-align: center; margin-bottom: 18px;">
               <div style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: solid; color: #059669; border-radius: 50%; font-size: 24px; font-weight: bold;">
                 ✓
               </div>
@@ -1946,11 +1774,12 @@
             </div>
 
             <!-- Next Steps Instruction Box -->
-            <div style="display: flex; justify-content: center; max-width: 97.6%; background: var(--color-bg, #ffffff); border: 1px solid var(--color-border, #e5e7eb); border-radius: 6px; text-align: center; margin: 0 auto 10px auto;">
+        
+            <div style="display: flex; justify-content: center; max-width: 97.6%; background: var(--color-bg, #ffffff); border: 1px solid var(--color-border, #e5e7eb); border-radius: 6px; text-align: center; margin: 0 auto 15px auto;">
 
               <p style="max-width: 95%; margin: 10px; font-family: var(--font-serif-alt); font-size: 16px; font-weight: 500; color: var(--color-muted); line-height: 1.8;">
 
-                Success! A secure download link has been sent to <span style="color:var(--color-text)">${fallbackEmail}</span> (check your inbox/spam) Keep browsing, or enjoy the ${productTitle} ${productType} while exploring this tale.
+                Thank you for your support, a secure download link has been dispatched to <span style="color:var(--color-text)">${fallbackEmail}</span> please check your inbox (and spam folder) within the next few minutes. Please continue browsing, or listen to the ${productTitle} ${productType} exploring this tale.
               </p>
             </div>
 
@@ -1958,24 +1787,24 @@
             <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; width: 100%; max-width: 97%; margin: 0 auto;">
   
               <!-- Soundtrack Button (Primary Action) -->
-              <a href="/${productType}-detail?id=${productID}&title=${productTitle}" class="btn-soundtrack" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; padding: 12px 10px; max-height: 3.4rem; border-radius: 5px; text-decoration: none; background-color: var(--color-soundtrack-btn-background); color: var(--color-soundtrack-btn-text); border: 2px solid var(--color-text); font-family: var(--font-ui); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-align: center; white-space: nowrap; cursor: pointer; transition: opacity 0.2s;">
+              <!-- background-color: #059669; border: 1px solid #059669 -->
+              <a <a href="/${productType}-detail?id=${productID}&title=${productTitle}" class="btn-soundtrack" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; background-color: var(--color-text); color: var(--color-trans-btn); font-family: var(--font-ui, sans-serif); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-decoration: none; padding: 12px; border-radius: 5px; text-align: center; border: 1px solid var(--font-ui); transition: opacity 0.2s;">
                 ${productLabel}
               </a>
               
               <!-- Home Button (Secondary Action) -->
-              <a href="/" class="btn-home" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; padding: 12px; 10px; max-height: 3.4rem; border-radius: 5px; text-decoration: none; background-color: transparent; color: var(--color-text); border: 2px solid var(--color-var-border); font-family: var(--font-ui); font-family: var(--font-ui); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-align: center; white-space: nowrap; overflow: hidden; text-decoration: none; cursor: pointer; transition: opacity 0.2s;">
+              <a href="/" class="btn-home" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; background-color: transparent; color: var(--color-text, #111827); font-family: var(--font-ui); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-decoration: none; padding: 12px; border-radius: 5px; text-align: center; border: 1px solid var(--color-border); transition: background-color 0.2s;">
                 RETURN TO HOME
-              </a>
+              </a>  
             </div>
           </div>
         `;
 
-        /*
-        <p style="margin: 0 0 6px 0; font-family: var(--font-ui); font-size: 16px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-text, #111827);">
-        WHERE ARE MY FILES?
-        </p>
-        <code style="font-family: var(--font-ui); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-bg);">${fallbackEmail}</code>
-        */
+        // <p style="margin: 0 0 6px 0; font-family: var(--font-ui); font-size: 16px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-text, #111827);">
+        // WHERE ARE MY FILES?
+        // </p>
+
+        // <code style="font-family: var(--font-ui); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-bg);">${fallbackEmail}</code>
 
         // 4. Clean up any leftover main submit/checkout buttons so they can't click them again
         const mainSubmitBtn = document.getElementById('checkout-submit-btn');
@@ -2198,7 +2027,7 @@
       function cleanSummaryVariantLabel(rawLabel, itemTitle) {
         if (!rawLabel) return 'Digital Edition & Audiobook Bundle';
         if (rawLabel.includes('Digital Edition & Audiobook Bundle')) {
-          // return 'EPUB & Audiobook Bundle';
+          //  return 'EPUB & Audiobook Bundle';
           return 'Digital Bundle';
 
         }
@@ -2221,7 +2050,7 @@
           str = str.toString();
         // Regular expression to identify HTML or <p> tags in
         // the input string. Replace the identified HTML tag with a null string.
-        // return str.replace(/(<([^>]+)>)/ig, '');
+        //return str.replace(/(<([^>]+)>)/ig, '');
         return str.replace(/<\/?p>/ig, '');
       }
 
@@ -2273,39 +2102,36 @@
 
         if (badgeEl) badgeEl.innerText = cleanLabel;
 
-        /*
-        if (badgeEl.innerText === "DIGITAL BUNDLE") {badgeEl.innerText = "EPUB & AUDIO BUNDLE"}
-        */
-        
+        //if (badgeEl.innerText === "DIGITAL BUNDLE") {
+        //    badgeEl.innerText = "EPUB & AUDIO BUNDLE"
+        //}
+      
         const synopsisEl = document.getElementById('checkout-synopsis');
         if (synopsisEl) {
           let html = '';
 
           if (itemData && itemData.synopsis && itemData.composer) {
-              /*
-                html += itemData.synopsis;
-                html = removeTags(html);               // remove <p> tags
-                html = trimToSecondToLastPeriod(html); // remove second sentence
-                html = "\"" + html + "\"";             // add quotes to include book checkout message!
-              */
+              //html += itemData.synopsis;
+              //html = removeTags(html);               // remove <p> tags
+              //html = trimToSecondToLastPeriod(html); // remove second sentence
+              //html = "\"" + html + "\"";             // add quotes to include book checkout message!
               html = html + `<p>` + " Listen to the music, discover the score accompanying the digital editions of the eBook and audioBook. Enter your delivery email address, to " + ` <a href="#checkout-email" class="under-seperator" onclick="event.preventDefault(); const el = document.getElementById('checkout-email'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();">continue to payment</a>.</p>`;
           }
 
           if (itemData && itemData.synopsis && itemData.composer === undefined) {
-              /*
-              if (itemData && itemData.synopsis && !itemData.composer) {
-                html += itemData.synopsis;
-                html = removeTags(html);               // remove <p> tags
-                html = trimToSecondToLastPeriod(html); // remove second sentence
-                html = trimToAfterSecondComma(html);   // remove second comma
-                html = "\"" + html + "\"";             // add quotes to include book checkout message!
-              */
+          // if (itemData && itemData.synopsis && !itemData.composer) {
+              //html += itemData.synopsis;
+              //html = removeTags(html);               // remove <p> tags
+              //html = trimToSecondToLastPeriod(html); // remove second sentence
+              //html = trimToAfterSecondComma(html);   // remove second comma
+              //html = "\"" + html + "\"";             // add quotes to include book checkout message!
               html = html + `<p>` + " Discover the tale, read the eBook, listen to the authors narrated audioBook or simply enjoy the flexibility of owning both, for reading or listening pleasure while travelling. Enter your delivery email address, to " + ` <a href="#checkout-email" class="under-seperator" onclick="event.preventDefault(); const el = document.getElementById('checkout-email'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();">continue to payment</a>.</p>`;
           }
 
-          /*
-          if (cleanLabel === "Digital Album") { let badgeCp = document.getElementById('composer-variant-badge');badgeCp.innerHTML = itemData.composer;}
-          */
+          if (cleanLabel === "Digital Album") {
+          let badgeCp = document.getElementById('composer-variant-badge');
+              badgeCp.innerHTML = itemData.composer;
+          }
 
           synopsisEl.innerHTML = html || '<p>Instant digital download delivered directly to your email upon payment.</p>';
         }
@@ -2564,7 +2390,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const musicCarousel = document.getElementById("music-carousel");
         const bookCarousel = document.getElementById("books-carousel");
-      
+
         if (urlParams.has("album") || urlParams.has("music")) {
           if (musicCarousel) musicCarousel.hidden = false;
           if (bookCarousel) bookCarousel.hidden = true;
@@ -2578,15 +2404,7 @@
         } else {
           console.error("Paddle.js failed to load from CDN.");
         }
-          initCheckoutPage();
-
-        setTimeout(() => {const emailField = document.getElementById("checkout-email");
-        // Check on desktop screen before forcing the focus
-          if (emailField && window.innerWidth > 768) {
-              emailField.focus();
-          }
-        }, 50); // 50ms delay guarantees the browser layout has finished drawing the input
-
+        initCheckoutPage();
       });
     </script>
     <script src="js/script.js?v=2"></script>

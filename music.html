@@ -77,12 +77,6 @@
         font-style: normal;
         font-weight: 400;
       }
-      
-      /* footer placement */
-      body {display:flex;flex-direction:column;min-height:100vh;margin:0;}
-      .padding-large.music-container {display:grid;grid-template-columns:1fr;gap:5px;flex:1;}
-      footer {margin-top:auto;}}
-
     </style>
 
     <link rel="stylesheet" href="css/style.css?v=2">
@@ -99,14 +93,11 @@
           }
         };
         const theme = safeGetItem('theme');
-
-        /* || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {*/
-        if (theme === 'dark') {
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark-mode');
-        } else if (theme === 'light') {
+        } else {
           document.documentElement.classList.add('light-mode');
         }
-        /* If no stored preference, no class is added: CSS @media (prefers-color-scheme: dark) automatically detects OS preference!*/
 
         // Safety timeout to ensure page is visible even if main script fails
         window.addEventListener('DOMContentLoaded', () => {
@@ -231,7 +222,7 @@
     </div>
 
     <main>
-      <section id="music-page" class="padding-large music-container">
+      <section id="music-page" class="padding-large">
         <div class="container">
           <div id="music-page-grid" class="music-grid">
           <!-- Music Grid Content fallback populated by JavaScript -->

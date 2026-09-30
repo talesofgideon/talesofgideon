@@ -34,11 +34,16 @@
     <title>Artist - Thomas Gideon</title>
     
     <!-- preload fonts -->
-    <link rel="preload" href="./fonts/dm-serif-display-v17-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="./fonts/work-sans-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="./fonts/gelasio-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
     
+    <!-- dm-serif-display-regular - latin_latin-ext -->
+    <link rel="preload" href="./fonts/dm-serif-display-v17-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- work-sans-regular - latin -->
+    <link rel="preload" href="./fonts/work-sans-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- gelasio-regular - latin -->
+    <link rel="preload" href="./fonts/gelasio-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- source-serif-4-regular -->
+    <link rel="preload" href="./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
+
     <style>
       /* dm-serif-display-regular - latin_latin-ext */
       @font-face {
@@ -88,14 +93,11 @@
           }
         };
         const theme = safeGetItem('theme');
-        
-        /* || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {*/
-        if (theme === 'dark') {
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark-mode');
-        } else if (theme === 'light') {
+        } else {
           document.documentElement.classList.add('light-mode');
         }
-        /* If no stored preference, no class is added: CSS @media (prefers-color-scheme: dark) automatically detects OS preference!*/
 
         // Safety timeout to ensure page is visible even if main script fails
         window.addEventListener('DOMContentLoaded', () => {
@@ -241,8 +243,7 @@
             </div>
             <!-- Middle Column: Biography fallback content -->
             <div id="artist-bio-content" class="artist-content fade-in active">
-              <!-- <h3>About the Artist</h3> -->
-              <h1>About the Artist</h1>
+              <h3>About the Artist</h3>
               <div class="separator"></div>
               <!-- populated by JavaScript -->
               <p>I can't exactly remember when the strange dreams started.

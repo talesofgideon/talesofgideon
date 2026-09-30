@@ -111,14 +111,11 @@
           }
         };
         const theme = safeGetItem('theme');
-
-        /* || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {*/
-        if (theme === 'dark') {
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark-mode');
-        } else if (theme === 'light') {
+        } else {
           document.documentElement.classList.add('light-mode');
         }
-        /* If no stored preference, no class is added: CSS @media (prefers-color-scheme: dark) automatically detects OS preference!*/
 
         // Safety timeout to ensure page is visible even if main script fails
         window.addEventListener('DOMContentLoaded', () => {
@@ -266,12 +263,12 @@
         <div class="container">
           <div class="homepage-blog-grid fade-in">
             <div id="blog-content" class="homepage-blog-content">
-              <!-- <h3 style="margin-bottom: 24px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.2em; color: var(--color-muted-alt);">Latest Updates</h3> -->
-              <h3>Latest Updates</h3>
+              <h3 style="margin-bottom: 24px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.2em; color: var(--color-muted-alt);">Latest Updates</h3>
               <div id="micro-blog-container" class="micro-blog-list">
                 <!-- Micro blog posts will be populated by JavaScript -->
               </div>
             </div>
+
             <!-- Right Column: Sidebar -->
             <div class="sidebar">
               <div class="sidebar-widget">

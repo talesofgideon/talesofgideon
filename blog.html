@@ -78,52 +78,66 @@
         font-weight: 400;
       }
 
-      .blog-post-full .content p:first-child {
-        margin-bottom:10px;
-      }
-      .blog-post-full .content p:nth-child(2) {
-        margin-bottom:30px;
-      }
-      .blog-post-full .content p:last-child {
-        margin-bottom:0px;
-      }
-
-      /* 1. Force the page to full height and handle the master layout
-      body.blog-body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100dvh;
-        margin: 0;
-      }
-
-      /* 2. Target the main content container wrapping your grid
-      body.blog-body > .container {
-        display: flex;
-        flex-direction: column;
-        flex: 1 0 auto; /* Stretches this block to absorb all vertical space
-        width: 100%;    /* Ensures it stays wide
-      }
-
-      /* 3. The Blog Grid holds the content - let it scale naturally
-      .blog-grid {
-        flex: 1 0 auto;
-        display: block; /* Ensures it doesn't turn your layout items into flex rows/columns
-      }
-
-      /* 4. Keep your buttons side-by-side naturally
       .btn-blog-div {
         display: flex;
-        flex-direction: row; /* Forces buttons side-by-side
-        gap: 15px;           /* Gives nice spacing between the buttons
-        margin-top: 20px;    /* Pushes away from the blog text
-        margin-bottom: 40px; /* Leaves clean space before the footer
+        /*justify-content: space-between;*/
+        justify-content: center;
+        flex-wrap: wrap;
+        /*gap: 12px;*/
+        gap: 30px;
+        line-height: 1.8;
+        width: 100%;
       }
 
-      /* 5. The Footer sits neatly at the bottom baseline
-      footer {
-        margin-top: auto; /* Locks the footer to the bottom of the page
+      .btn-blog {
+        display: inline-block;
+        flex: 1 1 200px;
+        max-width: 258px;
+        box-sizing: border-box;
+        text-align: center;
+        align-items: center;
+        padding: 12px;
+        border-radius: 5px;
+        background-color: var(--color-text);
+        color: var(--color-trans-btn);
+        border: 1px solid var(--color-border);
+        font-family: var(--font-ui);
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        cursor: pointer;
+        transition: all 0.3s ease;
       }
-      */
+
+      .btn-blog-home {
+        display: inline-block;
+        flex: 1 1 200px;
+        max-width: 258px;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: transparent;
+        color: var(--color-text, #111827);
+        font-family: var(--font-ui);
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        /*text-decoration: none;*/
+        /*padding: 12px 16px;*/
+        padding: 12px;
+        border-radius: 5px;
+        /* #e5e7eb */
+        border: 1px solid var(--color-trans-btn-border);
+        transition: background-color 0.2s;
+      }
+
+      /* Tablet & Mobile styles: Stacks 100% wide one under the other */
+      @media (max-width: 767px) { /* Targets iPad Pro, iPad Air, and smaller */
+        .btn-blog, 
+        .btn-blog-home {
+        flex: 1 1 100%;
+        max-width: 100%; /* Overrides the 258px desktop restriction */
+        }
+      }
 
     </style>
 
@@ -141,14 +155,11 @@
           }
         };
         const theme = safeGetItem('theme');
-
-        /* || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {*/
-        if (theme === 'dark') {
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark-mode');
-        } else if (theme === 'light') {
+        } else {
           document.documentElement.classList.add('light-mode');
         }
-        /* If no stored preference, no class is added: CSS @media (prefers-color-scheme: dark) automatically detects OS preference!*/
 
         // Safety timeout to ensure page is visible even if main script fails
         window.addEventListener('DOMContentLoaded', () => {
@@ -233,7 +244,7 @@
       })();
     </script>
   </head>
-  <body class="blog-body">
+  <body>
     <!-- Navigation -->
     <nav>
       <div class="container">
@@ -272,11 +283,8 @@
       </div>
     </div>
 
-  <!-- <div class="content-container"> -->
-    <div class="container">
-
-<div class="blog-grid">
-    <!-- <div class="audio-container" style="display: none;"> -->
+<!-- <div class="audio-container" style="display: none;"> -->
+  <div class="content-container">
     <div class="audio-container" style="visibility: hidden;">
       <audio controls="" controlslist="nodownload">
         <source src="" type="audio/mpeg">
@@ -284,8 +292,8 @@
     </div>
 
     <main>
-      <!-- Blog Container -->
-      <div class="blog-container">
+      <!-- Blog Detail Container -->
+      <div class="blog-detail-container">
         <div id="blog-post-content">
           <div class="loading">Loading blog post...</div>
           <!--
@@ -295,20 +303,13 @@
           <!--
           <div class="btn-blog-div"><a href="checkout.html?book=Exodus" class="btn-blog">BUY THE BOOK</a><a href="/" class="btn-blog-home">RETURN TO HOMEPAGE</a></div>
           -->
-          </div>
         </div>
       </div>
     </main>
-
-      <div class="btn-blog-div">
-        <a href='checkout.html?book=Exodus' class='btn-blog'>BUY THE BOOK</a>
-        <a href='/' class='btn-blog-home'>RETURN TO HOME</a>
-      </div>
-
-    </div>
+  </div>
 
     <!-- Footer -->
-    <footer >
+    <footer>
       <div class="container">
         <p class="copyright">© 2026 Thomas Gideon. All Rights Reserved.</p>
         <div class="footer-links">
