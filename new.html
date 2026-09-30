@@ -77,6 +77,39 @@
         font-style: normal;
         font-weight: 400;
       }
+
+     /* Mobile Smooth Scroll Snap (< 768px)
+        Snaps cleanly approx 3px below the jpg book image to the 'BUY THE BOOK' button
+
+        html, body {
+          scroll-snap-type: y proximity;
+          scroll-behavior: smooth;
+        }
+
+        /* Target the purchase button container directly instead of .fade-in.
+           This ensures the snap anchor is always below the dynamic book image,
+           regardless of phone screen width or height, preventing half-cut buttons.
+           Nav is 64px on mobile: 64px nav + 3px gap = 67px scroll-margin-top
+          .book-purchase-links,
+          .music-purchase-links {
+           scroll-snap-align: start;
+           scroll-snap-stop: normal;
+           scroll-margin-top: 67px;
+        }
+
+        Disable scroll snapping on tablet and desktop where columns sit side-by-side
+        @media (min-width: 768px) {
+          html, body {
+            scroll-snap-type: none;
+          }
+
+          .book-purchase-links,
+          .music-purchase-links {
+            scroll-snap-align: none;
+          }
+        }
+     */
+
     </style>
 
     <link rel="stylesheet" href="css/style.css?v=2">
@@ -93,11 +126,14 @@
           }
         };
         const theme = safeGetItem('theme');
-        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+
+        /* || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {*/
+        if (theme === 'dark') {
           document.documentElement.classList.add('dark-mode');
-        } else {
+        } else if (theme === 'light') {
           document.documentElement.classList.add('light-mode');
         }
+        /* If no stored preference, no class is added: CSS @media (prefers-color-scheme: dark) automatically detects OS preference!*/
 
         // Safety timeout to ensure page is visible even if main script fails
         window.addEventListener('DOMContentLoaded', () => {
@@ -242,7 +278,7 @@
             <!-- Right Column: book info -->
             <div class="book-info fade-in active">
             <!-- populated by JavaScript -->
-              <p class="spacethelastfrontier"></p>  
+              <!-- <p class="spacethelastfrontier"></p> -->
               <h1 id="new-book-title">Exodus</h1>
               <!-- <h3 id="new-book-subtitle" class="subtitle">New</h3> -->
               <div class="separator"></div>

@@ -77,6 +77,12 @@
         font-style: normal;
         font-weight: 400;
       }
+
+      /* footer placement */
+      body {display:flex;flex-direction:column;min-height:100vh;margin:0;}
+      .books-container {display:grid;grid-template-columns:1fr;gap:5px;flex:1;}
+      footer {margin-top:auto;}}
+
     </style>
     
     <link rel="stylesheet" href="css/style.css?v=2">
@@ -93,11 +99,14 @@
           }
         };
         const theme = safeGetItem('theme');
-        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+
+        /* || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {*/
+        if (theme === 'dark') {
           document.documentElement.classList.add('dark-mode');
-        } else {
+        } else if (theme === 'light') {
           document.documentElement.classList.add('light-mode');
         }
+        /* If no stored preference, no class is added: CSS @media (prefers-color-scheme: dark) automatically detects OS preference!*/
 
         // Safety timeout to ensure page is visible even if main script fails
         window.addEventListener('DOMContentLoaded', () => {
@@ -222,7 +231,7 @@
     </div>
 
     <main>
-      <section id="books">
+      <section id="books" class="books-container">
         <div class="container">
           <div id="books-page-grid" class="books-grid">
           <!-- Book Grid Content fallback populated by JavaScript -->

@@ -16,14 +16,9 @@
     <title>Privacy Policy - Thomas Gideon</title>
 
     <!-- preload fonts -->
-    
-    <!-- dm-serif-display-regular - latin_latin-ext -->
     <link rel="preload" href="./fonts/dm-serif-display-v17-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <!-- work-sans-regular - latin -->
     <link rel="preload" href="./fonts/work-sans-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <!-- gelasio-regular - latin -->
     <link rel="preload" href="./fonts/gelasio-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <!-- source-serif-4-regular -->
     <link rel="preload" href="./fonts/source-serif-4-v14-cyrillic_cyrillic-ext_greek_latin_latin-ext_vietnamese-regular.woff2" as="font" type="font/woff2" crossorigin>
 
     <style>
@@ -62,7 +57,7 @@
     </style>
     
     <link rel="stylesheet" href="css/style.css?v=2">
-    
+
     <script>
       (function() {
         document.documentElement.classList.add('js');
@@ -75,11 +70,14 @@
           }
         };
         const theme = safeGetItem('theme');
-        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+
+        /* || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {*/
+        if (theme === 'dark') {
           document.documentElement.classList.add('dark-mode');
-        } else {
+        } else if (theme === 'light') {
           document.documentElement.classList.add('light-mode');
         }
+        /* If no stored preference, no class is added: CSS @media (prefers-color-scheme: dark) automatically detects OS preference!*/
 
         // Safety timeout to ensure page is visible even if main script fails
         window.addEventListener('DOMContentLoaded', () => {
@@ -102,8 +100,8 @@
           const style = document.createElement('style');
           style.innerHTML = `
             .logo {
-              \${siteContent.logoFont ? `font-family: \${siteContent.logoFont} !important;` : ''}
-              \${siteContent.logoFontSize ? `font-size: \${siteContent.logoFontSize} !important;` : ''}
+              ${siteContent.logoFont ? `font-family: ${siteContent.logoFont} !important;` : ''}
+              ${siteContent.logoFontSize ? `font-size: ${siteContent.logoFontSize} !important;` : ''}
             }
           `;
           document.head.appendChild(style);
@@ -136,34 +134,14 @@
           });
           observer.observe(document.documentElement, { childList: true, subtree: true });
         }
-
-        // Fetch data/content.json to get the latest newBookTitle
-        fetch('data/content.json')
-          .then(res => res.json())
-          .then(data => {
-            if (data && data.newBookTitle) {
-              try {
-                localStorage.setItem('newBookTitle', data.newBookTitle);
-              } catch (e) {
-                console.warn('localStorage is blocked:', e);
-              }
-              const updateLinks = () => {
-                const navLinks = document.querySelectorAll('.nav-links a[href="new.html"], .mobile-menu a[href="new.html"]');
-                navLinks.forEach(link => {
-                  link.innerText = `NEW: \${data.newBookTitle.toUpperCase()}`;
-                });
-              };
-              if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', updateLinks);
-              } else {
-                updateLinks();
-              }
-            }
-          })
-          .catch(err => console.error('Error fetching content.json in header:', err));
       })();
     </script>
     <style>
+
+/*====================================================
+  1. BASE STYLE : applies globally to all viewports
+  ====================================================*/
+
       .blog-post-full .content h3 {
         font-family: var(--font-sans);
         font-size: 14px;
@@ -183,6 +161,7 @@
         font-size: inherit;
         line-height: inherit;
       }
+
     </style>
   </head>
   <body>
@@ -225,8 +204,8 @@
     </div>
 
     <main>
-      <!-- Privacy Policy Detail Container -->
-      <div class="blog-detail-container">
+      <!-- Privacy Policy Container -->
+      <div class="container">
         <article class="blog-post-full fade-in active" style="opacity: 1; transform: translateY(0);">
           <h1 class="serif italic" style="font-size: 36px; margin-bottom: 24px;">Privacy Policy</h1>
           <span class="date">Last Updated: June 23, 2026</span>
@@ -249,7 +228,11 @@
             <h3>6. Direct Enquiries</h3>
             <p>For all and any enquires please use the email address talesofgideon@gmail.com. If you reach out to us with questions about our EPUB books or music soundtracks, we only use your message content to answer your query. Your inquiry details are never repurposed, stored in user accounts, or shared with external third parties.</p>
 
-            <a href="index.html" class="back-to-home">Back to Home</a>
+              <div class="btn-blog-div">
+                <a href="checkout.html?book=Exodus" class="btn-blog">BUY THE BOOK</a>
+                <a href="/" class="btn-blog-home">RETURN TO HOME</a>
+              </div>
+
           </div>
         </article>
       </div>

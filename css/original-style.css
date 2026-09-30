@@ -20,8 +20,7 @@
   leave borders and structural lines untouched as raw pixels.
 
 */
-    :root,
-    html.light-mode {
+    :root {
       --12px: 0.75rem;   /* 12px */
       --13px: 0.8125rem; /* 13px */
       --14px: 0.875rem;  /* 14px */
@@ -42,8 +41,83 @@
       --font-ui: "Work Sans", "Open Sans", sans-serif;
       --font-serif-alt: "Gelasio", "Source Serif 4", serif;
       --font-serif: 'Source Serif 4', 'Charter', 'Bitstream Charter', 'Sitka Text', serif;  
+      --color-bg: #ffffff;
+      --color-text: #1a1a1a;
+      --color-text-light: #333333;
+      --color-muted: #666666;
+      --color-muted-alt: #999999;
+      --color-muted-light: #bbbbbb;
+      --color-border: #eeeeee;
+      --color-bg-alt: #f9f9f9;
+      --color-nav-bg: rgba(255, 255, 255, 0.95);
+      --color-accent: #000000;
+      --color-accent-hover: #333333;
+      --color-accent-text: #ffffff;
+      --color-shadow: rgba(0, 0, 0, 0.1);
+    }
 
-      /* Default Light Mode Palette */
+    /* force dark mode via class */
+    html.dark-mode {
+
+      --color-bg: #1a1a1a;      /* deep charcoal   */
+      --color-text: #e0e0e0;    /* soft white      */
+      --color-text-default: #ffffff;
+      --color-logo: #e0e0e0;
+      --color-text-light: #e0e0e0;
+      --color-muted: #a0a0a0;
+      --color-muted-admin:#a0a0a0;
+      --color-muted-alt: #888888;
+      --color-muted-light: #666666;
+      --color-muted-light-admin: #666666;
+      --color-border: #2d2d2d;    /* #1a1a1a & #262626 pro border */
+      --color-var-border: #666666;
+      --color-van-btn-hover: #b0b0b0;
+      --color-bg-alt: #262626;    /* material design  */
+      --color-nav-bg: rgba(26, 26, 26, 0.95);
+      --color-accent-admin: #bbbbbb;
+      --color-accent: #ffffff;
+      --color-accent-hover: #ffffff;
+      --color-accent-text: #000000;
+      --color-checkout-btn-hover: rgb(185, 185, 185);
+      --color-checkout-btn-hover-color: rgb(209, 209, 209);
+      --color-checkout-btn: rgb(255, 255, 255);
+      --color-buy-btn: #000000;
+      --color-buy-btn-hover: #000000;
+      --color-trans-btn: #000000;
+      --color-trans-btn-border: rgb(80, 80, 80);
+      --color-trans-btn-hover: #ffffff;
+      /* --color-accent-text: #ffffff;*/
+      --color-soundtrack-btn-background: #ffffff;
+      --color-soundtrack-btn-text: #000000;
+      --color-soundtrack-btn-background-hover: #000000;
+      --color-payment-border: #ffffff;
+      --color-shadow: rgba(0, 0, 0, 0.4);
+    }
+
+    /* When your website flips to dark mode, invert the iframe colors */
+    html.dark-mode .paddle-checkout-container iframe,
+    html.dark-mode #paddle-checkout-container iframe {
+      /* 1. Invert flips black text to white, but also makes transparent/white backgrounds dark */
+      filter: invert(1) hue-rotate(180deg);
+      /* 2. Optional: Mix-blend-mode can help it sit naturally if you experience contrast issues */
+      mix-blend-mode: screen; 
+    }
+
+    html.dark-mode img {
+      /*filter: brightness(0.8) contrast(1.1);*/
+    }
+
+    html.dark-mode .hero-bg {
+      /*opacity: 0.2;*/
+    }
+
+    html.dark-mode .btn-sidebar, html.dark-mode .bg-gray, html.dark-mode #books-carousel, html.dark-mode #music-carousel, html.dark-mode .hero {
+      background-color: var(--color-bg-alt) !important;
+    }
+
+    /* force light mode via class */
+    html.light-mode {
+
       --color-bg: #f9f9f9;
       --color-text: #222222;      /* soft charcoal */
       --color-logo: #000000;
@@ -76,109 +150,6 @@
       --color-soundtrack-btn-background-hover: transparent;
       --color-payment-border: #000000;
       --color-shadow: rgba(0, 0, 0, 0.1);
-    }
-
-    /* System Preference: Automatic Dark Mode (when user has not forced .light-mode) */
-    @media (prefers-color-scheme: dark) {
-      :root:not(.light-mode) {
-        --color-bg: #1a1a1a;      /* deep charcoal   */
-        --color-text: #e0e0e0;    /* soft white      */
-        --color-text-default: #ffffff;
-        --color-logo: #e0e0e0;
-        --color-text-light: #e0e0e0;
-        --color-muted: #a0a0a0;
-        --color-muted-admin:#a0a0a0;
-        --color-muted-alt: #888888;
-        --color-muted-light: #666666;
-        --color-muted-light-admin: #666666;
-        --color-border: #2d2d2d;    /* #1a1a1a & #262626 pro border */
-        --color-var-border: #666666;
-        --color-van-btn-hover: #b0b0b0;
-        --color-bg-alt: #262626;    /* material design  */
-        --color-nav-bg: rgba(26, 26, 26, 0.95);
-        --color-accent-admin: #bbbbbb;
-        --color-accent: #ffffff;
-        --color-accent-hover: #ffffff;
-        --color-accent-text: #000000;
-        --color-accent-border: #ffffff;
-        --color-checkout-btn-hover: rgb(185, 185, 185);
-        --color-checkout-btn-hover-color: rgb(209, 209, 209);
-        --color-checkout-btn: rgb(255, 255, 255);
-        --color-buy-btn: #000000;
-        --color-buy-btn-hover: #000000;
-        --color-trans-btn: #000000;
-        --color-trans-btn-border: rgb(80, 80, 80);
-        --color-trans-btn-hover: #ffffff;
-        --color-soundtrack-btn-background: #ffffff;
-        --color-soundtrack-btn-text: #000000;
-        --color-soundtrack-btn-background-hover: #000000;
-        --color-payment-border: #ffffff;
-        --color-shadow: rgba(0, 0, 0, 0.4);
-      }
-
-      :root:not(.light-mode) .paddle-checkout-container iframe,
-      :root:not(.light-mode) #paddle-checkout-container iframe {
-        filter: invert(1) hue-rotate(180deg);
-        mix-blend-mode: screen; 
-      }
-    }
-
-    /* Manual user override: Force dark mode via class */
-    html.dark-mode {
-      --color-bg: #1a1a1a;      /* deep charcoal   */
-      --color-text: #e0e0e0;    /* soft white      */
-      --color-text-default: #ffffff;
-      --color-logo: #e0e0e0;
-      --color-text-light: #e0e0e0;
-      --color-muted: #a0a0a0;
-      --color-muted-admin:#a0a0a0;
-      --color-muted-alt: #888888;
-      --color-muted-light: #666666;
-      --color-muted-light-admin: #666666;
-      --color-border: #2d2d2d;    /* #1a1a1a & #262626 pro border */
-      --color-var-border: #666666;
-      --color-van-btn-hover: #b0b0b0;
-      --color-bg-alt: #262626;    /* material design  */
-      --color-nav-bg: rgba(26, 26, 26, 0.95);
-      --color-accent-admin: #bbbbbb;
-      --color-accent: #ffffff;
-      --color-accent-hover: #ffffff;
-      --color-accent-text: #000000;
-      --color-accent-border: #ffffff;
-      --color-checkout-btn-hover: rgb(185, 185, 185);
-      --color-checkout-btn-hover-color: rgb(209, 209, 209);
-      --color-checkout-btn: rgb(255, 255, 255);
-      --color-buy-btn: #000000;
-      --color-buy-btn-hover: #000000;
-      --color-trans-btn: #000000;
-      --color-trans-btn-border: rgb(80, 80, 80);
-      --color-trans-btn-hover: #ffffff;
-      --color-soundtrack-btn-background: #ffffff;
-      --color-soundtrack-btn-text: #000000;
-      --color-soundtrack-btn-background-hover: #000000;
-      --color-payment-border: #ffffff;
-      --color-shadow: rgba(0, 0, 0, 0.4);
-    }
-
-    /* When your website flips to dark mode, invert the iframe colors */
-    html.dark-mode .paddle-checkout-container iframe,
-    html.dark-mode #paddle-checkout-container iframe {
-      /* 1. Invert flips black text to white, but also makes transparent/white backgrounds dark */
-      filter: invert(1) hue-rotate(180deg);
-      /* 2. Optional: Mix-blend-mode can help it sit naturally if you experience contrast issues */
-      mix-blend-mode: screen; 
-    }
-
-    html.dark-mode img {
-      /*filter: brightness(0.8) contrast(1.1);*/
-    }
-
-    html.dark-mode .hero-bg {
-      /*opacity: 0.2;*/
-    }
-
-    html.dark-mode .btn-sidebar, html.dark-mode .bg-gray, html.dark-mode #books-carousel, html.dark-mode #music-carousel, html.dark-mode .hero {
-      background-color: var(--color-bg-alt) !important;
     }
 
     html.light-mode img {
@@ -340,12 +311,6 @@
 
     .mobile-toggle svg {
       color: #333; /* dark grey as requested */
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root:not(.light-mode) .mobile-toggle svg {
-        color: #ccc;
-      }
     }
 
     .dark-mode .mobile-toggle svg {
@@ -554,21 +519,6 @@
       margin-bottom: 13px;
     }
 
-    /* coming */
-    .coming-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 5px;
-    }
-
-    .coming-content h1 {
-      font-size: var(--16px);
-      font-weight: 700;
-      color: var(--color-text-default);
-      margin-top: 13px;
-      margin-bottom: 13px;
-    }
-
     .separator {
       width: 40px;
       height: 2px;
@@ -586,10 +536,6 @@
     }
 
     .artist-content p:last-child {
-      margin-bottom: 0px;
-    }
-
-    .coming-content p:last-child {
       margin-bottom: 0px;
     }
 
@@ -916,7 +862,7 @@
 
     /* footer */
     footer {
-      padding: 32px 0;
+      padding: 48px 0;
       border-top: 1px solid var(--color-border);
     }
 
@@ -951,9 +897,8 @@
 
     .footer-social {
       order: -1;
-      /*order: initial;*/
       display: flex;
-      gap: 34px;
+      gap: 16px;
     }
 
     .footer-social a {
@@ -962,8 +907,8 @@
     }
 
     .footer-social svg {
-      width: 28px;
-      height: 28px;
+      width: 20px;
+      height: 20px;
       stroke-width: 2.5;
     }
 
@@ -1051,16 +996,6 @@
       /*margin-bottom: 16px;*/
     }
 
-    .coming-content h1 {
-      font-size: 35px;
-      /*margin-bottom: 16px;*/
-    }
-
-    .coming-content {
-      margin-left: 4px;
-      margin-right: 4px;
-    }
-
     .book-info {
       margin-left: 4px;
       margin-right: 4px;
@@ -1075,15 +1010,6 @@
     }
 
     .synopsis p {
-      font-size: var(--20px);
-      line-height: 1.8;
-      color: var(--color-text-light);
-      margin-bottom: 24px;
-      font-weight: 300;
-      font-family: var(--font-serif-alt);
-    }
-
-    .coming-content p {
       font-size: var(--20px);
       line-height: 1.8;
       color: var(--color-text-light);
@@ -1118,14 +1044,6 @@
 
     #scroll-top.visible {
       display: flex;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root:not(.light-mode) #scroll-top {
-        background-color: rgba(0, 0, 0, 0.2);
-        color: #ffffff;
-        opacity: 1;
-      }
     }
 
     html.dark-mode #scroll-top {
@@ -1237,11 +1155,9 @@
       margin: 20px auto 0px;
     }
 
-    /*
     #blog-post-content {
       padding: 5px 0px 25px 0px;
     }
-    */
 
     .blog-post-full {
       margin-top: 2px;
@@ -1264,7 +1180,9 @@
       color: var(--color-text);
     }
 
-    /*.blog-post-full .content p {margin-bottom: 24px;}*/
+    .blog-post-full .content p {
+      margin-bottom: 24px;
+    }
 
     .back-to-home {
       display: inline-block;
@@ -1459,11 +1377,7 @@
     .book-info h1 {
       font-family: var(--font-serif-alt);
     }
-
-    .coming-content h1 {
-      font-family: var(--font-serif-alt);
-    }
-
+  
     .music-detail-info {
       margin-left: 4px;
       margin-right: 4px;
@@ -1494,13 +1408,6 @@
       /*font-size: 30px;*/
     }
 
-    .coming-content h1 {
-      margin-top: 12px;
-      /*margin-bottom: 5px;*/
-      line-height: 1;
-      /*font-size: 30px;*/
-    }
-
     #artist-bio-content,
     #blog-content,
     #new-book-synopsis {
@@ -1516,89 +1423,6 @@
 
     /* note: transitions move text over the current background
     img by changing translateY(70px); the text is adjusted */
-
-   /*.btn-blog-div {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      width: 100%;
-    }*/
-
-    .btn-blog-div {
-      display: flex;
-      justify-content: center;
-      /*flex-direction: row; /* Forces buttons side-by-side */
-      flex-wrap: wrap;
-      gap: 20px;           /* Gives nice spacing between the buttons */
-      margin-top: 20px;    /* Pushes away from the blog text */
-      margin-bottom: 20px; /* Leaves clean space before the footer */
-    }
-
-    .btn-blog {
-      display: inline-block;
-      flex: 1 1 200px;
-      max-width: 258px;
-      max-height: 54px;
-      box-sizing: border-box;
-      text-align: center;
-      align-items: center;
-      padding: 12px;
-      border-radius: 5px;
-      background-color: var(--color-text);
-      color: var(--color-trans-btn);
-      border: 2px solid var(--color-text);
-      font-family: var(--font-ui);
-      font-size: 16px;
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.2s;
-    }
-
-    .btn-blog-home {
-      flex: 1 1 200px;
-      max-width: 258px;
-      max-height: 54px;
-      display: inline-block;
-      align-items: center;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      padding: 12px;
-      border: 2px solid var(--color-var-border);
-      border-radius: 5px;
-      background: transparent;
-      color: var(--color-text);
-      font-family: var(--font-ui);
-      font-size: 16px;
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-sizing: border-box;
-      text-decoration: none;
-      transition: background-color 0.2s;
-    }
-    
-    /* Tablet & Mobile styles: Stacks 100% wide one under the other */
-    .btn-blog,.btn-blog-home {
-      flex: 1 1 100%;
-      width:100%;
-      max-width: 100%; /* Overrides the 258px desktop restriction */
-      /* Add your base transitions and touch utilities here */
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-      transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-    }
-
-    .blog-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 5px;
-    }
 
     .fade-in {
       opacity: 0;
@@ -1623,17 +1447,6 @@
       display: block !important;
     }
 
-    /* System Preference: show sun icon when OS prefers dark (unless user forced light-mode) */
-    @media (prefers-color-scheme: dark) {
-      :root:not(.light-mode) .dark-mode-toggle .sun-icon {
-        display: block !important;
-      }
-      :root:not(.light-mode) .dark-mode-toggle .moon-icon {
-        display: none !important;
-      }
-    }
-
-    /* Manual user overrides */
     html.dark-mode .dark-mode-toggle .sun-icon {
       display: block !important;
     }
@@ -1722,35 +1535,13 @@
       overflow: hidden; /* Fix for Safari border-radius */
     }
 
-    .audio-container audio,
-    .audio-detail audio {
+    html.light-mode .audio-container audio, .audio-detail audio {
       color-scheme: light;
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root:not(.light-mode) .audio-container audio,
-      :root:not(.light-mode) .audio-detail audio {
-        color-scheme: dark;
-      }
-    }
-
-    html.dark-mode .audio-container audio,
-    html.dark-mode .audio-detail audio {
+    html.dark-mode .audio-container audio, .audio-detail audio {
       color-scheme: dark;
     }
-
-    html.light-mode .audio-container audio,
-    html.light-mode .audio-detail audio {
-      color-scheme: light;
-    }
-
-
-    .blog-btn-top  {margin-top: 2rem;}
-    .blog-btn-bot  {margin-top: 2rem;}
-
-    .term-btn-top  {margin-top: 2rem;}
-    .term-btn-bot  {margin-top: 2rem;}
-
 
 /*====================================================
   2. DESKTOP HOVER : applies to all desktop viewports
@@ -1981,50 +1772,14 @@
     }
 
     @media (min-width: 768px) {
-
-      /* Global style sticky footer */
-      body {display: flex;flex-direction: column;min-height: 100dvh;margin: 0;}
-      footer {margin-top: auto;}
-      /* or only triggers when the body has a class was min-height:100vh */
-      /*body.blog-body {display: flex;flex-direction: column;min-height: 100dvh;margin: 0;}*/
-      /*body.blog-body footer {margin-top: auto;}*/
-
-      /* Desktop: Restrict the size so they sit side-by-side cleanly */
-      .btn-blog, .btn-blog-home {
-          flex: 0 1 auto;      /* Prevents the buttons from forcing 100% row splits */
-          max-width: 258px;    /* Re-applies your original desktop width restriction */
+      html, body {
+            scroll-snap-type: none;
       }
-
-      .blog-post-container {display:grid;grid-template-columns:1fr;gap:5px;flex:1;}
-
-      body.blog-body > .container {
-        display: flex;
-        flex-direction: column;
-        flex: 1 0 auto; /* Stretches this block to absorb all vertical space*/
-        width: 100%;    /* Ensures it stays wide*/
-      }
-
-      .blog-grid {
-        flex: 1 0 auto;
-        display: block; /* Ensures it doesn't turn your layout items into flex rows/columns*/
-      }
-
-      .btn-blog-div {
-        display: flex;
-        justify-content: center;
-        flex-direction: row; /* Forces buttons side-by-side */
-        gap: 20px;           /* Gives nice spacing between the buttons */
-        margin-top: 35px;    /* Pushes away from the blog text */
-        margin-bottom: 35px; /* Leaves clean space before the footer */
-      }
-
-      html, body {scroll-snap-type: none;}
       .homepage-blog-content,
         .book-purchase-links,
           .music-purchase-links {
             scroll-snap-align: none;
       }
-
       body {
         padding-top: 80px;
       }
@@ -2107,13 +1862,6 @@
         padding-bottom: 25px;
         padding-left: 0px;
       }
-      #coming {
-        padding-top: 17px;
-        padding-right: 0px;
-        padding-bottom: 25px;
-        padding-left: 0px;
-      }
-
       .hero {
         min-height: calc(100vh - 80px);
         padding: 120px 0;
@@ -2158,11 +1906,11 @@
       }
       /* note: for desktop add to adjust postion of content */
       .hero-content {padding: 0 24px;padding-top:24px;}
-      /*.artist-grid {
+      .artist-grid {
         grid-template-columns: 1fr 2fr;
         gap: 30px;
         align-items: start;
-      }*/
+      }
       .social-page-grid {
         grid-template-columns: 1fr 2fr;
         gap: 30px;
@@ -2187,7 +1935,7 @@
         font-weight: 700;
         letter-spacing: 0.3em;
         margin-top: 5px;
-        margin-bottom: 19px;
+        margin-bottom: 20px;
       }
        #artist-bio-content {
         padding-top: 5px;
@@ -2206,22 +1954,6 @@
       #artist-bio-content {
         margin-left: 0;
         margin-right: 0;
-      }
-      .coming-grid {
-        gap: 30px;
-      }
-      .coming-content h1 {
-        font-size: var(--48px);
-        line-height: normal;
-      }
-      .coming-content {
-        margin-left: 0px;
-        margin-right: 0px;
-      }      
-      .coming-grid {
-        grid-template-columns: 1fr 2fr;
-        gap: 30px;
-        align-items: start;
       }
       .book-detail-grid {
         grid-template-columns: 1fr 2fr;
@@ -2293,13 +2025,6 @@
         line-height: normal;
         /*margin-bottom: 13px;*/
       }
-      #coming-soon-content h1 {
-        margin-top: 0px;
-        margin-bottom: 0px;
-        font-size: var(--48px);
-        line-height: normal;
-        /*margin-bottom: 13px;*/
-      }
       #book-detail-title {
         margin-top: 0px;
         margin-bottom: 0px;
@@ -2334,26 +2059,11 @@
       nav .dark-mode-toggle {
         display: block;
       }
-      .footer-social {
-        /*order: -1;*/
-        order: initial;
-        display: flex;
-        gap: 16px;
-      }
-      .footer-social svg {
-        width: 20px;
-        height: 20px;
-        stroke-width: 2.5;
-      }
       footer .container {
         flex-direction: row;
         justify-content: space-between;
       }
-      /* footer */
-      footer {
-        padding: 48px 0;
-        border-top: 1px solid var(--color-border);
-      }
+    /* .spacethelastfrontier{ margin-bottom: 0px;}*/
     }
 
     @media (min-width: 964px) {
@@ -2412,11 +2122,6 @@
         gap: 33px;
         align-items: start;
       }
-      .coming-grid {
-        grid-template-columns: 1fr 2fr;
-        gap: 33px;
-        align-items: start;
-      }
       .homepage-blog-grid {
         grid-template-columns: 1fr 300px;
         gap: 33px;
@@ -2440,17 +2145,7 @@
         gap: 33px;
       }
       .padding-large {
-        padding: 20px 0;
-      }
-      .footer-social {
-        order: initial;
-        display: flex;
-        gap: 16px;
-      }
-      .footer-social svg {
-        width: 20px;
-        height: 20px;
-        stroke-width: 2.5;
+      padding: 20px 0;
       }
     }
 
@@ -2464,12 +2159,6 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 35px;
-        align-items: start;
-      }
-      .coming-grid {
-        grid-template-columns: 1fr 2fr;
-        gap: 35px;
-        align-items: start;
       }
       .social-page-grid {
         grid-template-columns: 300px 1fr;
@@ -2500,16 +2189,7 @@
         grid-template-columns: 1fr 2fr;
         gap: 35px;
       }
-      .footer-social {
-        order: initial;
-        display: flex;
-        gap: 16px;
-      }
-      .footer-social svg {
-        width: 20px;
-        height: 20px;
-        stroke-width: 2.5;
-      }
+    
     }
 
     @media (min-width: 1400px) {
@@ -2523,11 +2203,6 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 40px;
       }
-      .coming-grid {
-        grid-template-columns: 1fr 2fr;
-        gap: 40px;
-        align-items: start;
-      }
       .social-page-grid {
         grid-template-columns: 300px 1fr;
         gap: 40px;
@@ -2558,19 +2233,10 @@
         grid-template-columns: 1fr 2fr;
         gap: 40px;
       }
+
       /*.music-detail-wrap {
         grid-template-columns: 300px 1fr;
         gap: 50px;
       }*/
-      .footer-social {
-        /*order: -1;*/
-        order: initial;
-        display: flex;
-        gap: 16px;
-      }
-      .footer-social svg {
-        width: 20px;
-        height: 20px;
-        stroke-width: 2.5;
-      }
+      
     }
