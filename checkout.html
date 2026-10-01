@@ -1116,6 +1116,11 @@
       scroll-behavior: smooth;
     }
 
+    /* 🔥 DISABLE SNAP WHEN TYPING */
+    html:focus-within, body:focus-within {
+      scroll-snap-type: none !important;
+    }
+
     .success-box {
       scroll-snap-align: start;
       scroll-snap-stop: normal;
@@ -1132,6 +1137,11 @@
       scroll-snap-align: start;
       scroll-snap-stop: normal;
       scroll-margin-top: 67px;
+    }
+
+    /* 💡 HELP SAFARI POSITION THE EMAIL FIELD OVER THE KEYBOARD */
+    .checkout-box input[type="email"] {
+      scroll-margin-bottom: 80px; 
     }
 
     #checkout-email-form {
