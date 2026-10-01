@@ -1920,18 +1920,48 @@
   3. UNIVERSAL ACTIVE : physical press all viewports
   ===================================================*/
 
-  /*  .checkout-variant-tab:active,
-    .step-nav-btn:active,
-    .payment-back-btn:active,
-    .checkout-btn:active,
-    .btn-soundtrack:active,
-    .btn-home:active {
-      transform: scale(0.95) !important; /* Instant physical shrink
-      opacity: 0.75 !important;
-      /* An ultra-fast transition here makes the press feel highly responsive
-      transition: transform 0.02s linear !important;
-    }
-  */ 
+  /* 1. BUTTON TACTILE PRESS
+     Safely shrinks buttons without breaking surrounding flow */
+  .hero-content .btn:active,
+  .purchase-btn:active,
+  .btn-blog:active,
+  .btn-blog-home:active,
+  .btn-home:active {
+    transform: scale(0.96) !important;
+    opacity: 0.85 !important;
+    transition: transform 0.04s ease-out !important; /* Smooth but ultra-snappy */
+  }
+
+  /* 2. SOCIAL MEDIA LINKS (Footer Icons)
+     Icons freeze layouts if scaled globally. Opacity transitions are highly performant. */
+  .footer-social a {
+    transition: opacity 0.15s ease-out !important;
+  }
+  .footer-social a:active {
+    opacity: 0.5 !important;
+  }
+
+  /* 3. IMAGES WITH LINKS (Book Cards, Music Grid, Sidebars)
+     Instead of shrinking the whole layout block (which causes the freeze), 
+     we cleanly zoom the image INWARD on tap, keeping the container static. */
+  
+  /* Prepare existing image wrappers to handle GPU-accelerated scaling */
+  .book-img-wrap img,
+  .music-img-wrap img,
+  .sidebar-book-img,
+  .sidebar-music-img,
+  .detail-book-img {
+    will-change: transform; /* Bypasses mobile layout engine to prevent freezes */
+    transition: transform 0.2s ease-out;
+  }
+
+  /* Zoom images slightly inside their boundaries on touch */
+  .book-card:active img,
+  .music-item:active .music-img-wrap img,
+  .sidebar-book-img:active,
+  .sidebar-music-img:active {
+    transform: scale(1.03) !important;
+  }
 
 /*=====================================================
   4. LAYOUT MEDIA QUERIES (Place Everything Else Here)
