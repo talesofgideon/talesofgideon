@@ -1981,6 +1981,9 @@
     html, body {
         scroll-snap-type: y proximity;
         scroll-behavior: smooth;
+        /* Experiment : added a default safety fallback padding */
+        scroll-padding-top: var(--snap-pad, 67px);
+        /* Experiment : added scroll-padding-top: var(--snap-pad, 67px); */
     }
 
    /*Target the purchase button container directly
@@ -1993,14 +1996,20 @@
       .homepage-blog-content {
         scroll-snap-align: start;
         scroll-snap-stop: normal;
-        scroll-margin-top: 78px;
+        /* scroll-margin-top: 78px; /*
+        /* Experiment : move to scroll-padding-top; */
+        /* Experiment : Declare specific 78px value */
+        --snap-pad: 78px;
       }
 
       .book-purchase-links,
       .music-purchase-links {
         scroll-snap-align: start;
         scroll-snap-stop: normal;
-        scroll-margin-top: 67px;
+        /* scroll-margin-top: 67px; */
+        /* Experiment : move to scroll-padding-top; */
+        /* Experiment: Declare its specific 67px value */
+        --snap-pad: 67px;
       }
 
     @media (min-width: 480px) { 
