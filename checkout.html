@@ -2198,12 +2198,12 @@
       function cleanSummaryVariantLabel(rawLabel, itemTitle) {
         if (!rawLabel) return 'Digital Edition & Audiobook Bundle';
         if (rawLabel.includes('Digital Edition & Audiobook Bundle')) {
-          // return 'EPUB & Audiobook Bundle';
-          return 'Digital Bundle';
+          // return 'Digital Bundle';
+          return 'Bundle';
 
         }
         if (rawLabel.includes('Audiobook')) {
-          return 'Audiobook Only';
+          return 'Audiobook'; // Audiobook Only
         }
         if (rawLabel.includes('Digital Edition')) {
           return 'EPUB Only';
