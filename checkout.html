@@ -1117,15 +1117,24 @@
     /* scroll-padding-top: 67px; /* pulling away, lighter, as scroll boundary part of viewpoint */
     }
 
-    /* 🔥 DISABLE SNAP WHEN TYPING */
-    html:focus-within, body:focus-within {
+    /* 🔥 TARGET ONLY THE CHECKOUT INPUT FOCUS STATE */
+    /* html:focus-within, body:focus-within {scroll-snap-type: none !important;} */
+    /* This ensures that when focus leaves the checkout box, the rest of the page snaps normally */
+    html:has(.checkout-box:focus-within), 
+    body:has(.checkout-box:focus-within) {
       scroll-snap-type: none !important;
+    }
+
+    /* 🏆 FORCE MOBILES TO RESET & HONOR THE SUCCESS SNAP */
+    html:has(.success-box) {
+    /* Use padding calculation to override Safari's global body quirks */
+      scroll-padding-top: 10px;
     }
 
     .success-box {
       scroll-snap-align: start;
       scroll-snap-stop: normal;
-      scroll-margin-top: 10px;
+    /* scroll-margin-top: 10px; */
     }
 
     .sidebar-book-img {
