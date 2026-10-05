@@ -117,7 +117,9 @@
       }
 
       :root:not(.light-mode) .paddle-checkout-container iframe,
-      :root:not(.light-mode) #paddle-checkout-container iframe {
+      :root:not(.light-mode) #paddle-checkout-container iframe,
+      :root:not(.light-mode) .paddle-frame-slot iframe,
+      :root:not(.light-mode) #paddle-frame-slot iframe {
         filter: invert(1) hue-rotate(180deg);
         mix-blend-mode: screen; 
       }
@@ -162,7 +164,9 @@
 
     /* When your website flips to dark mode, invert the iframe colors */
     html.dark-mode .paddle-checkout-container iframe,
-    html.dark-mode #paddle-checkout-container iframe {
+    html.dark-mode #paddle-checkout-container iframe,
+    html.dark-mode .paddle-frame-slot iframe,
+    html.dark-mode #paddle-frame-slot iframe {
       /* 1. Invert flips black text to white, but also makes transparent/white backgrounds dark */
       filter: invert(1) hue-rotate(180deg);
       /* 2. Optional: Mix-blend-mode can help it sit naturally if you experience contrast issues */
@@ -231,7 +235,8 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      /*padding: 0 20px;*/
+      padding: 0 16px;
     }
 
     .container-wide {
@@ -2613,3 +2618,4 @@
         stroke-width: 2.5;
       }
     }
+

@@ -167,33 +167,11 @@
   1. BASE STYLE : applies globally to all viewports
   ====================================================*/
 
-  /* .container {max-width: 1200px; margin: 0 margin; padding: 0 20px;} */
-  /*  padding changed in style.cssv=2:235; to padding: 0 16px;
-      to match mobile checkout successful! page */
-
       #checkout-title{ display: block; }
       .separator { display: block; }
       .book-detail-grid { gap: 40px; }
 
       .checkout-box {
-
-        /* start : CSS from .success-box */
-        border: 2px solid var(--color-payment-border);
-        padding: 18px 14px;
-        /*border-radius: 6px;*/
-        border-radius: 4px;
-        background: var(--color-bg-alt, #f9fafb);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        display: inline-block;
-        margin: 0 auto 12px auto;
-        width: 100%;
-        max-width: 643px;
-        min-height: 480px;
-        box-sizing: border-box;
-        position: relative;
-        /* end : CSS from .success-box */
-
-        /*
         background: var(--color-bg-alt);
         border: 1px solid var(--color-border);
         border-radius: 4px;
@@ -206,8 +184,6 @@
         width: 100%;
         box-sizing: border-box;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        */
-
       }
 
       .checkout-inner {
@@ -333,8 +309,8 @@
         background: var(--color-bg);
         border: 1px solid var(--color-border);
         border-radius: 4px;
-        display: block !important;
-        width: 96.6%;
+        display: block;
+        width: 97.6%;
         box-sizing: border-box;
         overflow-wrap: break-word;
         word-wrap: break-word;
@@ -430,9 +406,6 @@
       html.dark-mode .checkout-email-input {
         background: var(--color-bg);
       }
-
-      section {padding: 0;}
-
       .checkout-email-input:focus {
         border-color: var(--color-text);
         box-shadow: 0 0 0 1px var(--color-text);
@@ -1017,193 +990,19 @@
       /* Paddle Container in Payment Overlay */
       .payment-overlay-screen .paddle-checkout-container {
         width: 100%;
-        min-height: 480px;
+        min-height: 420px;
         box-sizing: border-box;
-        flex-shrink: 0; 
-       /* flex-shrink add unhide compliance-notice via screen height */ 
-      }
-
-      /* Structural static success-box & checkout stages */
-      .success-box {
-        border: 2px solid var(--color-payment-border);
-        padding: 18px 14px;
-        border-radius: 6px;
-        background: var(--color-bg-alt, #f9fafb);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        display: inline-block;
-        margin: 0 auto 12px auto;
-        width: 100%;
-        max-width: 643px;
-        min-height: 480px;
-        box-sizing: border-box;
-        position: relative;
-        /*scroll-snap-align: start; in Mobile Layout (< 480px), guarded so activates only when payment completes*/
-        scroll-snap-stop: normal;
-      }
-
-      .success-box-content {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: 100%;
-        width: 100%;
-        min-height: 440px;
-        position: relative;
-        align-items: center;
-      }
-
-      .checkout-stage-layer {
-        grid-column: 1;
-        grid-row: 1;
-        width: 100%;
-        min-height: 440px;
-        box-sizing: border-box;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .checkout-stage-layer.active {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-      }
-
-      /* Stage 1: Active Spinner Layer */
-      .checkout-spinner-layer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 40px 16px;
-      }
-
-      .checkout-spinner-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px 10px;
-      }
-
-      .checkout-spinner {
-        width: 44px;
-        height: 44px;
-        border: 3px solid rgba(0, 0, 0, 0.12);
-        border-top-color: var(--color-text, #111827);
-        border-radius: 50%;
-        animation: checkoutSpinnerRotate 0.8s cubic-bezier(0.68, -0.05, 0.265, 1.3) infinite;
-        margin-bottom: 20px;
-      }
-
-      html.dark-mode .checkout-spinner {
-        border: 3px solid rgba(255, 255, 255, 0.18);
-        border-top-color: #ffffff;
-      }
-
-      @keyframes checkoutSpinnerRotate {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      .checkout-spinner-title {
-        font-family: var(--font-ui, sans-serif);
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--color-text, #111827);
-        margin: 0 0 8px 0;
-      }
-
-      .checkout-spinner-subtext {
-        font-family: var(--font-ui, sans-serif);
-        font-size: 13px;
-        color: var(--color-muted, #6b7280);
-        margin: 0;
-        max-width: 320px;
-        line-height: 1.5;
-      }
-
-      /* Stage 2: Paddle Frame Slot */
-      .paddle-frame-slot {
-        width: 100%;
-        min-height: 440px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .paddle-frame-slot iframe {
-        width: 100% !important;
-        min-height: 440px !important;
-        border: none !important;
-        background-color: transparent !important;
-      }
-
-      /* Paddle Tick Animation */
-      .paddle-tick-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 400px;
-        text-align: center;
-        padding: 20px;
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      .paddle-tick-circle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        border: 3px solid #059669;
-        color: #059669;
-        font-size: 30px;
-        font-weight: bold;
-        animation: paddleTickScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        margin-bottom: 14px;
-      }
-
-      @keyframes paddleTickScale {
-        0% {
-          transform: scale(0.6);
-          opacity: 0;
-        }
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-
-      /* Stage 3: Post Purchase Dashboard */
-      .checkout-success-layer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
       }
 
       /* Paddle Compliance & Legal Notice */
       .payment-compliance-notice {
         font-family: var(--font-ui, system-ui, -apple-system, sans-serif);
-        font-size: 10px;
+        font-size: 11px;
         color: rgb(67, 67, 80);
         text-align: center;
         margin: 0px auto 0px auto;
-        line-height: 1.2;
-        width: 96%;
+        line-height: 1.5;
+        width: 97%;
         max-width: 560px;
         box-sizing: border-box;
       }
@@ -1326,17 +1125,16 @@
       scroll-snap-type: none !important;
     }
 
-    /* 🏆 FORCE MOBILES TO RESET & HONOR THE SUCCESS SNAP (ONLY ONCE PAYMENT SUCCEEDS) */
-    html.payment-successful,
-    html:has(#checkout-success-layer.active) {
-      /* Use padding calculation to override Safari's global body quirks */
+    /* 🏆 FORCE MOBILES TO RESET & HONOR THE SUCCESS SNAP */
+    html:has(.success-box) {
+    /* Use padding calculation to override Safari's global body quirks */
       scroll-padding-top: 10px;
     }
 
-    html.payment-successful .success-box,
-    html:has(#checkout-success-layer.active) .success-box {
+    .success-box {
       scroll-snap-align: start;
       scroll-snap-stop: normal;
+    /* scroll-margin-top: 10px; */
     }
 
     .sidebar-book-img {
@@ -1393,6 +1191,12 @@
       box-sizing: border-box !important;
     }
 
+    .checkout-variant-details {
+      padding: 14px;
+      width: 96.6% !important;
+      display: inline-block;
+    }
+
     .checkout-variant-badge {
       padding: 5px 4px 0px 5px;
       margin-top: 2px;
@@ -1400,7 +1204,10 @@
       color: var(--color-text-default);
     }
 
-    /*.checkout-synopsis {font-size: 20px;line-height: 1.6;}*/
+    .checkout-synopsis {
+      font-size: 20px;
+      line-height: 1.6;
+    }
 
     .checkout-email-input {
       width: 95%;
@@ -1459,7 +1266,14 @@
        Large Phones & Phablets (>= 480px)
        -------------------------------------------------- */
     @media (min-width: 480px) {
-      
+      .checkout-box {
+        /*padding-top: 0.6rem;*/
+        padding-top: 0.7rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        margin-top: 20px;
+      }
+
       #checkout-email-form {
         margin-bottom: 24px;
       }
@@ -1470,10 +1284,6 @@
 
       .checkout-email-input {
         width: 96.6%;
-      }
-
-      .checkout-synopsis p {
-        font-size: 16px;
       }
 
       .checkout-btn {
@@ -1497,10 +1307,16 @@
         font-size: 13px !important;
       }
 
-      /*.checkout-variant-details {padding: 14px;width: 96.6% !important;display: inline-block;}*/
+      .checkout-variant-details {
+        padding: 14px;
+        width: 96.6% !important;
+        display: inline-block;
+      }
 
-      /*.checkout-synopsis {font-size: 20px;line-height: 1.8;}*/
-
+      .checkout-synopsis {
+        font-size: 20px;
+        line-height: 1.8;
+      }
     }
 
     /* --------------------------------------------------
@@ -1519,33 +1335,6 @@
       .checkout-box {
         scroll-snap-align: none;
         scroll-margin-top: 0;
-
-        /*padding-top: 0.6rem;*/
-        padding-top: 0.7rem;
-        padding-right: 1rem;
-        padding-left: 1rem;
-        /*margin-top: 20px;*/
-        margin-top: 10px;
-        min-height: 455px;
-      }
-
-      .checkout-synopsis p {
-        font-size: 17.5px;
-      }
-
-      .checkout-field-group {
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
-
-      section {padding:25px 0;}
-
-      .payment-compliance-notice {
-        font-size: 12px;
-        text-align: justify;
-        line-height: 1.8;
-        max-width: 643px;
-        box-sizing: border-box;
       }
 
       .sidebar-book-img {
@@ -1577,7 +1366,7 @@
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         width: 96.6% !important;
-        /*margin: 0 auto 10px auto !important;*/
+        margin: 0 auto 10px auto !important;
         gap: 10px !important;
       }
 
@@ -1598,15 +1387,15 @@
       }
 
       .checkout-variant-details {
-        /*padding: 8px 15px !important;*/
-        padding: 14px;
-        /* width: 96.6% !important;*/
-        /*display: block !important;*/
-        display: block;
+        padding: 8px 15px !important;
+        width: 97.6% !important;
+        display: block !important;
       }
 
-      /*.checkout-synopsis {font-size: 16px;line-height: 1.8;}*/
-
+      .checkout-synopsis {
+        font-size: 16px;
+        line-height: 1.8;
+      }
     }
 
     /* --------------------------------------------------
@@ -1962,77 +1751,7 @@
 
           <!-- Paddle v2 Inline Checkout Container -->
           <div id="paddle-checkout-container" class="paddle-checkout-container">
-            <div id="checkout-success-box" class="success-box" style="border: 2px solid var(--color-payment-border); padding: 18px 14px; border-radius: 5px; background: var(--color-bg-alt, #f9fafb); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); display: inline-block; margin-bottom: 12px;">
-              <div class="success-box-content">
-
-                <!-- Stage 1: Active Spinner Layer (Perceived Speed & Network Buffer) -->
-                <div id="checkout-spinner-layer" class="checkout-stage-layer checkout-spinner-layer active">
-                  <div class="checkout-spinner-wrapper">
-                    <div class="checkout-spinner"></div>
-                    <h3 class="checkout-spinner-title">CONNECTING TO SECURE PAYMENT</h3>
-                    <p class="checkout-spinner-subtext">Initializing encrypted transaction with Paddle...</p>
-                  </div>
-                </div>
-
-                <!-- Stage 2: Paddle Inline Frame Layer (Houses Paddle iframe & native Paddle Tick animation) -->
-                <div id="checkout-frame-layer" class="checkout-stage-layer checkout-frame-layer">
-                  <div id="paddle-frame-slot" class="paddle-frame-slot"></div>
-                </div>
-
-                <!-- Stage 3: Post-Purchase Transaction Text Layer -->
-                <div id="checkout-success-layer" class="checkout-stage-layer checkout-success-layer">
-                  <!-- Success Icon Head -->
-                  <div style="text-align: center; margin-bottom: 10px;">
-                    <div style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: solid; color: #059669; border-radius: 50%; font-size: 24px; font-weight: bold;">
-                      ✓
-                    </div>
-                    <h3 style="font-family: var(--font-ui); font-size: 18px; margin: 12px 0 4px 0; color: var(--color-text, #111827); letter-spacing: 0.1em;">
-                      PAYMENT SUCCESSFUL!
-                    </h3>
-                    <p style="font-size: 16px; margin: 0; color: var(--color-text);">
-                      Your order has been verified and processed.
-                    </p>
-                  </div>
-
-                  <!-- Order Details Summary -->
-                  <div style="border-top: 1px solid var(--color-border, #e5e7eb); border-bottom: 1px solid var(--color-border, #e5e7eb); padding: 6px 12px; margin-bottom: 10px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 12px;">
-                      <span style="font-family: var(--font-ui); font-size:14px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">PRODUCT:</span>
-                      <strong id="post-purchase-product-title" style="font-family: var(--font-ui); font-size:14px; font-weight: 500; color: var(--color-text, #111827);text-transform: uppercase; text-shadow: 0.3px 0.3px 0.3px currentColor">EXODUS</strong>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 12px;">
-                      <span style="font-family: var(--font-ui); font-size:14px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">FORMAT:</span>
-                      <span id="post-purchase-variant-label" style="font-family: var(--font-ui); font-size:14px; font-weight: 500; text-transform: uppercase; text-shadow: 0.3px 0.3px 0.3px currentColor">EPUB & AUDIOBOOK</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 13px;">
-                      <span style="font-family: var(--font-ui);font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">AMOUNT PAID:</span>
-                      <strong id="post-purchase-amount-paid" style="font-family: var(--font-ui); font-size:14px; font-weight: 500; color: var(--color-text); text-transform: uppercase; letter-spacing:0.04rem; text-shadow: 0.3px 0.3px 0.3px currentColor">$6.99 USD</strong>
-                    </div>
-                  </div>
-
-                  <!-- Next Steps Instruction Box -->
-                  <div style="display: flex; justify-content: center; max-width: 97.6%; background: var(--color-bg, #ffffff); border: 1px solid var(--color-border, #e5e7eb); border-radius: 4px; text-align: left; margin: 0 auto 10px auto;">
-                    <p id="post-purchase-instruction-text" style="max-width: 95%; margin: 10px; font-family: var(--font-serif-alt); font-size: 16px; font-weight: 500; color: var(--color-muted); line-height: 1.8;">
-                      Success! A secure download link has been sent to <span id="post-purchase-email-text" style="color:var(--color-text);font-weight:600;">your email address</span> (check your inbox/spam) Keep browsing, or enjoy the Exodus book while exploring this tale.
-                    </p>
-                  </div>
-
-                  <!-- Next Steps Buttons, navigate [ home ] and [productTitle soundtrack] -->
-                  <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; width: 100%; max-width: 97%; margin: 0 auto;">
-                    <!-- Soundtrack Button (Primary Action) -->
-                    <a id="post-purchase-soundtrack-btn" href="/music-detail?id=1&title=Exodus" class="btn-soundtrack" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; padding: 10px 10px; max-height: 3.4rem; border-radius: 4px; text-decoration: none; background-color: var(--color-soundtrack-btn-background); color: var(--color-soundtrack-btn-text); border: 2px solid var(--color-text); font-family: var(--font-ui); font-size: 16px; font-weight: 900; letter-spacing: 0.16em; text-align: center; white-space: nowrap; cursor: pointer; transition: opacity 0.2s;">
-                      HEAR THE SOUNDTRACK
-                    </a>
-                    
-                    <!-- Home Button (Secondary Action) -->
-                    <a href="/" class="btn-home" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; padding: 10px 10px; max-height: 3.4rem; border-radius: 4px; text-decoration: none; background-color: transparent; color: var(--color-text); border: 2px solid var(--color-var-border); font-family: var(--font-ui); font-size: 16px; font-weight: 900; letter-spacing: 0.16em; text-align: center; white-space: nowrap; overflow: hidden; cursor: pointer; transition: opacity 0.2s;">
-                      RETURN TO HOME
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+            <!-- Paddle iframe or fallback sandbox renders here -->
           </div>
 
           <!-- Compliance & Legal Notice (Placed directly below Paddle checkout frame / merchant disclosure) -->
@@ -2127,54 +1846,46 @@
         if (submitBtn) submitBtn.innerText = 'PAYMENT COMPLETE';
         console.log("Transaction Complete !", data && data.data);
 
-        // Hide back/edit button smoothly since payment has completed
-        document.querySelectorAll('.payment-back-btn').forEach(btn => {
-          btn.style.transition = 'opacity 0.3s ease';
-          btn.style.opacity = '0';
-          btn.style.pointerEvents = 'none';
-        });
+        // Hide back/edit button since payment has completed
+        const backBtn = document.getElementById('payment-back-btn');
+        if (backBtn) backBtn.style.display = 'none';
 
-        // 1. Disable variant selection buttons
+        // 1. Hide the variant container to visually reclaim the space
         const variantDiv = document.getElementById('checkout-variant-selector');
         if (variantDiv) {
+          variantDiv.style.display = 'none';
+          // Find all buttons inside this container and disable them
           variantDiv.querySelectorAll('button').forEach(button => {
             button.disabled = true;
           });
         }
 
-        // 2. Disable email field
-        document.getElementById('checkout-email')?.setAttribute('disabled', 'true');
-
-        // If in simulation mode, render simulated Paddle tick inside frame slot for the 3 seconds
-        if (data && data.data && data.data.simulated) {
-          const slot = document.getElementById('paddle-frame-slot');
-          if (slot) {
-            slot.innerHTML = `
-              <div class="paddle-tick-wrapper">
-                <div class="paddle-tick-circle">✓</div>
-                <h3 style="font-family: var(--font-ui); font-size: 18px; margin: 12px 0 4px 0; color: #059669; letter-spacing: 0.1em; text-transform: uppercase;">
-                  Payment Complete
-                </h3>
-                <p style="font-size: 14px; margin: 0; color: var(--color-muted);">
-                  Paddle verification received
-                </p>
-              </div>
-            `;
-          }
+        // 2. Hide the email form container to visually reclaim the space
+        const emailForm = document.getElementById('checkout-email-form');
+        if (emailForm) {
+          emailForm.style.display = 'none';
+          document.getElementById('checkout-email')?.setAttribute('disabled', 'true');
         }
 
-        // Pre-populate the transaction text in the success layer while Mobile Safari / Paddle plays the 3s tick
-        populateSuccessLayer();
-
-        // 3. Give Mobile Safari 3 seconds to play the success animation inside the iframe (Paddle tick)
+        // 3. Give Mobile Safari 3 seconds to play the success animation inside the iframe
         setTimeout(() => {
-          // Seamlessly transition from Paddle tick to Transaction Text directly inside the static white-border container
+
+        // 4. Destroys the iframe instance and severs active event loops
+          if (typeof Paddle !== 'undefined') {
+            Paddle.Checkout.close();
+          }
+        // 5. Clear the DOM container and render your beautiful summary layout instantly
+        // This wipes Safari's WebKit memory cache cleanly in one single execution
           showPostPurchaseDashboard();
+
         }, 3000); 
       }
 
-      function populateSuccessLayer() {
-        // 1. Pull the item details that were just purchased from global state
+      function showPostPurchaseDashboard() {
+        const container = document.getElementById('paddle-checkout-container');
+        if (!container) return;
+
+        // 1. Pull the item details that were just purchased from your global state
         const item = window.currentCheckoutItem || {};
         const variantKey = window.currentCheckoutVariant;
         const variants = item.variants || {};
@@ -2182,6 +1893,7 @@
 
         const productTitle = item.title || 'Your Digital Item';
         const productID = item.id;
+        // const variantLabel = selectedVariant.label || variantKey || 'Digital Copy';
         let variantLabel = selectedVariant.label || variantKey || 'Digital Copy';
         const price = selectedVariant.price_amount !== undefined ? Number(selectedVariant.price_amount).toFixed(2) : '6.99';
 
@@ -2189,109 +1901,107 @@
         const emailInput = document.getElementById('checkout-email');
         const fallbackEmail = emailInput ? emailInput.value.trim() : 'your email address';
 
+        console.log(variantLabel);
+
         let productType = "book";
-        let productLabel = "HEAR THE SOUNDTRACK";
+        let productLabel = "HEAR THE BOOK";
 
         // Splits by space, removes the first item, and joins it back together
-        variantLabel = variantLabel.substring(variantLabel.indexOf(' ') + 1);
+            variantLabel = variantLabel.substring(variantLabel.indexOf(' ') + 1);
 
         // Check if it contains EITHER "digital edition" OR "audiobook"
         if (variantLabel.includes("Digital Edition") || variantLabel.includes("Audiobook")) {
+            console.log("Processing a digital book, audiobook, or bundle...");
+        //(1) /music-detail?id=1&title=Exodus (its a book listen to music)
             productType  = "music";
             productLabel = "HEAR THE SOUNDTRACK";
+        // audiobook
             variantLabel = variantLabel.replace("Audiobook","Audiobook Only");
+        // digital edition & audiobook bundle
             variantLabel = variantLabel.replace("Digital Edition & Audiobook Only","EPUB & Audiobook");
+        // digital edition
             variantLabel = variantLabel.replace("Digital Edition","EPUB ebook Only");
         }
+        // 2. Check for Digital Album (Case-Insensitive)
 
-        const titleEl = document.getElementById('post-purchase-product-title');
-        if (titleEl) titleEl.innerText = productTitle.toUpperCase();
+        /*
+        } else if (/Digital Album/i.test(varientLabel)) {console.log("Processing a digital music album...");/book-detail?id=1&title=Exodus  (its music read book)
+        }*/
+        
+        console.log(variantLabel);
+        console.log(productID);
+  
+        // 3. Completely overwrite the HTML to clear memory and display a clean dashboard card
+        
+        container.innerHTML = `
+          <div class="success-box" style="border: 2px solid var(--color-payment-border); padding: 18px 14px; border-radius: 6px; background: var(--color-bg-alt, #f9fafb); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); display: inline-block; margin-bottom: 12px;">
 
-        const formatEl = document.getElementById('post-purchase-variant-label');
-        if (formatEl) formatEl.innerText = variantLabel.toUpperCase();
+            <!-- Success Icon Head -->
+            <div style="text-align: center; margin-bottom: 10px;">
+              <div style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: solid; color: #059669; border-radius: 50%; font-size: 24px; font-weight: bold;">
+                ✓
+              </div>
+              <h3 style="font-family: var(--font-ui); font-size: 18px; margin: 12px 0 4px 0; color: var(--color-text, #111827); letter-spacing: 0.1em;">
+                PAYMENT SUCCESSFUL!
+              </h3>
+              <p style="font-size: 16px; margin: 0; color: var(--color-text);">
+                Your order has been verified and processed.
+              </p>
+            </div>
 
-        const priceEl = document.getElementById('post-purchase-amount-paid');
-        if (priceEl) priceEl.innerText = `$${price} USD`;
+            <!-- Order Details Summary -->
+            <div style="border-top: 1px solid var(--color-border, #e5e7eb); border-bottom: 1px solid var(--color-border, #e5e7eb); padding: 6px 12px; margin-bottom: 10px;">
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 12px;">
+                <span style="font-family: var(--font-ui); font-size:14px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">PRODUCT:</span>
+                <strong style="font-family: var(--font-ui); font-size:14px; font-weight: 500; color: var(--color-text, #111827);text-transform: uppercase; text-shadow: 0.3px 0.3px 0.3px currentColor">${productTitle}</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 12px;">
+                <span style="font-family: var(--font-ui); font-size:14px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">FORMAT:</span>
+                <span style="font-family: var(--font-ui); font-size:14px; font-weight: 500; text-transform: uppercase; text-shadow: 0.3px 0.3px 0.3px currentColor">${variantLabel}</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px;">
+                <span style="font-family: var(--font-ui);font-weight: 600; letter-spacing: 0.1em; color: var(--color-text);">AMOUNT PAID:</span>
+                <strong style="font-family: var(--font-ui); font-size:14px; font-weight: 500; color: var(--color-text); text-transform: uppercase; letter-spacing:0.04rem; text-shadow: 0.3px 0.3px 0.3px currentColor">$${price} USD</strong>
+              </div>
+            </div>
 
-        const emailEl = document.getElementById('post-purchase-email-text');
-        if (emailEl) emailEl.innerText = fallbackEmail;
+            <!-- Next Steps Instruction Box -->
+            <div style="display: flex; justify-content: center; max-width: 97.6%; background: var(--color-bg, #ffffff); border: 1px solid var(--color-border, #e5e7eb); border-radius: 6px; text-align: center; margin: 0 auto 10px auto;">
 
-        const instructionEl = document.getElementById('post-purchase-instruction-text');
-        if (instructionEl) {
-          instructionEl.innerHTML = `Success! A secure download link has been sent to <span style="color:var(--color-text)">${fallbackEmail}</span> (check your inbox/spam) Keep browsing, or enjoy the ${productTitle} ${productType} while exploring this tale.`;
-        }
+              <p style="max-width: 95%; margin: 10px; font-family: var(--font-serif-alt); font-size: 16px; font-weight: 500; color: var(--color-muted); line-height: 1.8;">
 
-        const soundtrackBtn = document.getElementById('post-purchase-soundtrack-btn');
-        if (soundtrackBtn) {
-          soundtrackBtn.href = `/${productType}-detail?id=${productID}&title=${productTitle}`;
-          soundtrackBtn.innerText = productLabel;
-        }
-      }
+                Success! A secure download link has been sent to <span style="color:var(--color-text)">${fallbackEmail}</span> (check your inbox/spam) Keep browsing, or enjoy the ${productTitle} ${productType} while exploring this tale.
+              </p>
+            </div>
 
-      function showPostPurchaseDashboard() {
-        const frameLayer = document.getElementById('checkout-frame-layer');
-        const successLayer = document.getElementById('checkout-success-layer');
+            <!-- Next Steps Buttons, navigate [ home ] and [productTitle soundtrack] -->
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; width: 100%; max-width: 97%; margin: 0 auto;">
+  
+              <!-- Soundtrack Button (Primary Action) -->
+              <a href="/${productType}-detail?id=${productID}&title=${productTitle}" class="btn-soundtrack" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; padding: 12px 10px; max-height: 3.4rem; border-radius: 5px; text-decoration: none; background-color: var(--color-soundtrack-btn-background); color: var(--color-soundtrack-btn-text); border: 2px solid var(--color-text); font-family: var(--font-ui); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-align: center; white-space: nowrap; cursor: pointer; transition: opacity 0.2s;">
+                ${productLabel}
+              </a>
+              
+              <!-- Home Button (Secondary Action) -->
+              <a href="/" class="btn-home" style="display: inline-block; flex: 1 1 200px; max-width: 268px; box-sizing: border-box; padding: 12px; 10px; max-height: 3.4rem; border-radius: 5px; text-decoration: none; background-color: transparent; color: var(--color-text); border: 2px solid var(--color-var-border); font-family: var(--font-ui); font-family: var(--font-ui); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-align: center; white-space: nowrap; overflow: hidden; text-decoration: none; cursor: pointer; transition: opacity 0.2s;">
+                RETURN TO HOME
+              </a>
+            </div>
+          </div>
+        `;
 
-        // Smooth opacity cross-fade directly inside the static white border container
-        if (frameLayer) {
-          frameLayer.classList.remove('active');
-        }
-        if (successLayer) {
-          successLayer.classList.add('active');
-        }
+        /*
+        <p style="margin: 0 0 6px 0; font-family: var(--font-ui); font-size: 16px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-text, #111827);">
+        WHERE ARE MY FILES?
+        </p>
+        <code style="font-family: var(--font-ui); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-bg);">${fallbackEmail}</code>
+        */
 
-        // Activate mobile success snap mode (scroll-padding-top: 10px and scroll-snap-align: start)
-        document.documentElement.classList.add('payment-successful');
-        document.body.classList.add('payment-successful');
-
-        // 4. Destroys the iframe instance and severs active event loops after frame has smoothly faded to 0 opacity
-        setTimeout(() => {
-          if (typeof Paddle !== 'undefined') {
-            try {
-              Paddle.Checkout.close();
-            } catch (e) {
-              console.warn('Error closing Paddle on success:', e);
-            }
-          }
-        }, 400);
-
-        // 5. Clean up any leftover main submit/checkout buttons so they can't click them again
+        // 4. Clean up any leftover main submit/checkout buttons so they can't click them again
         const mainSubmitBtn = document.getElementById('checkout-submit-btn');
         if (mainSubmitBtn) {
           mainSubmitBtn.style.display = 'none'; 
         }
-      }
-
-      function showCheckoutFrameLayer() {
-        const spinnerLayer = document.getElementById('checkout-spinner-layer');
-        const frameLayer = document.getElementById('checkout-frame-layer');
-        const successLayer = document.getElementById('checkout-success-layer');
-
-        if (spinnerLayer) spinnerLayer.classList.remove('active');
-        if (successLayer) successLayer.classList.remove('active');
-        if (frameLayer) frameLayer.classList.add('active');
-      }
-
-      function resetCheckoutStages() {
-        const spinnerLayer = document.getElementById('checkout-spinner-layer');
-        const frameLayer = document.getElementById('checkout-frame-layer');
-        const successLayer = document.getElementById('checkout-success-layer');
-        const frameSlot = document.getElementById('paddle-frame-slot');
-
-        if (frameSlot) frameSlot.innerHTML = '';
-        if (spinnerLayer) spinnerLayer.classList.add('active');
-        if (frameLayer) frameLayer.classList.remove('active');
-        if (successLayer) successLayer.classList.remove('active');
-
-        // Reset mobile success snap mode
-        document.documentElement.classList.remove('payment-successful');
-        document.body.classList.remove('payment-successful');
-
-        document.querySelectorAll('.payment-back-btn').forEach(btn => {
-          btn.style.display = 'inline-flex';
-          btn.style.opacity = '1';
-          btn.style.pointerEvents = 'auto';
-        });
       }
 
       window.currentCheckoutItem = null;
@@ -2487,11 +2197,14 @@
             tab.classList.add('active');
             updateSummaryAndDetails(v, itemData);
 
-            // Re-show variant details and reset previous Paddle frame/simulation
+            // Re-show variant details and clear previous Paddle frame/simulation
             const detailsEl = document.getElementById('checkout-variant-details');
             if (detailsEl) detailsEl.style.display = 'inline-block';
 
-            resetCheckoutStages();
+            const container = document.getElementById('paddle-checkout-container');
+            if (container) {
+              container.innerHTML = '';
+            }
             const submitBtn = document.getElementById('checkout-submit-btn');
             if (submitBtn) {
               submitBtn.innerText = 'CONTINUE TO PAYMENT';
@@ -2607,7 +2320,7 @@
                 html = trimToAfterSecondComma(html);   // remove second comma
                 html = "\"" + html + "\"";             // add quotes to include book checkout message!
               */
-              html = html + `<p>` + " Discover the tale, read or listen to the authors narrated audioBook or enjoy the flexibility of owning both, for reading or listening pleasure. Enter your delivery email address, to " + ` <a href="#checkout-email" class="under-seperator" onclick="event.preventDefault(); const el = document.getElementById('checkout-email'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();">continue to payment</a>.</p>`;
+              html = html + `<p>` + " Discover the tale, read the eBook, listen to the authors narrated audioBook or simply enjoy the flexibility of owning both, for reading or listening pleasure while travelling. Enter your delivery email address, to " + ` <a href="#checkout-email" class="under-seperator" onclick="event.preventDefault(); const el = document.getElementById('checkout-email'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();">continue to payment</a>.</p>`;
           }
 
           /*
@@ -2747,9 +2460,6 @@
           submitBtn.innerText = 'CONTINUE TO PAYMENT';
           submitBtn.style.opacity = '1';
         }
-
-        // Reset stage layers for future payment attempts
-        resetCheckoutStages();
       }
 
       function toggleOrderSummary() {
@@ -2802,40 +2512,22 @@
         // Enter MacPaw-style scroll-free payment mode
         enterPaymentMode(cleanEmail);
 
-        // Reset stage layers: shows active spinner inside the static white-border container
-        resetCheckoutStages();
+        const container = document.getElementById('paddle-checkout-container');
+        if (container) {
+          container.innerHTML = '';
+        }
 
         if (paddleInitialized && typeof Paddle !== 'undefined') {
           try {
             // Defensive Safari Cleanup: Tear down any existing instance before launching a fresh frame
             Paddle.Checkout.close();
 
-            const slot = document.getElementById('paddle-frame-slot');
-            if (slot) {
-              const observer = new MutationObserver((mutations, obs) => {
-                const iframe = slot.querySelector('iframe');
-                if (iframe) {
-                  obs.disconnect();
-                  // Allow the iframe a brief buffer to complete initial render before fading in
-                  setTimeout(() => {
-                    showCheckoutFrameLayer();
-                  }, 400);
-                }
-              });
-              observer.observe(slot, { childList: true, subtree: true });
-
-              // Safety fallback transition
-              setTimeout(() => {
-                showCheckoutFrameLayer();
-              }, 1200);
-            }
-
             // Use a tiny microtask delay to allow the browser thread to clean up memory
             setTimeout(() => {
               Paddle.Checkout.open({
                 settings: {
                   displayMode: 'inline',
-                  frameTarget: 'paddle-frame-slot',
+                  frameTarget: 'paddle-checkout-container',
                   theme: 'light',
                   frameInitialHeight: '450',
                   frameStyle: 'width: 100%; min-width: 280px; max-width: 100%; background-color: transparent; border: none;'
@@ -2862,11 +2554,10 @@
             alert(`Paddle Checkout failed to load: ${err.message}`);
           }
         } else {
-          // Local / sandbox simulation rendering inside the frame slot with smooth fade-in from spinner
-          const slot = document.getElementById('paddle-frame-slot');
-          if (slot) {
-            slot.innerHTML = `
-              <div style="border: 1px solid var(--color-border); padding: 24px; border-radius: 8px; margin-top: 8px; background: var(--color-bg-alt); width: 100%; box-sizing: border-box;">
+          // Local / sandbox simulation rendering natively inside container
+          if (container) {
+            container.innerHTML = `
+              <div style="border: 1px solid var(--color-border); padding: 24px; border-radius: 8px; margin-top: 8px; background: var(--color-bg-alt);">
                 <div style="font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; color: var(--color-text);">
                   [Paddle Sandbox Simulation - Inline Frame]
                 </div>
@@ -2876,7 +2567,7 @@
                 <p style="margin: 6px 0; font-size: 14px;"><strong>Price ID:</strong> <code>${priceId}</code></p>
                 <p style="margin: 6px 0; font-size: 14px;"><strong>R2 Path:</strong> <code>${filePath}</code></p>
                 <p style="margin: 6px 0; font-size: 14px;"><strong>Delivery Email:</strong> <code>${cleanEmail}</code></p>
-                <div style="margin-top: 18px; padding: 14px; background: var(--color-bg); border-radius: 5px; border: 1px solid var(--color-border); text-align: center; font-weight: 600; font-family: var(--font-ui); letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;" onclick="handleCheckoutSuccess({ data: { simulated: true } })">
+                <div style="margin-top: 18px; padding: 14px; background: var(--color-bg); border-radius: 5px; border: 1px solid var(--color-border); text-align: center; font-weight: 600; font-family: var(--font-ui); letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;" onclick="handleCheckoutSuccess({ data: { simulated: true } })"
                   Simulate Successful Payment
                 </div>
                 <div style="margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--color-border); font-family: var(--font-ui, sans-serif); font-size: 11px; color: #6b7280; text-align: center; line-height: 1.4;">
@@ -2884,9 +2575,6 @@
                 </div>
               </div>
             `;
-            setTimeout(() => {
-              showCheckoutFrameLayer();
-            }, 450);
           }
         }
       }
